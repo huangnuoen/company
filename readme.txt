@@ -9,6 +9,7 @@ src
 --index.html
 第三方库放在lib中
 lib
+--bootstrap
 
 压缩后的代码放在dist中
 dist（distribution）
