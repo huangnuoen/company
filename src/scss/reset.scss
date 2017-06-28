@@ -1,9 +1,10 @@
+//媒体查询规则
 $width-small: 400px;
 $width-medium: 760px;
 $width-large: 1200px;
 @mixin responsive($width) {
 	@if $width == wide-screens {
-		@media only screen and(max-width: $width-large) {
+		@media only screen and(min-width: $width-large) {
 			@content;
 		}
 	}
@@ -32,8 +33,9 @@ ul, ol, li {
 	list-style: none;
 }
 .container {
-	width: 13rem;
+	width: 10rem;
 }
+/* 网站默认字体大小 */
 body {
 	@include responsive(wide-screens) {
 		font-size: 16px;

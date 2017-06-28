@@ -1,0 +1,20 @@
+header {
+	width: 100%;
+	box-sizing: border-box;
+	div {
+		display: inline-block;
+	}
+	nav {
+		display: inline-block;
+		font-size: 120%;
+		ul {
+			li {
+				display: inline-block;
+				padding: .1rem;
+				a {
+					color: #999;
+				}
+			}
+		}
+	}
+}
