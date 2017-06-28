@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+nav, section, header, footer, article, aside {
+  display: block;
+}
+
+a, a:hover {
+  text-decoration: none;
+}
+
+ul, ol, li {
+  list-style: none;
+}
+
+.container {
+  width: 13rem;
+}
+
+@media only screen and (max-width: 1200px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (max-width: 760px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  body {
+    font-size: 12px;
+  }
+}

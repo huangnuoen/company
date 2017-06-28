@@ -24,8 +24,8 @@ gulp.task('js',function(){
 //编译sass
 gulp.task('sass', function() {
 	gulp.src('src/scss/*.scss')
-		.pipe(sass({style: 'expanded'}))
-		.pipe(autoprefixer('last 2 version', 'safair 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
+		.pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
+		//.pipe(autoprefixer('last 2 version', 'safair 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
 		.pipe(gulp.dest('src/css'))
 		.pipe(notify({message: 'sass complete'}));
 });
@@ -33,7 +33,7 @@ gulp.task('sass', function() {
 //watch任务
 gulp.task('watch', function() {
 	gulp.watch('src/scss/**/*.scss', ['sass']); 
-	gulp.watch('src/js/**/*.js', ['js']);
+	//gulp.watch('src/js/**/*.js', ['js']);
 	livereload.listen();
 	gulp.watch(['dist/**']).on('change', livereload.changed);
 });
