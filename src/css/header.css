@@ -1,22 +1,39 @@
 header {
   width: 100%;
-  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 header div {
   display: inline-block;
 }
 
+header div img {
+  width: 2.4rem;
+  height: .75rem;
+}
+
 header nav {
   display: inline-block;
-  font-size: 120%;
+  font-size: 110%;
 }
 
 header nav ul li {
   display: inline-block;
-  padding: .1rem;
+  border-bottom: 4px solid transparent;
+  padding: .2rem .05rem;
+}
+
+header nav ul li:hover {
+  border-bottom-color: #0188e1;
 }
 
 header nav ul li a {
   color: #999;
+  display: inline-block;
+}
+
+header nav ul li a:hover {
+  color: #0188e1;
 }
