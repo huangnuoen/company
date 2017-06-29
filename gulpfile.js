@@ -3,7 +3,7 @@ var gulp = require('gulp');
 //引入组件
 var jshint = require('gulp-jshint'),
 	sass = require('gulp-sass'),
-	autoprefixer = require('gulp-minify-css'),
+	autoprefixer = require('gulp-autoprefixer'),
 	concat = require('gulp-concat'),
 	uglify = require('gulp-uglify'),
 	rename = require('gulp-rename'),
@@ -25,8 +25,10 @@ gulp.task('js',function(){
 gulp.task('sass', function() {
 	gulp.src('src/scss/*.scss')
 		.pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
-		//.pipe(autoprefixer('last 2 version', 'safair 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
 		.pipe(gulp.dest('src/css'))
+		.pipe(autoprefixer('last 2 version', 'safair 5', 'ie 8', 'ie 9',, 'opera 12.1', 'ios 6', 'android 4'))
+		.pipe(sass({outputStyle: 'compact'}).on('error', sass.logError))
+		.pipe(gulp.dest('dist/css'))
 		.pipe(notify({message: 'sass complete'}));
 });
 //自动加载

@@ -1,0 +1,15 @@
+header { width: 100%; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; padding: 0 .3rem 0 .2rem; }
+
+header div { display: inline-block; }
+
+header div img { width: 2.531rem; height: .81rem; }
+
+header nav { display: inline-block; font-size: 110%; }
+
+header nav ul li { display: inline-block; border-bottom: 4px solid transparent; padding: .2rem 0; margin-left: .2rem; }
+
+header nav ul li:hover { border-bottom-color: #0188e1; }
+
+header nav ul li a { color: #999; display: inline-block; }
+
+header nav ul li a:hover { color: #0188e1; }

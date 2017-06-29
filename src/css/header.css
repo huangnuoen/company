@@ -3,6 +3,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0 .3rem 0 .2rem;
 }
 
 header div {
@@ -10,8 +11,8 @@ header div {
 }
 
 header div img {
-  width: 2.4rem;
-  height: .75rem;
+  width: 2.531rem;
+  height: .81rem;
 }
 
 header nav {
@@ -22,7 +23,8 @@ header nav {
 header nav ul li {
   display: inline-block;
   border-bottom: 4px solid transparent;
-  padding: .2rem .05rem;
+  padding: .2rem 0;
+  margin-left: .2rem;
 }
 
 header nav ul li:hover {
