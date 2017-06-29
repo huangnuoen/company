@@ -1,0 +1,15 @@
+footer { background-color: #aaa; color: #fff; padding: 0.2rem 0 .2rem 1.2rem; height: auto; }
+
+footer div:first-child { float: left; }
+
+footer nav ul { margin-bottom: .06rem; }
+
+footer nav ul li { display: inline-block; padding: 0 .1rem; border-right: 1px solid; }
+
+footer nav ul li a { color: #fff; }
+
+footer nav ul li:last-child { border-right: none; }
+
+footer div { margin-bottom: .06rem; }
+
+footer div p { display: inline-block; margin: 0 .1rem; }
