@@ -1,0 +1,6 @@
+@charset "UTF-8";
+/* 轮播图 */
+section.carousel div img {
+  width: 13.66rem;
+  height: 4.2rem;
+}

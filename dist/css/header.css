@@ -6,10 +6,16 @@ header div img { width: 2.531rem; height: .81rem; }
 
 header nav { display: inline-block; font-size: 110%; }
 
-header nav ul li { display: inline-block; border-bottom: 4px solid transparent; padding: .2rem 0; margin-left: .2rem; }
+header nav ul { margin-bottom: 0; }
 
-header nav ul li:hover { border-bottom-color: #0188e1; }
+header nav ul li { display: inline-block; padding: .2rem 0; margin-left: .2rem; position: relative; /* &:hover { ul { display: block; } } */ }
 
 header nav ul li a { color: #999; display: inline-block; }
 
 header nav ul li a:hover { color: #0188e1; }
+
+header nav ul li ul { display: none; position: absolute; background-color: #fff; top: .638rem; left: -.16rem; width: 1.2rem; border: 1px solid #eee; border-top: none; z-index: 5; }
+
+header nav ul li ul li { display: block; padding: .1rem .05rem; margin: 0; }
+
+header nav ul li ul li:hover { background-color: #eee; }

@@ -1,6 +1,4 @@
 $color: #0188e1;//主色调
-//flex
-
 header {
 	width: 100%;
 	display: flex;
@@ -18,14 +16,12 @@ header {
 		display: inline-block;
 		font-size: 110%;
 		ul {
+			margin-bottom: 0;
 			li {
 				display: inline-block;
-				border-bottom: 4px solid transparent;
 				padding: .2rem 0;
 				margin-left: .2rem;
-				&:hover {
-					border-bottom-color: $color;
-				}
+				position: relative;
 				a {
 					color: #999;
 					display: inline-block;
@@ -33,6 +29,30 @@ header {
 						color: $color;
 					}
 				}
+				ul {
+					display: none;
+					position: absolute;
+					background-color: #fff;
+					top: .638rem;
+					left: -.16rem;
+					width: 1.2rem;
+					border: 1px solid #eee;
+					border-top: none;
+					z-index: 5;
+					li {
+						display: block;
+						padding: .1rem .05rem;
+						margin: 0;
+						&:hover {
+							background-color: #eee;
+						}
+					}
+				}
+				/* &:hover {
+					ul {
+						display: block;
+					}
+				} */
 			}
 		}
 	}

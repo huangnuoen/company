@@ -19,14 +19,14 @@ gulp.task('js',function(){
 		.pipe(rename({suffix: '.min'}))
 		.pipe(uglifyj())
 		.pipe(gulp.dest('dist/js'))
-		pipe(notify({message: 'js task complete'}));
+		.pipe(notify({message: 'js task complete'}));
 });
 //编译sass
 gulp.task('sass', function() {
 	gulp.src('src/scss/*.scss')
 		.pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
+		.pipe(autoprefixer('last 2 version', 'safair 5', 'ie 8', 'ie 9', 'ie 10', 'opera 12.1', 'ios 6', 'android 4'))
 		.pipe(gulp.dest('src/css'))
-		.pipe(autoprefixer('last 2 version', 'safair 5', 'ie 8', 'ie 9',, 'opera 12.1', 'ios 6', 'android 4'))
 		.pipe(sass({outputStyle: 'compact'}).on('error', sass.logError))
 		.pipe(gulp.dest('dist/css'))
 		.pipe(notify({message: 'sass complete'}));

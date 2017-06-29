@@ -7,10 +7,10 @@ a, a:hover { text-decoration: none; }
 
 ul, ol, li { list-style: none; }
 
-.container { width: 13.66rem; }
+.wrapper { width: 13.66rem; }
 
 /* 网站默认字体大小 */
-body { font-family: "宋体",Arial, Helvetica, sans-serif; }
+body { font-family: "宋体",Arial, Helvetica, sans-serif; font-size: 16px; }
 
 @media screen and (min-width: 1200px) { body { font-size: 16px; } }
 
