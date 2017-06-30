@@ -15,18 +15,22 @@ header nav ul li a { color: #999; display: inline-block; }
 
 header nav ul li a:hover { color: #0188e1; }
 
-header nav ul li ul { display: none; position: absolute; background-color: #fff; top: .638rem; left: -.16rem; width: 1.3rem; min-width: 80px; border: 1px solid #eee; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top: none; z-index: 5; }
+header nav ul li ul { /* visibility */ /* opacity: 0; margin-top: 20px; */ height: 0; -webkit-transition: all .3s ease-in-out; transition: all .3s ease-in-out; position: absolute; background-color: #fff; top: 100%; left: -.16rem; width: 1.3rem; min-width: 80px; border: 1px solid transparent; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top: none; z-index: 5; }
 
-header nav ul li ul li { display: block; padding: .1rem .08rem; margin: 0; }
+header nav ul li ul li { display: block; padding: .1rem .08rem; margin: 0; opacity: 0; -webkit-transition: 0.5s; transition: 0.5s; }
 
 header nav ul li ul li:hover { background-color: #eee; }
 
-header nav ul li:hover ul { display: block; }
+header nav ul li:hover ul { /* visibility: visible; opacity: 1; margin-top: 0; */ height: 120px; }
+
+header nav ul li:hover ul li { opacity: 1; }
 
 @media screen and (max-width: 600px) { header nav { position: relative; min-height: 1rem; }
-  header nav ul { width: 4rem; padding: .05rem 0; position: fixed; top: .01rem; left: auto; right: 0; z-index: 1; border: 1px solid #aaa; border-radius: 5px; background: #fff url(../img/nav.png) no-repeat 0.3rem center; background-size: .5rem .5rem; -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); }
+  header nav ul { width: 4rem; padding: .05rem 0; position: absolute; top: .01rem; left: auto; right: 0; z-index: 1; border: 1px solid #aaa; border-radius: 5px; background: #fff url(../img/nav.png) no-repeat 0.3rem center; background-size: .5rem .5rem; -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); }
   header nav ul li { display: none; margin: 0; padding: 0; }
   header nav ul li a { display: block; padding: .12rem; padding-left: 1rem; }
+  header nav ul li ul { min-width: 100px; visibility: hidden; opacity: 0; -webkit-transition: all .3 ease-in-out; transition: all .3 ease-in-out; margin-top: .2rem; }
+  header nav ul li:hover ul { visibility: visible; opacity: 1; margin-top: 0; left: -100%; background-image: none; }
   header nav ul li.current { display: block; }
   header nav ul:hover { background-image: none; }
   header nav ul:hover li { display: block; margin: 0 0 .05rem; }

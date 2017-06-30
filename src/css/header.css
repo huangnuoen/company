@@ -50,14 +50,19 @@ header nav ul li a:hover {
 }
 
 header nav ul li ul {
-  display: none;
+  /* visibility */
+  /* opacity: 0;
+					margin-top: 20px; */
+  height: 0;
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
   position: absolute;
   background-color: #fff;
-  top: .638rem;
+  top: 100%;
   left: -.16rem;
   width: 1.3rem;
   min-width: 80px;
-  border: 1px solid #eee;
+  border: 1px solid transparent;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   border-top: none;
@@ -68,6 +73,9 @@ header nav ul li ul li {
   display: block;
   padding: .1rem .08rem;
   margin: 0;
+  opacity: 0;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 header nav ul li ul li:hover {
@@ -75,7 +83,14 @@ header nav ul li ul li:hover {
 }
 
 header nav ul li:hover ul {
-  display: block;
+  /* visibility: visible;
+						opacity: 1;
+						margin-top: 0; */
+  height: 120px;
+}
+
+header nav ul li:hover ul li {
+  opacity: 1;
 }
 
 @media screen and (max-width: 600px) {
@@ -86,7 +101,7 @@ header nav ul li:hover ul {
   header nav ul {
     width: 4rem;
     padding: .05rem 0;
-    position: fixed;
+    position: absolute;
     top: .01rem;
     left: auto;
     right: 0;
@@ -107,6 +122,21 @@ header nav ul li:hover ul {
     display: block;
     padding: .12rem;
     padding-left: 1rem;
+  }
+  header nav ul li ul {
+    min-width: 100px;
+    visibility: hidden;
+    opacity: 0;
+    -webkit-transition: all .3 ease-in-out;
+    transition: all .3 ease-in-out;
+    margin-top: .2rem;
+  }
+  header nav ul li:hover ul {
+    visibility: visible;
+    opacity: 1;
+    margin-top: 0;
+    left: -100%;
+    background-image: none;
   }
   header nav ul li.current {
     display: block;
