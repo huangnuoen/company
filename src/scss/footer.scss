@@ -1,12 +1,16 @@
 footer {
 	background-color: #aaa;
 	color: #fff;
-	padding: 0.2rem 0 .2rem 1.2rem;
+	padding: .2rem 0 .04rem 1.2rem;
 	height: auto;
-	div:first-child {
-		float: left;
+	overflow: hidden;/* 清除浮动 */
+	div {
+		&:first-child {
+			float: left;		
+		}
 	}
 	nav {
+		margin-bottom: .16rem;
 		ul {
 			margin-bottom: .06rem;
 			li {
@@ -23,10 +27,12 @@ footer {
 		}
 	}
 	div {
-		margin-bottom: .06rem;
+		margin-bottom: .16rem;
 		p {
 			display: inline-block;
 			margin: 0 .1rem;
+			word-wrap: break-word; 
+			word-break: normal; 
 		}
 	}
 }

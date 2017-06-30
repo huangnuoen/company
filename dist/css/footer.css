@@ -1,6 +1,9 @@
-footer { background-color: #aaa; color: #fff; padding: 0.2rem 0 .2rem 1.2rem; height: auto; }
+@charset "UTF-8";
+footer { background-color: #aaa; color: #fff; padding: .2rem 0 .04rem 1.2rem; height: auto; overflow: hidden; /* 清除浮动 */ }
 
 footer div:first-child { float: left; }
+
+footer nav { margin-bottom: .16rem; }
 
 footer nav ul { margin-bottom: .06rem; }
 
@@ -10,6 +13,6 @@ footer nav ul li a { color: #fff; }
 
 footer nav ul li:last-child { border-right: none; }
 
-footer div { margin-bottom: .06rem; }
+footer div { margin-bottom: .16rem; }
 
-footer div p { display: inline-block; margin: 0 .1rem; }
+footer div p { display: inline-block; margin: 0 .1rem; word-wrap: break-word; word-break: normal; }

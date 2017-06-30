@@ -57,7 +57,8 @@ header nav ul li ul {
   background-color: #fff;
   top: .638rem;
   left: -.16rem;
-  width: 1.2rem;
+  width: 1.3rem;
+  min-width: 80px;
   border: 1px solid #eee;
   border-top: none;
   z-index: 5;
@@ -65,7 +66,7 @@ header nav ul li ul {
 
 header nav ul li ul li {
   display: block;
-  padding: .1rem .05rem;
+  padding: .1rem .08rem;
   margin: 0;
 }
 
