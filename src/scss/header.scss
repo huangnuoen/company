@@ -4,8 +4,8 @@ header {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding: 0 .3rem 0 .2rem;
-	div {
+	padding-left: .2rem;
+	div.logo {
 		display: inline-block;
 		img {
 			width: 2.531rem;
@@ -20,7 +20,7 @@ header {
 			li {
 				display: inline-block;
 				padding: .2rem 0;
-				margin-left: .2rem;
+				margin: 0 .2rem;
 				position: relative;
 				a {
 					color: #999;
@@ -29,6 +29,7 @@ header {
 						color: $color;
 					}
 				}
+				/* 二级菜单 */
 				ul {
 					display: none;
 					position: absolute;
@@ -38,6 +39,8 @@ header {
 					width: 1.3rem;
 					min-width: 80px;
 					border: 1px solid #eee;
+					border-bottom-left-radius: 5px;
+					border-bottom-right-radius: 5px;
 					border-top: none;
 					z-index: 5;
 					li {
@@ -49,11 +52,55 @@ header {
 						}
 					}
 				}
-				/* &:hover {
+				&:hover {
 					ul {
 						display: block;
 					}
-				} */
+				}
+			}
+		}
+	}
+	/* 响应式导航 */
+	nav {
+		@media screen and (max-width: 600px) {
+			position: relative;
+			min-height: 1rem;
+			ul {
+				width: 4rem;
+				padding: .05rem 0;
+				position: fixed;
+				top: .01rem;
+				left: auto;
+				right: 0;
+				z-index: 1;
+				border: 1px solid #aaa;
+				border-radius: 5px;
+				background: #fff url(../img/nav.png) no-repeat .3rem center;
+				background-size: .5rem .5rem;
+				box-shadow: 0 1px 2px rgba(0,0,0,.3);
+				li {
+					display: none;
+					margin: 0;
+					padding: 0;
+					a {
+						display: block;
+						padding: .12rem;
+						padding-left: 1rem;
+					}
+				}
+				li.current {
+					display: block;
+				}
+				&:hover {
+					background-image: none;
+					li {
+						display: block;
+						margin: 0 0 .05rem;
+					}
+					li.current {
+						background-color: #eee;
+					}
+				}
 			}
 		}
 	}

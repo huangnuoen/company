@@ -41,6 +41,4 @@ footer div {
 footer div p {
   display: inline-block;
   margin: 0 .1rem;
-  word-wrap: break-word;
-  word-break: normal;
 }
