@@ -29,7 +29,7 @@ gulp.task('sass', function() {
 		.pipe(gulp.dest('src/css'))
 		.pipe(sass({outputStyle: 'compact'}).on('error', sass.logError))
 		.pipe(gulp.dest('dist/css'))
-		.pipe(notify({message: 'sass complete'}));
+		//.pipe(notify({message: 'sass complete'}));
 });
 //自动加载
 //watch任务
