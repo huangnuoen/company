@@ -1,10 +1,13 @@
-var Carousel = function(wrap, btn) {
+(function (window,document) {
+	var Carousel = function(wrap, btn) {
 	this.wrap = wrap;//放img的容器
 	this.num = this.wrap.children().size();
 	this.width = this.wrap.children().width();//无单位
 	this.index = 0;
 	this.init();
 };
+window.Carousel = Carousel;
+
 Carousel.prototype = {
 	init: function() {
 		console.log(this.wrap[0].innerHTML);
@@ -15,7 +18,7 @@ Carousel.prototype = {
 	autoPlay: function() {},
 	btnTab: function() {},
 	mouseOver: function() {}
-}
+}})(window,document)
 var a = new Carousel($('.carousel .picture'), $('.carousel ul.btn'));
 /*//轮播图组件
 ;(function($, window, document, undefined){
