@@ -51,11 +51,14 @@ header {
 						opacity: 0;
 						transition:0.5s;
 						&:hover {
-							background-color: #eee;
 						}
 					}
 				}
 				&:hover {
+					>a {
+						transform: scale(1.05);
+						transition: all .5s ease-in-out;
+					}
 					ul {
 						height: 120px;
 						li {
@@ -97,8 +100,7 @@ header {
 						position: static;
 						display: block;
 						background-image: none;
-							border: none;
-							border-shadow: none;
+						border: none;
 						height: auto;
 						width: auto;
 						box-shadow: none;
@@ -108,6 +110,11 @@ header {
 						}
 					}
 					&:hover {
+						>a {
+							transform: scale(1.05);
+							transition: all .5s ease-in-out;
+							background-color: transparent;
+						}
 						ul {
 							height: auto;
 						}
@@ -123,7 +130,6 @@ header {
 						margin: 0;
 					}
 					li.current {
-						background-color: #eee;
 					}
 				}
 			}
