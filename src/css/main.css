@@ -1,6 +1,45 @@
 @charset "UTF-8";
 /* 轮播图 */
-section.carousel div img {
+section.carousel {
+  position: relative;
   width: 13.66rem;
   height: 5.5rem;
+  overflow: hidden;
+}
+
+section.carousel div.picture {
+  position: absolute;
+  width: 40.98rem;
+  height: 5.5rem;
+  z-index: 1;
+}
+
+section.carousel div.picture img {
+  width: 13.66rem;
+  height: 5.5rem;
+  float: left;
+}
+
+section.carousel ul {
+  position: absolute;
+  z-index: 9;
+  bottom: .1rem;
+  left: 45%;
+  /* 兼容ie */
+  left: calc(50% - (.2+.08)*3rem);
+  /* 居中 */
+  margin: 0;
+  padding: 0;
+}
+
+section.carousel ul li {
+  width: .2rem;
+  height: .2rem;
+  min-width: 8px;
+  min-height: 8px;
+  margin: 0 .08rem;
+  border: 1px solid #0188e1;
+  border-radius: 50%;
+  text-indent: -100rem;
+  display: inline-block;
 }

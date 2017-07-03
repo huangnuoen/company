@@ -25,11 +25,18 @@ header {
 				a {
 					color: #999;
 					display: inline-block;
+					i.fa {
+						padding-left: .1rem;
+					}
 					&:hover {
 						color: $color;
 					}
 				}
-				
+				&.current {
+					a {
+						color: $color;
+					}
+				}
 				ul {/* 二级菜单 */
 					height: 0;
 					transition: all .3s ease-in-out; 
@@ -37,16 +44,15 @@ header {
 					background-color: #fff;
 					top: 100%;
 					left: -.16rem;
-					width: 1.3rem;
+					width: 1.7rem;
 					min-width: 80px;
-					border: 1px solid transparent;
 					border-bottom-left-radius: 5px;
 					border-bottom-right-radius: 5px;
 					border-top: none;
 					z-index: 5;
 					li {
 						display: block;
-						padding: .1rem .08rem;
+						padding: .1rem .2rem;
 						margin: 0;
 						opacity: 0;
 						transition:0.5s;
@@ -60,7 +66,7 @@ header {
 						transition: all .5s ease-in-out;
 					}
 					ul {
-						height: 120px;
+						height: 110px;
 						li {
 							opacity: 1;
 						}
@@ -110,11 +116,6 @@ header {
 						}
 					}
 					&:hover {
-						>a {
-							transform: scale(1.05);
-							transition: all .5s ease-in-out;
-							background-color: transparent;
-						}
 						ul {
 							height: auto;
 						}
