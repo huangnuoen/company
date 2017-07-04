@@ -1,25 +1,63 @@
+//模块化
 (function (window,document) {
-	var Carousel = function(wrap, btn) {
-	this.wrap = wrap;//放img的容器
-	this.num = this.wrap.children().size();
-	this.width = this.wrap.children().width();//无单位
-	this.index = 0;
-	this.init();
-};
-window.Carousel = Carousel;
-
-Carousel.prototype = {
-	init: function() {
-		console.log(this.wrap[0].innerHTML);
-		console.log(this.width);
-	},
-	prev: function() {},
-	next: function() {},
-	autoPlay: function() {},
-	btnTab: function() {},
-	mouseOver: function() {}
-}})(window,document)
-var a = new Carousel($('.carousel .picture'), $('.carousel ul.btn'));
+	var Carousel = function(wrap, tab) {
+		this.wrap = wrap;//放img的容器
+		this.num = this.wrap.children().size();
+		this.width = this.wrap.children().width();
+		this.tab = tab;
+		this.index = 0;
+		this.time = 2000;
+		this.init();
+	};
+	Carousel.prototype = {
+		init: function() {
+			console.log(this.wrap[0].innerHTML);
+			this.btnTab();
+			this.autoPlay();
+		},
+		prev: function() {
+			this.index--;
+			if(this.index < 0) {
+				this.index = this.num - 1;//最后一张
+			}
+			this.wrap.stop().animate({'left': -this.width*(this.index)}, this.time);
+			this.tab.children().eq(this.index).addClass('on')
+					.siblings()
+					.removeClass('on');
+		},
+		next: function() {
+			this.index++;
+			if(this.index > (this.num - 1)) {
+				this.index = 0;
+				this.wrap.css('left', 0);//最后一张到第一张无动画过渡
+			}
+			this.wrap.stop().animate({'left': -this.width*(this.index)}, this.time);
+			this.tab.children().eq(this.index).addClass('on')
+					.siblings()
+					.removeClass('on');
+		},
+		//绑定事件到每个tab上
+		btnTab: function() {
+			var that = this;
+			this.tab.children().each(function(i, item) {
+				$(this).on('click', function() {
+					$(this).addClass('on').siblings().removeClass('on');
+					console.log(i);
+					that.wrap.stop().animate({'left': -i* (that.width)});
+				})
+			})
+		},
+		autoPlay: function() {
+			var that = this;
+			clearInterval(this.timer);
+			this.timer = setInterval(function(){
+				that.next();
+			}, that.time);
+		},
+		mouseOver: function() {}
+	}
+	window.Carousel = Carousel;//将api赋给插件名
+})(window, document);
 /*//轮播图组件
 ;(function($, window, document, undefined){
 

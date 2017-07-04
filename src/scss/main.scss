@@ -31,9 +31,13 @@ section.carousel {
 			min-height: 8px;
 			margin: 0 .08rem;
 			border: 1px solid $color;
+			background-color: #999;
 			border-radius: 50%;
 			text-indent: -100rem;
 			display: inline-block;
+			&.on {
+				background-color: #fff;
+			}
 		}
 	}
 }

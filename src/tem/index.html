@@ -49,8 +49,8 @@
 				<img src="../img/try.jpg" alt="慧生活">
 				<img src="../img/慧生活.jpg" alt="慧生活">
 			</div>
-			<ul class="btn">
-				<li>1</li>
+			<ul id="listTab">
+				<li class="on">1</li>
 				<li>2</li>
 				<li>3</li>
 			</ul>
@@ -147,14 +147,16 @@
 		</footer>
 		<!-- 页脚end -->	
 	</div>
+	<script type="text/javascript" src="../js/carousel.js"></script>
 	<script type="text/javascript">
-	window.onload = function() {
-		document.documentElement.style.fontSize = document.documentElement.clientWidth/13.66 + "px";
-	};
+	document.documentElement.style.fontSize = document.documentElement.clientWidth/13.66 + "px";
+	var a = new Carousel($('.carousel .picture'), $('#listTab'));
 	window.onresize = function() {
 		document.documentElement.style.fontSize = document.documentElement.clientWidth/13.66 + "px";
+		var a = new Carousel($('.carousel .picture'), $('#listTab'));
 	};
+	
+	
 	</script>
-	<script type="text/javascript" src="../js/carousel.js"></script>
 </body>
 </html>
