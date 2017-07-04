@@ -4,6 +4,7 @@
 		this.wrap = wrap;//放img的容器
 		this.num = this.wrap.children().size();
 		this.width = this.wrap.children().width();
+        this.clone = this.wrap.children().first().clone();
 		this.tab = tab;
 		this.index = 0;
 		this.time = 2000;
@@ -12,9 +13,13 @@
 	Carousel.prototype = {
 		init: function() {
 			console.log(this.wrap[0].innerHTML);
+            this.create();
 			this.btnTab();
 			this.autoPlay();
 		},
+        create: function() {
+            this.wrap.append(this.clone);//以便实现无缝过渡
+        },
 		prev: function() {
 			this.index--;
 			if(this.index < 0) {
@@ -27,14 +32,20 @@
 		},
 		next: function() {
 			this.index++;
-			if(this.index > (this.num - 1)) {
+			if(this.index > this.num) {
 				this.index = 0;
 				this.wrap.css('left', 0);//最后一张到第一张无动画过渡
-			}
-			this.wrap.stop().animate({'left': -this.width*(this.index)}, this.time);
-			this.tab.children().eq(this.index).addClass('on')
-					.siblings()
-					.removeClass('on');
+			} else if(this.index === this.num) {
+                this.tab.children().eq(0).addClass('on')
+                        .siblings()
+                        .removeClass('on');
+                        this.wrap.stop().animate({'left': -this.width*(this.index)}, this.time);
+            } else {
+                this.wrap.stop().animate({'left': -this.width*(this.index)}, this.time);
+                this.tab.children().eq(this.index).addClass('on')
+                        .siblings()
+                        .removeClass('on');
+            }
 		},
 		//绑定事件到每个tab上
 		btnTab: function() {

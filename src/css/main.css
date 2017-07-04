@@ -9,7 +9,7 @@ section.carousel {
 
 section.carousel div.picture {
   position: absolute;
-  width: 40.98rem;
+  width: 400%;
   height: 5.5rem;
   z-index: 1;
 }

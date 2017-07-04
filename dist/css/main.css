@@ -2,7 +2,7 @@
 /* 轮播图 */
 section.carousel { position: relative; width: 13.66rem; height: 5.5rem; overflow: hidden; }
 
-section.carousel div.picture { position: absolute; width: 40.98rem; height: 5.5rem; z-index: 1; }
+section.carousel div.picture { position: absolute; width: 400%; height: 5.5rem; z-index: 1; }
 
 section.carousel div.picture img { width: 13.66rem; height: 5.5rem; float: left; }
 
