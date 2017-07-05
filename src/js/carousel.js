@@ -3,20 +3,24 @@
 	var Carousel = function(wrap, tab) {
 		this.wrap = wrap;//放img的容器
 		this.num = this.wrap.children().size();
-		this.width = this.wrap.children().width();
+		//this.width = this.wrap.children().width();
         this.clone = this.wrap.children().first().clone();
 		this.tab = tab;
 		this.index = 0;
-		this.time = 3000;
+		this.time = 4000;
 		this.init();
 	};
 	Carousel.prototype = {
 		init: function() {
-			console.log(this.wrap[0].innerHTML);
+            this.getWidth();
             this.create();
 			this.btnTab();
 			this.autoPlay();
 		},
+        getWidth: function() {
+            this.width = this.wrap.children().width();
+            return this.width;
+        },
         create: function() {
             this.wrap.append(this.clone);//以便实现无缝过渡
         },
@@ -31,10 +35,11 @@
 					.removeClass('on');
 		},
 		next: function() {
+            console.log(this.index);
 			this.index++;
 			if(this.index > this.num) {
 				this.index = 0;
-				this.wrap.css('left', 0);//最后一张到第一张无动画过渡
+				this.wrap.stop().css('left', 0);//最后一张到第一张无动画过渡
 			} else if(this.index === this.num) {
                 this.tab.children().eq(0).addClass('on')
                         .siblings()
@@ -54,14 +59,16 @@
 				$(this).on('click', function() {
 					$(this).addClass('on').siblings().removeClass('on');
 					console.log(i);
-					that.wrap.stop().animate({'left': -i* (that.width)});
+                    that.index = i;
+					that.wrap.stop().animate({'left': -i* (that.width)}, 400);
 				})
 			})
 		},
 		autoPlay: function() {
 			var that = this;
-			clearInterval(this.timer);
-			this.timer = setInterval(function(){
+			//clearInterval(timer);
+			var timer = setInterval(function(){
+                console.log(this.index);
 				that.next();
 			}, that.time);
 		},
