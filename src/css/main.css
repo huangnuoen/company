@@ -33,12 +33,12 @@ section.carousel ul {
 }
 
 section.carousel ul li {
-  width: .2rem;
-  height: .2rem;
+  width: .15rem;
+  height: .15rem;
   min-width: 8px;
   min-height: 8px;
   margin: 0 .08rem;
-  border: 1px solid #0188e1;
+  border: 1px solid #fff;
   background-color: #999;
   border-radius: 50%;
   text-indent: -100rem;

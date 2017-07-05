@@ -1,4 +1,4 @@
-//模块化
+//轮播组件 模块化
 (function (window,document) {
 	var Carousel = function(wrap, tab) {
 		this.wrap = wrap;//放img的容器
@@ -7,7 +7,7 @@
         this.clone = this.wrap.children().first().clone();
 		this.tab = tab;
 		this.index = 0;
-		this.time = 4000;
+		this.time = 5000;
 		this.init();
 	};
 	Carousel.prototype = {
@@ -29,7 +29,7 @@
 			if(this.index < 0) {
 				this.index = this.num - 1;//最后一张
 			}
-			this.wrap.stop().animate({'left': -this.width*(this.index)}, 400);
+			this.wrap.stop().animate({'left': -this.width * (this.index)}, 400);
 			this.tab.children().eq(this.index).addClass('on')
 					.siblings()
 					.removeClass('on');
@@ -44,7 +44,7 @@
                 this.tab.children().eq(0).addClass('on')
                         .siblings()
                         .removeClass('on');
-                        this.wrap.stop().animate({'left': -this.width*(this.index)}, 400);
+                        this.wrap.stop().animate({'left': -this.width * (this.index)}, 400);
             } else {
                 this.wrap.stop().animate({'left': -this.width*(this.index)}, 400);
                 this.tab.children().eq(this.index).addClass('on')
@@ -58,9 +58,11 @@
 			this.tab.children().each(function(i, item) {
 				$(this).on('click', function() {
 					$(this).addClass('on').siblings().removeClass('on');
-					console.log(i);
+                    if(i === 0 && that.index === 3) {
+                        that.wrap.stop().css('left', 0);//播放到clone的最后一张时，点击第一个li，立即将left设为0,无过渡
+                    }
                     that.index = i;
-					that.wrap.stop().animate({'left': -i* (that.width)}, 400);
+					that.wrap.stop().animate({'left': -i * (that.width)}, 400);
 				})
 			})
 		},
