@@ -32,3 +32,10 @@ New a();
 
 用window.onload改变rem的值以渲染页面，是在文档加载完成后进行
 而加载的js文件是在DOM完成后
+
+
+如何使用组件？
+html: div.picture>img*n
+css: div.picture width=img.width * n; absolute;
+
+     

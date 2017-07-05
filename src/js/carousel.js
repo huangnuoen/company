@@ -7,7 +7,7 @@
         this.clone = this.wrap.children().first().clone();
 		this.tab = tab;
 		this.index = 0;
-		this.time = 2000;
+		this.time = 3000;
 		this.init();
 	};
 	Carousel.prototype = {
@@ -25,7 +25,7 @@
 			if(this.index < 0) {
 				this.index = this.num - 1;//最后一张
 			}
-			this.wrap.stop().animate({'left': -this.width*(this.index)}, this.time);
+			this.wrap.stop().animate({'left': -this.width*(this.index)}, 400);
 			this.tab.children().eq(this.index).addClass('on')
 					.siblings()
 					.removeClass('on');
@@ -39,9 +39,9 @@
                 this.tab.children().eq(0).addClass('on')
                         .siblings()
                         .removeClass('on');
-                        this.wrap.stop().animate({'left': -this.width*(this.index)}, this.time);
+                        this.wrap.stop().animate({'left': -this.width*(this.index)}, 400);
             } else {
-                this.wrap.stop().animate({'left': -this.width*(this.index)}, this.time);
+                this.wrap.stop().animate({'left': -this.width*(this.index)}, 400);
                 this.tab.children().eq(this.index).addClass('on')
                         .siblings()
                         .removeClass('on');
