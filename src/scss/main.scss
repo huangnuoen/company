@@ -74,6 +74,7 @@ section.production {
 			div.path {
 				width: $pathWidth;
 				height: $pathWidth;
+				margin: 130px;
 				margin: 1rem;
 				border-radius: 50%;
 				border: 1px dashed $color;
@@ -101,24 +102,28 @@ section.production {
 				.path {
 					@for $i from 1 through 5 {
 						div:nth-child(#{$i}) {
-							animation: moveX 10s cubic-bezier(.36,0,.64,1) -5-4s*(($i)-1) infinite alternate, moveY 10s cubic-bezier(.36,0,.64,1) -(($i)-1)*4s infinite alternate;
+							animation: moveX 10s cubic-bezier(.36,0,.64,1) -5-4s*(($i)-1) infinite alternate, moveY 10s cubic-bezier(.36,0,.64,1) (($i)-1)*(-4s) infinite alternate;
 						}
 					}
 					div:nth-child(1) {
-						top: 0;/* ie9 */
-						left: 45%;
+						top: -$pathWidth*.46/4.2;/* ie9 */
+						left: 42%;
 					}
-					div:nth-child(2), div:nth-child(4) {
-						top: 1.6rem;
-						right: 0;
+					div:nth-child(2) {
+						top: $pathWidth*.4/2.7;
+						right: -$pathWidth*.46/4.2;
 					}
 					div:nth-child(3) {
-						bottom: 0;
+						bottom: $pathWidth*.2/2.7;
+						right: -$pathWidth*.2/4.2;
 					}
 					div:nth-child(4) {
+						bottom: $pathWidth*.2/2.7;
 						left: 0;
 					}
 					div:nth-child(5) {
+						top: $pathWidth*.4/2.7;
+						left: -$pathWidth*.46/4.2;
 					}
 				}
 			}
@@ -126,8 +131,24 @@ section.production {
 				.path {
 					@for $i from 1 through 4 {
 						div:nth-child(#{$i}) {
-							animation: moveX 10s cubic-bezier(.36,0,.64,1) -5-5s*(($i)-1) infinite alternate, moveY 10s cubic-bezier(.36,0,.64,1) -(($i)-1)*5s infinite alternate;
+							animation: moveX 10s cubic-bezier(.36,0,.64,1) -5-5s*(($i)-1) infinite alternate, moveY 10s cubic-bezier(.36,0,.64,1) (($i)-1)*(-5s) infinite alternate;
 						}
+					}
+					div:nth-child(1) {
+						top: -$pathWidth*.46/4.2;/* ie9 */
+						left: 42%;
+					}
+					div:nth-child(2), div:nth-child(4) {
+						top: 42%;
+						right: -$pathWidth*.27/2;
+					}
+					div:nth-child(3) {
+						bottom: -$pathWidth*.27/2;
+						left: 42%;
+					}
+					div:nth-child(4) {
+						top: 42%;/* ie9 */
+						left: -$pathWidth*.46/4.2;
 					}
 				}
 			}
