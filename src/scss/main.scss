@@ -66,13 +66,14 @@ section {
 }
 /* 服务项目 */
 section.production {
+	$pathWidth: 270px;/*4.2rem*/
 	>div {		
 		text-align: center;
 		>div {
 			display: inline-block;
 			div.path {
-				width: 4.2rem;
-				height: 4.2rem;
+				width: $pathWidth;
+				height: $pathWidth;
 				margin: 1rem;
 				border-radius: 50%;
 				border: 1px dashed $color;
@@ -80,54 +81,72 @@ section.production {
 				h3 {
 					font-family: "黑体"; 
 					color: $color;
-					margin: 45% auto 0;
+					margin: 42% auto 0;
 					width: 50px;
 				}
 				div {
 					position: absolute;
-					width: .8rem;
-					height: .8rem;
-					line-height: .8rem;
+					width: $pathWidth*.27;/* .8rem */
+					height: $pathWidth*.27;
+					line-height: $pathWidth*.27;
 					text-align: center;
-					border: 2px solid $color;
+					background-color: $color;
+					opacity: .8;
 					border-radius: 50%;
+					font-family: "黑体";
+					color: #fff;
 				}
-				div:nth-child(1) {
-					top: 0;
-					left: 45%;/* ie9 */
-					animation: moveX 8s cubic-bezier(.36,0,.64,1) -4s infinite alternate,moveY 8s cubic-bezier(.36,0,.64,1) 0s infinite alternate;	
+			}
+			&.community {
+				.path {
+					@for $i from 1 through 5 {
+						div:nth-child(#{$i}) {
+							animation: moveX 10s cubic-bezier(.36,0,.64,1) -5-4s*(($i)-1) infinite alternate, moveY 10s cubic-bezier(.36,0,.64,1) -(($i)-1)*4s infinite alternate;
+						}
+					}
+					div:nth-child(1) {
+						top: 0;/* ie9 */
+						left: 45%;
+					}
+					div:nth-child(2), div:nth-child(4) {
+						top: 1.6rem;
+						right: 0;
+					}
+					div:nth-child(3) {
+						bottom: 0;
+					}
+					div:nth-child(4) {
+						left: 0;
+					}
+					div:nth-child(5) {
+					}
 				}
-				div:nth-child(2), div:nth-child(4) {
-					top: 1.6rem;
-					right: 0;
-					animation: moveX 8s cubic-bezier(.36,0,.64,1) -8s infinite alternate,moveY 8s cubic-bezier(.36,0,.64,1) -4s infinite alternate;
-				}
-				div:nth-child(3) {
-					bottom: 0;
-					animation: moveX 8s cubic-bezier(.36,0,.64,1) -12s infinite alternate,moveY 8s cubic-bezier(.36,0,.64,1) -8s infinite alternate;;
-				}
-				div:nth-child(4) {
-					left: 0;
-					animation: moveX 8s cubic-bezier(.36,0,.64,1) -16s infinite alternate,moveY 8s cubic-bezier(.36,0,.64,1) -12s infinite alternate;
-
+			}
+			&.enterprise {
+				.path {
+					@for $i from 1 through 4 {
+						div:nth-child(#{$i}) {
+							animation: moveX 10s cubic-bezier(.36,0,.64,1) -5-5s*(($i)-1) infinite alternate, moveY 10s cubic-bezier(.36,0,.64,1) -(($i)-1)*5s infinite alternate;
+						}
+					}
 				}
 			}
 		}
 	}
-}
-@keyframes moveY {
-	from {
-		top: -.4rem;
+	@keyframes moveY {
+		from {
+			top: -$pathWidth*.46/4.2;
+		}
+		to {
+			top: $pathWidth*3.6/4.2;
+		}
 	}
-	to {
-		top: 3.7rem;
-	}
-}
-@keyframes moveX {
-	from {
-		left: -.4rem;
-	}
-	to {
-		left: 3.7rem;
+	@keyframes moveX {
+		from {
+			left: -$pathWidth*.46/4.2;
+		}
+		to {
+			left: $pathWidth*3.6/4.2;
+		}
 	}
 }
