@@ -77,26 +77,36 @@ section.production {
 				border-radius: 50%;
 				border: 1px dashed $color;
 				position: relative;
-				img {
+				h3 {
+					font-family: "黑体"; 
+					color: $color;
+					margin: 45% auto 0;
+					width: 50px;
+				}
+				div {
+					position: absolute;
 					width: .8rem;
 					height: .8rem;
-					position: absolute;
+					line-height: .8rem;
+					text-align: center;
+					border: 2px solid $color;
+					border-radius: 50%;
 				}
-				img:nth-child(1) {
+				div:nth-child(1) {
 					top: 0;
 					left: 45%;/* ie9 */
 					animation: moveX 8s cubic-bezier(.36,0,.64,1) -4s infinite alternate,moveY 8s cubic-bezier(.36,0,.64,1) 0s infinite alternate;	
 				}
-				img:nth-child(2), img:nth-child(4) {
+				div:nth-child(2), div:nth-child(4) {
 					top: 1.6rem;
 					right: 0;
 					animation: moveX 8s cubic-bezier(.36,0,.64,1) -8s infinite alternate,moveY 8s cubic-bezier(.36,0,.64,1) -4s infinite alternate;
 				}
-				img:nth-child(3) {
+				div:nth-child(3) {
 					bottom: 0;
 					animation: moveX 8s cubic-bezier(.36,0,.64,1) -12s infinite alternate,moveY 8s cubic-bezier(.36,0,.64,1) -8s infinite alternate;;
 				}
-				img:nth-child(4) {
+				div:nth-child(4) {
 					left: 0;
 					animation: moveX 8s cubic-bezier(.36,0,.64,1) -16s infinite alternate,moveY 8s cubic-bezier(.36,0,.64,1) -12s infinite alternate;
 
@@ -107,17 +117,17 @@ section.production {
 }
 @keyframes moveY {
 	from {
-		top: 0;
+		top: -.4rem;
 	}
 	to {
-		top: 3.4rem;
+		top: 3.7rem;
 	}
 }
 @keyframes moveX {
 	from {
-		left: 0;
+		left: -.4rem;
 	}
 	to {
-		left: 3.4rem;
+		left: 3.7rem;
 	}
 }
