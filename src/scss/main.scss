@@ -79,8 +79,8 @@ section.production {
 				display: inline-block;
 				width: $pathWidth;
 				height: $pathWidth;
-				margin: 130px;
-				margin:  .3rem 1rem;
+				margin: 20px 130px;
+				margin:  .32rem 1rem;
 				border-radius: 50%;
 				border: 1px dashed $color;
 				position: relative;
@@ -171,6 +171,16 @@ section.production {
 		}
 		to {
 			left: $pathWidth*3.6/4.2;
+		}
+	}
+}
+/* 项目安全 */
+section.instance {
+	width: 100%;
+	>div {
+		div {
+			display: inline-block;
+			width: 6rem;
 		}
 	}
 }

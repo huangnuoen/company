@@ -95,8 +95,8 @@ section.production > div > div div.path {
   display: inline-block;
   width: 270px;
   height: 270px;
-  margin: 130px;
-  margin: .3rem 1rem;
+  margin: 20px 130px;
+  margin: .32rem 1rem;
   border-radius: 50%;
   border: 1px dashed #0188e1;
   position: relative;
@@ -248,4 +248,14 @@ section.production > div > div.enterprise .path div:nth-child(4) {
   to {
     left: 231.42857px;
   }
+}
+
+/* 项目安全 */
+section.instance {
+  width: 100%;
+}
+
+section.instance > div div {
+  display: inline-block;
+  width: 6rem;
 }
