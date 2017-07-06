@@ -4,6 +4,7 @@
   padding: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  vertical-align: middle;
 }
 
 nav, section, header, footer, article, aside {

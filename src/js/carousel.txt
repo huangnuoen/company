@@ -35,7 +35,8 @@ New a();
 
 
 如何使用组件？
-html: div.picture>img*n
+html: .carousel>div.picture>img*n^ul#listTab>li*n
 css: div.picture width=img.width * n; absolute;
+js: var a = new Carousel("div.picture","#listTab")
 
      

@@ -59,15 +59,16 @@
 		<!-- 轮播图end -->
 		<!-- 产品介绍start -->
 		<section class="production">
-			<h2>服务项目</h2>
+			<h2>服务项目<span></span></h2>
 			<div>
 				<div class="community">
 					<div class="path">
-						<img src="../img/parking.png" alt="停车场">
-						<img src="../img/card.png" alt="一卡通">
-						<img src="../img/门禁.png" alt="门禁">
-						<img src="../img/attendance.png" alt="考勤">
+						<img src="../img/parking.png" alt="停车场" class="img1">
+						<img src="../img/card.png" alt="一卡通" class="img2">
+						<img src="../img/门禁.png" alt="门禁" class="img3">
+						<img src="../img/attendance.png" alt="考勤" class="img4">
 					</div>
+					<!-- <h3>智慧社区</h3> -->
 				</div>
 				<div class="enterprise">
 					<div class="path">
@@ -84,6 +85,7 @@
 		<section class="instance">
 			<h2>
 				<a href="instance.html">典型案例</a>
+				<span></span>
 			</h2>
 			<div>
 				<div class="instance">
@@ -111,13 +113,13 @@
 		<!-- 案例end -->
 		<!-- 新闻中心start -->
 		<section class="new">
-			<h2>新闻中心</h2>
+			<h2>新闻中心<span></span></h2>
 			<div class="new"></div>
 		</section>
 		<!-- 新闻中心end -->
 		<!-- 关于公司start -->	
 		<section class="about">
-			<h2><a href="about.html">关于公司</a></h2>
+			<h2><a href="about.html">关于公司</a><span></span></h2>
 			<div class="about">
 				<div class="introduction"></div>
 				<img src="" alt="">
@@ -155,6 +157,7 @@
 		document.documentElement.style.fontSize = document.documentElement.clientWidth/13.66 + "px";
 		//var a = new Carousel($('.carousel .picture'), $('#listTab'));
 		a.getWidth();
+		a.next();
 	};
 	
 	
