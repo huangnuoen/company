@@ -71,17 +71,20 @@ section.production {
 		text-align: center;
 		>div {
 			display: inline-block;
+			h3 {
+				font-family: "黑体"; 
+				color: $color;
+			}
 			div.path {
+				display: inline-block;
 				width: $pathWidth;
 				height: $pathWidth;
 				margin: 130px;
-				margin: 1rem;
+				margin:  .3rem 1rem;
 				border-radius: 50%;
 				border: 1px dashed $color;
 				position: relative;
 				h3 {
-					font-family: "黑体"; 
-					color: $color;
 					margin: 42% auto 0;
 					width: 50px;
 				}

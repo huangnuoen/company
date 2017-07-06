@@ -27,9 +27,11 @@ section.production > div { text-align: center; }
 
 section.production > div > div { display: inline-block; }
 
-section.production > div > div div.path { width: 270px; height: 270px; margin: 130px; margin: 1rem; border-radius: 50%; border: 1px dashed #0188e1; position: relative; }
+section.production > div > div h3 { font-family: "黑体"; color: #0188e1; }
 
-section.production > div > div div.path h3 { font-family: "黑体"; color: #0188e1; margin: 42% auto 0; width: 50px; }
+section.production > div > div div.path { display: inline-block; width: 270px; height: 270px; margin: 130px; margin: .3rem 1rem; border-radius: 50%; border: 1px dashed #0188e1; position: relative; }
+
+section.production > div > div div.path h3 { margin: 42% auto 0; width: 50px; }
 
 section.production > div > div div.path div { position: absolute; width: 72.9px; /* .8rem */ height: 72.9px; line-height: 72.9px; text-align: center; background-color: #0188e1; opacity: .8; border-radius: 50%; font-family: "黑体"; color: #fff; }
 
