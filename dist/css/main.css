@@ -83,7 +83,13 @@ section.production > div > div.enterprise .path div:nth-child(4) { top: 42%; /* 
 @keyframes moveX { from { left: -29.57143px; }
   to { left: 231.42857px; } }
 
-/* 项目安全 */
+/* 项目案例 */
 section.instance { width: 100%; }
 
-section.instance > div div { display: inline-block; width: 6rem; }
+section.instance > div { width: 90%; margin: 0 auto; }
+
+section.instance > div > div.instance { display: inline-block; min-width: 300px; width: 40%; margin: .1rem; background-color: #f5f3f1; }
+
+section.instance > div > div.instance img { display: inline-block; width: 35%; height: 100%; padding: .1rem; }
+
+section.instance > div > div.instance div { display: inline-block; width: 50%; }

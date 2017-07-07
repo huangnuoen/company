@@ -174,13 +174,28 @@ section.production {
 		}
 	}
 }
-/* 项目安全 */
+/* 项目案例 */
 section.instance {
 	width: 100%;
 	>div {
-		div {
+		width: 90%;
+		margin: 0 auto;
+		>div.instance {
 			display: inline-block;
-			width: 6rem;
+			min-width: 300px;
+			width: 40%;
+			margin: .1rem;
+			background-color: #f5f3f1;
+			img {
+				display: inline-block;
+				width: 35%;
+				height: 100%;
+				padding: .1rem;
+			}
+			div {
+				display: inline-block;
+				width: 50%;
+			}
 		}
 	}
 }

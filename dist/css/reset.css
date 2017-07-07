@@ -17,3 +17,8 @@ body { font-family: "宋体",Arial, Helvetica, sans-serif; font-size: 16px; }
 @media screen and (max-width: 1199px) and (min-width: 401px) { body { font-size: 14px; } }
 
 @media screen and (max-width: 400px) { body { font-size: 12px; } }
+
+/* 默认按钮样式 */
+button { border: 1px solid transparent; background-color: #0188e1; color: #fff; padding: 4px 6px; }
+
+button:hover { background-color: #fff; border-color: #0188e1; color: #0188e1; -webkit-transition: all 1s; transition: all 1s; }

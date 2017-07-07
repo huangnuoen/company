@@ -1,3 +1,4 @@
+$color: #0188e1;//主色调
 //媒体查询规则
 $width-small: 400px;
 $width-medium: 760px;
@@ -49,5 +50,18 @@ body {
 	}
 	@include responsive(small-screens) {
 		font-size: 12px;
+	}
+}
+/* 默认按钮样式 */
+button {
+	border: 1px solid transparent;
+	background-color: $color;
+	color: #fff;
+	padding: 4px 6px;
+	&:hover {
+		background-color: #fff;
+		border-color: $color;
+		color: $color;
+		transition: all 1s;
 	}
 }
