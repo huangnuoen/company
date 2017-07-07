@@ -84,12 +84,18 @@ section.production > div > div.enterprise .path div:nth-child(4) { top: 42%; /* 
   to { left: 231.42857px; } }
 
 /* 项目案例 */
-section.instance { width: 100%; }
+section.instance { width: 13.66rem; }
 
-section.instance > div { width: 90%; margin: 0 auto; }
+section.instance > div { width: 13.66rem; margin: 0 auto; text-align: center; }
 
-section.instance > div > div.instance { display: inline-block; min-width: 300px; width: 40%; margin: .1rem; background-color: #f5f3f1; }
+section.instance > div > div.instance { display: inline-block; min-width: 300px; min-height: 80px; width: 6.3rem; padding: .1rem; margin: .2rem .1rem; background-color: #f5f3f1; border-radius: .1rem; overflow: hidden; }
 
-section.instance > div > div.instance img { display: inline-block; width: 35%; height: 100%; padding: .1rem; }
+section.instance > div > div.instance img { display: inline-block; min-width: 134px; min-height: 106px; width: 2.5rem; height: 2rem; padding: .1rem; -o-object-fit: fill; object-fit: fill; }
 
-section.instance > div > div.instance div { display: inline-block; width: 50%; }
+section.instance > div > div.instance div { display: inline-block; width: 3.5rem; /* height: 2rem; */ position: relative; }
+
+section.instance > div > div.instance div h3 { font-family: "黑体"; color: #0188e1; margin: .13rem 0; }
+
+section.instance > div > div.instance div p { width: 3.5rem; height: .5rem; line-height: 1; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+
+@media screen and (max-width: 420px) { section.instance > div > div.instance div p { display: none; } }
