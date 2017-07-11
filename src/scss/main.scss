@@ -44,9 +44,9 @@ section.carousel {
 section {
 	width: 100%;
 	h2 {
-		font-family: "黑体";
 		color: $color;
 		text-align: center;
+		margin-bottom: .45rem;
 		span {
 			display: block;
 			width: .52rem;
@@ -72,7 +72,6 @@ section.production {
 		>div {
 			display: inline-block;
 			h3 {
-				font-family: "黑体"; 
 				color: $color;
 			}
 			div.path {
@@ -97,7 +96,6 @@ section.production {
 					background-color: $color;
 					opacity: .8;
 					border-radius: 50%;
-					font-family: "黑体";
 					color: #fff;
 				}
 			}
@@ -206,7 +204,6 @@ section.instance {
 				/* height: 2rem; */
 				position: relative;
 				h3 {
-					font-family: "黑体";
 					color: $color;
 					margin: .13rem 0;
 				}
@@ -229,26 +226,28 @@ section.instance {
 }
 /* 新闻中心 */
 section.new {
-	$padWidth: 0rem;
 	position: relative;
 	overflow: hidden;
-	width: 12.3rem;
+	width: 12rem;
 	margin: 0 .83rem;
-	height: (5rem+$padWidth*2);
+	height: (4rem);
 	text-align: center;
 		div.new {
 			position: absolute;
-			padding: $padWidth;
-			width: (32rem+$padWidth*2);/* (5+3)*4 */
-			height: (5rem+$padWidth*2);
+			width: (32rem);
+			height: (4rem);
 			overflow: hidden;
 			text-align: left;
 			>div {
 				width: 4rem;
-				height: 5rem;
+				height: 4rem;
 				display: inline-block;
 				overflow: hidden;
 				text-align: center;
+				p {
+					color: #9e9e9e;
+					margin: 0 .3rem;
+				}
 				img {
 					width: 2.5rem;
 					height: 1.5rem;

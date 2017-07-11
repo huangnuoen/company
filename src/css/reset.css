@@ -47,6 +47,10 @@ body {
   }
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: "黑体";
+}
+
 /* 默认按钮样式 */
 button {
   border: 1px solid transparent;

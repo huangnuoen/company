@@ -55,9 +55,9 @@ section {
 }
 
 section h2 {
-  font-family: "黑体";
   color: #0188e1;
   text-align: center;
+  margin-bottom: .45rem;
 }
 
 section h2 span {
@@ -88,7 +88,6 @@ section.production > div > div {
 }
 
 section.production > div > div h3 {
-  font-family: "黑体";
   color: #0188e1;
 }
 
@@ -118,7 +117,6 @@ section.production > div > div div.path div {
   background-color: #0188e1;
   opacity: .8;
   border-radius: 50%;
-  font-family: "黑体";
   color: #fff;
 }
 
@@ -293,7 +291,6 @@ section.instance > div > div.instance div {
 }
 
 section.instance > div > div.instance div h3 {
-  font-family: "黑体";
   color: #0188e1;
   margin: .13rem 0;
 }
@@ -319,28 +316,31 @@ section.instance > div > div.instance div p {
 section.new {
   position: relative;
   overflow: hidden;
-  width: 12.3rem;
+  width: 12rem;
   margin: 0 .83rem;
-  height: 5rem;
+  height: 4rem;
   text-align: center;
 }
 
 section.new div.new {
   position: absolute;
-  padding: 0rem;
   width: 32rem;
-  /* (5+3)*4 */
-  height: 5rem;
+  height: 4rem;
   overflow: hidden;
   text-align: left;
 }
 
 section.new div.new > div {
   width: 4rem;
-  height: 5rem;
+  height: 4rem;
   display: inline-block;
   overflow: hidden;
   text-align: center;
+}
+
+section.new div.new > div p {
+  color: #9e9e9e;
+  margin: 0 .3rem;
 }
 
 section.new div.new > div img {

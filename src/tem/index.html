@@ -150,38 +150,38 @@
 		<!-- 新闻中心start -->
 		<section class="new">
 			<h2>新闻中心<span></span></h2>
-				<div class="new">
-					<div>
-						<img src="../img/zhsdsmall.jpg" alt="">
-						<h4>智汇时代项目进入紧张的准备阶段</h4>
-						<p>智汇时代项目进入紧张的准备阶段智汇时代项目进入紧张的准备阶段</p>
-						<time>7-11</time>
-					</div>
-					<div>
-						<img src="../img/birthdaysmall.jpg" alt="">
-						<h4>工作再紧，也不能怠慢了员工的生日</h4>
-						<p>工作再紧，也不能怠慢了员工的生日工作再紧，也不能怠慢了员工的生日</p>
-						<time>8-5</time>
-					</div>
-					<div>
-						<img src="../img/szbei1small.jpg" alt="">
-						<h4>智汇时代项目进入紧张的准备阶段</h4>
-						<p>智汇时代项目进入紧张的准备阶段智汇时代项目进入紧张的准备阶段</p>
-						<time>7-11</time>
-					</div>
-					<div>
-						<img src="../img/zhsdsmall.jpg" alt="">
-						<h4>智汇时代项目进入紧张的准备阶段</h4>
-						<p>智汇时代项目进入紧张的准备阶段智汇时代项目进入紧张的准备阶段</p>
-						<time>7-11</time>
-					</div>
-					<div>
-						<img src="../img/anli_img2.jpg" alt="">
-						<h4>智汇时代项目进入紧张的准备阶段</h4>
-						<p>智汇时代项目进入紧张的准备阶段智汇时代项目进入紧张的准备阶段</p>
-						<time>7-11</time>
-					</div>
+			<div class="new">
+				<div>
+					<img src="../img/zhsdsmall.jpg" alt="">
+					<h4>智汇时代项目进入紧张的准备阶段</h4>
+					<p>智汇时代项目进入紧张的准备阶段智汇时代项目进入紧张的准备阶段</p>
+					<time>7-11</time>
 				</div>
+				<div>
+					<img src="../img/birthdaysmall.jpg" alt="">
+					<h4>工作再紧，也不能怠慢了员工的生日</h4>
+					<p>工作再紧，也不能怠慢了员工的生日工作再紧，也不能怠慢了员工的生日</p>
+					<time>8-5</time>
+				</div>
+				<div>
+					<img src="../img/szbei1small.jpg" alt="">
+					<h4>智汇时代项目进入紧张的准备阶段</h4>
+					<p>智汇时代项目进入紧张的准备阶段智汇时代项目进入紧张的准备阶段</p>
+					<time>7-11</time>
+				</div>
+				<div>
+					<img src="../img/zhsdsmall.jpg" alt="">
+					<h4>智汇时代项目进入紧张的准备阶段</h4>
+					<p>智汇时代项目进入紧张的准备阶段智汇时代项目进入紧张的准备阶段</p>
+					<time>7-11</time>
+				</div>
+				<div>
+					<img src="../img/anli_img2.jpg" alt="">
+					<h4>智汇时代项目进入紧张的准备阶段</h4>
+					<p>智汇时代项目进入紧张的准备阶段智汇时代项目进入紧张的准备阶段</p>
+					<time>7-11</time>
+				</div>
+			</div>
 		</section>
 		<!-- 新闻中心end -->
 		<!-- 关于公司start -->	
@@ -219,13 +219,13 @@
 	<script type="text/javascript" src="../js/carousel.js"></script>
 	<script type="text/javascript">
 	document.documentElement.style.fontSize = document.documentElement.clientWidth/13.66 + "px";
-	var a = new Carousel($('.carousel .picture'), $('#listTab'), 1);
-	var b = new Carousel($('section.new div.new'), undefined, 3);
+	var pic = new Carousel($('.carousel .picture'), $('#listTab'), 1);
+	//var news = new Carousel($('section.new div.new'), undefined, 3);
 	window.onresize = function() {
 		document.documentElement.style.fontSize = document.documentElement.clientWidth/13.66 + "px";
 		//var a = new Carousel($('.carousel .picture'), $('#listTab'));
-		a.getWidth();
-		a.next();
+		pic.getWidth();
+		pic.next();
 	};
 	
 	

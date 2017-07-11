@@ -18,6 +18,8 @@ body { font-family: "宋体", "Microsoft Yahei" ，Arial, Helvetica, sans-serif;
 
 @media screen and (max-width: 400px) { body { font-size: 12px; } }
 
+h1, h2, h3, h4, h5, h6 { font-family: "黑体"; }
+
 /* 默认按钮样式 */
 button { border: 1px solid transparent; background-color: #0188e1; color: #fff; padding: .04rem .08rem; border-radius: .1rem; }
 
