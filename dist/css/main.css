@@ -2,7 +2,7 @@
 /* 轮播图 */
 section.carousel { position: relative; width: 13.66rem; height: 5.5rem; overflow: hidden; }
 
-section.carousel div.picture { position: absolute; width: 400%; height: 5.5rem; z-index: 1; }
+section.carousel div.picture { position: absolute; width: 400%; /* (3+1)*100% */ height: 5.5rem; z-index: 1; }
 
 section.carousel div.picture img { width: 13.66rem; height: 5.5rem; float: left; }
 
@@ -98,4 +98,13 @@ section.instance > div > div.instance div h3 { font-family: "黑体"; color: #01
 
 section.instance > div > div.instance div p { width: 3.5rem; height: .5rem; line-height: 1; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
 
-@media screen and (max-width: 420px) { section.instance > div > div.instance div p { display: none; } }
+@media screen and (max-width: 600px) { section.instance > div > div.instance div p { display: none; } }
+
+/* 新闻中心 */
+section.new { position: relative; overflow: hidden; width: 12.3rem; margin: 0 .83rem; height: 5rem; text-align: center; }
+
+section.new div.new { position: absolute; padding: 0rem; width: 32rem; /* (5+3)*4 */ height: 5rem; overflow: hidden; text-align: left; }
+
+section.new div.new > div { width: 4rem; height: 5rem; display: inline-block; overflow: hidden; text-align: center; }
+
+section.new div.new > div img { width: 2.5rem; height: 1.5rem; }

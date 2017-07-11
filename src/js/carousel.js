@@ -1,20 +1,26 @@
 //轮播组件 模块化
+//wrap  容器
+//tab   圆点控件
+//page  每版呈现的图片
 (function (window,document) {
-	var Carousel = function(wrap, tab) {
+	var Carousel = function(wrap, tab, page) {
 		this.wrap = wrap;//放img的容器
 		this.num = this.wrap.children().size();
 		//this.width = this.wrap.children().width();
-        this.clone = this.wrap.children().first().clone();
+        //this.clone = this.wrap.children().first().clone();
 		this.tab = tab;
 		this.index = 0;
-		this.time = 5000;
+		this.time = 5000;//每张图片停留时间
+        this.page = page;//每版呈现的数量
 		this.init();
 	};
 	Carousel.prototype = {
 		init: function() {
             this.getWidth();
             this.create();
-			this.btnTab();
+            if(this.tab) {
+                this.btnTab();
+            }
 			this.autoPlay();
 		},
         getWidth: function() {
@@ -22,7 +28,10 @@
             return this.width;
         },
         create: function() {
-            this.wrap.append(this.clone);//以便实现无缝过渡
+            //以便实现无缝过渡
+            for(var i = 0; i < this.page; i++) {
+                this.wrap.append(this.wrap.children().eq(i).clone());
+            }
         },
 		prev: function() {
 			this.index--;
@@ -57,24 +66,31 @@
 			var that = this;
 			this.tab.children().each(function(i, item) {
 				$(this).on('click', function() {
+                    clearInterval(that.timer);//避免点击后继续执行队列中的next()
 					$(this).addClass('on').siblings().removeClass('on');
                     if(i === 0 && that.index === 3) {
                         that.wrap.stop().css('left', 0);//播放到clone的最后一张时，点击第一个li，立即将left设为0,无过渡
                     }
                     that.index = i;
 					that.wrap.stop().animate({'left': -i * (that.width)}, 400);
+                    that.autoPlay();//再次调用自动播放
 				})
 			})
 		},
 		autoPlay: function() {
 			var that = this;
-			//clearInterval(timer);
-			var timer = setInterval(function(){
+			clearInterval(this.timer);//每次执行next()前先清空队列
+			this.timer = setInterval(function(){
                 console.log(this.index);
 				that.next();
 			}, that.time);
 		},
-		mouseOver: function() {}
+		mouseOver: function() {
+            var that = this;
+            this.wrap.children().on('mouseover', function() {
+                clearInterval(that.timer);
+            })
+        }
 	}
 	window.Carousel = Carousel;//将api赋给插件名
 })(window, document);

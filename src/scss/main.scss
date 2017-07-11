@@ -7,7 +7,7 @@ section.carousel {
 	overflow: hidden;
 	div.picture {
 		position: absolute;
-		width: 400%;
+		width: 400%;/* (3+1)*100% */
 		height: 5.5rem;
 		z-index: 1;
 		img {
@@ -219,11 +219,41 @@ section.instance {
 					display: -webkit-box;
 					-webkit-box-orient: vertical;
 					-webkit-line-clamp: 2;
-					@media screen and (max-width: 420px) {
+					@media screen and (max-width: 600px) {
 						display: none;
 					}
 				}
 			}
 		}
 	}
+}
+/* 新闻中心 */
+section.new {
+	$padWidth: 0rem;
+	position: relative;
+	overflow: hidden;
+	width: 12.3rem;
+	margin: 0 .83rem;
+	height: (5rem+$padWidth*2);
+	text-align: center;
+		div.new {
+			position: absolute;
+			padding: $padWidth;
+			width: (32rem+$padWidth*2);/* (5+3)*4 */
+			height: (5rem+$padWidth*2);
+			overflow: hidden;
+			text-align: left;
+			>div {
+				width: 4rem;
+				height: 5rem;
+				display: inline-block;
+				overflow: hidden;
+				text-align: center;
+				img {
+					width: 2.5rem;
+					height: 1.5rem;
+				}
+			}
+		}
+	
 }
