@@ -11,7 +11,7 @@
         //this.clone = this.wrap.children().first().clone();
 		this.tab = tab;
 		this.index = 0;
-		this.time = 1000;//每张图片停留时间
+		this.time = 2000;//每张图片停留时间
         this.page = page1;//当前每版呈现的数量
         this.rePage = page2;//页面变化后版面值
 		this.init();
