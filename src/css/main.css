@@ -306,7 +306,7 @@ section.instance > div > div.instance div p {
   -webkit-line-clamp: 2;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 610px) {
   section.instance > div > div.instance div p {
     display: none;
   }
@@ -364,4 +364,23 @@ section.new div.new > div time {
   display: inline-block;
   color: #9e9e9e;
   margin: .12rem 0;
+}
+
+@media screen and (max-width: 610px) {
+  section.new {
+    height: 7.5rem;
+  }
+  section.new div.new {
+    width: 72rem;
+  }
+  section.new div.new > div {
+    width: 12rem;
+  }
+  section.new div.new > div p {
+    display: none;
+  }
+  section.new div.new > div img {
+    width: 7.5rem;
+    height: 4.5rem;
+  }
 }

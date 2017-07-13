@@ -1,17 +1,19 @@
 //轮播组件 模块化
 //wrap  容器
 //tab   圆点控件
-//page  每版呈现的图片
+//page  初始版面，每版呈现的图片
+//rePage 页面宽度变化后的版面
 (function (window,document) {
-	var Carousel = function(wrap, tab, page) {
+	var Carousel = function(wrap, tab, page1, page2) {
 		this.wrap = wrap;//放img的容器
 		this.num = this.wrap.children().size();
 		//this.width = this.wrap.children().width();
         //this.clone = this.wrap.children().first().clone();
 		this.tab = tab;
 		this.index = 0;
-		this.time = 5000;//每张图片停留时间
-        this.page = page;//每版呈现的数量
+		this.time = 1000;//每张图片停留时间
+        this.page = page1;//当前每版呈现的数量
+        this.rePage = page2;//页面变化后版面值
 		this.init();
 	};
 	Carousel.prototype = {
@@ -25,6 +27,7 @@
 		},
         getWidth: function() {
             this.width = this.wrap.children().width();
+            console.log('getWidth'+this.width);
             return this.width;
         },
         create: function() {
@@ -32,6 +35,27 @@
             for(var i = 0; i < this.page; i++) {
                 this.wrap.append(this.wrap.children().eq(i).clone());
             }
+        },
+        //删除clone节点，交换版面值
+        remove: function() {
+/*              根据page值追加或删除节点
+                if(this.rePage < this.page) {
+                for(var i = 0; i < (this.page-this.rePage); i++) {
+                    this.wrap.children().last().remove();
+                }
+            } else if (this.rePage > this.page) {
+                for(var i = this.page; i < this.rePage; i++) {
+                    this.wrap.append(this.wrap.children().eq(i).clone());
+                }
+            }
+*/            
+            for(var i = 0; i < this.page; i++) {
+                this.wrap.children().last().remove();
+            }
+            //交换值
+            var a = this.page;
+            this.page = this.rePage;
+            this.rePage = a;
         },
 		prev: function() {
 			this.index--;
@@ -50,10 +74,12 @@
 				this.index = 0;
 				this.wrap.stop().css('left', 0);//最后一张到第一张无动画过渡
 			} else if(this.index === this.num) {
-                this.tab.children().eq(0).addClass('on')
-                        .siblings()
-                        .removeClass('on');
-                        this.wrap.stop().animate({'left': -this.width * (this.index)}, 400);
+                if(this.tab) {
+                    this.tab.children().eq(0).addClass('on')
+                            .siblings()
+                            .removeClass('on');
+                }
+                this.wrap.stop().animate({'left': -this.width * (this.index)}, 400);
             } else {
                 this.wrap.stop().animate({'left': -this.width*(this.index)}, 400);
                 this.tab.children().eq(this.index).addClass('on')

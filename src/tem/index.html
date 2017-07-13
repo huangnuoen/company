@@ -153,31 +153,31 @@
 			<div class="new">
 				<div>
 					<a href=""><img src="../img/zhsdsmall.jpg" alt=""></a>
-					<h4>智汇时代项目进入紧张的准备阶段</h4>
+					<h4>1智汇时代项目进入紧张的准备阶段</h4>
 					<p>智汇时代项目进入紧张的准备阶段智汇时代项目进入紧张的准备阶段</p>
 					<time>7-11</time>
 				</div>
 				<div>
 					<a><img src="../img/birthdaysmall.jpg" alt=""></a>
-					<h4>工作再紧，也不能怠慢了员工的生日</h4>
+					<h4>2工作再紧，也不能怠慢了员工的生日</h4>
 					<p>工作再紧，也不能怠慢了员工的生日工作再紧，也不能怠慢了员工的生日</p>
 					<time>8-5</time>
 				</div>
 				<div>
 					<a><img src="../img/szbei1small.jpg" alt=""></a>
-					<h4>智汇时代项目进入紧张的准备阶段</h4>
+					<h4>3智汇时代项目进入紧张的准备阶段</h4>
 					<p>智汇时代项目进入紧张的准备阶段智汇时代项目进入紧张的准备阶段</p>
 					<time>7-11</time>
 				</div>
 				<div>
 					<a><img src="../img/zhsdsmall.jpg" alt=""></a>
-					<h4>智汇时代项目进入紧张的准备阶段</h4>
+					<h4>4智汇时代项目进入紧张的准备阶段</h4>
 					<p>智汇时代项目进入紧张的准备阶段智汇时代项目进入紧张的准备阶段</p>
 					<time>7-11</time>
 				</div>
 				<div>
 					<a><img src="../img/anli_img2.jpg" alt=""></a>
-					<h4>智汇时代项目进入紧张的准备阶段</h4>
+					<h4>5智汇时代项目进入紧张的准备阶段</h4>
 					<p>智汇时代项目进入紧张的准备阶段智汇时代项目进入紧张的准备阶段</p>
 					<time>7-11</time>
 				</div>
@@ -218,16 +218,32 @@
 	</div>
 	<script type="text/javascript" src="../js/carousel.js"></script>
 	<script type="text/javascript">
+	var oldWidth = document.documentElement.clientWidth;
 	document.documentElement.style.fontSize = document.documentElement.clientWidth/13.66 + "px";
-	var pic = new Carousel($('.carousel .picture'), $('#listTab'), 1);
-	var news = new Carousel($('section.new div.new'), undefined, 3);
+	//var pic = new Carousel($('.carousel .picture'), $('#listTab'), 1);
+	var news;
+	if(document.documentElement.clientWidth < 611) {
+		news = new Carousel($('section.new div.new'), undefined, 1, 3);
+	} else {
+		news = new Carousel($('section.new div.new'), undefined, 3, 1);
+	}
+
 	window.onresize = function() {
 		document.documentElement.style.fontSize = document.documentElement.clientWidth/13.66 + "px";
-		pic.getWidth();
-		pic.next();
+		if(((document.documentElement.clientWidth < 611) && (oldWidth > 610)) || ((document.documentElement.clientWidth > 610) && (oldWidth < 611))) {
+			//news.update();
+			//news.getWidth();
+			//news.next();
+			news.remove();//删除clone
+			news.create();//重新生成对应节点
+		} 
 		news.getWidth();
 		news.next();
+		oldWidth = document.documentElement.clientWidth;
+		pic.getWidth();
+		pic.next();
 	};
+	
 	
 	
 	</script>
