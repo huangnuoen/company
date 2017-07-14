@@ -285,3 +285,35 @@ section.new {
 		
 	}
 }
+section.about {
+	padding: 0 .8rem .5rem;
+	div.about {
+		text-align: center;
+		h3 {
+			img {
+				width: 1.8rem;
+			}
+		}
+		div {
+			display: inline-block;
+			width: 6rem;
+			text-align: center;
+			&.introduction {
+				text-align: left;
+				vertical-align: top;
+				p {
+					text-indent: .3rem;
+					line-height: 1.8;
+				}
+			}
+			>img {
+				margin: -.2rem 0 .2rem 0;
+				height: 1.8rem;
+				width: 3rem;
+				vertical-align: top;
+				border-radius: .05rem;
+				box-shadow: 0 .05rem .05rem rgba(0, 0, 0, .5);
+			}
+		}
+	}
+}

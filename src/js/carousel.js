@@ -38,17 +38,6 @@
         },
         //删除clone节点，交换版面值
         remove: function() {
-/*              根据page值追加或删除节点
-                if(this.rePage < this.page) {
-                for(var i = 0; i < (this.page-this.rePage); i++) {
-                    this.wrap.children().last().remove();
-                }
-            } else if (this.rePage > this.page) {
-                for(var i = this.page; i < this.rePage; i++) {
-                    this.wrap.append(this.wrap.children().eq(i).clone());
-                }
-            }
-*/            
             for(var i = 0; i < this.page; i++) {
                 this.wrap.children().last().remove();
             }
