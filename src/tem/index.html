@@ -188,8 +188,8 @@
 		<section class="about">
 			<h2><a href="about.html">关于公司</a><span></span></h2>
 			<div class="about">
-				<h3><img src="../img/logo.jpg" alt=""></h3>
 				<div class="introduction">
+				<h3><img src="../img/logo.jpg" alt=""></h3>
 					<p>汕头市集信网络科技有限公司（以下简称集信科技），是一家专注于物联网技术应用、信息管理系统研发、数据挖掘技术应用的高科技企业，主营业务是：电子计算机软件开发；电子计算机网络智能技术、科技成果推广应用；电子计算机网络工程的布线及安装。主要产品有：智慧社区，招投标，会员管理系统等等。
 					</p>
 				</div>
@@ -233,21 +233,17 @@
 	} else {
 		news = new Carousel($('section.new div.new'), undefined, 3, 1);
 	}
-
 	window.onresize = function() {
 		document.documentElement.style.fontSize = document.documentElement.clientWidth/13.66 + "px";
+		pic.getWidth();
+		pic.next();
 		if(((document.documentElement.clientWidth < 611) && (oldWidth > 610)) || ((document.documentElement.clientWidth > 610) && (oldWidth < 611))) {
-			//news.update();
-			//news.getWidth();
-			//news.next();
 			news.remove();//删除clone
 			news.create();//重新生成对应节点
 		} 
 		news.getWidth();
 		news.next();
 		oldWidth = document.documentElement.clientWidth;
-		pic.getWidth();
-		pic.next();
 	};
 	</script>
 </body>

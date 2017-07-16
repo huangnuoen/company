@@ -8,7 +8,7 @@ section.carousel div.picture img { width: 13.66rem; height: 5.5rem; float: left;
 
 section.carousel ul { position: absolute; z-index: 9; bottom: .1rem; left: 45%; /* 兼容ie */ left: calc(50% - (.2+.08)*3rem); /* 居中 */ margin: 0; padding: 0; }
 
-section.carousel ul li { width: .15rem; height: .15rem; min-width: 8px; min-height: 8px; margin: 0 .08rem; border: 1px solid #fff; background-color: #999; border-radius: 50%; text-indent: -100rem; display: inline-block; }
+section.carousel ul li { width: .15rem; height: .15rem; min-width: 8px; min-height: 8px; margin: 0 .08rem; border: 1px solid #fff; background-color: #999; border-radius: 50%; text-indent: -100rem; display: inline-block; cursor: pointer; }
 
 section.carousel ul li.on { background-color: #fff; }
 
@@ -121,16 +121,16 @@ section.new div.new > div time { display: inline-block; color: #9e9e9e; margin: 
   section.new div.new > div p { display: none; }
   section.new div.new > div img { width: 7.5rem; height: 4.5rem; } }
 
-section.about { padding: 0 .8rem .5rem; }
+section.about { padding: 0 .3rem .5rem; }
 
 section.about div.about { text-align: center; }
 
-section.about div.about h3 img { width: 1.8rem; }
+section.about div.about div { display: inline-block; text-align: left; }
 
-section.about div.about div { display: inline-block; width: 6rem; text-align: center; }
+section.about div.about div.introduction { width: 9rem; min-width: 300px; text-align: left; vertical-align: top; }
 
-section.about div.about div.introduction { text-align: left; vertical-align: top; }
+section.about div.about div.introduction h3 img { width: 1.8rem; }
 
 section.about div.about div.introduction p { text-indent: .3rem; line-height: 1.8; }
 
-section.about div.about div > img { margin: -.2rem 0 .2rem 0; height: 1.8rem; width: 3rem; vertical-align: top; border-radius: .05rem; -webkit-box-shadow: 0 0.05rem 0.05rem rgba(0, 0, 0, 0.5); box-shadow: 0 0.05rem 0.05rem rgba(0, 0, 0, 0.5); }
+section.about div.about div > img { margin: .2rem; height: 2rem; width: 3.2rem; min-width: 200px; min-height: 140px; vertical-align: top; border-radius: .05rem; -webkit-box-shadow: 0 0.05rem 0.05rem rgba(0, 0, 0, 0.5); box-shadow: 0 0.05rem 0.05rem rgba(0, 0, 0, 0.5); }

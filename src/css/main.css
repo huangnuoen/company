@@ -44,6 +44,7 @@ section.carousel ul li {
   border-radius: 50%;
   text-indent: -100rem;
   display: inline-block;
+  cursor: pointer;
 }
 
 section.carousel ul li.on {
@@ -386,26 +387,27 @@ section.new div.new > div time {
 }
 
 section.about {
-  padding: 0 .8rem .5rem;
+  padding: 0 .3rem .5rem;
 }
 
 section.about div.about {
   text-align: center;
 }
 
-section.about div.about h3 img {
-  width: 1.8rem;
-}
-
 section.about div.about div {
   display: inline-block;
-  width: 6rem;
-  text-align: center;
+  text-align: left;
 }
 
 section.about div.about div.introduction {
+  width: 9rem;
+  min-width: 300px;
   text-align: left;
   vertical-align: top;
+}
+
+section.about div.about div.introduction h3 img {
+  width: 1.8rem;
 }
 
 section.about div.about div.introduction p {
@@ -414,9 +416,11 @@ section.about div.about div.introduction p {
 }
 
 section.about div.about div > img {
-  margin: -.2rem 0 .2rem 0;
-  height: 1.8rem;
-  width: 3rem;
+  margin: .2rem;
+  height: 2rem;
+  width: 3.2rem;
+  min-width: 200px;
+  min-height: 140px;
   vertical-align: top;
   border-radius: .05rem;
   -webkit-box-shadow: 0 0.05rem 0.05rem rgba(0, 0, 0, 0.5);

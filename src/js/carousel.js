@@ -7,11 +7,9 @@
 	var Carousel = function(wrap, tab, page1, page2) {
 		this.wrap = wrap;//放img的容器
 		this.num = this.wrap.children().size();
-		//this.width = this.wrap.children().width();
-        //this.clone = this.wrap.children().first().clone();
 		this.tab = tab;
 		this.index = 0;
-		this.time = 2000;//每张图片停留时间
+		this.time = 1200;//每张图片停留时间
         this.page = page1;//当前每版呈现的数量
         this.rePage = page2;//页面变化后版面值
 		this.init();

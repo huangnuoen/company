@@ -35,6 +35,7 @@ section.carousel {
 			border-radius: 50%;
 			text-indent: -100rem;
 			display: inline-block;
+			cursor: pointer;
 			&.on {
 				background-color: #fff;
 			}
@@ -286,30 +287,33 @@ section.new {
 	}
 }
 section.about {
-	padding: 0 .8rem .5rem;
+	padding: 0 .3rem .5rem;
 	div.about {
 		text-align: center;
-		h3 {
-			img {
-				width: 1.8rem;
-			}
-		}
 		div {
 			display: inline-block;
-			width: 6rem;
-			text-align: center;
+			text-align: left;
 			&.introduction {
+				width: 9rem;
+				min-width: 300px;
 				text-align: left;
 				vertical-align: top;
+				h3 {
+					img {
+						width: 1.8rem;
+					}
+				}
 				p {
 					text-indent: .3rem;
 					line-height: 1.8;
 				}
 			}
 			>img {
-				margin: -.2rem 0 .2rem 0;
-				height: 1.8rem;
-				width: 3rem;
+				margin: .2rem;
+				height: 2rem;
+				width: 3.2rem;
+				min-width: 200px;
+				min-height: 140px;
 				vertical-align: top;
 				border-radius: .05rem;
 				box-shadow: 0 .05rem .05rem rgba(0, 0, 0, .5);
