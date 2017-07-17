@@ -92,15 +92,17 @@ section.instance > div { width: 13.66rem; margin: 0 auto; text-align: center; }
 
 section.instance > div > div.instance { display: inline-block; min-width: 300px; min-height: 80px; width: 6.3rem; padding: .1rem; margin: .2rem .1rem; background-color: #f5f3f1; border-radius: .1rem; overflow: hidden; }
 
-section.instance > div > div.instance img { display: inline-block; min-width: 134px; min-height: 106px; width: 2.5rem; height: 2rem; padding: .1rem; -o-object-fit: fill; object-fit: fill; }
+section.instance > div > div.instance img { display: inline-block; min-width: 134px; min-height: 106px; width: 2.1rem; height: 1.5rem; padding: .1rem; -o-object-fit: fill; object-fit: fill; }
 
-section.instance > div > div.instance div { display: inline-block; width: 3.5rem; /* height: 2rem; */ position: relative; }
+section.instance > div > div.instance div { display: inline-block; width: 3.9rem; /* height: 2rem; */ position: relative; }
 
 section.instance > div > div.instance div h3 { color: #0188e1; margin: .13rem 0; }
 
 section.instance > div > div.instance div p { width: 3.5rem; height: .5rem; line-height: 1; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
 
 @media screen and (max-width: 610px) { section.instance > div > div.instance div p { display: none; } }
+
+section.instance > div > div.instance div button { width: 1rem; min-width: 42px; }
 
 /* 新闻中心 */
 section.new { position: relative; overflow: hidden; width: 12rem; margin: 0 .83rem; height: 4.2rem; min-height: 300px; text-align: center; }
@@ -150,9 +152,9 @@ section.about div.about div > img { margin: .2rem; height: 2rem; width: 3.2rem; 
 
 .wrapper.about section.partner { text-align: center; }
 
-.wrapper.about section.partner div { margin: 0 auto; padding: 0 .5rem; text-align: left; }
+.wrapper.about section.partner div { margin: 0 auto; padding: 0 .6rem; }
 
-.wrapper.about section.partner div img { display: inline-block; width: 2.2rem; height: .92rem; min-width: 100px; min-height: 36px; margin: 0 .4rem .24rem; border: 1px solid #eee; }
+.wrapper.about section.partner div img { display: inline-block; width: 2.2rem; height: .92rem; min-width: 100px; min-height: 36px; margin: 0 .4rem .24rem; border: 1px solid #eee; border-radius: .1rem; }
 
 .wrapper.about section.join div:last-child { text-indent: 0; margin: .1rem .4rem; }
 
@@ -164,4 +166,8 @@ section.about div.about div > img { margin: .2rem; height: 2rem; width: 3.2rem; 
 
 .wrapper.about section.join div:last-child ul > li:last-child { border-right: none; }
 
+.wrapper.about section.join div:last-child ul > li h3 { color: #0188e1; font-size: 1.3em; }
+
 .wrapper.about section.join div:last-child ul > li ol li { display: block; list-style: inside decimal; padding-left: 20px; }
+
+/* 成功案例页面 */

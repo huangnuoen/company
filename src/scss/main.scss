@@ -199,14 +199,14 @@ section.instance {
 				display: inline-block;
 				min-width: 134px;
 				min-height: 106px;
-				width: 2.5rem;
-				height: 2rem;
+				width: 2.1rem;
+				height: 1.5rem;
 				padding: .1rem;
 				object-fit: fill;
 			}
 			div {
 				display: inline-block;
-				width: 3.5rem;
+				width: 3.9rem;
 				/* height: 2rem; */
 				position: relative;
 				h3 {
@@ -225,6 +225,10 @@ section.instance {
 					@media screen and (max-width: 610px) {
 						display: none;
 					}
+				}
+				button {
+					width: 1rem;
+					min-width: 42px;
 				}
 			}
 		}
@@ -357,8 +361,7 @@ section.about {
 		text-align: center;
 		div {
 			margin: 0 auto;
-			padding: 0 .5rem;
-			text-align: left;
+			padding: 0 .6rem;
 			img {
 				display: inline-block;
 				width: 2.2rem;
@@ -367,6 +370,7 @@ section.about {
 				min-height: 36px;
 				margin: 0 .4rem .24rem;
 				border: 1px solid #eee;
+				border-radius: .1rem;
 			}
 		}
 	}
@@ -388,6 +392,10 @@ section.about {
 						&:last-child {
 							border-right: none;
 						}
+						h3 {
+							color: $color;
+							font-size: 1.3em;
+						}
 						ol {
 							li {
 								display: block;
@@ -400,4 +408,8 @@ section.about {
 			}
 		}
 	}
+}
+/* 成功案例页面 */
+.wrapper.production {
+
 }
