@@ -11,6 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/header.css">
 	<link rel="stylesheet" type="text/css" href="../css/footer.css">
 	<link rel="stylesheet" type="text/css" href="../css/main.css">
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=4I2xNGy3MHFGRA7Q8Kg57MOWjuVkGIa1"></script>
 	<script src="../../lib/bootstrap/js/jquery.js"></script>
 	<script src="../../lib/bootstrap/js/bootstrap.min.js"></script>
 	<!--[if lt IE 9]>
@@ -20,7 +21,7 @@
 	<title>联系我们-汕头市集信网络科技有限公司</title>
 </head>
 <body>
-	<div class="wrapper">
+	<div class="wrapper contact">
 		<!-- 页眉start -->
 		<header>
 			<div class="logo"><img src="../img/logo.jpg" alt="logo"></div>
@@ -37,7 +38,7 @@
 					</li>
 					<li><a href="instance.html">成功案例</a></li>
 					<li><a href="about.html">关于公司</a></li>
-					<li><a href="about.html">联系我们</a></li>
+					<li class="current"><a href="contact.html">联系我们</a></li>
 				</ul>
 			</nav>
 		</header>
@@ -45,6 +46,19 @@
 		<!-- 轮播图start -->
 		<section class=""></section>
 		<!-- 轮播图end -->
+		<section>
+			<h2>CONTACT US ，联系我们 <span></span></h2>
+			<div class="info">
+				<div>
+					<p>公司名称：汕头市集信网络科技有限公司</p>
+					<p>地址：汕头市高新区科技中路11号经发大厦A幢12楼1201之二</p>
+					<p>服务热线：0754-88135135</p>
+					<p>电子邮箱：stweige@139.com</p>
+				</div>
+				<div class="map" id="map"></div>
+			</div>
+			<div class="comment"></div>
+		</section>
 		<!-- 页脚start -->
 		<footer>
 			<div class="QRcode"><img src="../img/weixin.jpg" alt="二维码"></div>
@@ -70,7 +84,12 @@
 	</div>
 	<script type="text/javascript">
 	document.documentElement.style.fontSize = document.documentElement.clientWidth/13.66 + "px";
-	window.onresize = function() {
+/*	var map = new BMap.Map("map");    // 创建Map实例
+	map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);  // 初始化地图,设置中心点坐标和地图级别
+	map.addControl(new BMap.MapTypeControl());   //添加地图类型控件
+	map.setCurrentCity("北京");          // 设置地图显示的城市 此项是必须设置的
+	map.enableScrollWheelZoom(true); 
+*/	window.onresize = function() {
 		document.documentElement.style.fontSize = document.documentElement.clientWidth/13.66 + "px";
 	};
 	</script>

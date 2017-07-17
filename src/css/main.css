@@ -10,7 +10,7 @@ section h2 {
   font-size: 1.4em;
 }
 
-section h2 span {
+section h2 span:last-child {
   display: block;
   width: .62rem;
   height: 2px;
@@ -18,7 +18,7 @@ section h2 span {
   margin: .17rem auto;
 }
 
-section:hover h2 span {
+section:hover h2 span:last-child {
   width: 1.8rem;
   -webkit-transition: width 1s;
   transition: width 1s;
@@ -269,11 +269,11 @@ section.instance > div > div.instance {
   display: inline-block;
   min-width: 300px;
   min-height: 80px;
-  width: 6.3rem;
-  padding: .1rem;
-  margin: .2rem .1rem;
+  width: 5.5rem;
+  padding: .05rem .1rem;
+  margin: 0 .2rem .4rem;
   background-color: #f5f3f1;
-  border-radius: .1rem;
+  border-radius: .05rem;
   overflow: hidden;
 }
 
@@ -281,7 +281,7 @@ section.instance > div > div.instance img {
   display: inline-block;
   min-width: 134px;
   min-height: 106px;
-  width: 2.1rem;
+  width: 2rem;
   height: 1.5rem;
   padding: .1rem;
   -o-object-fit: fill;
@@ -290,7 +290,7 @@ section.instance > div > div.instance img {
 
 section.instance > div > div.instance div {
   display: inline-block;
-  width: 3.9rem;
+  width: 3rem;
   /* height: 2rem; */
   position: relative;
 }
@@ -301,9 +301,10 @@ section.instance > div > div.instance div h3 {
 }
 
 section.instance > div > div.instance div p {
-  width: 3.5rem;
+  font-size: .9em;
+  width: 3rem;
   height: .5rem;
-  line-height: 1;
+  line-height: 1.5;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -520,4 +521,9 @@ section.about div.about div > img {
   padding-left: 20px;
 }
 
-/* 成功案例页面 */
+/* 联系我们页面 */
+.wrapper.contact section .map {
+  width: 5rem;
+  height: 5rem;
+  background-color: pink;
+}

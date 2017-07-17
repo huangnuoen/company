@@ -6,7 +6,7 @@ section {
 		text-align: center;
 		margin: .3rem 0 .45rem;
 		font-size: 1.4em;
-		span {
+		span:last-child {
 			display: block;
 			width: .62rem;
 			height: 2px;
@@ -16,7 +16,7 @@ section {
 	}
 	&:hover {
 		h2 {
-			span {
+			span:last-child {
 				width: 1.8rem;
 				transition: width 1s;
 			}
@@ -189,24 +189,24 @@ section.instance {
 			display: inline-block;
 			min-width: 300px;
 			min-height: 80px;
-			width: 6.3rem;
-			padding: .1rem;
-			margin: .2rem .1rem;
+			width: 5.5rem;
+			padding: .05rem .1rem;
+			margin: 0 .2rem .4rem;
 			background-color: #f5f3f1;
-			border-radius: .1rem;
+			border-radius: .05rem;
 			overflow: hidden;
 			img {
 				display: inline-block;
 				min-width: 134px;
 				min-height: 106px;
-				width: 2.1rem;
+				width: 2rem;
 				height: 1.5rem;
 				padding: .1rem;
 				object-fit: fill;
 			}
 			div {
 				display: inline-block;
-				width: 3.9rem;
+				width: 3rem;
 				/* height: 2rem; */
 				position: relative;
 				h3 {
@@ -214,9 +214,10 @@ section.instance {
 					margin: .13rem 0;
 				}
 				p {
-					width: 3.5rem;
+					font-size: .9em;
+					width: 3rem;
 					height: .5rem;
-					line-height: 1;
+					line-height: 1.5;
 					overflow: hidden;
 					text-overflow: ellipsis;
 					display: -webkit-box;
@@ -409,7 +410,13 @@ section.about {
 		}
 	}
 }
-/* 成功案例页面 */
-.wrapper.production {
-
+/* 联系我们页面 */
+.wrapper.contact {
+	section {
+		.map {
+			width: 5rem;
+			height: 5rem;
+			background-color: pink
+		}
+	}
 }

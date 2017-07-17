@@ -3,9 +3,9 @@ section { width: 100%; }
 
 section h2 { color: #0188e1; text-align: center; margin: .3rem 0 .45rem; font-size: 1.4em; }
 
-section h2 span { display: block; width: .62rem; height: 2px; background: #0188e1; margin: .17rem auto; }
+section h2 span:last-child { display: block; width: .62rem; height: 2px; background: #0188e1; margin: .17rem auto; }
 
-section:hover h2 span { width: 1.8rem; -webkit-transition: width 1s; transition: width 1s; }
+section:hover h2 span:last-child { width: 1.8rem; -webkit-transition: width 1s; transition: width 1s; }
 
 section > div > img { width: 13.66rem; height: 5.5rem; }
 
@@ -90,15 +90,15 @@ section.instance { width: 13.66rem; }
 
 section.instance > div { width: 13.66rem; margin: 0 auto; text-align: center; }
 
-section.instance > div > div.instance { display: inline-block; min-width: 300px; min-height: 80px; width: 6.3rem; padding: .1rem; margin: .2rem .1rem; background-color: #f5f3f1; border-radius: .1rem; overflow: hidden; }
+section.instance > div > div.instance { display: inline-block; min-width: 300px; min-height: 80px; width: 5.5rem; padding: .05rem .1rem; margin: 0 .2rem .4rem; background-color: #f5f3f1; border-radius: .05rem; overflow: hidden; }
 
-section.instance > div > div.instance img { display: inline-block; min-width: 134px; min-height: 106px; width: 2.1rem; height: 1.5rem; padding: .1rem; -o-object-fit: fill; object-fit: fill; }
+section.instance > div > div.instance img { display: inline-block; min-width: 134px; min-height: 106px; width: 2rem; height: 1.5rem; padding: .1rem; -o-object-fit: fill; object-fit: fill; }
 
-section.instance > div > div.instance div { display: inline-block; width: 3.9rem; /* height: 2rem; */ position: relative; }
+section.instance > div > div.instance div { display: inline-block; width: 3rem; /* height: 2rem; */ position: relative; }
 
 section.instance > div > div.instance div h3 { color: #0188e1; margin: .13rem 0; }
 
-section.instance > div > div.instance div p { width: 3.5rem; height: .5rem; line-height: 1; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+section.instance > div > div.instance div p { font-size: .9em; width: 3rem; height: .5rem; line-height: 1.5; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
 
 @media screen and (max-width: 610px) { section.instance > div > div.instance div p { display: none; } }
 
@@ -170,4 +170,5 @@ section.about div.about div > img { margin: .2rem; height: 2rem; width: 3.2rem; 
 
 .wrapper.about section.join div:last-child ul > li ol li { display: block; list-style: inside decimal; padding-left: 20px; }
 
-/* 成功案例页面 */
+/* 联系我们页面 */
+.wrapper.contact section .map { width: 5rem; height: 5rem; background-color: pink; }
