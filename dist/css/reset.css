@@ -10,7 +10,7 @@ ul, ol, li { list-style: none; }
 .wrapper { width: 13.66rem; }
 
 /* 网站默认字体大小 */
-body { font-family: "宋体", "Microsoft Yahei" ，Arial, Helvetica, sans-serif; font-size: 16px; }
+body { font-family: 'Microsoft Yahei',Arial, Helvetica, sans-serif; font-size: 16px; }
 
 @media screen and (min-width: 1200px) { body { font-size: 16px; } }
 

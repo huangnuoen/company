@@ -1,24 +1,26 @@
 @charset "UTF-8";
+section { width: 100%; }
+
+section h2 { color: #0188e1; text-align: center; margin: .3rem 0 .45rem; font-size: 1.4em; }
+
+section h2 span { display: block; width: .62rem; height: 2px; background: #0188e1; margin: .17rem auto; }
+
+section:hover h2 span { width: 1.8rem; -webkit-transition: width 1s; transition: width 1s; }
+
+section > div > img { width: 13.66rem; height: 5.5rem; }
+
 /* 轮播图 */
 section.carousel { position: relative; width: 13.66rem; height: 5.5rem; overflow: hidden; }
 
-section.carousel div.picture { position: absolute; width: 400%; /* (3+1)*100% */ height: 5.5rem; z-index: 1; }
+section.carousel div { position: absolute; width: 400%; /* (3+1)*100% */ height: 5.5rem; z-index: 1; }
 
-section.carousel div.picture img { width: 13.66rem; height: 5.5rem; float: left; }
+section.carousel div img { float: left; }
 
 section.carousel ul { position: absolute; z-index: 9; bottom: .1rem; left: 45%; /* 兼容ie */ left: calc(50% - (.2+.08)*3rem); /* 居中 */ margin: 0; padding: 0; }
 
 section.carousel ul li { width: .15rem; height: .15rem; min-width: 8px; min-height: 8px; margin: 0 .08rem; border: 1px solid #fff; background-color: #999; border-radius: 50%; text-indent: -100rem; display: inline-block; cursor: pointer; }
 
 section.carousel ul li.on { background-color: #fff; }
-
-section { width: 100%; }
-
-section h2 { color: #0188e1; text-align: center; margin: .2rem 0 .45rem; }
-
-section h2 span { display: block; width: .52rem; height: 2px; background: #0188e1; margin: .17rem auto; }
-
-section:hover h2 span { width: 1.8rem; -webkit-transition: width 1s; transition: width 1s; }
 
 /* 服务项目 */
 section.production { /*4.2rem*/ }
@@ -134,3 +136,32 @@ section.about div.about div.introduction h3 img { width: 1.8rem; }
 section.about div.about div.introduction p { text-indent: .3rem; line-height: 1.8; }
 
 section.about div.about div > img { margin: .2rem; height: 2rem; width: 3.2rem; min-width: 200px; min-height: 140px; vertical-align: top; border-radius: .05rem; -webkit-box-shadow: 0 0.05rem 0.05rem rgba(0, 0, 0, 0.5); box-shadow: 0 0.05rem 0.05rem rgba(0, 0, 0, 0.5); }
+
+/* 关于公司页面 */
+.wrapper.about section.introduction div, .wrapper.about section.environment div, .wrapper.about section.join div { margin: .2rem .2rem .1rem; text-indent: .3rem; line-height: 1.8; }
+
+.wrapper.about section.introduction div:last-child, .wrapper.about section.environment div:last-child, .wrapper.about section.join div:last-child { text-align: center; }
+
+.wrapper.about section.introduction div img, .wrapper.about section.environment div img, .wrapper.about section.join div img { width: 4.3rem; height: 3.2rem; min-width: 300px; min-height: 210px; margin: .2rem .2rem 0 .1rem; }
+
+.wrapper.about section.introduction div article, .wrapper.about section.environment div article, .wrapper.about section.join div article { display: inline-block; width: 8.2rem; margin: 0 auto; }
+
+.wrapper.about section.introduction div article p, .wrapper.about section.environment div article p, .wrapper.about section.join div article p { text-indent: .5rem; }
+
+.wrapper.about section.partner { text-align: center; }
+
+.wrapper.about section.partner div { margin: 0 auto; padding: 0 .5rem; text-align: left; }
+
+.wrapper.about section.partner div img { display: inline-block; width: 2.2rem; height: .92rem; min-width: 100px; min-height: 36px; margin: 0 .4rem .24rem; border: 1px solid #eee; }
+
+.wrapper.about section.join div:last-child { text-indent: 0; margin: .1rem .4rem; }
+
+.wrapper.about section.join div:last-child ul { text-align: left; }
+
+.wrapper.about section.join div:last-child ul > li { vertical-align: top; display: inline-block; width: 6rem; margin: .15rem; }
+
+.wrapper.about section.join div:last-child ul > li:nth-child(2n+1) { border-right: 1px #c2c2c2 solid; }
+
+.wrapper.about section.join div:last-child ul > li:last-child { border-right: none; }
+
+.wrapper.about section.join div:last-child ul > li ol li { display: block; list-style: inside decimal; padding-left: 20px; }

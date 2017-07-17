@@ -328,7 +328,7 @@ section.about {
 }
 /* 关于公司页面 */
 .wrapper.about {
-	section.introduction, section.environment {
+	section.introduction, section.environment, section.join {
 		div {
 			margin: .2rem .2rem .1rem;
 			text-indent: .3rem;
@@ -349,6 +349,53 @@ section.about {
 				margin: 0 auto;
 				p {
 					text-indent: .5rem;
+				}
+			}
+		}
+	}
+	section.partner {
+		text-align: center;
+		div {
+			margin: 0 auto;
+			padding: 0 .5rem;
+			text-align: left;
+			img {
+				display: inline-block;
+				width: 2.2rem;
+				height: .92rem;
+				min-width: 100px;
+				min-height: 36px;
+				margin: 0 .4rem .24rem;
+				border: 1px solid #eee;
+			}
+		}
+	}
+	section.join {
+		div {
+			&:last-child {
+				text-indent: 0;
+				margin: .1rem .4rem;
+				ul {
+					text-align: left;
+					>li {
+						vertical-align: top;
+						display: inline-block;
+						width: 6rem;
+						margin: .15rem;
+						&:nth-child(2n+1) {
+							border-right: 1px #c2c2c2 solid;
+						}
+						&:last-child {
+							border-right: none;
+						}
+						ol {
+							li {
+								display: block;
+								list-style: inside decimal;
+								padding-left: 20px;
+							}
+						}
+					}
 				}
 			}
 		}
