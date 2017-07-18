@@ -5,6 +5,10 @@ $(document).ready(function (){
   $(window).scroll(function() {
     var scrollTop = $(window).scrollTop();
     // 视窗还看到这个侧边栏？
+    console.log(offset.top);
+    $(window).on('resize',  function() {
+    	offset = $('aside').offset();
+    })
     if(offset.top < scrollTop) {
       // 没看到，添加 ".fixed"
       $("aside").addClass("fixed")

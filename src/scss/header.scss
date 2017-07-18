@@ -33,7 +33,7 @@ header {
 					}
 				}
 				&.current {
-					a {
+					>a {
 						color: $color;
 					}
 				}
@@ -123,14 +123,18 @@ header {
 				}
 				li.current {
 					display: block;
+					ul {
+						display: none;
+					}
 				}
 				&:hover {
 					background-image: none;
 					li {
 						display: block;
 						margin: 0;
-					}
-					li.current {
+						ul {
+							display: block;
+						}
 					}
 				}
 			}

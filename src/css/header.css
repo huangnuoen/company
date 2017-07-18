@@ -51,7 +51,7 @@ header nav ul li a:hover {
   color: #0188e1;
 }
 
-header nav ul li.current a {
+header nav ul li.current > a {
   color: #0188e1;
 }
 
@@ -150,11 +150,17 @@ header nav {
   header nav ul li.current {
     display: block;
   }
+  header nav ul li.current ul {
+    display: none;
+  }
   header nav ul:hover {
     background-image: none;
   }
   header nav ul:hover li {
     display: block;
     margin: 0;
+  }
+  header nav ul:hover li ul {
+    display: block;
   }
 }
