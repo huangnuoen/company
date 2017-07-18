@@ -413,10 +413,39 @@ section.about {
 /* 联系我们页面 */
 .wrapper.contact {
 	section {
-		.map {
-			width: 5rem;
-			height: 5rem;
-			background-color: pink
+		div.info {
+			padding: .1rem .8rem;
+			div {
+				display: inline-block;
+				text-align: center;
+				vertical-align: top;
+				width: 6rem;
+				p {
+					text-align: left;
+					line-height: 2;
+				}
+			}
+			.map {
+				width: 5rem;
+				height: 2rem;
+				border: 1px solid #ccc;
+				background-color: pink
+			}
+		}
+		form {
+			padding: 0 .7rem .2rem;
+			div {
+				margin: 1%;
+				&.inline {
+					display: inline-block;
+					width: 47%;
+				}
+				&.block {
+					.form-control {
+						width: 98%;
+					}
+				}
+			}
 		}
 	}
 }

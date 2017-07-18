@@ -522,8 +522,42 @@ section.about div.about div > img {
 }
 
 /* 联系我们页面 */
-.wrapper.contact section .map {
+.wrapper.contact section div.info {
+  padding: .1rem .8rem;
+}
+
+.wrapper.contact section div.info div {
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+  width: 6rem;
+}
+
+.wrapper.contact section div.info div p {
+  text-align: left;
+  line-height: 2;
+}
+
+.wrapper.contact section div.info .map {
   width: 5rem;
-  height: 5rem;
+  height: 2rem;
+  border: 1px solid #ccc;
   background-color: pink;
+}
+
+.wrapper.contact section form {
+  padding: 0 .7rem .2rem;
+}
+
+.wrapper.contact section form div {
+  margin: 1%;
+}
+
+.wrapper.contact section form div.inline {
+  display: inline-block;
+  width: 47%;
+}
+
+.wrapper.contact section form div.block .form-control {
+  width: 98%;
 }
