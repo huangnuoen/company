@@ -26,6 +26,7 @@ section {
 		>img {
 			width: 13.66rem;
 			height: 5.5rem;
+			/* object-fit: contain; */
 		}
 	}
 }
@@ -419,15 +420,19 @@ section.about {
 				display: inline-block;
 				text-align: center;
 				vertical-align: top;
-				width: 6rem;
+				width: 6.5rem;
+				min-width: 320px;
 				p {
 					text-align: left;
 					line-height: 2;
 				}
 			}
 			.map {
+				text-align: center;
 				width: 5rem;
 				height: 2rem;
+				min-width: 300px;
+				min-height: 200px;
 				border: 1px solid #ccc;
 				background-color: pink
 			}
@@ -450,6 +455,72 @@ section.about {
 				margin-left: 1%;
 				padding: 0.04rem .3rem;
 			}
+		}
+	}
+}
+/* 公司业务页面 */
+.wrapper.production {
+	section.production {
+		overflow: hidden;
+		width: 13rem;
+		margin: 0 .33rem;
+		padding: 0 .6rem 0 .3rem;
+		border-top: 1px solid #ccc;
+		height: auto;
+		position: relative;
+		background-color: #f5f3f1;
+		aside {
+			vertical-align: top;
+			width: 2rem;
+			background-color: #f5f3f1;
+			position: absolute;
+			/* margin-bottom: -9999px;  实现两列等高 */
+			/* padding-bottom: 9999px; */
+			>ul {
+				>li {
+					a {
+						display: inline-block;
+						padding: .15rem;
+						color: #000;
+						border-bottom: 1px solid #ccc;
+						width: 2.3rem;
+						border-left: 4px solid transparent;
+					}
+					>a {
+						width: 2.5rem;
+					}
+					ul {
+						padding-left: .2rem;
+					}
+					&.current>a, a:hover {
+						border-left-color:$color;
+						background-color: #fff;
+					}
+				}
+			}
+		}
+		article {
+			width: 11rem;
+			display: inline-block;
+			/* margin-bottom: -9999px; */
+			/* padding-bottom: 9999px; */
+			padding: 0 .5rem;
+			margin-left: 2.5rem;
+			background-color: #fff;
+			h2 {
+				text-align: left;
+				border-bottom: 1px solid #ccc;
+				padding: .1rem;
+				margin: .2rem;
+			}
+			p {
+				text-indent: .2rem;
+				line-height: 1.5;
+			}
+		}
+		.fixed {
+			position: fixed;
+			top: .01rem;
 		}
 	}
 }

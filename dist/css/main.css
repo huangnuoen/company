@@ -7,7 +7,7 @@ section h2 span:last-child { display: block; width: .62rem; height: 2px; backgro
 
 section:hover h2 span:last-child { width: 1.8rem; -webkit-transition: width 1s; transition: width 1s; }
 
-section > div > img { width: 13.66rem; height: 5.5rem; }
+section > div > img { width: 13.66rem; height: 5.5rem; /* object-fit: contain; */ }
 
 /* 轮播图 */
 section.carousel { position: relative; width: 13.66rem; height: 5.5rem; overflow: hidden; }
@@ -173,11 +173,11 @@ section.about div.about div > img { margin: .2rem; height: 2rem; width: 3.2rem; 
 /* 联系我们页面 */
 .wrapper.contact section div.info { padding: .1rem .8rem; }
 
-.wrapper.contact section div.info div { display: inline-block; text-align: center; vertical-align: top; width: 6rem; }
+.wrapper.contact section div.info div { display: inline-block; text-align: center; vertical-align: top; width: 6.5rem; min-width: 320px; }
 
 .wrapper.contact section div.info div p { text-align: left; line-height: 2; }
 
-.wrapper.contact section div.info .map { width: 5rem; height: 2rem; border: 1px solid #ccc; background-color: pink; }
+.wrapper.contact section div.info .map { text-align: center; width: 5rem; height: 2rem; min-width: 300px; min-height: 200px; border: 1px solid #ccc; background-color: pink; }
 
 .wrapper.contact section form { padding: 0 .7rem .2rem; }
 
@@ -188,3 +188,24 @@ section.about div.about div > img { margin: .2rem; height: 2rem; width: 3.2rem; 
 .wrapper.contact section form div.block .form-control { width: 98%; }
 
 .wrapper.contact section form button { margin-left: 1%; padding: 0.04rem .3rem; }
+
+/* 公司业务页面 */
+.wrapper.production section.production { overflow: hidden; width: 13rem; margin: 0 .33rem; padding: 0 .6rem 0 .3rem; border-top: 1px solid #ccc; height: auto; position: relative; background-color: #f5f3f1; }
+
+.wrapper.production section.production aside { vertical-align: top; width: 2rem; background-color: #f5f3f1; position: absolute; /* margin-bottom: -9999px;  实现两列等高 */ /* padding-bottom: 9999px; */ }
+
+.wrapper.production section.production aside > ul > li a { display: inline-block; padding: .15rem; color: #000; border-bottom: 1px solid #ccc; width: 2.3rem; border-left: 4px solid transparent; }
+
+.wrapper.production section.production aside > ul > li > a { width: 2.5rem; }
+
+.wrapper.production section.production aside > ul > li ul { padding-left: .2rem; }
+
+.wrapper.production section.production aside > ul > li.current > a, .wrapper.production section.production aside > ul > li a:hover { border-left-color: #0188e1; background-color: #fff; }
+
+.wrapper.production section.production article { width: 11rem; display: inline-block; /* margin-bottom: -9999px; */ /* padding-bottom: 9999px; */ padding: 0 .5rem; margin-left: 2.5rem; background-color: #fff; }
+
+.wrapper.production section.production article h2 { text-align: left; border-bottom: 1px solid #ccc; padding: .1rem; margin: .2rem; }
+
+.wrapper.production section.production article p { text-indent: .2rem; line-height: 1.5; }
+
+.wrapper.production section.production .fixed { position: fixed; top: .01rem; }
