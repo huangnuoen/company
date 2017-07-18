@@ -482,7 +482,7 @@ section.about div.about div > img {
   min-width: 100px;
   min-height: 36px;
   margin: 0 .4rem .24rem;
-  border: 1px solid #eee;
+  border: 1px dashed #eee;
   border-radius: .1rem;
 }
 
@@ -550,7 +550,7 @@ section.about div.about div > img {
 }
 
 .wrapper.contact section form div {
-  margin: 1%;
+  margin: 0 1% 2%;
 }
 
 .wrapper.contact section form div.inline {
@@ -560,4 +560,9 @@ section.about div.about div > img {
 
 .wrapper.contact section form div.block .form-control {
   width: 98%;
+}
+
+.wrapper.contact section form button {
+  margin-left: 1%;
+  padding: 0.04rem .3rem;
 }

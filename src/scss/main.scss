@@ -370,7 +370,7 @@ section.about {
 				min-width: 100px;
 				min-height: 36px;
 				margin: 0 .4rem .24rem;
-				border: 1px solid #eee;
+				border: 1px dashed #eee;
 				border-radius: .1rem;
 			}
 		}
@@ -435,7 +435,7 @@ section.about {
 		form {
 			padding: 0 .7rem .2rem;
 			div {
-				margin: 1%;
+				margin: 0 1% 2%;
 				&.inline {
 					display: inline-block;
 					width: 47%;
@@ -445,6 +445,10 @@ section.about {
 						width: 98%;
 					}
 				}
+			}
+			button {
+				margin-left: 1%;
+				padding: 0.04rem .3rem;
 			}
 		}
 	}
