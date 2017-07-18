@@ -102,7 +102,7 @@ section.instance > div > div.instance div p { font-size: .9em; width: 3rem; heig
 
 @media screen and (max-width: 610px) { section.instance > div > div.instance div p { display: none; } }
 
-section.instance > div > div.instance div button { width: 1rem; min-width: 42px; }
+section.instance > div > div.instance div a.btn { width: 1rem; min-width: 42px; }
 
 /* 新闻中心 */
 section.new { position: relative; overflow: hidden; width: 12rem; margin: 0 .83rem; height: 4.2rem; min-height: 300px; text-align: center; }

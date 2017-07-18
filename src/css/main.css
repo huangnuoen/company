@@ -319,7 +319,7 @@ section.instance > div > div.instance div p {
   }
 }
 
-section.instance > div > div.instance div button {
+section.instance > div > div.instance div a.btn {
   width: 1rem;
   min-width: 42px;
 }
