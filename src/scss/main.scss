@@ -90,6 +90,21 @@ section.production {
 				border-radius: 50%;
 				border: 1px dashed $color;
 				position: relative;
+				cursor: pointer;
+				&:hover {
+					h3 {
+						&:after {
+							content: '智慧社区';
+							display: block;
+						}
+						img {
+							display: none;
+						}
+						width: 144px;
+						transform: scale(1.2);
+						transition: all .1s;
+					}
+				}
 				h3 {
 					margin: 42% auto 0;
 					width: 50px;
@@ -104,6 +119,10 @@ section.production {
 					opacity: .8;
 					border-radius: 50%;
 					color: #fff;
+					&:hover {
+						transform: scale(1.3);
+						transition: all 1s;
+					}
 				}
 			}
 			&.community {
@@ -157,6 +176,11 @@ section.production {
 					div:nth-child(4) {
 						top: 42%;/* ie9 */
 						left: -$pathWidth*.46/4.2;
+					}
+					&:hover {
+						h3:after {
+							content: '企业信息化集成平台';
+						}
 					}
 				}
 			}
