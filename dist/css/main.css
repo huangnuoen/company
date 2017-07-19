@@ -108,7 +108,7 @@ section.instance > div > div.instance div { display: inline-block; width: 3rem; 
 
 section.instance > div > div.instance div h3 { color: #0188e1; margin: .13rem 0; }
 
-section.instance > div > div.instance div p { font-size: .9em; width: 3rem; height: .5rem; line-height: 1.5; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+section.instance > div > div.instance div p { font-size: .9em; width: 3rem; height: .5rem; line-height: 2; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
 
 @media screen and (max-width: 610px) { section.instance > div > div.instance div p { display: none; } }
 
