@@ -487,6 +487,29 @@ section.about div.about div > img {
   border-radius: .1rem;
 }
 
+.wrapper.about section.honor {
+  height: 4rem;
+  min-height: 220px;
+  position: relative;
+  width: 12rem;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.wrapper.about section.honor div.honor {
+  position: absolute;
+  width: 48rem;
+  margin-top: .1rem;
+}
+
+.wrapper.about section.honor div.honor img {
+  float: left;
+  width: 4rem;
+  height: 3rem;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
 .wrapper.about section.join div:last-child {
   text-indent: 0;
   margin: .1rem .4rem;

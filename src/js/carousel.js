@@ -9,7 +9,7 @@
 		this.num = this.wrap.children().size();
 		this.tab = tab;
 		this.index = 0;
-		this.time = 1200;//每张图片停留时间
+		this.time = 1500;//每张图片停留时间
         this.page = page1;//当前每版呈现的数量
         this.rePage = page2;//页面变化后版面值
 		this.init();

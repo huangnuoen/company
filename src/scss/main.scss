@@ -376,6 +376,25 @@ section.about {
 			}
 		}
 	}
+	section.honor {
+		height: 4rem;
+		min-height: 220px;
+		position: relative;
+		width: 12rem;
+		margin: 0 auto;
+		overflow: hidden;
+		div.honor {
+			position: absolute;
+			width: 48rem;
+			margin-top: .1rem;
+			img {
+				float: left;
+				width: 4rem;
+				height: 3rem;
+				object-fit: contain;
+			}
+		}
+	}
 	section.join {
 		div {
 			&:last-child {

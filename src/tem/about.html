@@ -69,6 +69,17 @@
 		</section>
 		<section class="honor">
 			<h2>HONOR , 公司荣誉<span></span></h2>
+			<div class="honor">
+				<img src="../img/honour1.jpg" alt="">
+				<img src="../img/honour2.jpg" alt="">
+				<img src="../img/honour3.jpg" alt="">
+				<img src="../img/honour4.jpg" alt="">
+				<img src="../img/honour5.jpg" alt="">
+				<img src="../img/honour6.jpg" alt="">
+				<img src="../img/honour7.jpg" alt="">
+				<img src="../img/honour8.jpg" alt="">
+				<img src="../img/honour9.jpg" alt="">
+			</div>
 		</section>
 		<section class="partner">
 			<h2>PARTNER , 合作伙伴<span></span></h2>
@@ -181,10 +192,14 @@
 		</footer>
 		<!-- 页脚end -->	
 	</div>
+	<script type="text/javascript" src="../js/carousel.js"></script>
 	<script type="text/javascript">
 	document.documentElement.style.fontSize = document.documentElement.clientWidth/13.66 + "px";
+	var honor = new Carousel($('div.honor'), undefined, 3);
 	window.onresize = function() {
 		document.documentElement.style.fontSize = document.documentElement.clientWidth/13.66 + "px";
+		honor.getWidth();
+		honor.next();
 	};
 	</script>
 </body>
