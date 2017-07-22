@@ -1,20 +1,21 @@
 $(document).ready(function (){
-
-  // 检查对象，这里是 HTML 5 的 "aside"，可改为 ".class" 或者 "#id"
   var offset = $("aside").offset();
+  var footer = $("footer").outerHeight();
   $(window).scroll(function() {
     var scrollTop = $(window).scrollTop();
-    // 视窗还看到这个侧边栏？
     console.log(offset.top);
     $(window).on('resize',  function() {
     	offset = $('aside').offset();
     })
     if(offset.top < scrollTop) {
       // 没看到，添加 ".fixed"
-      $("aside").addClass("fixed")
+      if((($('aside').height() + footer) > document.documentElement.clientHeight) && $('aside').height() >= ($('footer').offset().top - document.body.scrollTop)) {
+        $("aside").removeClass("fixedT").addClass("fixedB").css("bottom", footer);
+      } else {
+        $("aside").removeClass("fixedB").addClass("fixedT");
+      }
     }else {
-      // 看到，不需要 ".fixed"
-      $("aside").removeClass("fixed")
+      $("aside").removeClass("fixedT fixedB").removeAttr('style');
     }
   })
 

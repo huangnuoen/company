@@ -401,7 +401,7 @@ section.about {
 		}
 	}
 	section.honor {
-		height: 4rem;
+		height: 5rem;
 		min-height: 220px;
 		position: relative;
 		width: 12rem;
@@ -420,26 +420,23 @@ section.about {
 		}
 	}
 	section.join {
-		div {
+		>div {
 			&:last-child {
 				text-indent: 0;
 				margin: .1rem .4rem;
-				ul {
+				>ul {
 					text-align: left;
 					>li {
 						vertical-align: top;
 						display: inline-block;
 						width: 6rem;
-						margin: .15rem;
-						&:nth-child(2n+1) {
-							border-right: 1px #c2c2c2 solid;
+						padding: .15rem;
+						&:nth-child(2n) {
+							border-left: 1px #c2c2c2 solid;
 						}
-						&:last-child {
-							border-right: none;
-						}
-						h3 {
+						>h3 {
 							color: $color;
-							font-size: 1.3em;
+							font-size: 1.1em;
 						}
 						ol {
 							li {
@@ -449,6 +446,16 @@ section.about {
 							}
 						}
 					}
+				}
+			}
+			div.sbart {
+				text-align: left;
+				font-size: 80%;
+				margin: 0;
+				text-indent: 0;
+				h3 {
+					font-size: 1em;
+					color: #000;
 				}
 			}
 		}
@@ -560,9 +567,12 @@ section.about {
 				line-height: 1.5;
 			}
 		}
-		.fixed {
+		.fixedT {
 			position: fixed;
 			top: .01rem;
+		}
+		.fixedB {
+			position: fixed;
 		}
 	}
 }
