@@ -2,14 +2,37 @@ section {
   text-align: center;
 }
 
-section img {
-  display: block;
-  margin: .1rem auto;
-  width: 5rem;
-  height: 4rem;
+section h2 {
+  margin: 0;
 }
 
-section p {
+section.instance {
+  padding: 0 1rem;
+}
+
+section.instance > span, section.instance > time {
+  color: #c2c2c2;
+  font-size: 90%;
+  margin: 0 .2rem;
+}
+
+section.instance img {
+  margin: .1rem;
+  width: 4rem;
+  height: 3rem;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  -webkit-box-shadow: 2px 2px 2px #ccc;
+          box-shadow: 2px 2px 2px #ccc;
+}
+
+section.instance p {
+  padding: 0 1rem;
+}
+
+section.instance p.intro {
   text-indent: .3rem;
-  line-height: 1.5;
+  text-align: left;
+  line-height: 2;
+  margin: .5rem 0;
 }
