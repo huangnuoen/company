@@ -3,20 +3,20 @@ section {
 }
 
 section h2 {
-  margin: 0;
+  margin-bottom: .1rem;
 }
 
-section.instance {
-  padding: 0 1rem;
+section.page {
+  padding: .2rem 1rem;
 }
 
-section.instance > span, section.instance > time {
+section.page > span, section.page > time {
   color: #c2c2c2;
   font-size: 90%;
   margin: 0 .2rem;
 }
 
-section.instance img {
+section.page img {
   margin: .1rem;
   width: 4rem;
   height: 3rem;
@@ -24,15 +24,18 @@ section.instance img {
   border-radius: 2px;
   -webkit-box-shadow: 2px 2px 2px #ccc;
           box-shadow: 2px 2px 2px #ccc;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
-section.instance p {
-  padding: 0 1rem;
+section.page p {
+  padding: .1rem 1rem;
+  text-indent: 0;
 }
 
-section.instance p.intro {
+section.page p.intro {
   text-indent: .3rem;
   text-align: left;
   line-height: 2;
-  margin: .5rem 0;
+  margin: 0;
 }

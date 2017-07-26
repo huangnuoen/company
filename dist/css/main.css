@@ -164,7 +164,7 @@ section.about div.about div > img { margin: .2rem; height: 2rem; width: 3.2rem; 
 
 .wrapper.about section.partner div { margin: 0 auto; padding: 0 .6rem; }
 
-.wrapper.about section.partner div img { display: inline-block; width: 2.2rem; height: .92rem; min-width: 100px; min-height: 36px; margin: 0 .4rem .24rem; border: 1px dashed #eee; border-radius: .1rem; }
+.wrapper.about section.partner div img { display: inline-block; width: 2.2rem; height: .92rem; min-width: 120px; min-height: 42px; margin: 0 .4rem .24rem; border: 1px dashed #eee; border-radius: .1rem; -o-object-fit: contain; object-fit: contain; }
 
 .wrapper.about section.honor { height: 5rem; min-height: 220px; position: relative; width: 12rem; margin: 0 auto; overflow: hidden; }
 

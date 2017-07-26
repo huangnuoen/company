@@ -509,11 +509,13 @@ section.about div.about div > img {
   display: inline-block;
   width: 2.2rem;
   height: .92rem;
-  min-width: 100px;
-  min-height: 36px;
+  min-width: 120px;
+  min-height: 42px;
   margin: 0 .4rem .24rem;
   border: 1px dashed #eee;
   border-radius: .1rem;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .wrapper.about section.honor {

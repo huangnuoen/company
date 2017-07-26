@@ -72,3 +72,18 @@ button, a.btn {
 		transition: all 1s;
 	}
 }
+/* 返回按钮 */
+header+section+section {
+	position: relative;
+	.back {
+		position: absolute;
+		top: .1rem;
+		right: .2rem;
+		img {
+			width: .4rem;
+			height: .32rem;
+			box-shadow: none;
+			border: none;
+		}
+	}	
+}
