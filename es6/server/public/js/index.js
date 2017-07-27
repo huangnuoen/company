@@ -66,12 +66,24 @@
 	"use strict";
 
 	function test() {
-		for (var _i = 0; _i < 3; _i++) {
-			console.log(_i);
-		};
-		console.log(i);
+		// for (let i = 0; i < 3; i++) {
+		// 	console.log(i);
+		// };
+		console.log(a);
+		var a = 2;
 	}
-	test();
+
+	function last() {
+		var PI = {
+			a: 1
+		};
+		PI.a = 2;
+		PI.b = 3;
+		console.log(PI);
+	}
+
+	//test();
+	last();
 
 /***/ })
 /******/ ]);
