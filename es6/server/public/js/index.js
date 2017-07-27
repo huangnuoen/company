@@ -49,20 +49,29 @@
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	var _lesson = __webpack_require__(2);
 
-	var Test = function Test() {
-		_classCallCheck(this, Test);
+	var _lesson2 = _interopRequireDefault(_lesson);
 
-		this.a = 'hello world!';
-	};
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var test = new Test();
-	document.body.innerHTML = test.a;
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
+	"use strict";
+
+	function test() {
+		for (var _i = 0; _i < 3; _i++) {
+			console.log(_i);
+		};
+		console.log(i);
+	}
+	test();
 
 /***/ })
 /******/ ]);
