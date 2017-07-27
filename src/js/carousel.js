@@ -9,7 +9,7 @@
 		this.num = this.wrap.children().size();
 		this.tab = tab;
 		this.index = 0;
-		this.time = 1500;//每张图片停留时间
+		this.time = 1800;//每张图片停留时间
         this.page = page1;//当前每版呈现的数量
         this.rePage = page2;//页面变化后版面值
 		this.init();
@@ -22,6 +22,7 @@
                 this.btnTab();
             }
 			this.autoPlay();
+            this.mouseOver();
 		},
         getWidth: function() {
             this.width = this.wrap.children().width();
@@ -100,9 +101,18 @@
 		},
 		mouseOver: function() {
             var that = this;
-            this.wrap.children().on('mouseover', function() {
+            this.wrap.parent().on('mouseout', function(){
+                that.autoPlay();
+            }).on('mouseover', function(){
+                clearInterval(that.timer)
+            });
+
+            /*this.wrap.parent().hover(function(){
                 clearInterval(that.timer);
-            })
+            }, function(){
+                that.autoPlay();
+            });*/
+            
         }
 	}
 	window.Carousel = Carousel;//将api赋给插件名
