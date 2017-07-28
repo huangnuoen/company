@@ -28,3 +28,22 @@
 	let m = `i am ${name}, ${info}`;
 	console.log(m);
 }
+
+{
+	let date1 = '12'.padStart(7, '2017-0');
+	let date2 = '2'.padStart(7, '2017-0');
+
+	console.log(date1, date2);
+}
+
+{
+	let user = {
+		name: 'list',
+		info: 'hello world'
+	};
+	console.log(abc`i am ${user.name}, ${user.info} `);
+	function abc(s) {
+		console.log(s);
+		return s;
+	}
+}

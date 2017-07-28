@@ -65,6 +65,10 @@
 
 	'use strict';
 
+	var _templateObject = _taggedTemplateLiteral(['i am ', ', ', ' '], ['i am ', ', ', ' ']);
+
+	function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
 	{
 		var regex = new RegExp('xyz', 'i');
 		var regex2 = new RegExp(/xyz/i);
@@ -94,6 +98,26 @@
 		var info = 'hello world';
 		var m = 'i am ' + name + ', ' + info;
 		console.log(m);
+	}
+
+	{
+		var date1 = '12'.padStart(7, '2017-0');
+		var date2 = '2'.padStart(7, '2017-0');
+
+		console.log(date1, date2);
+	}
+
+	{
+		var abc = function abc(s) {
+			console.log(s);
+			return s;
+		};
+
+		var user = {
+			name: 'list',
+			info: 'hello world'
+		};
+		console.log(abc(_templateObject, user.name, user.info));
 	}
 
 /***/ })
