@@ -14,3 +14,17 @@
 	console.log('one:', a1.exec(s), a2.exec(s));
 	console.log('two:', a1.exec(s), a2.exec(s));
 }
+
+{
+	console.log('a', '\u0061');
+	console.log('s', '\u{20bb7}');
+	let s = '𠮷';
+	console.log(s.length);
+}
+
+{
+	let name = 'List';
+	let info = 'hello world';
+	let m = `i am ${name}, ${info}`;
+	console.log(m);
+}

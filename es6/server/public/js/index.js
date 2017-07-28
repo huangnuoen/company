@@ -82,5 +82,19 @@
 		console.log('two:', a1.exec(s), a2.exec(s));
 	}
 
+	{
+		console.log('a', 'a');
+		console.log('s', '\uD842\uDFB7');
+		var _s = '𠮷';
+		console.log(_s.length);
+	}
+
+	{
+		var name = 'List';
+		var info = 'hello world';
+		var m = 'i am ' + name + ', ' + info;
+		console.log(m);
+	}
+
 /***/ })
 /******/ ]);
