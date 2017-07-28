@@ -65,16 +65,21 @@
 
 	'use strict';
 
-	/*解构赋值*/
 	{
-		var metaData = {
-			title: 'json',
-			desc: [{ title: 'description' }]
-		};
-		var title = metaData.title,
-		    desc = metaData.desc;
+		var regex = new RegExp('xyz', 'i');
+		var regex2 = new RegExp(/xyz/i);
 
-		console.log(title, desc); //json [Object]
+		console.log(regex.test('xyz123'), regex2.test('234x'));
+
+		var regex3 = new RegExp(/xyz/ig, 'i'); //第二个修饰符会覆盖前一个
+		console.log(regex3.flags);
+	}
+	{
+		var s = 'bbb_bb_b';
+		var a1 = /b+/g;
+		var a2 = new RegExp('b+', 'y');
+		console.log('one:', a1.exec(s), a2.exec(s));
+		console.log('two:', a1.exec(s), a2.exec(s));
 	}
 
 /***/ })

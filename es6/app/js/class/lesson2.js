@@ -2,8 +2,19 @@
 {
 	let metaData = {
 		title: 'json',
-		desc: [{title: 'description'}]
+		desc: [{head: 'hello'}, {title: 'world'}]
 	};
-	let {title, desc} = metaData;
-	console.log(title, desc);//json [Object]
+	let {title: a, desc: [{head: x}, {title: etTitle}]} = metaData;
+	console.log(a, x, etTitle);//json [Object]
+}
+{
+	let obj = {
+  p: [
+    'Hello',
+    { y: 'World' }
+  ]
+};
+
+let { p: [x, { y: z }] } = obj;
+console.log(x,  z)
 }
