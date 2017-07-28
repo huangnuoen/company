@@ -63,27 +63,19 @@
 /* 2 */
 /***/ (function(module, exports) {
 
-	"use strict";
+	'use strict';
 
-	function test() {
-		// for (let i = 0; i < 3; i++) {
-		// 	console.log(i);
-		// };
-		console.log(a);
-		var a = 2;
-	}
-
-	function last() {
-		var PI = {
-			a: 1
+	/*解构赋值*/
+	{
+		var metaData = {
+			title: 'json',
+			desc: [{ title: 'description' }]
 		};
-		PI.a = 2;
-		PI.b = 3;
-		console.log(PI);
-	}
+		var title = metaData.title,
+		    desc = metaData.desc;
 
-	//test();
-	last();
+		console.log(title, desc); //json [Object]
+	}
 
 /***/ })
 /******/ ]);

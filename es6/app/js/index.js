@@ -1,1 +1,1 @@
-import test from './class/lesson1'
+import test from './class/lesson2'

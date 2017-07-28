@@ -30,3 +30,17 @@
 	- 当常量是对象等引用类型，**常量指向对象**，指针不可修改，但**对象本身可能修改**
 
 ### 解构赋值
+1. 数组解构
+	- 数组的元素是按次序排列的，变量的取值由它的位置决定
+2. 对象解构
+	- 对象的属性没有次序，**变量必须与属性同名**，才能取到正确的值。
+```
+{
+	let metaData = {
+		title: 'json',
+		desc: [{title: 'description'}]
+	};
+	let {title, desc} = metaData;
+	console.log(title, desc);//json [Object]
+}
+```
