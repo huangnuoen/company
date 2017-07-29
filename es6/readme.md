@@ -133,7 +133,7 @@
 	```
 	let name = 'List';
 	let info = 'hello world';
-	let m = ``i am ${name}, ${info}``;
+	let m = `i am ${name}, ${info}`;
 	console.log(m);
 	```
 	- 如果在模板字符串中需要使用反引号，则前面要用反斜杠转义。
@@ -144,3 +144,79 @@
 	- 防止恶意攻击
 	- 处理多语言
 10. String.raw 自动转义
+
+### 数值扩展
+1. ES6 将全局方法parseInt()和parseFloat()，移植到Number对象上面，行为完全保持不变
+	- Number.parseInt()
+2. Number.isInteger() 判断是否为整数
+3. Math.trunc() 去除一个数的小数部分
+4. Math.sign() 判断正数、负数还是零
+>参数为正数，返回+1；
+>参数为负数，返回-1；
+>参数为0，返回0；
+>参数为-0，返回-0;
+>其他值，返回NaN
+5. Math.cbrt() 计算一个数的立方根
+
+### 数组扩展
+1. Array.of() 用于将一组值，转换为数组。可以用来代替new Array()
+2. Array.from() 
+	-用于将两类对象转为真正的数组：**类似数组的对象（array-like object）**和**可遍历（iterable）的对象**（包括ES6新增的数据结构Set和Map）。常见的类似数组的对象是DOM操作返回的NodeList集合，以及函数内部的arguments对象。Array.from都可以将它们转为真正的数组。
+	- Array.from还可以接受第二个参数，作用类似于数组的map方法，用来对每个元素进行处理，将处理后的值放入返回的数组。
+3. 数组实例的fill()方法
+	- 使用给定值，填充一个数组。
+	- 
+	fill方法还可以接受第二个和第三个参数，用于指定填充的起始位置和结束位置。
+4. 数组实例的entries(),keys(),values()
+	- 用于遍历数组，返回一个遍历器对象，可以用for...of进行遍历
+	```
+	for(let index of [3, 5, 7].keys()){
+		console.log(index);
+	}
+	for(let value of [3, 5, 7].values()){
+		console.log(value);
+	}
+	for(let [i, val] of [3, 5, 7].entries()){
+		console.log(i, val);
+	}
+	```
+5. 实例find(), findIndex()查找符合条件的数据
+6. 实例includes() 判断是否包含该值，也能检测NaN
+
+### 函数扩展
+1. 参数默认值
+	- 参数默认值后面不可以再有没有默认值参数
+	- 参数变量是默认声明的，不能用let,const再次声明
+	- 函数**不能有同名参数**
+	- 参数默认值不是传值的，而是每次都**重新计算**默认值表达式的值。也就是说，参数默认值是惰性求值的。
+	```
+	function fetch(url, { method = 'GET' } = {}) {
+	  console.log(method);
+	}
+	fetch('http://example.com')
+	// "GET"
+	```
+	函数fetch没有第二个参数时，函数参数的默认值就会生效，然后才是解构赋值的默认值生效，变量method才会取到默认值GET。
+2. 参数默认值的解构赋值
+	```
+	//指定参数默认值为一个空对象，设置了解构赋值的默认值，
+	function m1({x = 0, y = 0} = {}) {
+	  return [x, y];
+	}
+	//指定参数的默认值是一个有具体属性的对象，不指定解构赋值的默认值，在没有指定参数的情况下，参数的默认值才会生效
+	function m2({x, y} = { x: 0, y: 0 }) {
+	  return [x, y];
+	}
+	
+	// 函数没有参数的情况
+	m1() // [0, 0]
+	m2() // [0, 0]
+
+	// x有值，y无值的情况
+	console.log(m1({x: 3}));//[3, 0]
+	console.log(m2({x: 3}));//[3, undefined]
+
+	// x和y都无值的情况
+	m1({}) // [0, 0];
+	m2({}) // [undefined, undefined]
+	```

@@ -1,1 +1,2 @@
-import test from './class/lesson3'
+//import 'babel-polyfill';
+import test from './class/lesson6';
