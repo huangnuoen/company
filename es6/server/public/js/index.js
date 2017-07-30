@@ -193,6 +193,18 @@
 		m1({}); // [0, 0];
 		m2({}); // [undefined, undefined]
 	}
+	{
+		var arrow2 = function arrow2() {
+			return 5;
+		};
+		var arrow = function arrow(v) {
+			return 2 * v;
+		};
+		// function arrow(v) {
+		// 	return 2*v;
+		// }
+		console.log('arrow', arrow(3));
+	}
 
 /***/ })
 /******/ ]);

@@ -45,7 +45,7 @@
 	function m2({x, y} = { x: 0, y: 0 }) {
 	  return [x, y];
 	}
-	
+
 	// 函数没有参数的情况
 	m1() // [0, 0]
 	m2() // [0, 0]
@@ -57,4 +57,12 @@
 	// x和y都无值的情况
 	m1({}) // [0, 0];
 	m2({}) // [undefined, undefined]
+}
+{
+	let arrow2 = () => 5;
+	let arrow = v => 2*v;
+	// function arrow(v) {
+	// 	return 2*v;
+	// }
+	console.log('arrow', arrow(3));
 }
