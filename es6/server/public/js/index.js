@@ -53,17 +53,11 @@
 
 	'use strict';
 
-	var _ProxyReflect = __webpack_require__(2);
+	var _ProxyReflect = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./class/ProxyReflect\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 
 	var _ProxyReflect2 = _interopRequireDefault(_ProxyReflect);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports) {
-
-	
 
 /***/ })
 /******/ ]);

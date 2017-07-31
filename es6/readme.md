@@ -311,3 +311,18 @@
 1. Proxy
 	- 用于修改某些操作的默认行为，等同于在语言层面做出修改，所以属于一种“元编程”（meta programming），即对编程语言进行编程。
 	- 在目标对象之前架设一层“拦截”，外界对该对象的访问，都必须先通过这层拦截，因此提供了一种机制，可以对外界的访问进行过滤和改写。
+	- 初始化
+	```
+	new Proxy(obj, {});
+	```
+	- get(target, key, value){},//拦截对象属性的读取
+	- set(target, key, value){}//拦截对象设置属性
+	- has(target, key, value){}//拦截key in object操作
+	- deleteProperty(target, key, value){}//拦截删除
+	- Object.getOwnPropertyNames
+	ownKeys(target){}//拦截Object.keys, Object.getOwnPropertySymbols
+2. Reflect
+	- Reflect.get(obj, key) 获取键值
+	- Reflect.set(obj, key, value) 设置新键值
+	- Reflect.has(obj, key) 判断属性
+	-  让Object操作都变成函数行为。某些Object操作是命令式，比如name in obj和delete obj[name]，而Reflect.has(obj, name)和Reflect.deleteProperty(obj, name)让它们变成了函数行为。
