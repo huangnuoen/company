@@ -27,3 +27,17 @@
 		console.log(key, val);
 	}
 }
+{
+	let a1 = Symbol.for('foo');//不能用new
+	let a2 = Symbol.for('foo');
+	console.log(a1 === a2);
+	let obj = {
+		[a1]: 123,
+		'foo': 456,
+		'bar': 789,
+		a1: 1000
+	}
+	Reflect.ownKeys(obj).forEach(function(item){
+		console.log('属性名：', item, '值：', obj[item]);
+	})
+}

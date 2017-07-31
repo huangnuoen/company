@@ -121,6 +121,17 @@
 			}
 		}
 	}
+	{
+		var _obj;
+
+		var a1 = Symbol.for('foo'); //不能用new
+		var a2 = Symbol.for('foo');
+		console.log(a1 === a2);
+		var obj = (_obj = {}, _defineProperty(_obj, a1, 123), _defineProperty(_obj, 'foo', 456), _defineProperty(_obj, 'bar', 789), _defineProperty(_obj, 'a1', 1000), _obj);
+		Reflect.ownKeys(obj).forEach(function (item) {
+			console.log('属性名：', item, '值：', obj[item]);
+		});
+	}
 
 /***/ })
 /******/ ]);

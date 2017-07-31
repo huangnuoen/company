@@ -252,4 +252,16 @@
 	Object.assign({target: 1}, {src1: 2}, {src2: 3})
 	```
 5. 扩展运算符
+
 ### Symbol
+1. Symbol() 第7种数据类型，不属于对象,不能用new
+2. Symbol.for()
+	- 它接受一个字符串作为参数，然后搜索有没有以该参数作为名称的Symbol值。如果有，就返回这个Symbol值，否则就新建并返回一个以该字符串为名称的Symbol值。
+	- Symbol.keyFor(),返回一个已登记的 Symbol 类型值的key
+3. 作为属性名
+	- 每一个 Symbol 值都是不相等的，这意味着 Symbol 值可以作为标识符，用于对象的属性名，就能保证不会出现同名的属性。这对于一个对象由多个模块构成的情况非常有用，能防止某一个键被不小心改写或覆盖。
+	- Symbol 值作为对象属性名时，***不能用点运算符***。因为点运算符后面总是字符串，所以不会读取mySymbol作为标识名所指代的那个值，导致a的属性名实际上是一个字符串，而不是一个 Symbol 值。同理，在对象的内部，使用 Symbol 值定义属性时，Symbol 值必须**放在方括号之中**
+	- 无法通过for...of，for...in得到Symbol()作为属性名的属性
+4. Object.getOwnPropertySymbols(obj) 获得指定对象的返回所有Symbol属性名，所有用作属性名的 Symbol 值。
+5. Reflect.ownKeys(obj)
+	- 返回Symbol和非Symbol的属性名
