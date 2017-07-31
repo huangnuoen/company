@@ -41,20 +41,3 @@
 		console.log('属性名：', item, '值：', obj[item]);
 	})
 }
-{
-	let list = new Set([1, 2, 3, '2', 3]);
-	console.log('set');
-	for(let key of list.keys()) {
-		console.log(key);
-	}
-	for(let [key,val] of list.entries()) {
-		console.log([key,val]);
-	}
-	list.forEach(function(item){
-		console.log(item);
-	});
-}
-{
-	let arr = new Map([['a', 123], ['b', 456]]);
-	console.log(arr);
-}
