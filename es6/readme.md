@@ -307,7 +307,7 @@
 	- 能使用Map不使用Array, 
 	- 对数据唯一性有要求，使用set，放弃object
 
-### Proxy
+### Proxy Reflect
 1. Proxy
 	- 用于修改某些操作的默认行为，等同于在语言层面做出修改，所以属于一种“元编程”（meta programming），即对编程语言进行编程。
 	- 在目标对象之前架设一层“拦截”，外界对该对象的访问，都必须先通过这层拦截，因此提供了一种机制，可以对外界的访问进行过滤和改写。
@@ -326,3 +326,69 @@
 	- Reflect.set(obj, key, value) 设置新键值
 	- Reflect.has(obj, key) 判断属性
 	-  让Object操作都变成函数行为。某些Object操作是命令式，比如name in obj和delete obj[name]，而Reflect.has(obj, name)和Reflect.deleteProperty(obj, name)让它们变成了函数行为。
+
+### Promise对象
+1. 初始化
+	- Promise构造函数接受一个函数作为参数，该函数的两个参数分别是resolve和reject。它们是两个函数，由 JavaScript 引擎提供，不用自己部署。
+	- Promise新建后立即执行
+```
+var promise = new Promise(function(resolve, reject) {
+  // ... some code
+
+  if (/* 异步操作成功 */){
+    resolve(value);
+  } else {
+    reject(error);
+  }
+});
+```
+2. resolve函数
+	- 将Promise对象的状态从“未完成”变为“成功”（即从 Pending 变为 Resolved），在异步操作成功时调用，并将异步操作的结果，作为参数传递出去
+3. reject函数
+	- 将Promise对象的状态从“未完成”变为“失败”（即从 Pending 变为 Rejected），在异步操作失败时调用，并将异步操作报出的错误，作为参数传递出去。
+4. Promise实例生成以后，可以用then方法分别指定Resolved状态和Rejected状态的回调函数。
+	- 接受两个回调函数作为参数。第一个回调函数是Promise对象的状态变为Resolved时调用，第二个回调函数是Promise对象的状态变为Rejected时调用。其中，第二个函数是可选的，不一定要提供。这两个函数都接受Promise对象传出的值作为参数。
+```
+promise.then(function(value) {
+  // success
+}, function(error) {
+  // failure
+});
+```
+	- 调用resolve函数和reject函数时带有参数，那么它们的参数会被传递给回调函数。reject函数的参数通常是Error对象的实例，表示抛出的错误；resolve函数的参数除了正常的值以外，还可能是另一个 Promise 实例
+
+### Class 类
+1. 定义
+	- 定义“类”的方法的时候，前面不需要加上function这个关键字，直接把函数定义放进去了就可以了。
+	- 方法之间不需要逗号分隔，加了会报错。
+	- 定义方式2种
+	```
+	class MyClass = {}
+	const MyClass = class Me {}//表达式定义，类名是MyClass而不是Me，Me只在Class内部代码可用，指代当前类，Me可省略
+	```
+	- 类内部定义的方法，都是不可枚举的
+	- 类的属性名，可以采用表达式
+	- 类属于构造函数的另一种写法，构造函数的prototype属性，在ES6的“类”上面继续存在。事实上，类的所有方法都定义在类的prototype属性上面。
+	- 不存在变量提升
+2. 调用
+	- 必须用new调用
+	- 方法中的this指向类的实例
+3. constructor 
+	- 类的默认方法，通过new命令生成对象实例时，自动调用该方法。一个类必须有constructor方法，如果没有显式定义，一个空的constructor方法会被默认添加
+	- prototype对象的constructor属性，直接指向类本身
+4. 实例
+	- 属性除非显式定义在其本身（即定义在this对象上），否则都是定义在原型上（即定义在class上）。
+	- 类的所有实例共享一个原型对象
+5. Generator方法
+	- 在方法前加星号*，表示这是一个Generator函数
+6. 静态方法
+	- static关键字，表示该方法不会被实例继承，而是通过类来调用
+	- 父类的静态方法，可以被子类继承
+7. 静态属性和实例属性
+	- 静态属性指Class本身的属性，即Class.propName, 而不是在实例对象（this）上的属性
+	- Class内部只有静态方法，没有静态属性
+8. 类的继承
+	8.1 extends关键字
+	```
+	class ColorPoint extends Point {}
+	```

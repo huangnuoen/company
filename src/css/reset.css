@@ -52,7 +52,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* 默认按钮样式 */
-button, a.btn {
+button, a.btn, input[type='submit'] {
   border: 1px solid transparent;
   background-color: #0188e1;
   color: #fff;
@@ -63,7 +63,7 @@ button, a.btn {
   text-shadow: 0 -0.02rem 0.02rem rgba(0, 0, 0, 0.5);
 }
 
-button:hover, a.btn:hover {
+button:hover, a.btn:hover, input[type='submit']:hover {
   background-color: transparent;
   border-color: #0188e1;
   color: #0188e1;

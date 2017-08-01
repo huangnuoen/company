@@ -491,7 +491,7 @@ section.about {
 				min-width: 300px;
 				min-height: 200px;
 				border: 1px solid #ccc;
-				background-color: pink
+				background-color: pink;
 			}
 		}
 		form {
@@ -508,7 +508,7 @@ section.about {
 					}
 				}
 			}
-			button {
+			button, input[type='submit'] {
 				margin-left: 1%;
 				padding: 0.04rem .3rem;
 			}

@@ -641,7 +641,7 @@ section.about div.about div > img {
   width: 98%;
 }
 
-.wrapper.contact section form button {
+.wrapper.contact section form button, .wrapper.contact section form input[type='submit'] {
   margin-left: 1%;
   padding: 0.04rem .3rem;
 }
