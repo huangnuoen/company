@@ -1,4 +1,3 @@
-/*import 'babel-polyfill';
-import test from './class/Module';*/
-import module from './class/Module';//导入所有
-console.log(module.A);
+//文件入口
+import 'babel-polyfill';
+import Lottery from './lottery';
