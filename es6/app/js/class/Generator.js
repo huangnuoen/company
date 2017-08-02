@@ -59,7 +59,7 @@
 	}, false);
 }
 {
-	//长轮询
+	//长轮询,每隔一段时间，向服务端请求数据
 	let ajax = function* (){
 		yield new Promise(function(resolve, reject) {
 			setTimeout(function() {

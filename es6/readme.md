@@ -481,5 +481,14 @@ var promise = new Promise(function(resolve, reject) {
 	4.1 长轮询，每隔一段时间向服务端请求数据，直到得到符合条件的数据
 		- Promise中，1s后执行resolve回调函数，传入参数（从服务端获取的数据），判断是否符合条件，不符合再执行genertor()
 
-### Decorator 修饰器
+### Decorator 类的修饰器
+1. 修饰器参数
+	- 第一个参数，是所要修饰的目标类
+	- 第二个是所要修饰的属性名
+	- 第三个是该属性的描述对象
+2. 使用
+	- 在class里面使用
+	- 在class外面使用：只能是静态属性,如果想添加实例属性，可以通过目标类的prototype对象操作。
+3. 第三方库 core-decorators
 
+### 模块化

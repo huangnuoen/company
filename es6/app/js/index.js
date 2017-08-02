@@ -1,2 +1,2 @@
 import 'babel-polyfill';
-import test from './class/Generator';
+import test from './class/Module';
