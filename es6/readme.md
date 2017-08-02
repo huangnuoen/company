@@ -459,3 +459,27 @@ var promise = new Promise(function(resolve, reject) {
 	8.3 get和set
 		- get prop(){}//获取prop属性
 		- set prop(val){}//重新对prop属性赋值
+
+### Iterator 遍历器
+1. 自定义布置iterator接口
+2. for...of 
+	- 具有iterator接口的数据结构，才可以用for...of循环遍历它的**成员**。也就是说，for...of循环内部调用的是数据结构的Symbol.iterator方法。
+	- 可以使用的范围包括数组、Set 和 Map 结构、某些类似数组的对象（比如arguments对象、DOM NodeList 对象）、后文的 Generator 对象，以及字符串。
+
+### Generator 函数
+1. 调用Generator后，函数并不执行，返回一个指向内部状态的指针对象，即遍历器对象
+	- 分段执行，yield是暂停执行的标记
+	- 再调用遍历器对象的next方法，使得指针移向下一个状态
+2. yield
+	- 定义不同的内部状态
+3. 利用 Generator 函数，可以在任意对象上部署 Iterator 接口。
+	```
+	obj[Symbol.interator] = function* (){}
+	```	
+	-  定义obj[symbol.interator]为一个Generator,执行后得到遍历器对象
+4. 应用
+	4.1 长轮询，每隔一段时间向服务端请求数据，直到得到符合条件的数据
+		- Promise中，1s后执行resolve回调函数，传入参数（从服务端获取的数据），判断是否符合条件，不符合再执行genertor()
+
+### Decorator 修饰器
+
