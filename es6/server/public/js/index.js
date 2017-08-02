@@ -53,9 +53,9 @@
 
 	'use strict';
 
-	var _Class = __webpack_require__(2);
+	var _Promise = __webpack_require__(2);
 
-	var _Class2 = _interopRequireDefault(_Class);
+	var _Promise2 = _interopRequireDefault(_Promise);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -65,104 +65,113 @@
 
 	'use strict';
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 	{
-		var Point = function () {
-			function Point(x, y) {
-				_classCallCheck(this, Point);
-
-				this.x = x;
-				this.y = y;
-			}
-
-			_createClass(Point, [{
-				key: 'toString',
-				value: function toString() {
-					return '(i am' + this.x + this.y + ')';
-				}
-			}]);
-
-			return Point;
-		}();
-
-		var a = new Point('pretty', 'girl');
-		console.log(a.toString());
+		var ajax = function ajax(callback) {
+			console.log('do it');
+			setTimeout(function () {
+				callback && callback.call();
+			}, 1000);
+		};
+		ajax(function () {
+			console.log('timeout1');
+		});
 	}
 	{
-		var Parent = function () {
-			function Parent() {
-				var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'es6';
-
-				_classCallCheck(this, Parent);
-
-				this.name = name;
-			}
-
-			_createClass(Parent, [{
-				key: 'longName',
-				get: function get() {
-					return 'first Name' + this.name;
-				},
-				set: function set(value) {
-					this.name = value;
-				}
-			}]);
-
-			return Parent;
-		}();
-
-		var Child = function (_Parent) {
-			_inherits(Child, _Parent);
-
-			function Child() {
-				var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'child';
-
-				_classCallCheck(this, Child);
-
-				//即可传入参数
-				var _this = _possibleConstructorReturn(this, (Child.__proto__ || Object.getPrototypeOf(Child)).call(this, name));
-
-				_this.type = 'son';
-				return _this;
-			}
-
-			return Child;
-		}(Parent);
-
-		var v = new Parent('v');
-		console.log(new Child());
-		console.log(v.longName);
-		v.longName = 'hello';
-		console.log(v.longName);
+		var _ajax = function _ajax() {
+			console.log('do it 2');
+			return new Promise(function (resolve, reject) {
+				setTimeout(function () {
+					resolve();
+				}, 1000);
+			});
+		};
+		_ajax().then(function () {
+			console.log('promise', 'success');
+		});
 	}
 	{
-		var _Parent2 = function () {
-			function _Parent2() {
-				var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'es6';
-
-				_classCallCheck(this, _Parent2);
-
-				this.name = name;
-			}
-
-			_createClass(_Parent2, null, [{
-				key: 'tell',
-				value: function tell() {
-					console.log('tell');
+		var _ajax2 = function _ajax2() {
+			return new Promise(function (resolve, reject) {
+				setTimeout(function () {
+					resolve();
+				}, 1000);
+			});
+		};
+		_ajax2().then(function () {
+			console.log('A');
+			return new Promise(function (resolve, reject) {
+				setTimeout(function () {
+					resolve();
+				}, 1000);
+			});
+		}).then(function () {
+			console.log('B');
+		});
+	}
+	{
+		var _ajax3 = function _ajax3(num) {
+			console.log('do it3');
+			return new Promise(function (resolve, reject) {
+				if (num > 5) {
+					resolve();
+				} else {
+					throw new Error('出错了');
 				}
-			}]);
+			});
+		};
+		_ajax3(1).then(function () {
+			console.log('success log 6');
+		}).catch(function (err) {
+			console.log('catch', err);
+		});
+	}
+	{
+		//Promise应用,同时加载图片
+		var loadImg = function loadImg(src) {
+			return new Promise(function (resolve, reject) {
+				var img = document.createElement('img');
+				img.src = src;
+				console.log('img');
+				img.onload = function () {
+					resolve(img); //调用resolve()，并把img传给回调函数
+				};
+				img.onError = function () {
+					reject(err);
+				};
+			});
+		};
 
-			return _Parent2;
-		}();
+		var showImgs = function showImgs(imgs) {
+			imgs.forEach(function (img) {
+				document.body.appendChild(img);
+			});
+		};
 
-		_Parent2.tell();
+		Promise.all([loadImg('http://img06.tooopen.com/images/20160712/tooopen_sy_170083325566.jpg'), loadImg('http://img3.redocn.com/tupian/20150430/mantenghuawenmodianshiliangbeijing_3924704.jpg'), loadImg('http://img3.redocn.com/tupian/20150416/jingmeihuawenbiankuangsucai_4019518.jpg')]).then(showImgs); //传入showImgs的是3个img组成的数组，loadImg()返回的实例的返回值是img？？
+	}
+	{
+		//加载最先完成加载的图片
+		var _loadImg = function _loadImg(src) {
+			return new Promise(function (resolve, reject) {
+				var img = document.createElement('img');
+				img.src = src;
+				console.log('img');
+				img.onload = function () {
+					resolve(img); //调用resolve()，并把img传给回调函数
+				};
+				img.onError = function () {
+					reject(err);
+				};
+			});
+		};
+
+		var _showImgs = function _showImgs(img) {
+			var p = document.createElement('p');
+			p.appendChild(img);
+			document.body.appendChild(p);
+		};
+
+		Promise.race([_loadImg('http://img06.tooopen.com/images/20160712/tooopen_sy_170083325566.jpg'), _loadImg('http://img3.redocn.com/tupian/20150430/mantenghuawenmodianshiliangbeijing_3924704.jpg'), _loadImg('http://img3.redocn.com/tupian/20150416/jingmeihuawenbiankuangsucai_4019518.jpg')]).then(_showImgs);
 	}
 
 /***/ })

@@ -346,16 +346,71 @@ var promise = new Promise(function(resolve, reject) {
 	- 将Promise对象的状态从“未完成”变为“成功”（即从 Pending 变为 Resolved），在异步操作成功时调用，并将异步操作的结果，作为参数传递出去
 3. reject函数
 	- 将Promise对象的状态从“未完成”变为“失败”（即从 Pending 变为 Rejected），在异步操作失败时调用，并将异步操作报出的错误，作为参数传递出去。
-4. Promise实例生成以后，可以用then方法分别指定Resolved状态和Rejected状态的回调函数。
+4. then()
+	- Promise实例生成以后，可以用then方法分别指定Resolved状态和Rejected状态的回调函数。
 	- 接受两个回调函数作为参数。第一个回调函数是Promise对象的状态变为Resolved时调用，第二个回调函数是Promise对象的状态变为Rejected时调用。其中，第二个函数是可选的，不一定要提供。这两个函数都接受Promise对象传出的值作为参数。
-```
-promise.then(function(value) {
-  // success
-}, function(error) {
-  // failure
-});
-```
+	```
+	promise.then(function(value) {
+	  // success
+	}, function(error) {
+	  // failure
+	});
+	```
+	- 可以通过then接着调用下一个promise实例
+	```
+	new Promise().then().then()
+	```
 	- 调用resolve函数和reject函数时带有参数，那么它们的参数会被传递给回调函数。reject函数的参数通常是Error对象的实例，表示抛出的错误；resolve函数的参数除了正常的值以外，还可能是另一个 Promise 实例
+5. catch()  捕捉错误
+	```
+	let ajax = function(num) {
+		console.log('do it3');
+		return new Promise(function(resolve, reject){
+			if(num > 5) {
+				resolve();
+			} else {
+				throw new Error('出错了');
+			}
+		})
+	};
+	ajax(1).then(function(){
+		console.log('success log 6');
+	}).catch(function(err){
+		console.log('catch', err);
+	})
+	```
+6. Promise.all()
+	- 将多个 Promise实例包装成一个新的Promise实例
+	- 只有当这些实例都加载完成，新实例才会完成
+	- 这些实例的返回值组成一个数组，**传给新实例的回调函数**
+	```
+	function loadImg(src) {
+		return new Promise((resolve, reject) => {
+			let img = document.createElement('img');
+			img.src = src;
+			console.log('img');
+			img.onload = function() {
+				resolve(img);//调用resolve()，并把img传给回调函数
+			}
+			img.onError = function() {
+				reject(err);
+			}
+		})
+	}
+	function showImgs(imgs) {
+		imgs.forEach(function(img) {
+			document.body.appendChild(img);
+		})
+	}
+	Promise.all([
+		loadImg('http://img06.tooopen.com/images/20160712/tooopen_sy_170083325566.jpg'),
+		loadImg('http://img06.tooopen.com/images/20160712/tooopen_sy_170083325566.jpg'),
+		loadImg('http://img06.tooopen.com/images/20160712/tooopen_sy_170083325566.jpg')
+		]).then(showImgs);//传入showImgs的是3个img组成的数组，loadImg()返回的实例的返回值是img？？
+	```
+7. Promise.race()
+	- 将多个Promise实例，包装成一个新的Promise实例
+	- 只要有一个实例先改变状态，就先把返回值传给新实例的回调函数
 
 ### Class 类
 1. 定义
