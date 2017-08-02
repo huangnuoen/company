@@ -492,3 +492,4 @@ var promise = new Promise(function(resolve, reject) {
 3. 第三方库 core-decorators
 
 ### 模块化
+1. import引入  export输出
