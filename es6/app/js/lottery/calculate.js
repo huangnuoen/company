@@ -15,22 +15,33 @@ class Calculate {
 
 	/* 奖金范围预测
 			@param {number} active     [当前选中的号码个数]
-			@param {string} play_name    [当前玩法标识]
+			@param {string} play_name    [当前玩法标识] 任二表示2个一注
 			@return {array}        [奖金范围]*/
 	computeBonus(active, play_name) {
 		const play = play_name.split('');
 		const self = this;
-		let arr = new Array(play[1] * 1.fill(0));//长度为玩法标识，元素为0的数组
+		//长度为玩法标识，元素为0的数组
+		let arr = new Array(play[1] * 1).fill(0);
 		let min, max;
 		if(play[0] === 'r') {
 			let min_active = 5 - (11 - active);//最小命中数
-			if(min_active > 0) {
-				if(min_active - play[1] >= 0) {
+			if(min_active > 0) {//即至少要买7个码
+				if(min_active >= play[1]) {
 					arr = new Array(min_active).fill(0);
+					//根据基数，单独计算会命中的号码生成的注数，全中
 					min = Calculate.combine(arr, play[1]).length;
-				} else {
-					if(play[1] > 5 && active - play[1] >)
+				} else {// 命中数小于玩法基数时
+					//任6 7 8 ,且选中号码数大于等于玩法基数
+					if(play[1] > 5 && active >= play[1]) {
+						arr = new Array(active-5).fill(0);
+						//
+						min = Calculate.combine(arr, play[1]-5).length;
+					} else {
+						min = active-play[1]>-1 ? 1 : 0;
+					}
 				}
+			} else {
+				min = active-play[1]>-1 ? 1 : 0;
 			}
 		}
 	}	
