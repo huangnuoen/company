@@ -22,6 +22,7 @@
 		console.log('promise', 'success');
 	})
 }
+
 {
 	let ajax = function(){
 		return new Promise(function(resolve, reject){

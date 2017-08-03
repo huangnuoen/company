@@ -8711,7 +8711,7 @@
 
 	__webpack_require__(301);
 
-	__webpack_require__(302);
+	__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./lottery/calculate.js\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 
 	__webpack_require__(303);
 
@@ -8719,7 +8719,68 @@
 /* 300 */
 /***/ (function(module, exports) {
 
-	"use strict";
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	/*倒计时模块*/
+	var Timer = function () {
+		function Timer() {
+			_classCallCheck(this, Timer);
+		}
+
+		_createClass(Timer, [{
+			key: 'countdown',
+			value: function countdown(end, update, handle) {
+				var now = new Date().getTime(); //取得当前时间
+				var self = this;
+				if (now - end) {
+					handle.call(self); //当前时间大于截止时间，即倒计时结束，执行回调
+				} else {
+					var last_time = end - now; //距离截止时间
+					// a day's ms ,a hour's ms,a minute's ms,a second's ms
+					var px_d = 24 * 60 * 60 * 1000;
+					var px_h = 60 * 60 * 1000;
+					var px_m = 60 * 1000;
+					var px_s = 1000;
+					//剩余天数+小时数+分钟数+秒数
+					var d = Math.floor(last_time / px_d);
+					var h = Math.floor((last_time - d * px_d) / px_h);
+					var m = Math.floor((last_time - d * px_d - h * px_h) / px_m);
+					var s = Math.floor((last_time - d * px_d - h * px_h - m * px_m) / px_s);
+					//存放
+					var r = [];
+					if (d > 0) {
+						r.push('<em>' + d + '</em>\u5929');
+					}
+					if (r.length || h > 0) {
+						r.push('<em>' + h + '</em>\u65F6');
+					}
+					if (r.length || m > 0) {
+						r.push('<em>' + m + '</em>\u5206');
+					}
+					if (r.length || s > 0) {
+						r.push('<em>' + s + '</em>\u79D2');
+					}
+					self.last_time = r.join(''); //保存变量
+					update.call(self, r.join('')); //将变量传入更新函数
+					setTimeout(function () {
+						self.countdown(end, update, handle);
+					}, 1000); //1s后再调用计时方法
+				}
+			}
+		}]);
+
+		return Timer;
+	}();
+
+	exports.default = Timer;
 
 /***/ }),
 /* 301 */
@@ -8728,16 +8789,111 @@
 	"use strict";
 
 /***/ }),
-/* 302 */
-/***/ (function(module, exports) {
-
-	"use strict";
-
-/***/ }),
+/* 302 */,
 /* 303 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /*接口*/
+
+
+	var _jquery = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"jquery\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	//接口类
+	var Interface = function () {
+		function Interface() {
+			_classCallCheck(this, Interface);
+		}
+
+		_createClass(Interface, [{
+			key: 'getOmit',
+
+			/*获取遗漏数据
+	  	issue 当前期号*/
+			value: function getOmit(issue) {
+				var self = this;
+				return new Promise(function (resolve, reject) {
+					//向服务端发送请求
+					_jquery2.default.ajax({
+						url: '/get/omit', //接口地址
+						data: {
+							issue: issue //前后端约定格式
+						},
+						dataType: 'json',
+						success: function success(res) {
+							self.setOmit(res, data); //将数据保存到变量
+							resolve.call(self, res);
+						}, //请求成功的回调函数，传入处理后的数据为参数
+						error: function error(err) {
+							reject.call(err);
+						}
+					});
+				});
+			}
+
+			/*获取开奖号码
+	  	issue 当前期号*/
+
+		}, {
+			key: 'getOpenCode',
+			value: function getOpenCode(issue) {
+				var self = this;
+				return new Promise(function (resolve, reject) {
+					_jquery2.default.ajax({
+						url: '/get/opencode',
+						data: {
+							issue: issue
+						},
+						dataType: 'json',
+						success: function success(res) {
+							self.setOpenCode(res, data);
+							resolve.call(self, res);
+						},
+						error: function error(err) {
+							reject.call(err);
+						}
+					});
+				});
+			}
+			/*获取状态*/
+
+		}, {
+			key: 'getState',
+			value: function getState(issue) {
+				var self = this;
+				return new Promise(function (resolve, reject) {
+					_jquery2.default.ajax({
+						url: '/get/state',
+						data: {
+							issue: issue
+						},
+						dataType: 'json',
+						success: function success(res) {
+							resolve.call(self, res);
+						},
+						error: function error(err) {
+							reject.call(err);
+						}
+					});
+				});
+			}
+		}]);
+
+		return Interface;
+	}();
+
+	exports.default = Interface;
 
 /***/ })
 /******/ ]);
