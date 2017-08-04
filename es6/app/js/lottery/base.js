@@ -162,5 +162,22 @@ class Base {
 			</div>
 		</li>
 		`;
+		$(self.cart_el).append(tpl);
+		//计算最后金额
+		self.getTotal();
+	}
+	/* 计算奖金，花费，盈利 */
+	getCount() {
+		let self = this;
+		let active = $('.boll-list .btn-boll-active').length;
+		let count = self.computeCount(active, self.cur_play);
+		let range = self.computeBonus(active, self.cur_play);
+		let money = count * 2;
+		let win1 = range[0] - money;
+		let win2 = range[1] - money;
+		let tpl;
+		//盈利都为负时，取最小/大利润的绝对值
+		let c1 = (win1 < 0 && win2 < 0) ? Math.abs(win1) : win1;
+		let c2 = (win1 < 0 && win2 < 0) ? Math.abs(win2) : win2;
 	}
 }
