@@ -37,13 +37,32 @@ class Calculate {
 						//
 						min = Calculate.combine(arr, play[1]-5).length;
 					} else {
-						min = active-play[1]>-1 ? 1 : 0;
+						min = (active >= play[1]) ? 1 : 0;//why?
 					}
 				}
 			} else {
-				min = active-play[1]>-1 ? 1 : 0;
+				//号码数为1-6，且大于等于玩法，即玩法要在7以下，中奖为1注
+				min = (active >= play[1]) ? 1 : 0;//号码数小于基数，无法投注；
+			}
+
+			let max_active = Math.min(active, 5);
+			if(play[1] > 5) {
+				if(active >= play[1]) {
+					arr = new Array(active-5).fill(0);
+					max = Calculate.combine(arr, play[1]-5).length;//捆绑法，减去5个中奖号，余下的用（玩法基数-5）组合，计算注数，即得到5个中奖号在同一注的注数
+				} else {
+					max = 0;
+				}
+			} else if(play[1] < 5) {
+				//假设号码都是中奖码，号码数根据玩法算出注数即是最大收益，所有注数都中
+				arr = new Array(Math.min(active, 5)).fill(0);
+				//
+				max = Carousel.combine(arr, play[1]).length;
+			} else {
+				max = 1;
 			}
 		}
+		return [min, max].map(item => item * self.play_list.get(play_name).bonus);
 	}	
 
 	/* 排列组合计算 静态方法
@@ -77,3 +96,5 @@ class Calculate {
 	}
 
 }
+
+export default Calculate;
