@@ -177,7 +177,7 @@ class Base {
 		let win2 = range[1] - money;
 		let tpl;
 		//盈利都为负时，取最小/大利润的绝对值
-		let c1 = (win1 < 0 && win2 < 0) ? Math.abs(win1) : win1;
-		let c2 = (win1 < 0 && win2 < 0) ? Math.abs(win2) : win2;
+		let c1 = (win1 < 0 && win2 < 0) ? -Math.abs(win1) : win1;
+		let c2 = (win1 < 0 && win2 < 0) ? -Math.abs(win2) : win2;
 	}
 }
