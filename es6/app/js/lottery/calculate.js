@@ -20,24 +20,22 @@ class Calculate {
 	computeBonus(active, play_name) {
 		const play = play_name.split('');
 		const self = this;
-		//长度为玩法标识，元素为0的数组
 		let arr = new Array(play[1] * 1).fill(0);
 		let min, max;
 		if(play[0] === 'r') {
 			let min_active = 5 - (11 - active);//最小命中数
 			if(min_active > 0) {//即至少要买7个码
 				if(min_active >= play[1]) {
+					//命中数大于等于玩法，几个命中号可单独根据玩法计算注数，全中
 					arr = new Array(min_active).fill(0);
-					//根据基数，单独计算会命中的号码生成的注数，全中
 					min = Calculate.combine(arr, play[1]).length;
 				} else {// 命中数小于玩法基数时
 					//任6 7 8 ,且选中号码数大于等于玩法基数
 					if(play[1] > 5 && active >= play[1]) {
 						arr = new Array(active-5).fill(0);
-						//
 						min = Calculate.combine(arr, play[1]-5).length;
 					} else {
-						min = (active >= play[1]) ? 1 : 0;//why?
+						min = (active >= play[1]) ? 1 : 0;//
 					}
 				}
 			} else {

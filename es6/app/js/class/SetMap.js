@@ -15,24 +15,24 @@
 	let set = new Set();
 	let map = new Map();
 	let arr = [];
-
+	//增
 	let add = {t: 3}
 	set.add(add);
 	map.set('t', 3);
 	arr.push({t: 3});
 	console.log(set, map, arr);
-
+	//查
 	console.log(
 		set.has(add),
 		map.has('t'), 
 		arr.find(item=> item.t)//输出键名为t的键值
 	);
-
+	//改
 	set.forEach(item => item.t ? item.t = 1 : '');
 	map.set('t', 1);
 	arr.forEach(item => item.t ? item.t = 1 : '');
 	console.log(set, map, arr);
-
+	//删
 	set.delete(add);
 	map.delete('t');
 	let i = arr.findIndex( item => item.t);

@@ -301,6 +301,7 @@
 	- set()  Map 结构的set方法，将对象o当作m的一个键
 	- delete(), clear(), has()
 	- get() 得到键值
+	3.3 遍历 keys(),values(),entries()
 4. WeakMap
 5. Set, Map 与 Array, Object对比
 	- 增查改删
