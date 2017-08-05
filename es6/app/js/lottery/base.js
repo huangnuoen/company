@@ -166,18 +166,85 @@ class Base {
 		//计算最后金额
 		self.getTotal();
 	}
-	/* 计算奖金，花费，盈利 */
+
+	/* 计算奖金，花费，盈利 ，生成模板*/
 	getCount() {
 		let self = this;
 		let active = $('.boll-list .btn-boll-active').length;
 		let count = self.computeCount(active, self.cur_play);
 		let range = self.computeBonus(active, self.cur_play);
 		let money = count * 2;
+		//保存盈利
 		let win1 = range[0] - money;
 		let win2 = range[1] - money;
+		//盈利都为负时，取最小/大利润的绝对值，保存亏损钱
+		let c1 = (win1 < 0 && win2 < 0) ? Math.abs(win1) : win1;
+		let c2 = (win1 < 0 && win2 < 0) ? Math.abs(win2) : win2;
 		let tpl;
-		//盈利都为负时，取最小/大利润的绝对值
-		let c1 = (win1 < 0 && win2 < 0) ? -Math.abs(win1) : win1;
-		let c2 = (win1 < 0 && win2 < 0) ? -Math.abs(win2) : win2;
+		if(count === 0) {
+			tpl = `
+				您选了 <b class="red">${count}</b> 注，共 <b class="red"> ${count*2} </b>元
+			`;
+		} else if(range[0] === range[1]) {
+			tpl = `
+				您选了 <b class="red">${count}</b> 注，共 <b class="red"> ${count*2} </b>元 <em>若中奖，奖金：<strong class="red">${range[0]}</strong>元，您将${win1>=0 ? "盈利" : "亏损"}<strong class="${win1>=0 ? 'red' : 'green'}">${Math.abs(win1)}</strong> 元</em>
+			`;
+		} else {
+			tpl = `
+				您选了 
+				<b class="red">${count}</b> 注，共 
+				<b class="red"> ${count*2} </b>元 
+				<em>若中奖，奖金：
+					<strong class="red">${range[0]}</strong>至
+					<strong class="red">${range[1]}</strong>元，	您将${(win1 < 0 && win2 < 0) ?  "亏损": "盈利"}
+					<strong class="${(win1 >= 0) ? 'red' : 'green'}">${c1}</strong>至 
+					<strong class="${win2 >= 0 ? 'red' : 'green'}">${c2}</strong>元
+				</em>
+			`;
+		}
+		$('.sel_info').html(tpl);
+	}
+
+	/* 计算购物车内所有金额*/
+	getTotal() {
+		let count = 0;
+		$('.codelist li').each(function(index, item) {
+			count += $(item).attr('count')*1;
+		})
+		$('#count').text(count);
+		$('#money').text(count*2);
+	}
+
+	/*生成随机数
+			@param {number} num [每注随机号码数] */
+	getRandom(num) {
+		let arr = [];
+		let index;
+		//将11个号Set转为数组
+		let number = Array.from(this.number);
+		while(num--) {
+			index = Number.parseInt(Math.random() * number.length);
+			arr.push(number[index]);
+			//删除原数组中被加入随机数组的元素，避免重复
+			number.splice(index, 1);
+		}
+		return arr.join(' ');
+	}
+
+	/* 生成机选号码,添加到购物车列表 */
+	getRandomCode(e) {
+		e.preventDefault();
+		let num = e.currentTarget.getAttribute('count');
+		let play = this.cur_play.match(/\d+/g)[0];
+		let self = this;
+		if(num === 0) {
+			$(self.cart_el).html('');//清空
+		} else {
+			for(let i = 0; i < num; i++) {
+				self.addCodeItem(self.getRandom(play), self.cur_play, self.play_list.get(self.cur_play).name, 1);
+			}
+		}
 	}
 }
+
+export default Base;
