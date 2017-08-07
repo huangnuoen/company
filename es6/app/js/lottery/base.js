@@ -42,8 +42,8 @@ class Base {
 	/* 初始化号码 */
 	initNumber() {
 		for(let i = 1; i < 12; i++) {
-			//mumber是Set, 将号码转为2位的字符串
-			this.number.add(''+ i).padStart(2, '0');
+			//number是Set, 将号码转为2位的字符串
+			this.number.add((''+i).padStart(2, '0'));
 		}
 	}
 	/* 设置遗漏数据 */
@@ -85,7 +85,7 @@ class Base {
 		$cur.addClass('active').siblings().removeClass('active');
 		//将当前玩法转换为小写，储存在cur_play
 		self.cur_play = $cur.attr('desc').toLocaleLowerCase();
-		$('#zx_sm span').html(self.play_list.get($cur_play).tip);
+		$('#zx_sm span').html(self.play_list.get(self.cur_play).tip);
 		//并清空当前选中的号码
 		$('.boll-list .btn-boll').removeClass('btn-boll-active');
 		//重新计算

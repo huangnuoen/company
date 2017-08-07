@@ -55,7 +55,7 @@ class Calculate {
 				//假设号码都是中奖码，号码数根据玩法算出注数即是最大收益，所有注数都中
 				arr = new Array(Math.min(active, 5)).fill(0);
 				//
-				max = Carousel.combine(arr, play[1]).length;
+				max = Calculate.combine(arr, play[1]).length;
 			} else {
 				max = 1;
 			}

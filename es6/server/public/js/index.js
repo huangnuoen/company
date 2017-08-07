@@ -61,6 +61,10 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	//文件入口
+	var syy = new _lottery2.default();
+	console.log(syy);
+
 /***/ }),
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -8866,7 +8870,8 @@
 					(0, _jquery2.default)(self.issue_el).text(res.issue);
 					//倒计时开始
 					self.countdown(res.end_time, function (time) {
-						(0, _jquery2.default)(self.countdown_el).text(time);
+						(0, _jquery2.default)(self.countdown_el).html(time);
+						//$(self.countdown_el).text(time);
 					}, function () {
 						//回调函数
 						setTimeout(function () {
@@ -8972,8 +8977,8 @@
 			key: 'initNumber',
 			value: function initNumber() {
 				for (var i = 1; i < 12; i++) {
-					//mumber是Set, 将号码转为2位的字符串
-					this.number.add('' + i).padStart(2, '0');
+					//number是Set, 将号码转为2位的字符串
+					this.number.add(('' + i).padStart(2, '0'));
 				}
 			}
 			/* 设置遗漏数据 */
@@ -9073,7 +9078,7 @@
 				$cur.addClass('active').siblings().removeClass('active');
 				//将当前玩法转换为小写，储存在cur_play
 				self.cur_play = $cur.attr('desc').toLocaleLowerCase();
-				(0, _jquery2.default)('#zx_sm span').html(self.play_list.get($cur_play).tip);
+				(0, _jquery2.default)('#zx_sm span').html(self.play_list.get(self.cur_play).tip);
 				//并清空当前选中的号码
 				(0, _jquery2.default)('.boll-list .btn-boll').removeClass('btn-boll-active');
 				//重新计算
@@ -19101,7 +19106,7 @@
 			value: function countdown(end, update, handle) {
 				var now = new Date().getTime(); //取得当前时间
 				var self = this;
-				if (now - end) {
+				if (now - end > 0) {
 					handle.call(self); //当前时间大于截止时间，即倒计时结束，执行回调
 				} else {
 					var last_time = end - now; //距离截止时间
@@ -19129,7 +19134,7 @@
 					if (r.length || s > 0) {
 						r.push('<em>' + s + '</em>\u79D2');
 					}
-					self.last_time = r.join(''); //保存变量
+					self.last_time = r.join(' '); //保存变量
 					update.call(self, r.join('')); //将变量传入更新函数
 					setTimeout(function () {
 						self.countdown(end, update, handle);
@@ -19227,7 +19232,7 @@
 						//假设号码都是中奖码，号码数根据玩法算出注数即是最大收益，所有注数都中
 						arr = new Array(Math.min(active, 5)).fill(0);
 						//
-						max = Carousel.combine(arr, play[1]).length;
+						max = Calculate.combine(arr, play[1]).length;
 					} else {
 						max = 1;
 					}
@@ -19320,7 +19325,7 @@
 						},
 						dataType: 'json',
 						success: function success(res) {
-							self.setOmit(res, data); //将数据保存到变量
+							self.setOmit(res.data); //将数据保存到变量
 							resolve.call(self, res);
 						}, //请求成功的回调函数，传入处理后的数据为参数
 						error: function error(err) {
@@ -19345,7 +19350,7 @@
 						},
 						dataType: 'json',
 						success: function success(res) {
-							self.setOpenCode(res, data);
+							self.setOpenCode(res.data);
 							resolve.call(self, res);
 						},
 						error: function error(err) {

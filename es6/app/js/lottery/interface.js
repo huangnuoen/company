@@ -16,7 +16,7 @@ class Interface{
 				},
 				dataType: 'json',
 				success: function(res){
-					self.setOmit(res, data) //将数据保存到变量
+					self.setOmit(res.data) //将数据保存到变量
 					resolve.call(self, res);
 				},//请求成功的回调函数，传入处理后的数据为参数
 				error: function(err){
@@ -38,7 +38,7 @@ class Interface{
 				},
 				dataType: 'json',
 				success: function(res) {
-					self.setOpenCode(res, data);
+					self.setOpenCode(res.data);
 					resolve.call(self, res);
 				},
 				error: function(err){

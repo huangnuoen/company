@@ -59,7 +59,8 @@ class Lottery extends mix(Base, Calculate, Interface, Timer) {
 			$(self.issue_el).text(res.issue);
 			//倒计时开始
 			self.countdown(res.end_time, function(time){
-				$(self.countdown_el).text(time);
+				$(self.countdown_el).html(time);
+				//$(self.countdown_el).text(time);
 			}, function(){
 				//回调函数
 				setTimeout(function(){

@@ -21,9 +21,11 @@ var makeIssue=function(){
 		cur_issue_date.setHours(9);
 		cur_issue_date.setMinutes(0);
 		cur_issue_date.setSeconds(0);
-		//当期剩余销售时间
+		//已经销售了多久
 		var minus_time=date.getTime()-cur_issue_date.getTime();
+		//已经开到几期
 		var h=Math.ceil(minus_time/1000/60/10);
+		//截止日期
 		var end_date=new Date(cur_issue_date.getTime()+1000*60*10*h);
 		end_time=end_date.getTime();
 		cur_issue=[end_date.getFullYear(),('0'+(end_date.getMonth()+1)).slice(-2),('0'+end_date.getDate()).slice(-2),('0'+h).slice(-2)].join('');
