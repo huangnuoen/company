@@ -120,15 +120,15 @@ class Base {
 		}
 		if(index === 3) {
 			$('.boll-list .btn-boll').each(function(i, item) {
-				if(item.textContent % 2 = 1) {
+				if(item.textContent%2 === 1) {
 					$(item).addClass('btn-boll-active');
 				}
 			})
 		}
 		if(index === 4) {
-			$('.boll-list .btn-boll').each(function(i, item) {
-				if(item.textContent % 2 = 0) {
-					$(item).addClass('btn-boll-active');
+			$('.boll-list .btn-boll').each(function(i, t) {
+				if(t.textContent % 2 === 0) {
+					$(t).addClass('btn-boll-active');
 				}
 			})
 		}
@@ -238,7 +238,7 @@ class Base {
 		let play = this.cur_play.match(/\d+/g)[0];
 		let self = this;
 		if(num === 0) {
-			$(self.cart_el).html('');//清空
+			$(self.cart_el).html('');//清空购物车列表
 		} else {
 			for(let i = 0; i < num; i++) {
 				self.addCodeItem(self.getRandom(play), self.cur_play, self.play_list.get(self.cur_play).name, 1);

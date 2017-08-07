@@ -323,10 +323,12 @@
 	- Object.getOwnPropertyNames
 	ownKeys(target){}//拦截Object.keys, Object.getOwnPropertySymbols
 2. Reflect
+	- Reflect对象的方法与Proxy对象的方法一一对应
 	- Reflect.get(obj, key) 获取键值
 	- Reflect.set(obj, key, value) 设置新键值
 	- Reflect.has(obj, key) 判断属性
 	-  让Object操作都变成函数行为。某些Object操作是命令式，比如name in obj和delete obj[name]，而Reflect.has(obj, name)和Reflect.deleteProperty(obj, name)让它们变成了函数行为。
+	- Reflect.ownKeys返回对象所有属性
 
 ### Promise对象
 1. 初始化

@@ -2,13 +2,14 @@ var express = require('express');
 var mockjs = require('mockjs');
 var router = express.Router();
 
-
+//提供状态
 var makeIssue=function(){
 	var date = new Date();
 	var first_issue_date=new Date();
 	first_issue_date.setHours(9);
 	first_issue_date.setMinutes(10);
 	first_issue_date.setSeconds(0);
+	//截止时间
 	var end_issue_date=new Date(first_issue_date.getTime()+77*10*60*1000);
 
 
@@ -20,6 +21,7 @@ var makeIssue=function(){
 		cur_issue_date.setHours(9);
 		cur_issue_date.setMinutes(0);
 		cur_issue_date.setSeconds(0);
+		//当期剩余销售时间
 		var minus_time=date.getTime()-cur_issue_date.getTime();
 		var h=Math.ceil(minus_time/1000/60/10);
 		var end_date=new Date(cur_issue_date.getTime()+1000*60*10*h);
