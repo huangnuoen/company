@@ -1,15 +1,15 @@
 @charset "UTF-8";
-header { width: 100%; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; padding-left: .2rem; font-family: "黑体"; }
+header { width: 100%; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; padding-left: 19px; padding-left: .2rem; font-family: "黑体"; }
 
 header div.logo { display: inline-block; }
 
-header div.logo img { width: 2.531rem; height: .81rem; }
+header div.logo img { width: 249px; height: 79px; width: 2.531rem; height: .81rem; }
 
 header nav { display: inline-block; font-size: 110%; }
 
 header nav ul { margin-bottom: 0; }
 
-header nav ul li { display: inline-block; padding: .2rem 0; margin: 0 .2rem; position: relative; }
+header nav ul li { display: inline-block; padding: 9px 0; padding: .2rem 0; margin: 0 9px; margin: 0 .2rem; position: relative; }
 
 header nav ul li a { color: #999; display: inline-block; }
 
@@ -19,15 +19,19 @@ header nav ul li a:hover { color: #0188e1; }
 
 header nav ul li.current > a { color: #0188e1; }
 
-header nav ul li ul { /* 二级菜单 */ height: 0; -webkit-transition: all .3s ease-in-out; transition: all .3s ease-in-out; position: absolute; background-color: #fff; top: 100%; left: -.16rem; width: 1.7rem; min-width: 80px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top: none; z-index: 5; }
+header nav ul li ul { /* 二级菜单 */ height: 0; -webkit-transition: all .3s ease-in-out; transition: all .3s ease-in-out; position: absolute; background-color: #fff; top: 100%; left: -15.8px; left: -.16rem; width: 1.7rem; min-width: 80px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top: none; z-index: 5; }
 
 header nav ul li ul li { display: block; padding: .1rem .2rem; margin: 0; opacity: 0; -webkit-transition: 0.5s; transition: 0.5s; }
+
+header nav ul li ul li a { color: transparent; }
 
 header nav ul li:hover > a { -webkit-transform: scale(1.05); transform: scale(1.05); -webkit-transition: all .5s ease-in-out; transition: all .5s ease-in-out; }
 
 header nav ul li:hover ul { height: 110px; }
 
 header nav ul li:hover ul li { opacity: 1; }
+
+header nav ul li:hover ul li a { color: #999; }
 
 header nav { /* 响应式导航 */ }
 

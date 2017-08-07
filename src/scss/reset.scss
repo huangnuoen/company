@@ -35,7 +35,8 @@ a, a:hover {
 ul, ol, li{
 	list-style: none;
 }
-.wrapper {
+html, body, .wrapper {
+	width: 100%;
 	width: 13.66rem;
 }
 /* 网站默认字体大小 */
@@ -60,6 +61,7 @@ button, a.btn, input[type='submit'] {
 	border: 1px solid transparent;
 	background-color: $color;
 	color: #fff;
+	padding: 1.35% 2.7%;
 	padding: .04rem .08rem;
 	border-radius: .05rem;
 	box-shadow: 0 .03rem .1rem rgba(0, 0, 0, .5);

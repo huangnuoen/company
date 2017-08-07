@@ -19,7 +19,8 @@ ul, ol, li {
   list-style: none;
 }
 
-.wrapper {
+html, body, .wrapper {
+  width: 100%;
   width: 13.66rem;
 }
 
@@ -56,6 +57,7 @@ button, a.btn, input[type='submit'] {
   border: 1px solid transparent;
   background-color: #0188e1;
   color: #fff;
+  padding: 1.35% 2.7%;
   padding: .04rem .08rem;
   border-radius: .05rem;
   -webkit-box-shadow: 0 0.03rem 0.1rem rgba(0, 0, 0, 0.5);

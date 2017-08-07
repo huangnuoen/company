@@ -4,11 +4,14 @@ header {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	padding-left: 19px;
 	padding-left: .2rem;
 	font-family: "黑体";
 	div.logo {
 		display: inline-block;
 		img {
+			width: 249px;
+			height: 79px;
 			width: 2.531rem;
 			height: .81rem;
 		}
@@ -20,7 +23,9 @@ header {
 			margin-bottom: 0;
 			li {
 				display: inline-block;
+				padding: 9px 0;
 				padding: .2rem 0;
+				margin: 0 9px;
 				margin: 0 .2rem;
 				position: relative;
 				a {
@@ -44,6 +49,7 @@ header {
 					position: absolute;
 					background-color: #fff;
 					top: 100%;
+					left: -15.8px;
 					left: -.16rem;
 					width: 1.7rem;
 					min-width: 80px;
@@ -57,7 +63,8 @@ header {
 						margin: 0;
 						opacity: 0;
 						transition:0.5s;
-						&:hover {
+						a {
+							color: transparent;
 						}
 					}
 				}
@@ -70,6 +77,9 @@ header {
 						height: 110px;
 						li {
 							opacity: 1;
+							a {
+								color: #999;
+							}
 						}
 					}
 				}
