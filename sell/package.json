@@ -2,7 +2,7 @@
   "name": "sell",
   "version": "1.0.0",
   "description": "sell app",
-  "author": "hne <huangnuoen@gmail.com>",
+  "author": "huangnuoen <1261290560@qq.com>",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
@@ -11,8 +11,7 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
-    "vue": "^1.0.21",
-    "vue-router": "^2.6.0"
+    "vue": "^2.3.3"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
