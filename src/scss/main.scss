@@ -446,13 +446,17 @@ section.about {
 		text-align: center;
 		div {
 			margin: 0 auto;
+			padding: 0 4.45%;
 			padding: 0 .6rem;
 			img {
 				display: inline-block;
+				width: 17.5%;
+				height: 222%;
 				width: 2.2rem;
 				height: .92rem;
 				min-width: 120px;
 				min-height: 42px;
+				margin: 0 3.25% 1.9%;
 				margin: 0 .4rem .24rem;
 				border: 1px dashed #eee;
 				border-radius: .1rem;
@@ -461,18 +465,23 @@ section.about {
 		}
 	}
 	section.honor {
+		width: 87.8%;
+		height: 400px;
+		width: 12rem;
 		height: 5rem;
 		min-height: 220px;
 		position: relative;
-		width: 12rem;
 		margin: 0 auto;
 		overflow: hidden;
 		div.honor {
 			position: absolute;
+			width: 400%;
 			width: 48rem;
 			margin-top: .1rem;
 			img {
 				float: left;
+				width: 8.3%;
+				height: 200px;
 				width: 4rem;
 				height: 3rem;
 				object-fit: contain;
@@ -483,13 +492,16 @@ section.about {
 		>div {
 			&:last-child {
 				text-indent: 0;
+				margin: .74% 2.9%;
 				margin: .1rem .4rem;
 				>ul {
 					text-align: left;
 					>li {
 						vertical-align: top;
 						display: inline-block;
+						width: 45.4%;
 						width: 6rem;
+						padding: 1.19%;
 						padding: .15rem;
 						&:nth-child(2n) {
 							border-left: 1px #c2c2c2 solid;

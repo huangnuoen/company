@@ -1,17 +1,23 @@
 section {
 	text-align: center;
 	h2 {
+		margin-bottom: 2.6%;
 		margin-bottom: .1rem;
 	}
 	&.page {
+		padding: 1.48% 7.26%;
 		padding: .2rem 1rem;
 		>span, >time {
 			color: #c2c2c2;
 			font-size: 90%;
+			margin: 0 1.48%;
 			margin: 0 .2rem;
 		}
 		img {
+			margin: 1.05%;
 			margin: .1rem;
+			width: 41.3%;
+			height: 266px;
 			width: 4rem;
 			height: 3rem;
 			border: 1px solid #ccc;
@@ -20,6 +26,7 @@ section {
 			object-fit: cover;
 		}
 		p {
+			padding: .85% 8.57%;
 			padding: .1rem 1rem;
 			text-indent: 0;
 		}
