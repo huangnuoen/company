@@ -56,7 +56,6 @@
 					.removeClass('on');
 		},
 		next: function() {
-            console.log(this.index);
 			this.index++;
 			if(this.index > this.num) {
 				this.index = 0;
@@ -70,9 +69,11 @@
                 this.wrap.stop().animate({'left': -this.width * (this.index)}, 400);
             } else {
                 this.wrap.stop().animate({'left': -this.width*(this.index)}, 400);
-                this.tab.children().eq(this.index).addClass('on')
-                        .siblings()
-                        .removeClass('on');
+                if(this.tab){
+                    this.tab.children().eq(this.index).addClass('on')
+                            .siblings()
+                            .removeClass('on');                    
+                }
             }
 		},
 		//绑定事件到每个tab上
@@ -95,7 +96,7 @@
 			var that = this;
 			clearInterval(this.timer);//每次执行next()前先清空队列
 			this.timer = setInterval(function(){
-                console.log(this.index);
+                console.log(that.index);
 				that.next();
 			}, that.time);
 		},
