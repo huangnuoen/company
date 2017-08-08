@@ -8,7 +8,7 @@ class Calculate {
 		const exist = this.play_list.has(play_name);//玩法列表任一到任八
 		const arr = new Array(active).fill(0);//生成长度为active的数组,默认元素为0
 		if(exist && play_name.at(0) === 'r') {
-			count = Calculate.combine(arr, play_name.split('')[1]);//排列组合计算注数
+			count = Calculate.combine(arr, play_name.split('')[1]).length;//排列组合计算注数
 		}
 		return count;
 	}

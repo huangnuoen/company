@@ -102,7 +102,7 @@ class Base {
 		//无论点击哪里，先清除
 		$('.boll-list .btn-boll').removeClass('btn-boll-active');
 		if(index === 0) {
-		$('.boll-list .btn-boll').addClass('btn-boll-active');
+			$('.boll-list .btn-boll').addClass('btn-boll-active');
 		}
 		if(index === 1) {
 			$('.boll-list .btn-boll').each(function(i, item) {
@@ -142,11 +142,11 @@ class Base {
 	/* 添加号码 */
 	addCode() {
 		let self = this;
-		$active = $('.boll-list .btn-boll-active').text().match(/\d{2}/g);//text返回所有元素的文本组成的字符串，再用match匹配2位一个的数组
+		let $active = $('.boll-list .btn-boll-active').text().match(/\d{2}/g);//text返回所有元素的文本组成的字符串，再用match匹配2位一个的数组
 		let active = $active ? $active.length : 0;
 		let count = self.computeCount(active, self.cur_play);
 		if(count > 0) {
-			self.addCodeItem($active.join(' '), self.cur_play, self.playList.get(self.cur_play).name, count);
+			self.addCodeItem($active.join(' '), self.cur_play, self.play_list.get(self.cur_play).name, count);
 		}
 	}
 
@@ -237,7 +237,7 @@ class Base {
 		let num = e.currentTarget.getAttribute('count');
 		let play = this.cur_play.match(/\d+/g)[0];
 		let self = this;
-		if(num === 0) {
+		if(num === '0') {
 			$(self.cart_el).html('');//清空购物车列表
 		} else {
 			for(let i = 0; i < num; i++) {

@@ -1,4 +1,5 @@
 把所有接口封装到一个类
+
 ### Timer 倒计时
 1. 定义类Timer
 2. 方法countdown,参数(end, update, handle)(截止时间，更新，回调函数)
@@ -15,6 +16,7 @@
 
 ### Interface 接口
 1. 定义类Interface
+	- 有关于接收后端数据、前后端通信的放在interface
 2. 3个接口方法
 	- getOmit方法
 		- 返回一个Promise实例，方便在外部通过then()调用方法，达到异步操作的目的；在方法内部调用其它方法传递储存数据在实例上，避免回调

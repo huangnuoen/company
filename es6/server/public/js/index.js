@@ -8847,6 +8847,7 @@
 			_this.number = new Set();
 			_this.issue_el = '#curr_issue';
 			_this.countdown_el = '#countdown';
+			_this.cart_el = '.codelist';
 			_this.state_el = '.state_el';
 			_this.omit_el = '';
 			_this.cur_play = 'r5';
@@ -9144,11 +9145,11 @@
 			key: 'addCode',
 			value: function addCode() {
 				var self = this;
-				$active = (0, _jquery2.default)('.boll-list .btn-boll-active').text().match(/\d{2}/g); //text返回所有元素的文本组成的字符串，再用match匹配2位一个的数组
+				var $active = (0, _jquery2.default)('.boll-list .btn-boll-active').text().match(/\d{2}/g); //text返回所有元素的文本组成的字符串，再用match匹配2位一个的数组
 				var active = $active ? $active.length : 0;
 				var count = self.computeCount(active, self.cur_play);
 				if (count > 0) {
-					self.addCodeItem($active.join(' '), self.cur_play, self.playList.get(self.cur_play).name, count);
+					self.addCodeItem($active.join(' '), self.cur_play, self.play_list.get(self.cur_play).name, count);
 				}
 			}
 
@@ -9232,7 +9233,7 @@
 				var num = e.currentTarget.getAttribute('count');
 				var play = this.cur_play.match(/\d+/g)[0];
 				var self = this;
-				if (num === 0) {
+				if (num === '0') {
 					(0, _jquery2.default)(self.cart_el).html(''); //清空购物车列表
 				} else {
 					for (var i = 0; i < num; i++) {
@@ -19179,7 +19180,7 @@
 				var exist = this.play_list.has(play_name); //玩法列表任一到任八
 				var arr = new Array(active).fill(0); //生成长度为active的数组,默认元素为0
 				if (exist && play_name.at(0) === 'r') {
-					count = Calculate.combine(arr, play_name.split('')[1]); //排列组合计算注数
+					count = Calculate.combine(arr, play_name.split('')[1]).length; //排列组合计算注数
 				}
 				return count;
 			}
