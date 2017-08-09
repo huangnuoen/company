@@ -15,6 +15,7 @@ var proxyTable = config.dev.proxyTable
 
 var app = express()
 
+// 读取data数据
 var appData = require('../data.json');
 var seller = appData.seller;
 var goods = appData.goods;
