@@ -10,9 +10,7 @@
     "build": "node build/build.js",
     "lint": "eslint --ext .js,.vue src"
   },
-  "dependencies": {
-    "vue": "^2.3.3"
-  },
+  "dependencies": {},
   "devDependencies": {
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.22.1",
