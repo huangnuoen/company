@@ -9,6 +9,5 @@
 </script>
 
 <!-- lang="stylus" rel="stylesheet/stylus" -->
-<style scoped>
-
+<style lang="stylus" rel="stylesheet/stylus">
 </style>
