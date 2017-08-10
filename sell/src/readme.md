@@ -23,8 +23,8 @@
 ### vue-source
 - 用于前后端通信
 1. 在main.js引入vue-source
-2. 在app.vue输出
-	- 方法
+2. 在app.vue中
+	- 方法，请求后端数据，用回调函数处理数据
 	```
 	created() {
 	  this.$http.get('/api/seller').then((response) => {
@@ -36,3 +36,20 @@
 	  });
 	},
 	```
+
+
+### header.vue
+1. 绑定父组件数据到子组件
+	1.1 父组件的tem中，“seller1”会传到子组件
+	<v-header v-bind:seller="seller1"></v-header>
+	1.2 子组件中，用props获取父组件信息
+			props: {
+				seller: {
+					type: Object
+				}
+			}
+	1.3 在子组件中引用props获得的数据，要用:
+	```
+	<img :src="seller.avatar" width="64" height="64">
+	```
+2. 编写header.vue的模板

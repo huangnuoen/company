@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-header></v-header>
+    <v-header v-bind:seller="seller"></v-header>
     <div class="tab border-1px">
       <!-- vue1 -->
       <div class="tab-item"><a v-link="{path:'/goods'}">商品</a></div>
