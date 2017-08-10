@@ -16,10 +16,26 @@
   import header from './components/header/header.vue';
   // import tab from './components/tab/tab.vue';
 
+  const ERR_OK = 0;
+  // 输出对象
   export default {
+    data() {
+      return {
+        seller: {}
+      };
+    },
+    // 在实例被创建后调用
+    created() {
+      this.$http.get('/api/seller').then((response) => {
+        response = response.body;
+        if (response.errno === ERR_OK) {
+          this.seller = response.data;
+          console.log(this.seller);
+        }
+      });
+    },
     components: {
       'v-header': header
-      // 'v-tab': tab
     }
   };
 </script>

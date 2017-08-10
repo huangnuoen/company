@@ -18,3 +18,21 @@
 	router.start(app, '#app');
 
 	```
+
+
+### vue-source
+- 用于前后端通信
+1. 在main.js引入vue-source
+2. 在app.vue输出
+	- 方法
+	```
+	created() {
+	  this.$http.get('/api/seller').then((response) => {
+	    response = response.body;
+	    if (response.errno === ERR_OK) {
+	      this.seller = response.data;
+	      console.log(this.seller);
+	    }
+	  });
+	},
+	```

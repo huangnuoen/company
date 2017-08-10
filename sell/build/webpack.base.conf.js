@@ -76,6 +76,9 @@ module.exports = {
 			}
 		]
 	},
+	postcss: [
+    require('autoprefixer')//调用autoprefixer插件
+  ],
 	eslint: {
 		formatter: require('eslint-friendly-formatter')
 	},
