@@ -48,8 +48,9 @@
 					type: Object
 				}
 			}
-	1.3 在子组件中引用props获得的数据，要用:
+	1.3 子组件中的元素属性要引用props获得的数据，必须要用:绑定，元素内容的引用可直接引用
 	```
 	<img :src="seller.avatar" width="64" height="64">
+	<span>{{seller.name}}</span>
 	```
 2. 编写header.vue的模板

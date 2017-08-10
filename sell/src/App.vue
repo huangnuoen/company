@@ -17,6 +17,7 @@
   // import tab from './components/tab/tab.vue';
 
   const ERR_OK = 0;
+
   // 输出对象
   export default {
     data() {
