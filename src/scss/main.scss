@@ -40,7 +40,7 @@ section {
 			width: 100%;
 			height: 543px;
 			width: 13.66rem;
-			height: 5.5rem;
+			height: 4.5rem;
 			/* object-fit: contain; */
 		}
 	}
@@ -51,13 +51,13 @@ section.carousel {
 	width: 100%;
 	height: 543px;
 	width: 13.66rem;
-	height: 5.5rem;
+	height: 4.5rem;
 	overflow: hidden;
 	div {
 		position: absolute;
 		width: 400%;/* (3+1)*100% */
 		height: 543px;
-		height: 5.5rem;
+		height: 4.5rem;
 		z-index: 1;
 		img {
 			width: 25%;/* 兼容ie8中不支持rem，用%设置宽度 */
@@ -269,6 +269,7 @@ section.instance {
 				h3 {
 					color: $color;
 					margin: .13rem 0;
+					font-size: 1.2em;
 				}
 				p {
 					@include ellipsis;
@@ -616,12 +617,12 @@ section.about {
 						color: #000;
 						border-bottom: 1px solid #ccc;
 						width: 127%;
-						width: 2.3rem;
+						width: 2.1rem;
 						border-left: 4px solid transparent;
 					}
 					>a {
 						width: 124%;
-						width: 2.5rem;
+						width: 2.3rem;
 					}
 					ul {
 						padding-left: 10%;

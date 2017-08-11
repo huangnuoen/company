@@ -54,3 +54,4 @@
 	<span>{{seller.name}}</span>
 	```
 2. 编写header.vue的模板
+3. 根据点击判断弹出层是否显示

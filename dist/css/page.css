@@ -8,6 +8,8 @@ section.page > span, section.page > time { color: #c2c2c2; font-size: 90%; margi
 
 section.page img { margin: 1.05%; margin: .1rem; width: 41.3%; height: 266px; width: 4rem; height: 3rem; border: 1px solid #ccc; border-radius: 2px; -webkit-box-shadow: 2px 2px 2px #ccc; box-shadow: 2px 2px 2px #ccc; -o-object-fit: cover; object-fit: cover; }
 
+section.page.production article img { width: 100%; height: 100%; }
+
 section.page p { padding: .85% 8.57%; padding: .1rem 1rem; text-indent: 0; }
 
 section.page p.intro { text-indent: .3rem; text-align: left; line-height: 2; margin: 0; }

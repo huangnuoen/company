@@ -159,6 +159,9 @@ header nav {
   header nav ul li ul li {
     opacity: 1;
   }
+  header nav ul li ul li a {
+    color: #999;
+  }
   header nav ul li:hover ul {
     height: auto;
   }
