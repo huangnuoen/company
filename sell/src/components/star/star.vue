@@ -1,10 +1,15 @@
 <template>
   <div class="star" :class="starType">
-  	<span v-for="itemClass in itemClasses" :class="itemClass" class="star-item"></span>
+    <span v-for="itemClass in itemClasses" :class="itemClass" class="star-item" track-by="$index"></span>
   </div>
 </template>
 
 <script>
+	const LENGTH = 5;
+	const CLS_ON = 'on';
+	const CLS_HALF = 'half';
+	const CLS_OFF = 'off';
+
 	export default {
 		props: {
 			size: {
@@ -15,9 +20,26 @@
 			}
 		},
 		computed: {
-			// 计算starType
+			// 计算starype
 			starType() {
 				return 'star-' + this.size;
+			},
+			itemClasses() {
+				let result = [];
+				// 向下取0.5倍
+				let score = Math.floor(this.score * 2) / 2;
+				let hasDecimal = score % 2 !== 0;
+				let integer = Math.floor(score);
+				for (let i = 0; i < integer; i++) {
+					result.push(CLS_ON);
+				}
+				if (hasDecimal) {
+					result.push(CLS_HALF);
+				}
+				while (result.length < LENGTH) {
+					result.push(CLS_OFF);
+				}
+				return result;
 			}
 		}
 	};
@@ -40,11 +62,11 @@
 				&:last-child
 					margin-right: 0
 				&.on
-					bg-image('start48_on')
+					bg-image('star48_on')
 				&.half
-					bg-image('start48_half')
+					bg-image('star48_half')
 				&.off
-					bg-image('start48_off')
+					bg-image('star48_off')
 		&.star-32
 			.star-item
 				width: 15px
@@ -54,11 +76,11 @@
 				&:last-child
 					margin-right: 0
 				&.on
-					bg-image('start36_on')
+					bg-image('star36_on')
 				&.half
-					bg-image('start36_half')
+					bg-image('star36_half')
 				&.off
-					bg-image('start36_off')
+					bg-image('star36_off')
 		&.star-24
 			.star-item
 				width: 10px
@@ -68,9 +90,9 @@
 				&:last-child
 					margin-right: 0
 				&.on
-					bg-image('start24_on')
+					bg-image('star24_on')
 				&.half
-					bg-image('start24_half')
+					bg-image('star24_half')
 				&.off
-					bg-image('start24_off')
+					bg-image('star24_off')
 </style>
