@@ -16,8 +16,14 @@
   				<span class="text">{{seller.supports[0].description}}</span>
   			</div>
   		</div>
+  		<div class="support-count" v-if="seller.supports">
+  			<span class="count">{{seller.supports.length}}个</span>
+  			<i class="icon-keyboard_arrow_right"></i>
+  		</div>
   	</div>
   	<div class="bulletin-wrapper">
+  		<span class="bulletin-title"></span><span class="bulletin-text">{{seller.bulletin}}</span>
+  		<i class="icon-keyboard_arrow_right"></i>
   	</div>
   </div>
 </template>
@@ -42,9 +48,10 @@
 	@import "../../common/stylus/mixin"
 
 	.header
-		background: #000
+		background: #999
 		color: #fff
 		.content-wrapper
+			position: relative
 			padding: 24px 12px 18px 24px
 			font-size: 0
 			.avatar
@@ -93,8 +100,39 @@
 						&.special
 							bg-image('special_1')
 					.text
-						font-size: 12px
-						line-height: 12px
-
+						font-size: 10px
+						line-height: 10px
+			.support-count
+				position: absolute
+				right: 12px
+				bottom: 18px
+				padding: 0 8px
+				height: 24px
+				line-height: 24px
+				border-radius: 14px
+				background-color: rgba(0, 0, 0, .2)
+				.count
+					font-size: 10px
+				.icon-keyboard_arrow_right
+					font-size: 10px
+					line-height: 24px
+					margin-left: 2px
+		.bulletin-wrapper
+			height: 28px
+			line-height: 28px
+			padding: 0 22px 0 12px
+			white-space: nowrap
+			overflow: hidden
+			text-overflow: ellipsis
+			background-color: rgba(7, 17, 27, .2)
+			.bulletin-title
+				display: inline-block
+				width: 22px
+				height: 12px
+				bg-image('bulletin')
+				background-size: 22px 12px
+				background-repeat: no-repeat
+			.bulletin-text
+				font-size: 10px
 </style>
 
