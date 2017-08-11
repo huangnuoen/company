@@ -54,4 +54,16 @@
 	<span>{{seller.name}}</span>
 	```
 2. 编写header.vue的模板
-3. 根据点击判断弹出层是否显示
+3. 弹出层
+	3.1 根据点击判断弹出层是否显示
+	3.2 弹出层底部关闭按钮固定
+	3.3 引入兄弟组件————星级评分组件
+
+### star组件
+1. v-for 通过星星总数循环生成相应数量的<span>，并通过分数生成相应类名itemClass(on, off, half)
+2. Vue
+	2.1 props获取父组件size, score
+	2.2 computed 计算属性
+3. 样式
+	3.1 根据size，定制类名(.star-48, .star-36, star-24),编写每种类样式
+	3.2 编写星星3种状态样式，每个样式有2种分辨率(引入mixin.styl)

@@ -42,6 +42,7 @@
 </template>
 
 <script>
+	// import star from '../star/star';
 	export default {
 		// 绑定父组件数据到子组件
 		props: {
