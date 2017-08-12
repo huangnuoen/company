@@ -40,14 +40,17 @@
 
 ### header.vue
 1. 绑定父组件数据到子组件
-	1.1 父组件的tem中，“seller1”会传到子组件
+	1.1 父组件的tem中，seller的信息是“seller1”，会传到子组件中
 	<v-header v-bind:seller="seller1"></v-header>
-	1.2 子组件中，用props获取父组件信息
-			props: {
-				seller: {
-					type: Object
-				}
-			}
+	1.2 子组件中，用props声明它期待获得的数据————父组件信息
+	```
+	props: {
+		// 声明想从父组件得到seller的信息
+		seller: {
+			type: Object
+		}
+	}
+	```
 	1.3 子组件中的元素属性要引用props获得的数据，必须要用:绑定，元素内容的引用可直接引用
 	```
 	<img :src="seller.avatar" width="64" height="64">
@@ -60,7 +63,10 @@
 	3.3 引入子组件————星级评分组件
 
 ### star组件
-1. v-for 通过星星总数循环生成相应数量的<span>，并通过分数生成相应类名itemClass(on, off, half)
+1. v-for 
+	- 通过星星总数循环生成相应数量的<span>，并通过分数生成相应类名itemClass(on, off, half)
+	- 使用track-by="$index"属性提供一个提示，这将强制v-for进入就地更新模式：片段不再移动，他们只需在相应索引处使用新值刷新。此模式还可以处理源数组中的重复值。
+	- 这可以使阵列更换非常有效，但它是一个权衡。因为DOM节点不再被移动以反映顺序的变化，像DOM输入值和组件私有状态这样的临时状态可能会失去同步。所以，使用时要小心，track-by="$index"如果v-for块包含表单输入元素或子组件。
 2. Vue
 	2.1 props获取父组件size, score
 	2.2 computed 计算属性

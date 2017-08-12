@@ -32,7 +32,8 @@
 	  	<div class="detail-wrapper clearfix">
 	  		<div class="detail-main">
 	  			<h1 class="name">{{seller.name}}</h1>
-	  			<star :size="48" :score="seller.score"></star>
+	  			<!-- 传入48到star的size中 -->
+	  			<star :size="32" :score="seller.score"></star>
 	  		</div>
 	  	</div>
 	  	<div class="detail-close" v-on:click="hideDetail">
@@ -75,7 +76,6 @@
 
 <!-- lang="stylus" rel="stylesheet/stylus" -->
 <style lang="stylus" rel="stylesheet/stylus">
-
 	@import "../../common/stylus/mixin"
 
 	.header
