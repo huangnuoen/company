@@ -81,3 +81,22 @@
 	1.2 flex布局，左栏固定宽，右侧自适应
 2. 滚动
 	2.1 依赖库better-scroll
+	2.2 根据右侧滚动情况给左侧相应元素加样式
+		- 获取右侧每个列表的高度累加，存为数组
+		- 获取滚动的位置scrollY, 文档从顶部开始滚动过的像素值
+		- 将scrollY 换成左侧对应栏目的索引值
+		```
+		currentIndex() {
+			for (let i = 0; i < this.listHeight.length; i++) {
+				let height1 = this.listHeight[i];
+				let height2 = this.listHeight[i+1];
+				if (this.scrollY > height1 && this.scrollY < height2) {
+					return i;
+				};
+			}
+		}
+		```	
+		- 根据返回的i值，判断是否加类current, currentIndex === $index为true，则加上current
+		```
+		<li v-for="item in goods" class="menu-item" :class="{'current': currentIndex === $index}">
+		```
