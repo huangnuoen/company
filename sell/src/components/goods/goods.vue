@@ -2,7 +2,7 @@
 	<div class="goods">
 		<div class="menu-wrapper" v-el:menu-wrapper>
 			<ul>
-				<li v-for="item in goods" class="menu-item" :class="{'current': currentIndex === $index}">
+				<li v-for="item in goods" class="menu-item" :class="{'current': currentIndex === $index}" @click="selectMenu($index, $event)">
 					<span class="text border-1px">
 						<span class="icon" v-show="item.type>0" :class="classMap[item.type]"></span>
 						{{item.name}}
@@ -84,8 +84,20 @@
 			this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee'];
     },
     methods: {
+			selectMenu(index, event) {
+				// 如果是浏览器原生事件时
+				if (!event._constructed) {
+					return;
+				};
+				let foodList = this.$els.foodsWrapper.getElementsByClassName('food-list-hook');
+				// 对应的右侧列表元素
+				let el = foodList[index];
+				this.foodsScroll.scrollToElement(el, 300);
+			},
       _initScroll() {
-				this.menuScroll = new BScroll(this.$els.menuWrapper, {});
+				this.menuScroll = new BScroll(this.$els.menuWrapper, {
+					click: true
+				});
 				this.foodsScroll = new BScroll(this.$els.foodsWrapper, {
 					probeType: 3
 				});
