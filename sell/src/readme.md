@@ -76,4 +76,8 @@
 	3.2 编写星星3种状态样式，每个样式有2种分辨率(引入mixin.styl)
 
 ### goods组件
-1. 
+1. 布局
+	1.1 绝对定位，设定top=header+tab 和bottom=购物车
+	1.2 flex布局，左栏固定宽，右侧自适应
+2. 滚动
+	2.1 依赖库better-scroll
