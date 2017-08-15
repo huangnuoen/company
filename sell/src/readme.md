@@ -100,3 +100,7 @@
 		```
 		<li v-for="item in goods" class="menu-item" :class="{'current': currentIndex === $index}">
 		```
+3. 该组件需要获取父组件的seller
+	<router-view :seller="seller"></router-view>
+
+### 购物车组件
