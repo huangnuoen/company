@@ -102,5 +102,6 @@
 		```
 3. 该组件需要获取父组件的seller
 	<router-view :seller="seller"></router-view>
+4. 模板内绑定的属性用连字符，props中要用驼峰命名
 
 ### 购物车组件
