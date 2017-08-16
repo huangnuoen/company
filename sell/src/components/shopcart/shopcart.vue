@@ -195,10 +195,10 @@
 				z-200
 				&.drop-transition
 					transition: all .4s
-				.inner
-					width: 16px
-					height: 16px
-					border-radius: 50%
-					background: rgb(0, 160, 220)
-					transition: all .4s
+					.inner
+						width: 16px
+						height: 16px
+						border-radius: 50%
+						background: rgb(0, 160, 220)
+						transition: all .4s
 </style>
