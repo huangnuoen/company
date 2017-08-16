@@ -134,11 +134,24 @@
 					this.listHeight.push(height);
 				}
 				console.log(this.listHeight);
+      },
+      _drop(target) {
+        // 体验优化,异步执行下落动画
+        this.$nextTick(() => {
+					console.log('成功传入_drop');
+          this.$refs.shopcart.drop(target);
+        });
       }
     },
     components: {
 			shopcart,
 			cartcontral
+    },
+		events: {
+			'cart.add'(target) {
+				console.log('成功传入goods');
+				this._drop(target);
+			}
     }
 	};
 </script>

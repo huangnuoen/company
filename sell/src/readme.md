@@ -124,6 +124,8 @@
 	- 通过computed, 根据购物车总价与起送价差值，绑定不同类名 
 5. 小球飞入动画
 	5.1 只有进入动画，没有离开动画
+	5.2 需要获得点击按钮的位置，通过$dispatch从goods的子组件cartcontral获得target，在goods的events中传入target,调用方法，再在方法中将target传给goods的子组件shopcart
+
 ### 购物按钮组件
 1. 与goods父组件通信，获得food对象
 ```
