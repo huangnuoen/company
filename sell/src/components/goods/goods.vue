@@ -28,6 +28,9 @@
 	  							<span class="now">￥{{food.price}}</span>
 	  							<span class="old" v-show="food.oldPrice">￥{{food.oldPrice}}</span>
 	  						</div>
+	  						<div class="cartcontral-wrapper">
+		  						<cartcontral :food="food"></cartcontral>
+	  						</div>
 	  					</div>
 	  				</li>
 	  			</ul>
@@ -41,6 +44,7 @@
 <script>
 	import BScroll from 'better-scroll';
 	import shopcart from 'components/shopcart/shopcart';
+	import cartcontral from 'components/cartcontral/cartcontral';
 	const ERR_OK = 0;
 	export default {
 		props: {
@@ -87,7 +91,7 @@
     },
     methods: {
 			selectMenu(index, event) {
-				// 如果是浏览器原生事件时
+				// 如果是浏览器原生事件时,避免PC端点击2次的问题
 				if (!event._constructed) {
 					return;
 				};
@@ -98,9 +102,10 @@
 			},
       _initScroll() {
 				this.menuScroll = new BScroll(this.$els.menuWrapper, {
-					click: true
+					click: true// 在移动可以点击
 				});
 				this.foodsScroll = new BScroll(this.$els.foodsWrapper, {
+					click: true,
 					probeType: 3
 				});
 				this.foodsScroll.on('scroll', (pos) => {
@@ -120,7 +125,8 @@
       }
     },
     components: {
-			shopcart
+			shopcart,
+			cartcontral
     }
 	};
 </script>
@@ -226,5 +232,10 @@
 							font-size: 10px
 							text-decoration: line-through
 							color: rgb(147, 153, 159)
+					.cartcontral-wrapper
+						position: absolute
+						right: 0
+						bottom: 12px
+
 
 </style>

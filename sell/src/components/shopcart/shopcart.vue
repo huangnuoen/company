@@ -3,16 +3,16 @@
 		<div class="content">
 			<div class="content-left">
 				<div class="logo-wrapper">
-					<div class="logo">
-						<i class="icon-shopping_cart"></i>
+					<div class="logo" :class="{'highlight': totalCount > 0}">
+						<i class="icon-shopping_cart" :class="{'highlight': totalCount > 0}"></i>
 					</div>
-					<div class="num">{{count}}</div>
+					<div class="num" v-show="totalCount > 0">{{totalCount}}</div>
 				</div>
-				<div class="price">￥{{totalPrice}}元</div>
+				<div class="price" :class="{'highlight': totalPrice > 0}">￥{{totalPrice}}元</div>
 				<div class="desc">另需配送费{{deliveryPrice}}元</div>
 			</div>
 			<div class="content-right">
-				<div class="pay">￥{{minPrice}}元起送</div>
+				<div class="pay" :class="payClass">{{payDesc}}</div>
 			</div>
 		</div>
 	</div>
@@ -24,7 +24,12 @@
 			selectFoods: {
 				type: Array,
 				default() {
-					return [];
+					return [
+						{
+							price: 2,
+							count: 3
+						}
+					];
 				}
 			},
 			deliveryPrice: {
@@ -50,6 +55,23 @@
 					count += food.count;
 				});
 				return count;
+			},
+			payDesc() {
+				if (this.totalPrice === 0) {
+					return `￥${this.minPrice}元起送`;
+				} else if (this.totalPrice < this.minPrice) {
+					let diff = this.minPrice - this.totalPrice;
+					return `还差￥${diff}元配送`;
+				} else {
+					return '去结算';
+				}
+			},
+			payClass() {
+				if (this.totalPrice < this.minPrice) {
+					return 'not-enough';
+				} else {
+					return 'enough';
+				}
 			}
 		}
 	};
@@ -121,6 +143,8 @@
 					padding-right: 12px
 					box-sizing: border-box
 					border-right: 1px solid rgba(255, 255, 255, .1)
+					&.highlight
+						color: #fff
 				.desc
 					display: inline-block
 					vertical-align: top
@@ -137,4 +161,9 @@
 					font-size: 12px
 					background: #2b343c
 					font-weight: 700
+					&.not-enough
+						background: #2b343c
+					&.enough
+						background: #00b43c
+						color: #fff
 </style>

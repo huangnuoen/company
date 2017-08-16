@@ -105,8 +105,27 @@
 4. 模板内绑定的属性用连字符，props中要用驼峰命名
 
 ### 购物车组件
-1. 与goods父组件通信，获得配送费，起送价，商品总价
+1. 与goods父组件通信，获得selectFoods数组（商品单价和数量），seller对象（配送费，起送价的数据）
 2. 获取商品总价,总量
-	- selectFoods存放商品单价和数量
+	- selectFoods存放商品单价和数量（selectFoods数组要根据goods的点击情况生成数据）
 	- 在goods中点击增加，则selectFoods的数量增加
 	- 通过遍历selectFoods的单价和数量计算总价
+3. 根据totalCount, totalPrice来绑定类名高亮，div.num根据totalCount来判断是否显示（v-show可以支持表达式）
+4. 结算部分部分
+	- 通过computed, 根据购物车总价与起送价差值返回不同模板 
+	- 通过computed, 根据购物车总价与起送价差值，绑定不同类名 
+
+### 购物按钮组件
+1. 与goods父组件通信，获得food对象
+```
+// goods, food是在goods对象中获得的
+<cartcontral :food="food"></cartcontral>
+// cartcontral
+props: {
+	food: {
+		type: Object
+	}
+},
+
+```
+2. 给food对象新增属性count时，直接赋值是无法获取该属性的，需通过Vue.set(this.food, 'count', 1)设置属性
