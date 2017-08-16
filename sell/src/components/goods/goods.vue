@@ -37,7 +37,7 @@
 	  		</li>
 	  	</ul>
 	  </div>
-	  <shopcart :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"></shopcart>
+	  <shopcart :select-foods="selectFoods" :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"></shopcart>
 	</div>
 </template>
 
@@ -73,6 +73,18 @@
 					}
 				}
 				return 0;
+			},
+			selectFoods() {
+				let foods = [];
+				this.goods.forEach((good) => {
+					good.foods.forEach((food) => {
+						// 如果有选择这种食物，则将该food存进数组，food对象本身有price，并通过子组件cartcontral新增count属性
+						if (food.count) {
+							foods.push(food);
+						}
+					});
+				});
+				return foods;
 			}
 		},
     created() {

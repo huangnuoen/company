@@ -103,6 +103,14 @@
 3. 该组件需要获取父组件的seller
 	<router-view :seller="seller"></router-view>
 4. 模板内绑定的属性用连字符，props中要用驼峰命名
+5. 引入子组件cartcontral
+	- 传入food对象到子组件
+	- 子组件通过父组件goods的点击事件，新增了food.count属性，并传给了父组件，selectFoods数组中的food对象也拥有了count属性
+6. 计算selectFoods
+	- 根据cartcontral返回的food.count, 将被选择的food对象保存在selectFoods中
+7. 引入子组件shopcart
+	- 传入selectFoods数组，使该子组件可计算出总量，总价等
+
 
 ### 购物车组件
 1. 与goods父组件通信，获得selectFoods数组（商品单价和数量），seller对象（配送费，起送价的数据）
@@ -114,7 +122,8 @@
 4. 结算部分部分
 	- 通过computed, 根据购物车总价与起送价差值返回不同模板 
 	- 通过computed, 根据购物车总价与起送价差值，绑定不同类名 
-
+5. 小球飞入动画
+	5.1 只有进入动画，没有离开动画
 ### 购物按钮组件
 1. 与goods父组件通信，获得food对象
 ```
@@ -129,3 +138,27 @@ props: {
 
 ```
 2. 给food对象新增属性count时，直接赋值是无法获取该属性的，需通过Vue.set(this.food, 'count', 1)设置属性
+	- 通过父组件goods的点击事件，新增count属性,
+3. 增加点击加号的动画, 平移并滚动
+	- 外层添加transition="move"属性, 定义.move-transition,.move-enter, .move-leave
+	- 动画开始时，外层加上move-enter类，直到到达move-transition指定位置，停止动画；恢复原来位置时，从move-transition到move-leave过渡
+	- 该动画进行时，里层元素同时进行滚动(其实也可以让外层元素滚动)
+	```
+	.cart-decrease
+		transition: all .4s linear
+		&.move-transition
+			opacity: 1
+			transform: translate3D(0, 0, 0)
+			.inner
+				display: inline-block
+				line-height: 24px
+				font-size: 24px
+				color: rgb(0, 160, 220)
+				transition: all .4s linear
+				transform: rotate(0)
+		&.move-enter, &.move-leave
+			opacity: 0
+			transform: translate3D(24px, 0, 0)
+			.inner
+				transform: rotate(360deg)
+	```
