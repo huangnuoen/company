@@ -29,7 +29,7 @@
       </div>
       <div class="list-content">
         <ul>
-          <li class="food" v-for="food in selectFoods">
+          <li class="food border-1px" v-for="food in selectFoods">
             <span class="name">{{food.name}}</span>
             <div class="price"><span>￥{{food.price * food.count}}</span></div>
             <div class="cartcontrol-wrapper">
@@ -43,6 +43,7 @@
 </template>
 
 <script>
+	import BScroll from 'better-scroll';
   import cartcontrol from 'components/cartcontrol/cartcontrol';
 
   export default {
@@ -337,5 +338,40 @@
         line-height: 40px
         padding: 0 18px
         background: #f3f5f7
-        
+        border-bottom: 1px solid rggb(7, 17, 27, .1)
+        .title
+        	float: left
+        	font-size: 14px
+        	color: rgb(7, 17, 27)
+        .empty
+        	float: right
+        	font-size: 12px
+        	color: rgb(0, 160, 220)
+      .list-content
+      	padding: 0 18px
+      	max-height: 217px
+      	background: #fff
+      	overflow: hidden
+      	.food
+      		position: relative
+      		padding: 12px 0
+      		box-sizing: border-box
+      		border-1px(rgba(7, 17, 27, .1))
+      		.name
+      			line-height: 24px
+      			font-size: 14px
+      			color: rgb(7, 17, 27)
+      		.price
+      			position: absolute
+      			bottom: 12px
+      			right: 90px
+      			line-height: 24px
+      			color: rgb(240, 20, 20)
+      			font-weight: 700
+      			font-size: 14px
+      		.cartcontrol-wrapper
+      			position: absolute
+      			right: 0
+      			bottom: 6px
+      			
 </style>
