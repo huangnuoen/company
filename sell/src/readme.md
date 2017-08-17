@@ -80,11 +80,11 @@
 	1.1 绝对定位，设定top=header+tab 和bottom=购物车
 	1.2 flex布局，左栏固定宽，右侧自适应
 2. 滚动
-	2.1 依赖库better-scroll
-	2.2 根据右侧滚动情况给左侧相应元素加样式
-		- 获取右侧每个列表的高度累加，存为数组
-		- 获取滚动的位置scrollY, 文档从顶部开始滚动过的像素值
-		- 将scrollY 换成左侧对应栏目的索引值
+2.1 依赖库better-scroll
+2.2 根据右侧滚动情况给左侧相应元素加样式
+    - 获取右侧每个列表的高度累加，存为数组
+	- 获取滚动的位置scrollY, 文档从顶部开始滚动过的像素值
+	- 将scrollY 换成左侧对应栏目的索引值
 		```
 		currentIndex() {
 			for (let i = 0; i < this.listHeight.length; i++) {
@@ -96,12 +96,14 @@
 			}
 		}
 		```	
-		- 根据返回的i值，判断是否加类current, currentIndex === $index为true，则加上current
+	- 根据返回的i值，判断是否加类current, currentIndex === $index为true，则加上current
 		```
 		<li v-for="item in goods" class="menu-item" :class="{'current': currentIndex === $index}">
 		```
 3. 该组件需要获取父组件的seller
+    ```
 	<router-view :seller="seller"></router-view>
+	```
 4. 模板内绑定的属性用连字符，props中要用驼峰命名
 5. 引入子组件cartcontral
 	- 传入food对象到子组件
@@ -111,7 +113,6 @@
 7. 引入子组件shopcart
 	- 传入selectFoods数组，使该子组件可计算出总量，总价等
 
-
 ### 购物车组件
 1. 与goods父组件通信，获得selectFoods数组（商品单价和数量），seller对象（配送费，起送价的数据）
 2. 获取商品总价,总量
@@ -120,30 +121,35 @@
 	- 通过遍历selectFoods的单价和数量计算总价
 3. 根据totalCount, totalPrice来绑定类名高亮，div.num根据totalCount来判断是否显示（v-show可以支持表达式）
 4. 结算部分部分
-	- 通过computed, 根据购物车总价与起送价差值返回不同模板 
-	- 通过computed, 根据购物车总价与起送价差值，绑定不同类名 
+	- 通过computed, 根据购物车总价与起送价差值返回不同模板
+	- 通过computed, 根据购物车总价与起送价差值，绑定不同类名
 5. 小球飞入动画
-	5.1 只有进入动画，没有离开动画
-		- 定义this.balls数组为5个ball对象(能同时有5个小球进行drop动画)，存放小球以供使用
-		- drop方法，点击按钮调用该方法，取得一个show==false的小球，将show设true,并将点击元素储存在ball对象上,此时开始动画
-		- 开始动画，获取show为true的小球，获取ball.el的位置，计算偏移量，写出el.style
-		- 进行动画的末位置
-		- 结束动画后要执行：dropBalls移除第一个ball，并将该ball的show设为false以便可以再重新利用
-		- 用dropBalls存放所有进行动画的小球的目的是，方便移除每个进行过动画的ball，并再将ball.show设为false; 将小球推送给dropBalls，复制的是引用
-	5.2 需要获得点击按钮的位置，通过$dispatch从goods的子组件cartcontral获得target，在goods的events中传入target,调用方法，再在方法中通过$resf将target传给goods的子组件shopcart
-	```
+5.1 定义this.balls数组为5个ball对象(能同时有5个小球进行drop动画)，存放小球以供使用
+5.2 需要获得点击按钮的位置，通过$dispatch从goods的子组件cartcontral获得target，在goods的events中传入target,调用方法，再在方法中通过$nextTick回调（在DOM更新好再执行）中再去通过$resf将target传给goods的子组件shopcart
+```
   <!-- v-ref:shopcart 注册对子组件的引用，可在vue实例上用$refs访问该子组件 -->
   <shopcart v-ref:shopcart :select-foods="selectFoods" :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"></shopcart>
-	// js
+
   _drop(target) {
     this.$refs.shopcart.drop(target);
   }
-
-	```	
-	5.3 编写transition: {} 的drop各种状态的动画
-		5.3.1 动画开始前
-		5.3.2 动画进行
-		5.3.3 动画结束后
+```	
+5.3 drop方法，点击按钮调用该方法，取得一个show==false的小球，将show设true,并将点击元素储存在ball对象上,将ball储存在dropBalls中，此时开始动画
+5.4 编写transition: {} 的drop各种状态的动画
+5.4.1 动画开始前
+	- 获取show为true的小球，获取ball.el的位置，计算偏移量，写出el.style
+5.4.2 动画进行
+	- 进行动画：要触发浏览器重绘
+	- 除了渲染树的直接变化，当获取一些属性时，浏览器为取得正确的值也会触发重排。这样就使得浏览器的优化失效了。这些属性包括：offsetTop、offsetLeft、offsetWidth、offsetHeight、scrollTop、scrollLeft、scrollWidth、scrollHeight、clientTop、clientLeft、clientWidth、clientHeight、getComputedStyle() (currentStyle in IE)。
+	- 重绘的目的：先重绘好开始动画设置好的style，重绘完成后再加载进入动画的style.transform才会有效果
+	- 使用this.$nextTick()，将回调延迟到下次DOM更新循环之后执行。在修改数据之后立即使用它，然后等待DOM更新。它跟全局方法 Vue.nextTick 一样，不同的是回调的 this 自动绑定到调用它的实例上。
+5.4.3 动画结束后
+	- 结束动画后要执行：dropBalls移除第一个ball，并将该ball的show设为false以便可以再重新利用
+	- 用dropBalls存放所有进行动画的小球的目的是，方便移除每个进行过动画的ball，并再将ball.
+5.5 css  纵向方向设置运动曲线，先往负方向再往正方向
+```
+transition: all .4s cubic-bezier(0.49, -0.29, 0.75, 0.41)
+```
 
 ### 购物按钮组件
 1. 与goods父组件通信，获得food对象
@@ -155,8 +161,7 @@ props: {
 	food: {
 		type: Object
 	}
-},
-
+}
 ```
 2. 给food对象新增属性count时，直接赋值是无法获取该属性的，需通过Vue.set(this.food, 'count', 1)设置属性
 	- 通过父组件goods的点击事件，新增count属性,

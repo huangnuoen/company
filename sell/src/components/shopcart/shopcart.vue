@@ -118,7 +118,6 @@
             ball.show = true;
             ball.el = el;
             this.dropBalls.push(ball);
-            console.log(this.dropBalls);
             return;
           }
         }
@@ -141,14 +140,13 @@
             let ball = this.balls[count];
             // show为true的小球
             if (ball.show) {
-              console.log(ball);
               // 获取该元素的位置
               let rect = ball.el.getBoundingClientRect();
               // 计算当前位置到购物车的横向，纵向距离
               let x = rect.left - 32;
               let y = -(window.innerHeight - rect.top - 22);
               el.style.display = '';
-              // 设置纵向起始位置 
+              // 设置纵向起始位置
               el.style.webkitTransform = `translate3d(0,${y}px,0)`;
               el.style.transform = `translate3d(0,${y}px,0)`;
               // 设置内层元素横向起始位置
@@ -160,8 +158,8 @@
         },
         enter(el) {
           /* eslint-disable no-unused-vars */
-          let rf = el.offsetHeight;// 元素高度
-          // 页面加载完再执行
+          let rf = el.offsetHeight;// 获取元素高度，可触发浏览器重绘
+          // 页面重绘完再执行
           this.$nextTick(() => {
             // 进入动画状态，小球末位置
             el.style.webkitTransform = 'translate3d(0,0,0)';
@@ -173,13 +171,12 @@
         },
         afterEnter(el) {
           // 动画结束后，将该小球从dropBalls中移除
-          console.log(this.dropBalls);
-          // let ball = this.dropBalls.shift();
-          // // 将该小球show设为false，可重新被使用
-          // if (ball) {
-          //   ball.show = false;
-          //   el.style.display = 'none';
-          // }
+          let ball = this.dropBalls.shift();
+          // 将该小球show设为false，可重新被使用
+          if (ball) {
+            ball.show = false;
+            el.style.display = 'none';
+          }
         }
       }
     },
@@ -285,11 +282,11 @@
         bottom: 22px
         z-index: 200
         &.drop-transition
-          transition: all 5s cubic-bezier(0.49, -0.29, 0.75, 0.41)
+          transition: all .4s cubic-bezier(0.49, -0.29, 0.75, 0.41)
           .inner
             width: 16px
             height: 16px
             border-radius: 50%
             background: rgb(0, 160, 220)
-            transition: all 5s linear
+            transition: all .4s linear
 </style>
