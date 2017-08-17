@@ -124,7 +124,26 @@
 	- 通过computed, 根据购物车总价与起送价差值，绑定不同类名 
 5. 小球飞入动画
 	5.1 只有进入动画，没有离开动画
-	5.2 需要获得点击按钮的位置，通过$dispatch从goods的子组件cartcontral获得target，在goods的events中传入target,调用方法，再在方法中将target传给goods的子组件shopcart
+		- 定义this.balls数组为5个ball对象(能同时有5个小球进行drop动画)，存放小球以供使用
+		- drop方法，点击按钮调用该方法，取得一个show==false的小球，将show设true,并将点击元素储存在ball对象上,此时开始动画
+		- 开始动画，获取show为true的小球，获取ball.el的位置，计算偏移量，写出el.style
+		- 进行动画的末位置
+		- 结束动画后要执行：dropBalls移除第一个ball，并将该ball的show设为false以便可以再重新利用
+		- 用dropBalls存放所有进行动画的小球的目的是，方便移除每个进行过动画的ball，并再将ball.show设为false; 将小球推送给dropBalls，复制的是引用
+	5.2 需要获得点击按钮的位置，通过$dispatch从goods的子组件cartcontral获得target，在goods的events中传入target,调用方法，再在方法中通过$resf将target传给goods的子组件shopcart
+	```
+  <!-- v-ref:shopcart 注册对子组件的引用，可在vue实例上用$refs访问该子组件 -->
+  <shopcart v-ref:shopcart :select-foods="selectFoods" :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"></shopcart>
+	// js
+  _drop(target) {
+    this.$refs.shopcart.drop(target);
+  }
+
+	```	
+	5.3 编写transition: {} 的drop各种状态的动画
+		5.3.1 动画开始前
+		5.3.2 动画进行
+		5.3.3 动画结束后
 
 ### 购物按钮组件
 1. 与goods父组件通信，获得food对象

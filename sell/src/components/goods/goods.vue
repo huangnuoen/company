@@ -28,8 +28,8 @@
 	  							<span class="now">￥{{food.price}}</span>
 	  							<span class="old" v-show="food.oldPrice">￥{{food.oldPrice}}</span>
 	  						</div>
-	  						<div class="cartcontral-wrapper">
-		  						<cartcontral :food="food"></cartcontral>
+	  						<div class="cartcontrol-wrapper">
+		  						<cartcontrol :food="food"></cartcontrol>
 	  						</div>
 	  					</div>
 	  				</li>
@@ -37,14 +37,15 @@
 	  		</li>
 	  	</ul>
 	  </div>
-	  <shopcart :select-foods="selectFoods" :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"></shopcart>
+	  <!-- v-ref:shopcart 注册对子组件的引用，可在vue实例上用$refs访问该子组件 -->
+	  <shopcart v-ref:shopcart :select-foods="selectFoods" :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"></shopcart>
 	</div>
 </template>
 
 <script>
 	import BScroll from 'better-scroll';
 	import shopcart from 'components/shopcart/shopcart';
-	import cartcontral from 'components/cartcontral/cartcontral';
+	import cartcontrol from 'components/cartcontrol/cartcontrol';
 	const ERR_OK = 0;
 	export default {
 		props: {
@@ -78,7 +79,7 @@
 				let foods = [];
 				this.goods.forEach((good) => {
 					good.foods.forEach((food) => {
-						// 如果有选择这种食物，则将该food存进数组，food对象本身有price，并通过子组件cartcontral新增count属性
+						// 如果有选择这种食物，则将该food存进数组，food对象本身有price，并通过子组件cartcontrol新增count属性
 						if (food.count) {
 							foods.push(food);
 						}
@@ -138,18 +139,16 @@
       _drop(target) {
         // 体验优化,异步执行下落动画
         this.$nextTick(() => {
-					console.log('成功传入_drop');
           this.$refs.shopcart.drop(target);
         });
       }
     },
     components: {
 			shopcart,
-			cartcontral
+			cartcontrol
     },
 		events: {
 			'cart.add'(target) {
-				console.log('成功传入goods');
 				this._drop(target);
 			}
     }
@@ -257,7 +256,7 @@
 							font-size: 10px
 							text-decoration: line-through
 							color: rgb(147, 153, 159)
-					.cartcontral-wrapper
+					.cartcontrol-wrapper
 						position: absolute
 						right: 0
 						bottom: 12px

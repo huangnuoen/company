@@ -14,7 +14,6 @@
 
 <script>
   import header from './components/header/header.vue';
-  // import tab from './components/tab/tab.vue';
 
   const ERR_OK = 0;
 
