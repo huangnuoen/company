@@ -152,9 +152,20 @@ transition: all .4s cubic-bezier(0.49, -0.29, 0.75, 0.41)
 ```
 6. 购物车详情页
 6.1 引用注册cartcontrol组件，将food对象传入子组件
-6.2 判断是否有shoplist,
+6.2 判断是否有shoplist, 
 	- 无，设置this.fold = true, listShow返回false
 	- 有，记录shoplist的当前折叠状态，根据当前折叠状态**取反**（每次点击购物车后都与前一次状态相反）
+	- 通过listShow计算返回到v-show
+	- 每次listShow计算时，show为true时，会调用BScroll，以便可以调用cartcontrol组件的所有功能(cartcontrol有依赖BScroll),也可以实现购物列表的滚动功能
+6.3 点击购物车执行toggleList方法, 切换折叠状态
+6.4 清空功能
+	- 遍历selectFoods数组，将food.count设为0，所有根据selectFoods计算的属性会重新计算
+6.5 背景遮罩
+	- 遮住整个屏幕除shopcart组件外的所有内容，故设置它与.shopcart同级
+	- 遮罩样式
+	- 点击遮罩，列表折叠功能
+7 结算功能
+	- 阻止冒泡
 
 ### 购物按钮组件
 1. 与goods父组件通信，获得food对象

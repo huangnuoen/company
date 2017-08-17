@@ -25,9 +25,9 @@
     <div class="shopcart-list" v-show="listShow" transition="fold">
       <div class="list-header">
         <h1 class="title">购物车</h1>
-        <span class="empty">清空</span>
+        <span class="empty" @click="empty">清空</span>
       </div>
-      <div class="list-content">
+      <div class="list-content" v-el:list-content>
         <ul>
           <li class="food border-1px" v-for="food in selectFoods">
             <span class="name">{{food.name}}</span>
@@ -40,6 +40,7 @@
       </div>
     </div>
   </div>
+  <div class="list-mask" v-show="listShow" transition="fade" @click="hideList"></div>
 </template>
 
 <script>
@@ -132,6 +133,19 @@
         }
         // 数量不为0时，要根据当前的折叠状态取反
         let show = !this.fold;
+        if (show) {
+					// 在DOM更新完后初始化BScroll
+					this.$nextTick(() => {
+						if (!this.scroll) {
+							this.scroll = new BScroll(this.$els.listContent, {
+								click: true
+							});
+						} else {
+							// 重新计算
+							this.scroll.refresh();
+						}
+					});
+        }
         return show;
       }
     },
@@ -150,16 +164,25 @@
         }
       },
       pay() {
-        if (this.totalPrice < this.minPrice) {
-          return;
-        }
-        window.alert(`支付${this.totalPrice}元`);
+				if (this.totalPrice < this.minPrice) {
+					return;
+				}
+				window.alert(`支付${this.totalPrice}元`);
       },
       toggleList() {
         if (!this.totalCount) {
           return;
         }
         this.fold = !this.fold;
+      },
+      hideList() {
+				this.fold = true;
+      },
+      empty() {
+				this.selectFoods.forEach((food) => {
+					// 将数量都设为0,其它计算属性都会重新计算
+					food.count = 0;
+				});
       }
     },
     transitions: {
@@ -373,5 +396,19 @@
       			position: absolute
       			right: 0
       			bottom: 6px
-      			
+	.list-mask
+		position: fixed
+		top: 0
+		left: 0
+		width: 100%
+		height: 100%
+		z-index: 40
+		backdrop-filter: blur(10px)
+		&.fade-transition
+			transition: all .3s
+			opacity: 1
+			background: rgba(7, 17, 27, .6)
+		&.fade-enter, &.fade-leave
+			opacity: 0
+			background: rgba(7, 17, 27, 0)
 </style>
