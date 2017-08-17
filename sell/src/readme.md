@@ -1,19 +1,19 @@
 ### vue-router
 1. 配置
-	- 将组件(components)映射到路由(routes)，然后告诉 vue-router 在哪里渲染它们。
+- 将组件(components)映射到路由(routes)，然后告诉 vue-router 在哪里渲染它们。
 	1.1 使用模块化机制编程，導入Vue和VueRouter，要调用 Vue.use(VueRouter)
 	1.2 实例化 new VueRouter()
 	1.3 在a中设置v-link="{path: '/goods'}"跳转路径
-	1.3 router.map()配置路由
-		- 定义路径的组件
-		```
-		router.map({
-			'/goods': {
-				component: goods
-			}
-		});
-		```
-	1.4 挂钩到文档相应位置
+	1.4 router.map()配置路由
+    	- 定义路径的组件
+	```
+	router.map({
+		'/goods': {
+			component: goods
+		}
+	});
+	```
+	1.5 挂钩到文档相应位置
 	```
 	router.start(app, '#app');
 
@@ -105,11 +105,11 @@
 	<router-view :seller="seller"></router-view>
 	```
 4. 模板内绑定的属性用连字符，props中要用驼峰命名
-5. 引入子组件cartcontral
+5. 引入子组件cartcontrol
 	- 传入food对象到子组件
 	- 子组件通过父组件goods的点击事件，新增了food.count属性，并传给了父组件，selectFoods数组中的food对象也拥有了count属性
 6. 计算selectFoods
-	- 根据cartcontral返回的food.count, 将被选择的food对象保存在selectFoods中
+	- 根据cartcontrol返回的food.count, 将被选择的food对象保存在selectFoods中
 7. 引入子组件shopcart
 	- 传入selectFoods数组，使该子组件可计算出总量，总价等
 
@@ -125,7 +125,7 @@
 	- 通过computed, 根据购物车总价与起送价差值，绑定不同类名
 5. 小球飞入动画
 5.1 定义this.balls数组为5个ball对象(能同时有5个小球进行drop动画)，存放小球以供使用
-5.2 需要获得点击按钮的位置，通过$dispatch从goods的子组件cartcontral获得target，在goods的events中传入target,调用方法，再在方法中通过$nextTick回调（在DOM更新好再执行）中再去通过$resf将target传给goods的子组件shopcart
+5.2 需要获得点击按钮的位置，通过$dispatch从goods的子组件cartcontrol获得target，在goods的events中传入target,调用方法，再在方法中通过$nextTick回调（在DOM更新好再执行）中再去通过$resf将target传给goods的子组件shopcart
 ```
   <!-- v-ref:shopcart 注册对子组件的引用，可在vue实例上用$refs访问该子组件 -->
   <shopcart v-ref:shopcart :select-foods="selectFoods" :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"></shopcart>
@@ -150,13 +150,18 @@
 ```
 transition: all .4s cubic-bezier(0.49, -0.29, 0.75, 0.41)
 ```
+6. 购物车详情页
+6.1 引用注册cartcontrol组件，将food对象传入子组件
+6.2 判断是否有shoplist,
+	- 无，设置this.fold = true, listShow返回false
+	- 有，记录shoplist的当前折叠状态，根据当前折叠状态**取反**（每次点击购物车后都与前一次状态相反）
 
 ### 购物按钮组件
 1. 与goods父组件通信，获得food对象
 ```
 // goods, food是在goods对象中获得的
-<cartcontral :food="food"></cartcontral>
-// cartcontral
+<cartcontrol :food="food"></cartcontrol>
+// cartcontrol
 props: {
 	food: {
 		type: Object

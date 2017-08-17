@@ -22,6 +22,23 @@
         <div class="inner inner-hook"></div>
       </div>
     </div>
+    <div class="shopcart-list" v-show="listShow" transition="fold">
+      <div class="list-header">
+        <h1 class="title">购物车</h1>
+        <span class="empty">清空</span>
+      </div>
+      <div class="list-content">
+        <ul>
+          <li class="food" v-for="food in selectFoods">
+            <span class="name">{{food.name}}</span>
+            <div class="price"><span>￥{{food.price * food.count}}</span></div>
+            <div class="cartcontrol-wrapper">
+              <cartcontrol :food="food"></cartcontrol>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -106,6 +123,15 @@
         } else {
           return 'enough';
         }
+      },
+      listShow() {
+        if (!this.totalCount) {
+          this.fold = true;
+          return false;
+        }
+        // 数量不为0时，要根据当前的折叠状态取反
+        let show = !this.fold;
+        return show;
       }
     },
     methods: {
@@ -127,6 +153,12 @@
           return;
         }
         window.alert(`支付${this.totalPrice}元`);
+      },
+      toggleList() {
+        if (!this.totalCount) {
+          return;
+        }
+        this.fold = !this.fold;
       }
     },
     transitions: {
@@ -289,4 +321,21 @@
             border-radius: 50%
             background: rgb(0, 160, 220)
             transition: all .4s linear
+    .shopcart-list
+      position: absolute
+      top: 0
+      left: 0
+      z-index: -1
+      width: 100%
+      &.fold-transition
+        transition: all 0.5s
+        transform: translate3d(0, -100%, 0)/* 向上移动本身的高度 */
+      &.fold-enter, &.fold-leave
+        transform: translate3d(0, 0, 0)
+      .list-header
+        height: 40px
+        line-height: 40px
+        padding: 0 18px
+        background: #f3f5f7
+        
 </style>
