@@ -229,7 +229,9 @@ props: {
 ### ratingselect 评价选择查看组件
 1. 功能：
 	- 可以选择查看有内容的评价
-	- 可以接收到评价的数量和分类
+	- 可以接收到评价的数量和分类，可选择查看不同类型的评价
 	- 可以选择显示什么描述
-2. props接受父组件的food.ratings, 描述类型，选择类型，只看内容
-3. 
+2. props接受父组件的food.ratings, 描述类型，选择类型，只看内容选择，在子组件上这些值改变后要重新传回父组件
+3. 查看不同类型的评价
+3.1 在按钮上绑定select()，传入该项selectType值和event，赋值给this.selectType
+3.2 将this.selectType新值也传回父组件中
