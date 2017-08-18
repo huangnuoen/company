@@ -15,7 +15,7 @@
 	  		<li v-for="item in goods" class="food-list food-list-hook">
 	  			<h1 class="title">{{item.name}}</h1>
 	  			<ul>
-	  				<li v-for="food in item.foods" class="food-item border-1px">
+	  				<li v-for="food in item.foods" class="food-item border-1px" @click="selectFood(food,$event)">
 	  					<div class="icon"><img width="57" height="57" :src="food.icon"></div>
 	  					<div class="content">
 	  						<h2 class="name">{{food.name}}</h2>
@@ -39,6 +39,7 @@
 	  </div>
 	  <!-- v-ref:shopcart 注册对子组件的引用，可在vue实例上用$refs访问该子组件 -->
 	  <shopcart v-ref:shopcart :select-foods="selectFoods" :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"></shopcart>
+	  <food :food="selectedFood" v-ref:food></food>
 	</div>
 </template>
 
@@ -46,6 +47,7 @@
 	import BScroll from 'better-scroll';
 	import shopcart from 'components/shopcart/shopcart';
 	import cartcontrol from 'components/cartcontrol/cartcontrol';
+	import food from 'components/food/food';
 	const ERR_OK = 0;
 	export default {
 		props: {
@@ -59,7 +61,9 @@
 				goods: [],
 				listHeight: [],
 				// 变量
-				scrollY: 0
+				scrollY: 0,
+				// 当前点击的food-item
+				selectedFood: {}
 			};
 		},
 		computed: {
@@ -69,7 +73,6 @@
 					let height1 = this.listHeight[i];
 					let height2 = this.listHeight[i + 1];
 					if (!height2 || this.scrollY >= height1 && this.scrollY < height2) {
-						console.log(i, this.scrollY, height1);
 						return i;
 					}
 				}
@@ -103,6 +106,14 @@
 			this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee'];
     },
     methods: {
+			selectFood(food, event) {
+				if (!event._constructed) {
+					return;
+				};
+				console.log('选择成功');
+				this.selectedFood = food;
+				this.$refs.food.show();
+			},
 			selectMenu(index, event) {
 				// 如果是浏览器原生事件时,避免PC端点击2次的问题
 				if (!event._constructed) {
@@ -134,18 +145,18 @@
 					height += item.clientHeight;
 					this.listHeight.push(height);
 				}
-				console.log(this.listHeight);
       },
       _drop(target) {
         // 体验优化,异步执行下落动画
         this.$nextTick(() => {
-          this.$refs.shopcart.drop(target);
+          this.$refs.shopcart.drop(target);// 调用子组件方法
         });
       }
     },
     components: {
 			shopcart,
-			cartcontrol
+			cartcontrol,
+			food
     },
 		events: {
 			'cart.add'(target) {

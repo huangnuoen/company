@@ -1,11 +1,11 @@
 ### vue-router
 1. 配置
 - 将组件(components)映射到路由(routes)，然后告诉 vue-router 在哪里渲染它们。
-	1.1 使用模块化机制编程，導入Vue和VueRouter，要调用 Vue.use(VueRouter)
-	1.2 实例化 new VueRouter()
-	1.3 在a中设置v-link="{path: '/goods'}"跳转路径
-	1.4 router.map()配置路由
-    	- 定义路径的组件
+1.1 使用模块化机制编程，導入Vue和VueRouter，要调用 Vue.use(VueRouter)
+1.2 实例化 new VueRouter()
+1.3 在a中设置v-link="{path: '/goods'}"跳转路径
+1.4 router.map()配置路由
+    - 定义路径的组件
 	```
 	router.map({
 		'/goods': {
@@ -13,12 +13,10 @@
 		}
 	});
 	```
-	1.5 挂钩到文档相应位置
-	```
-	router.start(app, '#app');
-
-	```
-
+1.5 挂钩到文档相应位置
+```
+router.start(app, '#app');
+```
 
 ### vue-source
 - 用于前后端通信
@@ -40,22 +38,22 @@
 
 ### header.vue
 1. 绑定父组件数据到子组件
-	1.1 父组件的tem中，seller的信息是“seller1”，会传到子组件中
-	<v-header v-bind:seller="seller1"></v-header>
-	1.2 子组件中，用props声明它期待获得的数据————父组件信息
-	```
-	props: {
-		// 声明想从父组件得到seller的信息
-		seller: {
-			type: Object
-		}
+1.1 父组件的tem中，seller的信息是“seller1”，会传到子组件中
+<v-header v-bind:seller="seller1"></v-header>
+1.2 子组件中，用props声明它期待获得的数据————父组件信息
+```
+props: {
+	// 声明想从父组件得到seller的信息
+	seller: {
+		type: Object
 	}
-	```
-	1.3 子组件中的元素属性要引用props获得的数据，必须要用:绑定，元素内容的引用可直接引用
-	```
-	<img :src="seller.avatar" width="64" height="64">
-	<span>{{seller.name}}</span>
-	```
+}
+```
+1.3 子组件中的元素属性要引用props获得的数据，必须要用:绑定，元素内容的引用可直接引用
+```
+<img :src="seller.avatar" width="64" height="64">
+<span>{{seller.name}}</span>
+```
 2. 编写header.vue的模板
 3. 弹出层
 	3.1 根据点击判断弹出层是否显示
@@ -204,3 +202,26 @@ props: {
 			.inner
 				transform: rotate(360deg)
 	```
+
+### Food.vue 商品详情页
+1. 接收goods中传来的food对象
+	- food元素中绑定:food="selectedFood"
+2. 控制food是否show
+2.4 food.vue中方法show(), 控制this.showFlag=true
+2.5 show()方法是由父组件goods调用
+	- 在goods中的.food-item中监听点击，调用goods中的方法selectFood(),传入该项的food, $event为参数
+	- selectFood()中，将传入的food赋给this.selectedFood，food.vue即可接收到
+	- selectFood()中，调用子组件food方法show()
+3. CSS
+3.1 头图是宽高相等，图片加载完才能完整出现，加载过程会有向下抖动现象,可以先用外层元素占位
+	- 外层元素width=100%,height=0,padding-top=100%,padding-top是根据width计算的，所以会等于width
+	- 里层img绝对定位，width=height=100%
+3.2 加入购物车按钮要覆盖在cartcontrol上，当count>0时，加入购物车v-show=false
+4. 点击加入购物车，实现count=1，实现按钮消失，实现小球飞入动画
+	- 小球动画，将目标传入goods中的cart.add事件
+	```
+	this.$dispatch('cart.add', event.target);
+	```
+	- 实现下降动画，要根据当前点击目标的位置计算的，所以按钮消失必须在下降动画开始之后才实现
+		- 方法一：调用$nextTick
+		- 方法二：给按钮消失也加入动画，让它渐渐消失，留有足够时间进行下降动画
