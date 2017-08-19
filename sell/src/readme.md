@@ -231,6 +231,8 @@ props: {
 7.1 在列表<li>上设置v-show="needShow(rating.rateType, rating.text)",通过这个方法去判断列表如何展示。
 7.2 将needShow()传入的参数和子组件返回的数据（通过$dispatch监听获得）比较
 7.3 由于该操作会改变DOM结构，所以需要在dom更新完后再次调用this.scroll.refresh()
+8. 日期格式化
+	- 采用vue.filters过滤器，将时间截转化为标准日期格式
 
 ### ratingselect 评价选择查看组件
 1. 功能：
