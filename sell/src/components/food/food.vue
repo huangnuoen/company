@@ -29,6 +29,21 @@
 	  	<div class="rating">
 	  		<h1 class="title">商品评价</h1>
 		  	<ratingselect :ratings="food.ratings" :select-type="selectType" :only-content="onlyContent" :desc="desc"></ratingselect>
+		  	<div class="rating-wrapper">
+		  		<ul v-show="food.ratings && food.ratings.length">
+		  			<li class="rating-item border-1px" v-for="rating in food.ratings" v-show="needShow(rating.rateType, rating.text)">
+		  				<div class="user">
+		  					<span class="name">{{rating.username}}</span>
+		  					<img width="12" height="12" class="avatar" :src="rating.avatar" >
+		  				</div>
+		  				<div class="time">{{rating.rateTime | formatDate}}</div>
+				  		<p class="text">
+				  			<span :class="{'icon-thumb_up': rating.rateType === 0, 'icon-thumb_down': rating.rateType === 1}"></span>{{rating.text}}
+				  		</p>
+		  			</li>
+		  		</ul>
+		  		<div v-show="!food.ratings || !food.ratings.length" class="no-rating">暂无评价</div>
+		  	</div>
 	  	</div>
   	</div>
   </div>
@@ -37,6 +52,7 @@
 <script>
 	import Vue from 'vue';
 	import BScroll from 'better-scroll';
+	import {formatDate} from 'common/js/date';
 	import cartcontrol from 'components/cartcontrol/cartcontrol';
 	import split from 'components/split/split';
 	import ratingselect from 'components/ratingselect/ratingselect';
@@ -63,11 +79,17 @@
 				onlyContent: true
 			};
 		},
+		filters: {
+			formatDate(time) {
+				let date = new Date(time);
+				return formatDate(date, 'yyyy-MM-dd  hh:mm');
+			}
+		},
 		methods: {
 			show() {
 				this.showFlag = true;
 				// 在展示详情时，都恢复默认设置
-				this.selectType = ALL;
+				this.selectType = 2;
 				this.onlyContent = true;
 				this.$nextTick(() => {
 					if (!this.scroll) {
@@ -92,6 +114,35 @@
 				// this.$nextTick(() => {
 				// Vue.set(this.food, 'count', 1);
 				// });
+			},
+			// 如何展示评价列表
+			needShow(type, text) {
+				// 内容判断
+				if (this.onlyContent && !text) {
+					return false;
+				}
+				// 类型判断
+				if (this.selectType === ALL) {
+					return true;
+				} else {
+					return this.selectType === type;
+				}
+			}
+		},
+		events: {
+			'ratingtype.select'(type) {
+				this.selectType = type;
+				// 上一步操作会改变dom的高度，需重新调用BScroll，且必须在DOM更新完后才能调用
+				this.$nextTick(() => {
+					this.scroll.refresh();
+				});
+			},
+			'content.toggle'(onlyContent) {
+				this.onlyContent = onlyContent;
+				// 上一步操作会改变dom的高度，需重新调用BScroll，且必须在DOM更新完后才能调用
+				this.$nextTick(() => {
+					this.scroll.refresh();
+				});
 			}
 		},
 		components: {
@@ -104,12 +155,14 @@
 
 <!-- lang="stylus" rel="stylesheet/stylus" -->
 <style lang="stylus" rel="stylesheet/stylus">
+	@import "../../common/stylus/mixin.styl"
 	.food
 		position: fixed
 		top: 0
 		left: 0
 		bottom: 48px
 		z-index: 30
+		overflow: hidden
 		width: 100%
 		background: #fff
 		&.move-transition
@@ -212,6 +265,45 @@
 				line-height: 14px
 				font-size: 14px
 				color: rgb(7, 17, 27)
+			.rating-wrapper
+				padding: 0 18px
+				.rating-item
+					position: relative
+					padding: 16px 0
+					border-1px(rgba(7, 17, 27, .1))
+					color: rgb(147, 153, 159)
+					.user
+						font-size: 0
+						position: absolute
+						right: 0
+						top: 16px
+						line-height: 12px
+						.name
+							display: inline-block
+							vertical-align: top
+							font-size: 10px
+							margin-right: 6px
+						.avatar
+							border-radius: 50%
+					.time
+						font-size: 10px
+						margin-bottom: 6px
+					.text
+						line-height: 12px
+						font-size: 12px
+						color: rgb(7, 17, 27)
+						.icon-thumb_up, .icon-thumb_down
+							margin-right: 4px
+							line-height: 24px
+							font-size: 12px
+						.icon-thumb_up
+							color: rgb(0, 160, 220)
+						.icon-thumb_down
+							color: rgb(147, 153, 159)
+				.no-rating
+					padding: 16px 0
+					font-size: 14px
+					color: rgb(147, 153, 159)
 
 
 </style>

@@ -2,8 +2,8 @@
   <div class="ratingselect">
   	<div class="rating-type border-1px">
   		<span @click="select(2,$event)" class="block all" :class="{'active':selectType === 2}">{{desc.all}}<span class="count">{{ratings.length}}</span></span>
-  		<span @click="select(1, $event)" class="block positive" :class="{'active':selectType === 1}">{{desc.positive}}<span class="count">{{positives.length}}</span></span>
-  		<span @click="select(0,$event)" class="block negative" :class="{'active':selectType === 0}">{{desc.negative}}<span class="count">{{negatives.length}}</span></span>
+  		<span @click="select(0, $event)" class="block positive" :class="{'active':selectType === 0}">{{desc.positive}}<span class="count">{{positives.length}}</span></span>
+  		<span @click="select(1,$event)" class="block negative" :class="{'active':selectType === 1}">{{desc.negative}}<span class="count">{{negatives.length}}</span></span>
   	</div>
   	<div class="switch" :class="{'on':onlyContent === true}" @click="toggleContent($event)">
   		<span class="icon-check_circle"></span>
@@ -13,8 +13,8 @@
 </template>
 
 <script>
-	// const POSITIVE = 0;
-	// const NEGATIVE = 1;
+	const POSITIVE = 0;
+	const NEGATIVE = 1;
 	const ALL = 2;
 	export default {
 		props: {
@@ -46,18 +46,19 @@
 				}
 			}
 		},
-/*		computed: {
+		computed: {
 			positives() {
 				return this.ratings.filter((rating) => {
-					return rating.ratetype === POSITIVE;
+					return rating.rateType === POSITIVE;
 				});
 			},
 			negatives() {
 				return this.ratings.filter((rating) => {
-					return rating.ratetype === NEGATIVE;
+					return rating.rateType === NEGATIVE;
+				});
 			}
 		},
-*/		methods: {
+		methods: {
 			select(type, event) {
 				if (!event._constructed) {
 					return;

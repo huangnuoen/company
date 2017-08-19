@@ -1,5 +1,5 @@
 @charset "UTF-8";
-header { width: 100%; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; padding-left: 19px; padding-left: .2rem; font-family: "黑体"; }
+header { width: 100%; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; padding-left: 19px; padding-left: .2rem; font-family: "黑体"; border-bottom: 1px soldi #ccc; }
 
 header div.logo { display: inline-block; }
 

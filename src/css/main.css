@@ -360,14 +360,14 @@ section.instance > div > div.instance div h3 {
 section.instance > div > div.instance div p {
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   text-overflow: ellipsis;
   font-size: .9em;
   width: 100%;
-  height: 80px;
+  /* height: 80px; */
   width: 3rem;
-  height: .5rem;
-  line-height: 2;
+  /* height: .5rem; */
+  line-height: 1.6;
   overflow: hidden;
 }
 
@@ -428,7 +428,7 @@ section.new div.new > div h4 {
 section.new div.new > div p {
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   text-overflow: ellipsis;
   color: #9e9e9e;
   margin: 0 7.49%;

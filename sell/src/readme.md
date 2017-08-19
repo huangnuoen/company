@@ -225,6 +225,12 @@ props: {
 	- 实现下降动画，要根据当前点击目标的位置计算的，所以按钮消失必须在下降动画开始之后才实现
 		- 方法一：调用$nextTick
 		- 方法二：给按钮消失也加入动画，让它渐渐消失，留有足够时间进行下降动画
+5. 引入评价选择组件
+6. 评价列表
+7. 将ratingselect.vue传回的数据和评价列表联动绑定
+7.1 在列表<li>上设置v-show="needShow(rating.rateType, rating.text)",通过这个方法去判断列表如何展示。
+7.2 将needShow()传入的参数和子组件返回的数据（通过$dispatch监听获得）比较
+7.3 由于该操作会改变DOM结构，所以需要在dom更新完后再次调用this.scroll.refresh()
 
 ### ratingselect 评价选择查看组件
 1. 功能：
@@ -232,6 +238,7 @@ props: {
 	- 可以接收到评价的数量和分类，可选择查看不同类型的评价
 	- 可以选择显示什么描述
 2. props接受父组件的food.ratings, 描述类型，选择类型，只看内容选择，在子组件上这些值改变后要重新传回父组件
+	- 将这些数据传给父组件，才能判断评价列表要如何显示
 3. 查看不同类型的评价
 3.1 在按钮上绑定select()，传入该项selectType值和event，赋值给this.selectType
 3.2 将this.selectType新值也传回父组件中
