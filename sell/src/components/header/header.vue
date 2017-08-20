@@ -34,7 +34,7 @@
 	  			<h1 class="name">{{seller.name}}</h1>
 	  			<div class="star-wrapper">
 		  			<!-- 传入48到star的size中 -->
-		  			<star :size="32" :score="seller.score"></star>	  				
+		  			<star :size="36" :score="seller.score"></star>	  				
 	  			</div>
 		  		<div class="title">
 		  			<div class="line"></div>

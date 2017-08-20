@@ -34,4 +34,4 @@ router.map({// vue1
 });
 
 router.start(app, '#app');// vue1
-router.go('/goods');// vue1
+// router.go('/goods');// vue1
