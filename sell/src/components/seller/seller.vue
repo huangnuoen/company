@@ -28,7 +28,7 @@
   					</div>
   				</li>
   			</ul>
-        <div class="favorite">
+        <div class="favorite" @click="toggleFavorite($event)">
           <span class="icon-favorite" :class="{'active': favorite}"></span>
           <span class="text">{{favoriteText}}</span>
         </div>
@@ -88,7 +88,7 @@
     },
     computed: {
       favoriteText() {
-        return this.favorite ? '已收藏' : '未收藏';
+        return this.favorite ? '已收藏' : '收藏';
       }
     },
     methods: {
@@ -119,6 +119,12 @@
             this.picScroll.refresh();
           });
         }
+      },
+      toggleFavorite(event) {
+        if (!event._constructed) {
+          return;
+        }
+        this.favorite = !this.favorite;
       }
     },
     // DOM加载后执行
@@ -152,6 +158,7 @@
     width: 100%
     overflow: hidden
     .overview
+      position: relative
       padding: 18px
       .title
         margin-bottom: 8px
@@ -194,6 +201,25 @@
             line-height: 24px
             .stress
               font-size: 24px
+      .favorite
+        position: absolute
+        top: 18px
+        right: 8px
+        width: 50px
+        text-align: center
+        .icon-favorite
+          display: block
+          margin-bottom: 4px
+          color: #d4d6d9
+          font-size: 24px
+          line-height: 24px
+          &.active
+            color: rgb(240, 20, 20)
+        .text
+          display: block
+          font-size: 10px
+          color: rgb(77, 85, 93)
+          line-height: 10px
     .bulletin
       padding: 18px 18px 0 18px
       .title
