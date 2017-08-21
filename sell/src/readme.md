@@ -110,6 +110,9 @@ props: {
 	- 根据cartcontrol返回的food.count, 将被选择的food对象保存在selectFoods中
 7. 引入子组件shopcart
 	- 传入selectFoods数组，使该子组件可计算出总量，总价等
+8. 引入子组件food.vue
+	- 点击调用selectFood(),传入food并赋给this.selectFood,将this.selectFood通过props传给food.vue
+	- 通过$refs调用子组件food方法show(),控制<food>是否展示
 
 ### 购物车组件
 1. 与goods父组件通信，获得selectFoods数组（商品单价和数量），seller对象（配送费，起送价的数据）

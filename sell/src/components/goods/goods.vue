@@ -110,7 +110,6 @@
 				if (!event._constructed) {
 					return;
 				};
-				console.log('选择成功');
 				this.selectedFood = food;
 				this.$refs.food.show();
 			},
