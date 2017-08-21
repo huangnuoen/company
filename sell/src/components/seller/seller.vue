@@ -204,7 +204,7 @@
       .favorite
         position: absolute
         top: 18px
-        right: 8px
+        right: 11px
         width: 50px
         text-align: center
         .icon-favorite
