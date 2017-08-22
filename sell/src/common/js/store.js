@@ -31,6 +31,12 @@ export function loadFromLocal(id, key, def) {
 	if (!seller) {
 		return def;
 	}
+	// 获取当前商家
 	seller = JSON.parse(seller)[id];
+	// 如果没有存储过该商家
+	if (!seller) {
+		return def;
+	};
+	// let ret = seller[key];
 	return seller[key] || def;
 };

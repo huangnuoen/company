@@ -72,6 +72,7 @@
   import BScroll from 'better-scroll';
   import star from 'components/star/star';
   import split from 'components/split/split';
+  import {saveToLocal, loadFromLocal} from '../../common/js/store';
 	export default {
 		props: {
 			seller: {
@@ -80,7 +81,10 @@
 		},
     data() {
       return {
-        favorite: false
+        favorite: (() => {
+          // 读取当前id的favorite值
+          return loadFromLocal(this.seller.id, 'favorite', false);
+        })()
       };
     },
     created() {
@@ -120,11 +124,14 @@
           });
         }
       },
+      // 切换收藏状态，并存储在本地
       toggleFavorite(event) {
         if (!event._constructed) {
           return;
         }
         this.favorite = !this.favorite;
+        // 存储
+        saveToLocal(this.seller.id, 'favorite', this.favorite);
       }
     },
     // DOM加载后执行

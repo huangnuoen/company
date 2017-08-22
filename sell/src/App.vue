@@ -8,7 +8,7 @@
       <div class="tab-item"><a v-link="{path:'/seller'}">商家</a></div>
     </div>
     <!-- 路由外链 路由匹配到的组件将渲染在这里 -->
-    <router-view :seller="seller"></router-view>
+    <router-view :seller="seller" keep-alive></router-view>
   </div>
 </template>
 
@@ -36,6 +36,7 @@
       // 根据id获取不同的商家数据
       this.$http.get('/api/seller?id' + this.seller.id).then((response) => {
         response = response.body;
+        console.log(this.seller.id);
         if (response.errno === ERR_OK) {
           // 不能直接赋值，因为response.data中没有id的信息
           // this.seller = response.data;

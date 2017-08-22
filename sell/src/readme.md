@@ -253,3 +253,5 @@ props: {
 2. 设置seller的id
 3. created()中获取该id的商家信息
 4. 回调函数中，将获取的response.data和this.seller，用Object.assign()合并，保留了id的信息
+5. 在toogleFavorite()中,将this.favorite保存在本地
+6. 在data中初始化中，先读取localStorage中的数据
