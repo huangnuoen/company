@@ -51,7 +51,6 @@
 	  		</ul>
 	  	</div>
   	</div>
-	  <shopcart v-ref:shopcart :select-foods="selectFoods" :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"></shopcart>
   </div>
 </template>
 
@@ -62,7 +61,6 @@
   import split from 'components/split/split';
   import ratingselect from 'components/ratingselect/ratingselect';
 	import shopcart from 'components/shopcart/shopcart';
-
 	// const POSITIVE = 0;
 	// const NEGATIVE = 1;
 	const ALL = 2;
