@@ -247,3 +247,9 @@ props: {
 3. 查看不同类型的评价
 3.1 在按钮上绑定select()，传入该项selectType值和event，赋值给this.selectType
 3.2 将this.selectType新值也传回父组件中
+
+### 浏览器 本地存储
+1. 通过urlParse解析获得不同商家seller的id号
+2. 设置seller的id
+3. created()中获取该id的商家信息
+4. 回调函数中，将获取的response.data和this.seller，用Object.assign()合并，保留了id的信息

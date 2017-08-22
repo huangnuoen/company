@@ -4,6 +4,7 @@
  * @return   Object {id: 123456, a: b}
  */
 export function urlParse() {
+	// 获取当前url(从?开始)
 	let url = window.location.search;
 	let obj = {};
 	// 问号和&号后跟着非？&的字符1个或多个，后面用=连接, 后面跟着非？&的字符

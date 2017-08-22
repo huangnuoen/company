@@ -24,8 +24,8 @@
       return {
         seller: {
           id: (() => {
+            // 获取解析后的id
             let queryParam = urlParse();
-            console.log(queryParam);
             return queryParam.id;
           })()
         }
@@ -33,10 +33,14 @@
     },
     // 在实例被创建后调用
     created() {
-      this.$http.get('/api/seller').then((response) => {
+      // 根据id获取不同的商家数据
+      this.$http.get('/api/seller?id' + this.seller.id).then((response) => {
         response = response.body;
         if (response.errno === ERR_OK) {
-          this.seller = response.data;
+          // 不能直接赋值，因为response.data中没有id的信息
+          // this.seller = response.data;
+          // 采用assign()拷贝
+          this.seller = Object.assign({}, this.seller, response.data);
         }
       });
     },
