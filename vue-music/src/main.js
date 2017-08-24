@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
-import './common/stylus/index.styl'
+import 'common/stylus/index.styl'
 
 /* eslint-disable no-unused-vars */
 // import vConsole from 'vconsole'
