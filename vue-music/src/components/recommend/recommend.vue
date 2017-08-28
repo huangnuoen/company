@@ -1,6 +1,7 @@
 <template>
 	<div class="recommend">
 		<div class="recommend-content">
+			<!-- 获取到数据后才渲染 -->
 			<div v-if="recommends.length" class="slider-wrapper">
 				<slider>
 					<!-- 轮播图图片 -->

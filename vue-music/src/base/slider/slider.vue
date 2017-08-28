@@ -4,18 +4,20 @@
 			<!-- 插入父组件的DOM -->
 			<slot></slot>
 		</div>
-		<div class="dots"></div>
+		<div class="dots">
+			<span class="dot" v-for="(item, index) in dots" :class="{active: currentPageIndex === index}"></span>
+		</div>
 	</div>
 </template>
 
 <script>
-	// import BScroll from 'better-scroll'
+	import BScroll from 'better-scroll'
 	import {addClass} from 'common/js/dom'
 	export default {
 		props: {
 			loop: {
 				type: Boolean,
-				default: true
+				default: false
 			},
 			autoPlay: {
 				type: Boolean,
@@ -28,12 +30,15 @@
 		},
 		data() {
 			return {
-				children: []
+				dots: [],
+				currentPageIndex: 0
 			}
 		},
+		// el挂钩到实例后调用
 		mounted() {
 			setTimeout(() => {
 				this._setSliderWidth()
+				this._initDots()
 				this._initSlider()
 			}, 20)
 		},
@@ -53,7 +58,21 @@
 				}
 				this.$refs.sliderGroup.style.width = width + 'px'
 			},
-			_initSlider() {}
+			_initDots() {
+				this.dots = new Array(this.children.length)
+			},
+			_initSlider() {
+				this.slider = new BScroll(this.$refs.slider, {
+					click: true,
+					scrollX: true,
+					momentum: false,
+					snap: true,
+					snapLoop: this.loop,
+					snapThreshold: 0.3,
+					snapSpeed: 400
+				})
+				console.log(this.loop, this.children)
+			}
 		}
 	}
 </script>
@@ -80,4 +99,21 @@
 					img
 						display: block
 						width: 100%
+		.dots
+			position: absolute
+			right: 0
+			left: 0
+			bottom: 12px
+			text-align: center
+			.dot
+				display: inline-block
+				margin: 0 4px
+				width: 8px
+				height: 8px
+				border-radius: 50%
+				background: $color-text-l
+				&.active
+					width: 20px
+					border-radius: 5px
+					background: $color-text-ll
 </style>
