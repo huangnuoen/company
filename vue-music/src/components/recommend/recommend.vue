@@ -1,10 +1,10 @@
 <template>
 	<div class="recommend">
 		<div class="recommend-content">
-			<div class="slider-wrapper">
+			<div v-if="recommends.length" class="slider-wrapper">
 				<slider>
 					<!-- 轮播图图片 -->
-					<div v-for="item in recommends" class="slider-item">
+					<div v-for="item in recommends">
 						<a :href="item.linkUrl">
 							<img :src="item.picUrl" alt="">
 						</a>

@@ -8,6 +8,14 @@
 3. <slot></slot> 可在该处插入父组件的dom
 	- 需要用到父组件的数据，可直接在父组件中书写，也方便slider.vue的抽象化和复用
 4. 思路
-4.1 在$el挂载后调用mounted方法，用setTimeout()保证方法在dom渲染后再调用
-4.2 setTimeout()依次调用this._setSliderWidth()设置轮播图宽度,this._initSlider()初始化组件
-4.3 _setSliderWidth(),_initSlider()都在methods中定义
+	4.1 在$el挂载后调用mounted方法，用setTimeout()保证方法在dom渲染后再调用
+	4.2 setTimeout()依次调用this._setSliderWidth()设置轮播图宽度,this._initSlider()初始化组件
+	4.3 _setSliderWidth(),_initSlider()都在methods中定义
+5. this._setSliderWidth()
+5.1 获得该组轮播的图片数组
+5.2 获得轮播图视口宽度
+5.3 遍历图片数组，设置类名，设置图片宽度=视品宽度
+
+### 公用js
+1. dom.js 所有对dom的操作方法
+1.1 类名操作

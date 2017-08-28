@@ -1,9 +1,6 @@
 <template>
-	<div class="slider" ref="slider
-
-
-	">
-		<div class="slider-group">
+	<div class="slider" ref="slider">
+		<div class="slider-group" ref="sliderGroup">
 			<!-- 插入父组件的DOM -->
 			<slot></slot>
 		</div>
@@ -12,7 +9,8 @@
 </template>
 
 <script>
-	import BScroll from 'better-scroll'
+	// import BScroll from 'better-scroll'
+	import {addClass} from 'common/js/dom'
 	export default {
 		props: {
 			loop: {
@@ -28,6 +26,11 @@
 				default: 4000
 			}
 		},
+		data() {
+			return {
+				children: []
+			}
+		},
 		mounted() {
 			setTimeout(() => {
 				this._setSliderWidth()
@@ -35,7 +38,21 @@
 			}, 20)
 		},
 		methods: {
-			_setSliderWidth() {},
+			_setSliderWidth() {
+				this.children = this.$refs.sliderGroup.children
+				let width = 0
+				let sliderWidth = this.$refs.slider.clientWidth
+				for (let i = 0; i < this.children.length; i++) {
+					let child = this.children[i]
+					addClass(child, 'slider-item')
+					child.style.width = sliderWidth + 'px'
+					width += sliderWidth
+				}
+				if (this.loop) {
+					width += 2 * sliderWidth
+				}
+				this.$refs.sliderGroup.style.width = width + 'px'
+			},
 			_initSlider() {}
 		}
 	}
