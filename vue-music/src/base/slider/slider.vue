@@ -40,6 +40,9 @@
 				this._setSliderWidth()
 				this._initDots()
 				this._initSlider()
+				if (this.autoPlay) {
+					this._play()
+				}
 			}, 20)
 		},
 		methods: {
@@ -72,6 +75,30 @@
 					snapSpeed: 400
 				})
 				console.log(this.loop, this.children)
+				// 滚动结束时改变圆点，并执行下一次自动播放
+				this.slider.on('scrollEnd', () => {
+					// 获取当前页的横向索引
+					let pageIndex = this.slider.getCurrentPage().pageX
+					if (this.loop) {
+						pageIndex -= 1
+					}
+					this.currentPageIndex = pageIndex
+					if (this.autoPlay) {
+						clearTimeout(this.timer)
+						this._play()
+					}
+				})
+			},
+			_play() {
+				let pageIndex = this.currentPageIndex + 1
+				if (this.loop) {
+					pageIndex += 1
+				}
+				console.log(pageIndex)
+				this.timer = setTimeout(() => {
+					// 跳转到相应图片
+					this.slider.goToPage(pageIndex, 0, 400)
+				}, this.interval)
 			}
 		}
 	}
