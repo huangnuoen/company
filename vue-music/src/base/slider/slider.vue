@@ -44,9 +44,20 @@
 					this._play()
 				}
 			}, 20)
+			// 监听浏览器窗口改变事件
+			window.addEventListener('resize', () => {
+				// 还没初始化时返回
+				if (!this.slider) {
+					return
+				}
+				// 参数是为确定不是首次设置宽度
+				this._setSliderWidth(true)
+				// 刷新bscroll
+				this.slider.refresh()
+			})
 		},
 		methods: {
-			_setSliderWidth() {
+			_setSliderWidth(isResize) {
 				this.children = this.$refs.sliderGroup.children
 				let width = 0
 				let sliderWidth = this.$refs.slider.clientWidth
@@ -56,7 +67,7 @@
 					child.style.width = sliderWidth + 'px'
 					width += sliderWidth
 				}
-				if (this.loop) {
+				if (this.loop && !isResize) {
 					width += 2 * sliderWidth
 				}
 				this.$refs.sliderGroup.style.width = width + 'px'
