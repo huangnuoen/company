@@ -56,6 +56,10 @@
 				this.slider.refresh()
 			})
 		},
+		// 在实例销毁时，清空定时器，以释放内存
+		distroyed() {
+			clearTimeout(this.timer)
+		},
 		methods: {
 			_setSliderWidth(isResize) {
 				this.children = this.$refs.sliderGroup.children

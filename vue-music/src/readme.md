@@ -11,3 +11,15 @@
 
 ## 基础vue组件
 1. slider.vue
+
+## API接口
+1. recommend.js 获取推荐数据
+
+## 后端请求
+1. dev-server.js 用express, axios库请后端请求数据
+2. express.Router()实例，向后端请求数据
+3. axios.get()重新配置header, params信息
+4. 
+
+### app.vue
+1. 用<keep-alive>保存当前路由状态
