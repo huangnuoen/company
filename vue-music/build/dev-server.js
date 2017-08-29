@@ -27,7 +27,9 @@ var apiRoutes = express.Router()
 // 通过后端请求数据到服务器‘/getDiscList’路径上
 // 定义网站‘getDiscList’页面的路由
 apiRoutes.get('/getDiscList', function(req, res) {
-  var url = 'https://c.y.qq.com/splcloud/fcgi-bin/fcg_get_diss_by_tag.fcg'
+  // var url = 'https://c.y.qq.com/splcloud/fcgi-bin/fcg_get_diss_by_tag.fcg'
+  // var url = 'https://c.y.qq.com/splcloud/fcgi-bin/fcg_get_diss_tag_conf.fcg'
+  var url = 'https://c.y.qq.com/splcloud/fcgi-bin/fcg_get_diss_tag_conf.fcg'
   // 用axios请求数据
   axios.get(url, {
     // 配置header

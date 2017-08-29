@@ -1,3 +1,4 @@
+import axios from 'axios'
 import jsonp from 'common/js/jsonp'
 import {commonParams, options} from './config'
 // 获取推荐数据
@@ -14,7 +15,8 @@ export function getRecommend() {
 }
 
 export function getDiscList() {
-	const url = 
+	// 从服务器请求
+	const url = '/api/getDiscList'
 	const data = Object.assign({}, commonParams, {
 		platform: 'yqq',
 		hostUin: 0,
@@ -23,8 +25,15 @@ export function getDiscList() {
 		sortId: 5,
 		needNewCode: 0,
 		categoryId: 10000000,
-		rnd: Math.random()
+		rnd: Math.random(),
+		format: 'json'
 	})
-	// 返回调用jsonp的结果，promise实例
-	return jsonp(url, data, options)
+	// 向服务器请求
+	return axios.get(url, {
+		// 配置参数
+		params: data
+	}).then((res) => {
+		// 新建Promise对象，成功时传入res.data
+		return Promise.resolve(res.data)
+	})
 }

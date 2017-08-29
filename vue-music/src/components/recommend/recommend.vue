@@ -45,7 +45,9 @@
 			},
 			_getDiscList() {
 				getDiscList().then((res) => {
+					console.log('成功2')
 					if (res.code === ERR_OK) {
+						console.log('成功')
 						console.log(res.data)
 					}
 				})
