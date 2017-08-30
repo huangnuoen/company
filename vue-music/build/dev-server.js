@@ -26,16 +26,12 @@ var app = express()
 var apiRoutes = express.Router()
 // 通过后端请求数据到服务器‘/getDiscList’路径上
 // 定义网站‘getDiscList’页面的路由
-apiRoutes.get('/getDiscList', function(req, res) {
+apiRoutes.get('/getDiscList', function (req, res) {
   var url = 'https://c.y.qq.com/splcloud/fcgi-bin/fcg_get_diss_by_tag.fcg'
-  // var url = 'https://c.y.qq.com/splcloud/fcgi-bin/fcg_get_diss_tag_conf.fcg'
-  // https://c.y.qq.com/splcloud/fcgi-bin/fcg_get_diss_by_tag.fcg
-  // https://c.y.qq.com/splcloud/fcgi-bin/fcg_get_diss_by_tag.fcg?rnd=0.22469494548209257&g_tk=1617356337&jsonpCallback=getPlaylist&loginUin=1261290560&hostUin=0&format=jsonp&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0&categoryId=10000000&sortId=5&sin=0&ein=29
-  // var url = 'https://c.y.qq.com/splcloud/fcgi-bin/fcg_get_diss_tag_conf.fcg'
   // 用axios请求数据
   axios.get(url, {
     // 配置header
-    header: {
+    headers: {
       referer: 'https://c.y.qq.com/',
       host: 'c.y.qq.com'
     },
@@ -48,6 +44,7 @@ apiRoutes.get('/getDiscList', function(req, res) {
     console.log(e)
   })
 })
+
 app.use('/api', apiRoutes)
 
 var compiler = webpack(webpackConfig)
