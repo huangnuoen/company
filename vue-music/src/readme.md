@@ -11,6 +11,11 @@
 
 ## 基础vue组件
 1. slider.vue
+2. scroll.vue
+	- 将BScroll的初始化抽象成组件
+	- 可向该组件传入配置信息
+	- <slot>可随意在父组件中插入要scroll的DOM
+	- watch实时监听data的变化
 
 ## API接口
 1. recommend.js 获取推荐数据

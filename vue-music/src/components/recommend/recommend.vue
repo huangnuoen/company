@@ -1,6 +1,6 @@
 <template>
 	<div class="recommend">
-		<div class="recommend-content">
+		<scroll class="recommend-content" :data="discList">
 			<div>
 				<div v-if="recommends.length" class="slider-wrapper">
 					<slider>
@@ -28,15 +28,16 @@
 				</div>
 			</div>
 			<!-- 获取到数据后才渲染 -->
-		</div>
-  
+		</scroll>
   </div>
 </template>
 
 <script>
 	import Slider from 'base/slider/slider'
+	import Scroll from 'base/scroll/scroll'
 	import {getRecommend, getDiscList} from 'api/recommend'
 	import {ERR_OK} from 'api/config'
+
 	export default {
 		data() {
 			return {
@@ -45,7 +46,9 @@
 			}
 		},
 		created() {
-			this._getRecommend()
+			setTimeout(() => {
+				this._getRecommend()
+			}, 1000)
 			this._getDiscList()
 		},
 		methods: {
@@ -66,7 +69,8 @@
 			}
 		},
 		components: {
-			Slider
+			Slider,
+			Scroll
 		}
 	}
 </script>
