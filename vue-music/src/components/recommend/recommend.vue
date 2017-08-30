@@ -1,21 +1,33 @@
 <template>
 	<div class="recommend">
 		<div class="recommend-content">
+			<div>
+				<div v-if="recommends.length" class="slider-wrapper">
+					<slider>
+						<!-- 轮播图图片 -->
+						<div v-for="item in recommends">
+							<a :href="item.linkUrl">
+								<img :src="item.picUrl" alt="">
+							</a>
+						</div>
+					</slider>
+				</div>
+				<div class="recommend-list">
+					<h1 class="list-title">热门歌单推荐</h1>
+					<ul>
+						<li class="item" v-for="item in discList">
+							<div class="icon">
+								<img width="60" height="60" :src="item.imgurl">
+							</div>
+							<div class="text">
+								<h2 class="name">{{item.creator.name}}</h2>
+								<p>{{item.dissname}}</p>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
 			<!-- 获取到数据后才渲染 -->
-			<div v-if="recommends.length" class="slider-wrapper">
-				<slider>
-					<!-- 轮播图图片 -->
-					<div v-for="item in recommends">
-						<a :href="item.linkUrl">
-							<img :src="item.picUrl" alt="">
-						</a>
-					</div>
-				</slider>
-			</div>
-			<div class="recommend-list">
-				<h1 class="list-title">热门歌单推荐</h1>
-				<ul></ul>
-			</div>
 		</div>
   
   </div>
@@ -28,7 +40,8 @@
 	export default {
 		data() {
 			return {
-				recommends: []
+				recommends: [],
+				discList: []
 			}
 		},
 		created() {
@@ -45,10 +58,9 @@
 			},
 			_getDiscList() {
 				getDiscList().then((res) => {
-					console.log('成功2')
 					if (res.code === ERR_OK) {
-						console.log('成功')
-						console.log(res.data)
+						this.discList = res.data.list
+						console.log(this.discList)
 					}
 				})
 			}
@@ -81,6 +93,26 @@
 					text-align: center
 					font-size: $font-size-medium
 					color: $color-theme
-
-
+				.item
+					display: flex
+					box-sizing: border-box
+					align-items: center
+					padding: 0 20px 20px 20px
+					.icon
+						flex: 0 0 60px
+						width: 60px
+						padding-right: 20px
+					.text
+						display: flex
+						flex-direction: column
+						justify-content: center
+						flex: 1
+						line-height: 1
+						overflow: hidden
+						font-size: $font-size-medium
+						.name
+							margin-bottom: 10px
+							color: $color-text
+						.desc
+							color: $color-text-d
 </style>
