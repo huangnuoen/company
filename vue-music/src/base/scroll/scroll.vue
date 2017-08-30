@@ -26,7 +26,7 @@
 				default: null
 			}
 		},
-		// slot挂载好后调用,样式可能还没渲染，高度还没撑开
+		// el挂载好后调用, 不能保证钩子函数中的 this.$el 在 document 中。为此还应该引入 Vue.nextTick/vm.$nextTick。
 		mounted() {
 			setTimeout(() => {
 				this._initScroll()
@@ -41,7 +41,7 @@
 					probeType: this.probeType,
 					click: this.click
 				})
-				console.log('mounted挂载元素', this.$refs.wrapper.firstChild.clientHeight)
+				// console.log('mounted,没有加载好data', this.$refs.wrapper, this.$refs.wrapper.firstChild.clientHeight)
 			},
 			refresh() {
 				this.scroll && this.scroll.refresh()
@@ -60,7 +60,7 @@
 				setTimeout(() => {
 					this.refresh()
 				}, 20)
-				console.log('watch监听', this.$refs.wrapper.firstChild.clientHeight)
+				// console.log('watch监听', this.$refs.wrapper.firstChild.clientHeight)
 			}
 		}
 	}

@@ -4,6 +4,8 @@
 3. recommend.vue
 	- 引入子组件slider.vue
 	- 在<slider>里写dom
+	- 如何确定推荐数据已经获取并加载，并加载好图片（图片是渲染高度的主要元素）
+		- 监听<img>load事件,触发时再refresh()
 
 ## 公用js
 1. dom.js 所有对dom的操作方法
@@ -15,6 +17,7 @@
 	- 将BScroll的初始化抽象成组件
 	- 可向该组件传入配置信息
 	- <slot>可随意在父组件中插入要scroll的DOM
+	- 初次bscroll时，用mounted调用，父组件可能还没完全渲染好样式，需要传入data数据(推荐和歌单资源)监听，
 	- watch实时监听data的变化
 
 ## API接口
