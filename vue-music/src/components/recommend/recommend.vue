@@ -28,6 +28,9 @@
         </div>
       </div>
       <!-- 获取到数据后才渲染 -->
+      <div class="loading-container" v-show="!discList.length">
+        <loading></loading>
+      </div>
     </scroll>
   </div>
 </template>
@@ -35,6 +38,7 @@
 <script>
   import Slider from 'base/slider/slider'
   import Scroll from 'base/scroll/scroll'
+  import Loading from 'base/loading/loading'
   import {getRecommend, getDiscList} from 'api/recommend'
   import {ERR_OK} from 'api/config'
 
@@ -48,7 +52,9 @@
     },
     created() {
       this._getRecommend()
-      this._getDiscList()
+      setTimeout(() => {
+        this._getDiscList()
+      }, 2000)
     },
     methods: {
       _getRecommend() {
@@ -76,7 +82,8 @@
     },
     components: {
       Slider,
-      Scroll
+      Scroll,
+      Loading
     }
   }
 
@@ -126,4 +133,9 @@
               color: $color-text
             .desc
               color: $color-text-d
+      .loading-container
+        position: absolute
+        top: 50%
+        width: 100%
+        transform: translateY(-50%)
 </style>
