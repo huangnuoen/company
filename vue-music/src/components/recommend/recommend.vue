@@ -1,13 +1,21 @@
 <template>
   <div class="recommend">
+<<<<<<< HEAD
     <scroll class="recommend-content" :data="discList" ref="scroll">
+=======
+    <scroll ref="scroll" class="recommend-content" :data="discList">
+>>>>>>> 0e7c49b702bb42719977ece5609a07d1ab0ab2ed
       <div>
         <div v-if="recommends.length" class="slider-wrapper">
           <slider>
             <!-- 轮播图图片 -->
             <div v-for="item in recommends">
               <a :href="item.linkUrl">
+<<<<<<< HEAD
                 <img @load="loadImage" :src="item.picUrl" alt="">
+=======
+                <img :src="item.picUrl" @load="loadImage">
+>>>>>>> 0e7c49b702bb42719977ece5609a07d1ab0ab2ed
               </a>
             </div>
           </slider>
@@ -42,13 +50,12 @@
     data() {
       return {
         recommends: [],
+        // 传递给子组件，子组件中监听变化
         discList: []
       }
     },
     created() {
-      setTimeout(() => {
-        this._getRecommend()
-      }, 2000)
+      this._getRecommend()
       this._getDiscList()
     },
     methods: {
@@ -62,17 +69,16 @@
       _getDiscList() {
         getDiscList().then((res) => {
           if (res.code === ERR_OK) {
+            // 获取歌单数据
             this.discList = res.data.list
           }
         })
       },
       loadImage() {
-        // 设置第一张图片加载标记checkLoaded判断
         if (!this.checkloaded) {
-          console.log('load')
+          // refresh()后会出错？错误计算了高度
           this.$refs.scroll.refresh()
           this.checkloaded = true
-          this.$refs.scroll.refresh()
         }
       }
     },
@@ -81,6 +87,7 @@
       Scroll
     }
   }
+
 </script>
 
 <style scoped lang="stylus">
