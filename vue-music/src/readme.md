@@ -2,7 +2,7 @@
 1. m-header.vue
 2. tab.vue 导航
 3. recommend.vue
-	- 引入子组件slider.vue
+	- 引入子组件slider.vue,scroll.vue, 懒加载
 	- 在<slider>里写dom
 	- 如何确定推荐数据已经获取并加载，并加载好图片（图片是渲染高度的主要元素）
 		- 监听<img>load事件,触发时再refresh()
@@ -31,3 +31,19 @@
 
 ### app.vue
 1. 用<keep-alive>保存当前路由状态
+
+### main.js
+1. 全局引进库
+```
+import 'babel-polyfill'
+import Vue from 'vue'
+import App from './App'
+import router from './router'
+import fastclick from 'fastclick'
+import VueLazyLoad from 'vue-lazyload'
+```
+
+### 引入库
+1. fastclick
+	- 解决移动端延迟300ms的问题
+	- 与better-scroll冲突，在有点击功能的元素上添加needsclick类

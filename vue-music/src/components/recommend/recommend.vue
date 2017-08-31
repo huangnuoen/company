@@ -1,21 +1,13 @@
 <template>
   <div class="recommend">
-<<<<<<< HEAD
-    <scroll class="recommend-content" :data="discList" ref="scroll">
-=======
     <scroll ref="scroll" class="recommend-content" :data="discList">
->>>>>>> 0e7c49b702bb42719977ece5609a07d1ab0ab2ed
       <div>
         <div v-if="recommends.length" class="slider-wrapper">
           <slider>
             <!-- 轮播图图片 -->
             <div v-for="item in recommends">
               <a :href="item.linkUrl">
-<<<<<<< HEAD
-                <img @load="loadImage" :src="item.picUrl" alt="">
-=======
-                <img :src="item.picUrl" @load="loadImage">
->>>>>>> 0e7c49b702bb42719977ece5609a07d1ab0ab2ed
+                <img class="needsclick" :src="item.picUrl" @load="loadImage">
               </a>
             </div>
           </slider>
@@ -25,7 +17,7 @@
           <ul>
             <li class="item" v-for="item in discList">
               <div class="icon">
-                <img width="60" height="60" :src="item.imgurl">
+                <img width="60" height="60" v-lazy="item.imgurl">
               </div>
               <div class="text">
                 <h2 class="name">{{item.creator.name}}</h2>
