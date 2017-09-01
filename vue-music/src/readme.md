@@ -10,6 +10,8 @@
 ## 公用js
 1. dom.js 所有对dom的操作方法
 	- 类名操作
+2. jsonp.js 处理jsonp请求
+3. singer.js 定义类
 
 ## 基础vue组件
 1. slider.vue
@@ -22,6 +24,7 @@
 
 ## API接口
 1. recommend.js 获取推荐数据
+2. singer.js 获取歌手数据
 
 ## 后端请求
 1. dev-server.js 用express, axios库请后端请求数据

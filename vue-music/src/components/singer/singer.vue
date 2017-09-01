@@ -5,7 +5,7 @@
 </template>
 
 <script>
-  import {Singer} from 'common/js/singer'
+  import Singer from 'common/js/singer'
   import {getSingerList} from 'api/singer'
   import {ERR_OK} from 'api/config'
   const HOT_NAME = '热门'
@@ -23,23 +23,31 @@
   		_getSingerList() {
   			getSingerList().then((res) => {
   				if (res.code === ERR_OK) {
-  					this.singers = res.data.list
+            this.singers = this._normalizeSinger(res.data.list)
   					console.log(this.singers)
   				}
   			})
   		},
   		// 将list重新归类
   		_normalizeSinger(list) {
+        // 定义hot
   			let map = {
   				hot: {
   					title: HOT_NAME,
   					items: []
   				}
   			}
+        // 遍历数组
   			list.forEach((item, index) => {
+          // 取前10条为热门
   				if (index <= HOT_SINGER_LEN) {
-  					map.hot.items.push(new Singer({item.}))
+            // 推送到热门对象，将Singer定义为类，可复用
+  					map.hot.items.push(new Singer({
+              id: item.Fsinger_mid,
+              name: item.Fsinger_name
+            }))
   				}
+          // 定义首字母对象
   				const key = item.Findex
   				if (!map[key]) {
   					map[key] = {
@@ -47,12 +55,12 @@
   						items: []
   					}
   				}
-  				map[key].items.push({
-  					id: item.Fsinger_mid,
-  					name: item.Fsinger_name,
-  					avatar: `https://y.gtimg.cn/music/photo_new/T001R150x150M000${item.Fsinger_mid}.jpg?max_age=2592000`
-  				})
+  				map[key].items.push(new Singer({
+              id: item.Fsinger_mid,
+              name: item.Fsinger_name
+            }))
   			})
+        return map
   		}
   	}
   }
