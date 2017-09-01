@@ -5,23 +5,45 @@
   			<h2 class="list-group-title">{{group.title}}</h2>
   			<ul>
   				<li v-for="item in group.items" class="list-group-item">
-  					<img :src="item.avatar" class="avatar">
+  					<img v-lazy="item.avatar" class="avatar">
   					<span class="name">{{item.name}}</span>
   				</li>
   			</ul>
   		</li>
   	</ul>
+  	<div class="list-shortcut" @touchstart="onShortcutTouchStart($event)">
+  		<ul>
+  			<li v-for="(item, index) in shortcutList" class="item" :data-index="index">
+  				{{item}}
+  			</li>
+  		</ul>
+  	</div>
   </scroll>
 </template>
 
 <script>
   import Scroll from 'base/scroll/scroll'
+  import {getData} from 'common/js/dom'
   export default {
     props: {
       data: {
         type: Array,
         default: []
       }
+    },
+    computed: {
+    	// title组成的新数组
+    	shortcutList() {
+    		// 遍历数据，返回由每组数据的title组成的新数组
+    		return this.data.map((group) => {
+    			return group.title.substr(0, 1)
+    		})
+    	}
+    },
+    methods: {
+    	onShortcutTouchStart(e) {
+    		let anchorIndex = getData(e.target, 'data-index')
+    	}
     },
     components: {
       Scroll
@@ -59,4 +81,24 @@
   				margin-left: 20px
   				color: $color-text-l
   				font-size: $font-size-medium
+  	.list-shortcut
+  		position: absolute
+  		z-index: 30
+  		right: 0
+  		top: 50%
+  		transform: translateY(-50%)
+  		width: 20px
+  		padding: 20px 0
+  		border-radius: 10px
+  		text-align: center
+  		background: $color-background-d
+  		font-family: Helvetica
+  		.item
+  			padding: 3px
+  			line-height: 1
+  			color: $color-text-l
+  			font-size: $font-size-small
+  			&.current
+  				color: $color-theme
+
 </style>
