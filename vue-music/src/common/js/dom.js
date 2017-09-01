@@ -21,6 +21,6 @@ export function getData(el, name, val) {
 	if (val) {
 		return el.setAttribute(prefix + name, val)
 	} else {
-		return el.getAttribute(name)
+		return el.getAttribute(prefix + name)
 	}
 }

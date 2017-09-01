@@ -1,7 +1,7 @@
 <template>
-  <scroll class="listview" :data="data">
+  <scroll class="listview" :data="data" ref="listview">
   	<ul>
-  		<li v-for="group in data" class="list-group">
+  		<li v-for="group in data" class="list-group" ref="listgroup">
   			<h2 class="list-group-title">{{group.title}}</h2>
   			<ul>
   				<li v-for="item in group.items" class="list-group-item">
@@ -42,7 +42,9 @@
     },
     methods: {
     	onShortcutTouchStart(e) {
-    		let anchorIndex = getData(e.target, 'data-index')
+    		let anchorIndex = getData(e.target, 'index')
+    		console.log(anchorIndex)
+    		this.$refs.listview.scrollToElement(this.$refs.listgroup[anchorIndex], 0)
     	}
     },
     components: {
