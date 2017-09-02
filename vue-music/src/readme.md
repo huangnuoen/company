@@ -46,6 +46,9 @@ import fastclick from 'fastclick'
 import VueLazyLoad from 'vue-lazyload'
 ```
 
+### router/index.js
+1. 配置路由，并设置默认值
+
 ### 引入库
 1. fastclick
 	- 解决移动端延迟300ms的问题

@@ -10,6 +10,7 @@ Vue.use(Router)
 export default new Router({
 	routes: [
 		{
+			// 设置默认值
 			path: '/',
 			redirect: '/recommend'
 		},

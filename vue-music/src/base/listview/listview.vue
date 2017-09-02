@@ -11,7 +11,7 @@
   			</ul>
   		</li>
   	</ul>
-  	<div class="list-shortcut" @touchstart="onShortcutTouchStart($event)">
+  	<div class="list-shortcut" @touchstart="onShortcutTouchStart($event)" @touchmove.stop.prevent="onShortcutTouchMove($event)">
   		<ul>
   			<li v-for="(item, index) in shortcutList" class="item" :data-index="index">
   				{{item}}
@@ -31,6 +31,9 @@
         default: []
       }
     },
+    created() {
+      
+    }
     computed: {
     	// title组成的新数组
     	shortcutList() {
@@ -42,10 +45,16 @@
     },
     methods: {
     	onShortcutTouchStart(e) {
+        // 获得触摸目标数组的第一个
+        let firstTouch = e.touches[0]
     		let anchorIndex = getData(e.target, 'index')
     		console.log(anchorIndex)
     		this.$refs.listview.scrollToElement(this.$refs.listgroup[anchorIndex], 0)
     	}
+      onShortcutTouchStart(e) {
+        // 根据滚动的距离计算出末位置是哪个
+        
+      }
     },
     components: {
       Scroll
