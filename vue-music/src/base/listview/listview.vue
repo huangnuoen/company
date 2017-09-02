@@ -65,9 +65,10 @@
         let firstTouch = e.touches[0]
         this.touch.y2 = firstTouch.pageY
         // 计算索引
-        let delta = parseInt(this.touch.y2 - this.touch.y1) / ANCHOR_HEIGHT | 0
-        let anchorIndex = this.touch.anchorIndex + delta
-        console.log(anchorIndex)
+        let delta = (this.touch.y2 - this.touch.y1) / ANCHOR_HEIGHT | 0
+        // anchorindex是字符串，需转化
+        let anchorIndex = parseInt(this.touch.anchorIndex) + delta
+        console.log(delta, anchorIndex)
         this._scrollTo(anchorIndex)
       },
       // 滚动至索引位
