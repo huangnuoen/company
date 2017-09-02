@@ -1,7 +1,7 @@
 <template>
   <scroll class="listview" :data="data" ref="listview">
   	<ul>
-  		<li v-for="group in data" class="list-group" ref="listgroup">
+  		<li v-for="group in data" class="list-group" ref="listGroup">
   			<h2 class="list-group-title">{{group.title}}</h2>
   			<ul>
   				<li v-for="item in group.items" class="list-group-item">
@@ -24,6 +24,9 @@
 <script>
   import Scroll from 'base/scroll/scroll'
   import {getData} from 'common/js/dom'
+
+  const ANCHOR_HEIGHT = 18
+
   export default {
     props: {
       data: {
@@ -32,8 +35,9 @@
       }
     },
     created() {
-      
-    }
+      // 共享firstTouch
+      this.touch = {}
+    },
     computed: {
     	// title组成的新数组
     	shortcutList() {
@@ -45,15 +49,30 @@
     },
     methods: {
     	onShortcutTouchStart(e) {
-        // 获得触摸目标数组的第一个
+        let anchorIndex = getData(e.target, 'index')
+        // 获得触摸触点，存储它的页面位置
         let firstTouch = e.touches[0]
-    		let anchorIndex = getData(e.target, 'index')
-    		console.log(anchorIndex)
-    		this.$refs.listview.scrollToElement(this.$refs.listgroup[anchorIndex], 0)
-    	}
-      onShortcutTouchStart(e) {
+        this.touch.y1 = firstTouch.pageY
+        // 记录开始触摸的索引
+        this.touch.anchorIndex = anchorIndex
+        // 滚动到相应元素
+    		// this._scrollTo(anchorIndex)
+        this.$refs.listview.scrollToElement(this.$refs.listGroup[anchorIndex], 0)
+    	},
+      onShortcutTouchMove(e) {
         // 根据滚动的距离计算出末位置是哪个
-        
+        // 获得触点位置
+        let firstTouch = e.touches[0]
+        this.touch.y2 = firstTouch.pageY
+        // 计算索引
+        let delta = parseInt(this.touch.y2 - this.touch.y1) / ANCHOR_HEIGHT | 0
+        let anchorIndex = this.touch.anchorIndex + delta
+        console.log(anchorIndex)
+        this._scrollTo(anchorIndex)
+      },
+      // 滚动至索引位
+      _scrollTo(index) {
+        this.$refs.listview.scrollToElement(this.$refs.listGroup[index], 0)
       }
     },
     components: {

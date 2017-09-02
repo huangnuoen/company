@@ -10,5 +10,5 @@
 	@touchmove.stop.prevent="onShortcutTouchMove($event)"
 	```
 6. touchstart和touchmove事件调用的方法要共享一个firsttouch数据（第一个触摸的目标）
-	- 要用created()
-	- 为什么不用data?
+	- 要用created()创建touch对象
+	- 为什么不用data?因为vue中的data会有一个getter和setter去观测数据变化，而此时并不需要监听
