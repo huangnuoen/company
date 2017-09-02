@@ -1,5 +1,9 @@
 <template>
-  <scroll class="listview" :data="data" ref="listview">
+  <scroll class="listview"
+          :data="data" 
+          :listenScroll="listenScroll" 
+          ref="listview"
+          @scroll="scroll(pos)">
   	<ul>
   		<li v-for="group in data" class="list-group" ref="listGroup">
   			<h2 class="list-group-title">{{group.title}}</h2>
@@ -13,7 +17,7 @@
   	</ul>
   	<div class="list-shortcut" @touchstart="onShortcutTouchStart($event)" @touchmove.stop.prevent="onShortcutTouchMove($event)">
   		<ul>
-  			<li v-for="(item, index) in shortcutList" class="item" :data-index="index">
+  			<li v-for="(item, index) in shortcutList" class="item" :data-index="index" :class="{'current': currentIndex===index}">
   				{{item}}
   			</li>
   		</ul>
@@ -24,7 +28,7 @@
 <script>
   import Scroll from 'base/scroll/scroll'
   import {getData} from 'common/js/dom'
-
+  // 18是右侧每个字母的固定高度
   const ANCHOR_HEIGHT = 18
 
   export default {
@@ -34,9 +38,20 @@
         default: []
       }
     },
+    data() {
+      return {
+        // 滚动位置
+        scrollY: -1,
+        // 当前所在位置
+        currentIndex: 0
+      }
+    },
     created() {
       // 共享firstTouch
       this.touch = {}
+      this.listenScroll = true
+      // 存放每个group的高度
+      this.listHeight = []
     },
     computed: {
     	// title组成的新数组
@@ -71,9 +86,43 @@
         console.log(delta, anchorIndex)
         this._scrollTo(anchorIndex)
       },
+      scroll(pos) {
+        console.log(this.scrollY)
+        this.scrollY = pos.y
+      },
       // 滚动至索引位
       _scrollTo(index) {
         this.$refs.listview.scrollToElement(this.$refs.listGroup[index], 0)
+      },
+      // 计算左侧每个group的高度
+      _calculateHeight() {
+        this.listHeight = []
+        const list = this.$refs.listGroup
+        let height = 0
+        this.listHeight.push(height)
+        for (let i = 0; i < list.length; i++) {
+          let item = list[i]
+          height += item.clientHeight
+          this.listHeight.push(height)
+        }
+        console.log(height, this.listHeight)
+      }
+    },
+    watch: {
+      // 实时监听data的变化，重新计算高度
+      data() {
+        setTimeout(() => {
+          this._calculateHeight()
+        }, 20)
+      },
+      scrollY(newY) {
+        let listHeight = this.listHeight
+        // 判断位置
+        for (let i = 0; i < listHeight.length; i++) {
+          let height1 = listHeight[i]
+          let height2 = listHeight[i+1]
+          if (newY > height1 && newY < height2)
+        }
       }
     },
     components: {

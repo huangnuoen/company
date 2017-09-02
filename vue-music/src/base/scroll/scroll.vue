@@ -16,6 +16,7 @@
 				type: Boolean,
 				default: false
 			},
+			// 是否监听
 			listenScroll: {
 				type: Boolean,
 				default: false
@@ -42,6 +43,15 @@
 					click: this.click
 				})
 				// console.log('mounted,没有加载好data', this.$refs.wrapper, this.$refs.wrapper.firstChild.clientHeight)
+
+				if (this.listenScroll) {
+					// me指向Vue实例
+					let me = this
+					this.scroll.on('scroll', (pos) => {
+						// 触发当前实例的scroll事件,将pos传给监听器
+						me.$emit('scroll', pos)
+					})
+				}
 			},
 			refresh() {
 				this.scroll && this.scroll.refresh()
