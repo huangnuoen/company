@@ -1,5 +1,5 @@
 <template>
-  <div ref = "wrapper">
+  <div ref="wrapper">
   	<slot></slot>
   </div>
 </template>
@@ -33,6 +33,7 @@
 				this._initScroll()
 			}, 20)
 		},
+
 		methods: {
 			_initScroll() {
 				if (!this.$refs.wrapper) {
@@ -70,6 +71,7 @@
 				this.scroll && this.scroll.scrollToElement.apply(this.scroll, arguments)
 			}
 		},
+
 		// 监听数据，自动刷新
 		watch: {
 			data() {

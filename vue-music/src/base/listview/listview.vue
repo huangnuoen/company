@@ -3,7 +3,7 @@
           :data="data" 
           :listenScroll="listenScroll" 
           ref="listview"
-          @scroll="scroll(pos)">
+          @scroll="scroll">
   	<ul>
   		<li v-for="group in data" class="list-group" ref="listGroup">
   			<h2 class="list-group-title">{{group.title}}</h2>
@@ -87,8 +87,8 @@
         this._scrollTo(anchorIndex)
       },
       scroll(pos) {
-        console.log(this.scrollY)
         this.scrollY = pos.y
+        console.log(this.scrollY)
       },
       // 滚动至索引位
       _scrollTo(index) {
@@ -115,14 +115,21 @@
           this._calculateHeight()
         }, 20)
       },
+      // 实时判断, 向下滚动时newY为负
       scrollY(newY) {
-        let listHeight = this.listHeight
+        const listHeight = this.listHeight
         // 判断位置
         for (let i = 0; i < listHeight.length; i++) {
           let height1 = listHeight[i]
-          let height2 = listHeight[i+1]
-          if (newY > height1 && newY < height2)
+          let height2 = listHeight[i + 1]
+          if (!height2 || (-newY) > height1 && (-newY) < height2) {
+            this.currentIndex = i
+            console.log('位置', this.currentIndex)
+            return
+          }
         }
+        // newY为0时
+        this.currentIndex = 0
       }
     },
     components: {
