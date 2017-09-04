@@ -5,27 +5,29 @@
           :probeType="probeType" 
           ref="listview"
           @scroll="scroll">
-  	<ul>
-  		<li v-for="group in data" class="list-group" ref="listGroup">
-  			<h2 class="list-group-title">{{group.title}}</h2>
-  			<ul>
-  				<li v-for="item in group.items" class="list-group-item">
-  					<img v-lazy="item.avatar" class="avatar">
-  					<span class="name">{{item.name}}</span>
-  				</li>
-  			</ul>
-  		</li>
-  	</ul>
-  	<div class="list-shortcut" @touchstart="onShortcutTouchStart($event)" @touchmove.stop.prevent="onShortcutTouchMove($event)">
-  		<ul>
-  			<li v-for="(item, index) in shortcutList"
+    <ul>
+      <li v-for="group in data" class="list-group" ref="listGroup">
+        <h2 class="list-group-title">{{group.title}}</h2>
+        <ul>
+          <li @click="selectItem(item)" 
+              v-for="item in group.items" 
+              class="list-group-item">
+            <img v-lazy="item.avatar" class="avatar">
+            <span class="name">{{item.name}}</span>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <div class="list-shortcut" @touchstart="onShortcutTouchStart($event)" @touchmove.stop.prevent="onShortcutTouchMove($event)">
+      <ul>
+        <li v-for="(item, index) in shortcutList"
             class="item"
             :data-index="index"
             :class="{'current': currentIndex===index}">
-  				{{item}}
-  			</li>
-  		</ul>
-  	</div>
+          {{item}}
+        </li>
+      </ul>
+    </div>
     <div class="list-fixed" v-show="fixedTitle" ref="fixed">
       <h1 class="fixed-title">{{fixedTitle}}</h1>
     </div>
@@ -69,13 +71,13 @@
       this.probeType = 3
     },
     computed: {
-    	// title组成的新数组
-    	shortcutList() {
-    		// 遍历数据，返回由每组数据的title组成的新数组
-    		return this.data.map((group) => {
-    			return group.title.substr(0, 1)
-    		})
-    	},
+      // title组成的新数组
+      shortcutList() {
+        // 遍历数据，返回由每组数据的title组成的新数组
+        return this.data.map((group) => {
+          return group.title.substr(0, 1)
+        })
+      },
 
       // 当前要显示的title
       fixedTitle() {
@@ -87,7 +89,12 @@
       }
     },
     methods: {
-    	onShortcutTouchStart(e) {
+      selectItem(item) {
+        console.log('click')
+        // 触发当前实例的select事件，item交给响应该自定义事件的组件
+        this.$emit('select', item)
+      },
+      onShortcutTouchStart(e) {
         let anchorIndex = getData(e.target, 'index')
         // 获得触摸触点，存储它的页面位置
         let firstTouch = e.touches[0]
@@ -96,7 +103,7 @@
         this.touch.anchorIndex = anchorIndex
         // 滚动到相应元素
         this._scrollTo(anchorIndex)
-    	},
+      },
       onShortcutTouchMove(e) {
         // 根据滚动的距离计算出末位置是哪个
         // 获得触点位置
