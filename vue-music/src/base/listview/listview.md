@@ -10,6 +10,7 @@
 	@touchmove.stop.prevent="onShortcutTouchMove($event)"
 	```
 6. 实现左右联动
+	- 思路：实时知道滚动位置，根据位置计算区间和对应索引
 	- protoType派发实时滚动
 	- this.currentIndex记录右栏当前位置，this.scrollY记录左侧滚动的位置
 	6.1 watch中监听data，在data渲染完成后执行_calculateHeight(),计算每个list-group的高度

@@ -76,8 +76,7 @@
         // 记录开始触摸的索引
         this.touch.anchorIndex = anchorIndex
         // 滚动到相应元素
-    		// this._scrollTo(anchorIndex)
-        this.$refs.listview.scrollToElement(this.$refs.listGroup[anchorIndex], 0)
+        this._scrollTo(anchorIndex)
     	},
       onShortcutTouchMove(e) {
         // 根据滚动的距离计算出末位置是哪个
@@ -88,15 +87,26 @@
         let delta = (this.touch.y2 - this.touch.y1) / ANCHOR_HEIGHT | 0
         // anchorindex是字符串，需转化
         let anchorIndex = parseInt(this.touch.anchorIndex) + delta
-        console.log(delta, anchorIndex)
         this._scrollTo(anchorIndex)
       },
       // 更新scrollY为当前位置
       scroll(pos) {
         this.scrollY = pos.y
       },
-      // 滚动至索引位
+      // 滚动至索引位,并更新scrollY
       _scrollTo(index) {
+        console.log(index)
+        // 点击到<li>区域外时
+        if (!index && index !== 0) {
+          return
+        }
+        // touchmove到区域外时
+        if (index < 0) {
+          index = 0
+        } else if (index > this.listHeight - 2) {
+          index = this.listHeight.length
+        }
+        this.scrollY = -this.listHeight[index]
         this.$refs.listview.scrollToElement(this.$refs.listGroup[index], 0)
       },
       // 计算左侧每个group的高度
@@ -132,7 +142,7 @@
         for (let i = 0; i < listHeight.length - 1; i++) {
           let height1 = listHeight[i]
           let height2 = listHeight[i + 1]
-          if ((-newY) >= height1 && (-newY) <= height2) {
+          if ((-newY) >= height1 && (-newY) < height2) {
             this.currentIndex = i
             return
           }
