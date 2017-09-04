@@ -13,12 +13,12 @@
 	- 思路：实时知道滚动位置，根据位置计算区间和对应索引
 	- protoType派发实时滚动
 	- this.currentIndex记录右栏当前位置，this.scrollY记录左侧滚动的位置
-	6.1 watch中监听data，在data渲染完成后执行_calculateHeight(),计算每个list-group的高度
-		- this.listHeight存储所有list-group的高度
-	6.2 watch中监听scrollY,传入新位置，判断所在区间，给this.currentIndex赋值
-		- 滚动到顶部时
-		- 在中部滚动时
-		- 滚动到底部时
+		- watch中监听data，在data渲染完成后执行_calculateHeight(),计算每个list-group的高度
+			- this.listHeight存储所有list-group的高度
+		- watch中监听scrollY,传入新位置，判断所在区间，给this.currentIndex赋值
+			- 滚动到顶部时
+			- 在中部滚动时
+			- 滚动到底部时
 		```
 	  scrollY(newY) {
 	    const listHeight = this.listHeight
@@ -44,6 +44,14 @@
 7. 实现fix-title
 	- 思路：新定义<div>定位在顶部，内容为当前索引的title,**由computed实时计算所得**
 	- 实现下一个title与fixed-title接触时有一个向上顶的动画
-7. touchstart和touchmove事件调用的方法要共享一个firsttouch数据（第一个触摸的目标）
+		- watch监听下一个title与fixed-title的差值diff(diff在scrollY变化时计算)
+		- 当diff小于title高度时，可用style.transform去改变dom样式
+		- 为了不在fixedTop为0时重复渲染dom,要进行一个判断
+		```
+    if (this.fixedTop === fixedTop) {
+      return
+    }
+		```
+8. touchstart和touchmove事件调用的方法要共享一个firsttouch数据（第一个触摸的目标）
 	- 要用created()创建touch对象
 	- 为什么不用data?因为vue中的data会有一个getter和setter去观测数据变化，而此时并不需要监听
