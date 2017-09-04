@@ -41,7 +41,9 @@
 	  }
 	}
 	```
-
+7. 实现fix-title
+	- 思路：新定义<div>定位在顶部，内容为当前索引的title,**由computed实时计算所得**
+	- 实现下一个title与fixed-title接触时有一个向上顶的动画
 7. touchstart和touchmove事件调用的方法要共享一个firsttouch数据（第一个触摸的目标）
 	- 要用created()创建touch对象
 	- 为什么不用data?因为vue中的data会有一个getter和setter去观测数据变化，而此时并不需要监听
