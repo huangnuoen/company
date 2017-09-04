@@ -8,6 +8,7 @@
 	import BScroll from 'better-scroll'
 	export default {
 		props: {
+			// 是否实时派发滚动事件
 			probeType: {
 				type: Number,
 				default: 1
