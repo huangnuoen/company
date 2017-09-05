@@ -29,7 +29,7 @@
         this.$router.push({
           path: `/singer/${singer.id}`
         })
-
+        // 传入singer参数，修改mutation
         this.setSinger(singer)
       },
    		_getSingerList() {
@@ -90,8 +90,10 @@
         // 合并2个数组
         return hot.concat(ret)
       },
+      // 将mutation修改映射成一个方法名
       ...mapMutations({
-        setSinger: ''
+        // 映射 this.setSinger() 为 this.$store.commit('SET_SINGER')
+        setSinger: 'SET_SINGER'
       })
   	},
     components: {

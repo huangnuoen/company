@@ -6,7 +6,32 @@
 </template>
 
 <script>
-  export default {}
+	import {mapGetters} from 'vuex'
+	import {getSingerDetail} from 'api/singer'
+	import {ERR_OK} from 'api/config'
+  export default {
+  	// 取得状态
+  	computed: {
+  		// 在vue中挂载了singer属性
+  		...mapGetters([
+  			// singer指getters.js中的
+  			'singer'
+  			])
+  	},
+  	created() {
+  		this._getDetail()
+  		console.log('this.singer', this.singer)
+  	},
+  	methods: {
+  		_getDetail() {
+  			getSingerDetail(this.singer.id).then((res) => {
+  				if (res.code === ERR_OK) {
+  					console.log(res.data.list)
+  				}
+  			})
+  		}
+  	}
+  }
 </script>
 
 <style scoped lang="stylus">

@@ -6,6 +6,12 @@
 	- 在<slider>里写dom
 	- 如何确定推荐数据已经获取并加载，并加载好图片（图片是渲染高度的主要元素）
 		- 监听<img>load事件,触发时再refresh()
+4. singer.vue
+	- liveview.vue
+	- singer-detail.vue
+	- 配置子路由和vuex
+5. singer-detail.vue
+	- 
 
 ## 公用js
 1. dom.js 所有对dom的操作方法
