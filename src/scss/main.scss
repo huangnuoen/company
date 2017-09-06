@@ -8,6 +8,11 @@ $color: #0188e1;//主色调
 		display: none;
 	}
 }
+.wrapper {
+	min-height: 100vh;
+	display: flex;
+	flex-flow: column;
+}
 section {
 	width: 100%;
 	h2 {
@@ -395,7 +400,7 @@ section.about {
 					line-height: 1.8;
 				}
 			}
-			>img {
+			img.info {
 				margin: 3.9%;
 				margin: .2rem;
 				height: 36.6%;
@@ -495,48 +500,33 @@ section.about {
 				text-indent: 0;
 				margin: .74% 2.9%;
 				margin: .1rem .4rem;
-				>ul {
-					text-align: left;
-					>li {
-						vertical-align: top;
-						display: inline-block;
-						width: 45.4%;
-						width: 6rem;
-						padding: 1.19%;
-						padding: .15rem;
-						&:nth-child(2n) {
-							border-left: 1px #c2c2c2 solid;
-						}
-						>h3 {
-							color: $color;
-							font-size: 1.1em;
-						}
-						ol {
-							li {
-								display: block;
-								list-style: inside decimal;
-								padding-left: 20px;
-							}
-						}
+				h3 {
+					color: $color;
+					font-size: 1.1em;
+					display: inline-block;
+					margin: .2rem 1rem;
+					a:hover {
+						text-decoration: underline;
 					}
 				}
 			}
-			div.sbart {
-				text-align: left;
-				font-size: 80%;
-				margin: 0;
-				text-indent: 0;
-				h3 {
-					font-size: 1em;
-					color: #000;
-				}
+		}
+		div.sbart {
+			text-align: left;
+			font-size: 80%;
+			margin: 0;
+			text-indent: 0;
+			h3 {
+				font-size: 1em;
+				color: #000;
 			}
 		}
 	}
 }
 /* 联系我们页面 */
 .wrapper.contact {
-	section {
+	section.contact-wrapper {
+		flex: 1;
 		div.info {
 			padding: .7% 5.9%;
 			padding: .1rem .8rem;

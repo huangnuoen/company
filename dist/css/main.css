@@ -1,4 +1,6 @@
 @charset "UTF-8";
+.wrapper { min-height: 100vh; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-flow: column; flex-flow: column; }
+
 section { width: 100%; }
 
 section h2 { color: #0188e1; text-align: center; margin: 2.1% 0 3.26%; margin: .3rem 0 .45rem; font-size: 1.4em; }
@@ -149,7 +151,7 @@ section.about div.about div.introduction h3 img { width: 20%; width: 1.8rem; }
 
 section.about div.about div.introduction p { text-indent: .3rem; line-height: 1.8; }
 
-section.about div.about div > img { margin: 3.9%; margin: .2rem; height: 36.6%; width: 49.5%; height: 2rem; width: 3.2rem; min-width: 200px; min-height: 140px; vertical-align: top; border-radius: .05rem; -webkit-box-shadow: 0 0.05rem 0.05rem rgba(0, 0, 0, 0.5); box-shadow: 0 0.05rem 0.05rem rgba(0, 0, 0, 0.5); }
+section.about div.about div img.info { margin: 3.9%; margin: .2rem; height: 36.6%; width: 49.5%; height: 2rem; width: 3.2rem; min-width: 200px; min-height: 140px; vertical-align: top; border-radius: .05rem; -webkit-box-shadow: 0 0.05rem 0.05rem rgba(0, 0, 0, 0.5); box-shadow: 0 0.05rem 0.05rem rgba(0, 0, 0, 0.5); }
 
 /* 关于公司页面 */
 .wrapper.about section.introduction div, .wrapper.about section.environment div, .wrapper.about section.join div { margin: 1.5% 1.5% .7%; margin: .2rem .2rem .1rem; text-indent: .3rem; line-height: 1.8; }
@@ -176,38 +178,34 @@ section.about div.about div > img { margin: 3.9%; margin: .2rem; height: 36.6%; 
 
 .wrapper.about section.join > div:last-child { text-indent: 0; margin: .74% 2.9%; margin: .1rem .4rem; }
 
-.wrapper.about section.join > div:last-child > ul { text-align: left; }
+.wrapper.about section.join > div:last-child h3 { color: #0188e1; font-size: 1.1em; display: inline-block; margin: .2rem 1rem; }
 
-.wrapper.about section.join > div:last-child > ul > li { vertical-align: top; display: inline-block; width: 45.4%; width: 6rem; padding: 1.19%; padding: .15rem; }
+.wrapper.about section.join > div:last-child h3 a:hover { text-decoration: underline; }
 
-.wrapper.about section.join > div:last-child > ul > li:nth-child(2n) { border-left: 1px #c2c2c2 solid; }
+.wrapper.about section.join div.sbart { text-align: left; font-size: 80%; margin: 0; text-indent: 0; }
 
-.wrapper.about section.join > div:last-child > ul > li > h3 { color: #0188e1; font-size: 1.1em; }
-
-.wrapper.about section.join > div:last-child > ul > li ol li { display: block; list-style: inside decimal; padding-left: 20px; }
-
-.wrapper.about section.join > div div.sbart { text-align: left; font-size: 80%; margin: 0; text-indent: 0; }
-
-.wrapper.about section.join > div div.sbart h3 { font-size: 1em; color: #000; }
+.wrapper.about section.join div.sbart h3 { font-size: 1em; color: #000; }
 
 /* 联系我们页面 */
-.wrapper.contact section div.info { padding: .7% 5.9%; padding: .1rem .8rem; }
+.wrapper.contact section.contact-wrapper { -webkit-box-flex: 1; -ms-flex: 1; flex: 1; }
 
-.wrapper.contact section div.info div { display: inline-block; text-align: center; vertical-align: top; width: 54%; width: 6.5rem; min-width: 320px; }
+.wrapper.contact section.contact-wrapper div.info { padding: .7% 5.9%; padding: .1rem .8rem; }
 
-.wrapper.contact section div.info div p { text-align: left; line-height: 2; }
+.wrapper.contact section.contact-wrapper div.info div { display: inline-block; text-align: center; vertical-align: top; width: 54%; width: 6.5rem; min-width: 320px; }
 
-.wrapper.contact section div.info .map { text-align: center; width: 41.3%; height: 100%; width: 5rem; height: 2rem; min-width: 300px; min-height: 200px; border: 1px solid #ccc; background-color: pink; }
+.wrapper.contact section.contact-wrapper div.info div p { text-align: left; line-height: 2; }
 
-.wrapper.contact section form { padding: 0 5.2% 1.5%; padding: 0 .7rem .2rem; }
+.wrapper.contact section.contact-wrapper div.info .map { text-align: center; width: 41.3%; height: 100%; width: 5rem; height: 2rem; min-width: 300px; min-height: 200px; border: 1px solid #ccc; background-color: pink; }
 
-.wrapper.contact section form div { margin: 0 1% 2%; }
+.wrapper.contact section.contact-wrapper form { padding: 0 5.2% 1.5%; padding: 0 .7rem .2rem; }
 
-.wrapper.contact section form div.inline { display: inline-block; width: 47%; }
+.wrapper.contact section.contact-wrapper form div { margin: 0 1% 2%; }
 
-.wrapper.contact section form div.block .form-control { width: 98%; }
+.wrapper.contact section.contact-wrapper form div.inline { display: inline-block; width: 47%; }
 
-.wrapper.contact section form button, .wrapper.contact section form input[type='submit'] { margin-left: 1%; padding: .3% 2.5%; padding: 0.04rem .3rem; }
+.wrapper.contact section.contact-wrapper form div.block .form-control { width: 98%; }
+
+.wrapper.contact section.contact-wrapper form button, .wrapper.contact section.contact-wrapper form input[type='submit'] { margin-left: 1%; padding: .3% 2.5%; padding: 0.04rem .3rem; }
 
 /* 公司业务页面 */
 .wrapper.production section.production { overflow: hidden; width: 95%; width: 13rem; margin: 0 2.3%; margin: 0 .33rem; padding: 0 0 0 2.2%; padding: 0 0 0 .3rem; height: auto; position: relative; background-color: #f5f3f1; }

@@ -1,8 +1,6 @@
-section { text-align: center; }
+section.news { text-align: center; width: 80%; margin: 0 auto; }
 
 section h2 { margin-bottom: 2.6%; margin-bottom: .1rem; }
-
-section.page { padding: 1.48% 7.26%; padding: .2rem 1rem; }
 
 section.page > span, section.page > time { color: #c2c2c2; font-size: 90%; margin: 0 1.48%; margin: 0 .2rem; }
 
@@ -10,6 +8,6 @@ section.page img { margin: 1.05%; margin: .1rem; width: 41.3%; height: 266px; wi
 
 section.page.production article img { width: 100%; height: 100%; }
 
-section.page p { padding: .85% 8.57%; padding: .1rem 1rem; text-indent: 0; }
+section.page p { text-indent: 0; }
 
 section.page p.intro { text-indent: .3rem; text-align: left; line-height: 2; margin: 0; }

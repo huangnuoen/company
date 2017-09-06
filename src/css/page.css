@@ -1,15 +1,12 @@
-section {
+section.news {
   text-align: center;
+  width: 80%;
+  margin: 0 auto;
 }
 
 section h2 {
   margin-bottom: 2.6%;
   margin-bottom: .1rem;
-}
-
-section.page {
-  padding: 1.48% 7.26%;
-  padding: .2rem 1rem;
 }
 
 section.page > span, section.page > time {
@@ -40,8 +37,6 @@ section.page.production article img {
 }
 
 section.page p {
-  padding: .85% 8.57%;
-  padding: .1rem 1rem;
   text-indent: 0;
 }
 

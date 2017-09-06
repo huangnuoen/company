@@ -1,12 +1,16 @@
 section {
-	text-align: center;
+	&.news {
+		text-align: center;
+		width: 80%;
+		margin: 0 auto;
+	}
 	h2 {
 		margin-bottom: 2.6%;
 		margin-bottom: .1rem;
 	}
 	&.page {
-		padding: 1.48% 7.26%;
-		padding: .2rem 1rem;
+		// padding: 1.48% 7.26%;
+		// padding: .2rem 1rem;
 		>span, >time {
 			color: #c2c2c2;
 			font-size: 90%;
@@ -32,8 +36,8 @@ section {
 			}
 		}
 		p {
-			padding: .85% 8.57%;
-			padding: .1rem 1rem;
+			// padding: .85% 8.57%;
+			// padding: .1rem 1rem;
 			text-indent: 0;
 		}
 		p.intro {
