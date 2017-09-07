@@ -11,7 +11,14 @@
 	- singer-detail.vue
 	- 配置子路由和vuex
 5. singer-detail.vue
-	- 
+	- 从vuex的getters中通过...mapGetters()取得'singer'
+	- 调用getSingerDetail(),传入singer.id,获取该歌手信息
+	- 没有id时(在本页刷新则获取不到id，singer为空)，回退到歌手页面
+	```
+  if (!this.singer.id) {
+    this.$router.push('/singer')
+  }
+	```	
 
 ## 公用js
 1. dom.js 所有对dom的操作方法

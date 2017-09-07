@@ -24,6 +24,10 @@
   	},
   	methods: {
   		_getDetail() {
+        // 没有id时(在本页刷新则获取不到id)，回退到歌手页面
+        if (!this.singer.id) {
+          this.$router.push('/singer')
+        }
   			getSingerDetail(this.singer.id).then((res) => {
   				if (res.code === ERR_OK) {
   					console.log(res.data.list)
