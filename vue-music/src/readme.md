@@ -20,6 +20,7 @@
   }
 	```	
 	- _normalizeSinger(list)处理list,
+6. music-list.vue 歌曲列表组件
 
 ## 公用js
 1. dom.js 所有对dom的操作方法

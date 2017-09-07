@@ -1,7 +1,7 @@
-/* 构造歌曲信息类 
+/*  构造歌曲信息类
 *  集中维护代码，拓展性高
 */
-export default class Song = {
+export default class Song {
 	// 传入每首歌的基本信息，绑定到当前实例
 	constructor({id, mid, singer, name, album, duration, image, url}) {
 		this.id = id
@@ -26,8 +26,8 @@ export function createSong(musicData) {
 		name: musicData.songname,
 		album: musicData.albumname,
 		duration: musicData.interval,
-		image: `https://y.gtimg.cn/music/photo_new/T002R150x150M000${musicData.albummid}.jpg?max_age=2592000`
-		url: `https://thirdparty.gtimg.com/${musicData.songid}.m4a?fromtag=38`
+		image: `https://y.gtimg.cn/music/photo_new/T002R150x150M000${musicData.albummid}.jpg?max_age=2592000`,
+		url: `http://ws.stream.qqmusic.qq.com/${musicData.songid}.m4a?fromtag=38`
 	})
 }
 

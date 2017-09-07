@@ -1,6 +1,8 @@
 <template>
 	<transition name="slider">
-	  <div class="singer-detail">singer-detail
+    <music-list :songs="songs"
+                :title="title"
+                :bg-image="bgImage"></music-list>
 	  </div>
 	</transition>
 </template>
@@ -8,8 +10,9 @@
 <script>
 	import {mapGetters} from 'vuex'
   import {getSingerDetail} from 'api/singer'
-  import {createSong} from 'common/js/singer'
+  import {createSong} from 'common/js/song'
 	import {ERR_OK} from 'api/config'
+  import MusicList from 'components/music-list/music-list'
   export default {
     data() {
       return {
@@ -19,11 +22,17 @@
     },
   	// 取得状态
   	computed: {
+      title() {
+        return this.singer.name
+      },
+      bgImage() {
+        return this.singer.avatar
+      },
   		// 在vue中挂载了singer属性
   		...mapGetters([
   			// singer指getters.js中的
   			'singer'
-  			])
+  		])
   	},
   	created() {
   		this._getDetail()
@@ -37,38 +46,33 @@
         }
   			getSingerDetail(this.singer.id).then((res) => {
   				if (res.code === ERR_OK) {
-            console.log(res.data.list)
-            this._normalizeSinger(res.data.list)
+            this.songs = this._normalizeSinger(res.data.list)
+            console.log(this.songs)
   				}
   			})
   		},
       // 处理list
       _normalizeSinger(list) {
-        // let ret = []
+        let ret = []
         list.forEach((item) => {
           // 解构赋值,取得item.musicData
           let {musicData} = item
-          console.log(musicData)
           if (musicData.songid && musicData.albummid) {
-            createSong(musicData)
+            ret.push(createSong(musicData))
           }
         })
+        return ret
       }
-  	}
+  	},
+    components: {
+      MusicList
+    }
   }
 </script>
 
 <style scoped lang="stylus">
 	@import "~common/stylus/variable"
 
-	.singer-detail
-		position: fixed
-		z-index: 100
-		top: 0
-		left: 0
-		right: 0
-		bottom: 0
-		background: $color-background
 
 	.slider-enter-active, .slider-leave-active
 		transition: all .3s
