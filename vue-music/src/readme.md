@@ -20,7 +20,8 @@
   }
 	```	
 	- _normalizeSinger(list)处理list,
-6. music-list.vue 歌曲列表组件
+6. music-list.vue 音乐列表组件
+	- 歌手头像和歌曲列表
 
 ## 公用js
 1. dom.js 所有对dom的操作方法
@@ -39,6 +40,7 @@
 	- <slot>可随意在父组件中插入要scroll的DOM
 	- 初次bscroll时，用mounted调用，父组件可能还没完全渲染好样式，需要传入data数据(推荐和歌单资源)监听，
 	- watch实时监听data的变化
+3. song-list.vue  歌曲列表组件
 
 ## API接口
 1. recommend.js 获取推荐数据

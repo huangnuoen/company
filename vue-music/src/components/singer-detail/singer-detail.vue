@@ -36,7 +36,6 @@
   	},
   	created() {
   		this._getDetail()
-  		console.log('this.singer', this.singer)
   	},
   	methods: {
   		_getDetail() {
