@@ -13,18 +13,22 @@
 5. singer-detail.vue
 	- 从vuex的getters中通过...mapGetters()取得'singer'
 	- 调用getSingerDetail(),传入singer.id,获取该歌手信息
-	- 没有id时(在本页刷新则获取不到id，singer为空)，回退到歌手页面
+	- 没有id时(在本页刷新则获取不到id，singer为空，singer只有在点击singer.vue中的li时才会创建)，回退到歌手页面
 	```
   if (!this.singer.id) {
     this.$router.push('/singer')
   }
 	```	
+	- _normalizeSinger(list)处理list,
 
 ## 公用js
 1. dom.js 所有对dom的操作方法
 	- 类名操作
 2. jsonp.js 处理jsonp请求
 3. singer.js 定义类
+4. song.js
+	- 歌曲类，配置每首歌的基本信息
+	- createSong工厂方法，直接new一个song,调用该方法只须传入musicData即可生成song实例，简化代码，不必在每次new的时候传一串参数
 
 ## 基础vue组件
 1. slider.vue

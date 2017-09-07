@@ -7,9 +7,16 @@
 
 <script>
 	import {mapGetters} from 'vuex'
-	import {getSingerDetail} from 'api/singer'
+  import {getSingerDetail} from 'api/singer'
+  import {createSong} from 'common/js/singer'
 	import {ERR_OK} from 'api/config'
   export default {
+    data() {
+      return {
+        // 存储歌曲
+        songs: []
+      }
+    },
   	// 取得状态
   	computed: {
   		// 在vue中挂载了singer属性
@@ -30,10 +37,23 @@
         }
   			getSingerDetail(this.singer.id).then((res) => {
   				if (res.code === ERR_OK) {
-  					console.log(res.data.list)
+            console.log(res.data.list)
+            this._normalizeSinger(res.data.list)
   				}
   			})
-  		}
+  		},
+      // 处理list
+      _normalizeSinger(list) {
+        // let ret = []
+        list.forEach((item) => {
+          // 解构赋值,取得item.musicData
+          let {musicData} = item
+          console.log(musicData)
+          if (musicData.songid && musicData.albummid) {
+            createSong(musicData)
+          }
+        })
+      }
   	}
   }
 </script>
