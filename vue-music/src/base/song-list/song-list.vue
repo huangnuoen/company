@@ -3,7 +3,7 @@
 		<ul>
 			<li class="item" v-for="song in songs">
 				<div class="content">
-					<!-- <h2 class="name">{{song.name}}</h2> -->
+					<h2 class="name">{{song.name}}</h2>
 					<p class="desc">{{getDesc(song)}}</p>
 				</div>
 			</li>

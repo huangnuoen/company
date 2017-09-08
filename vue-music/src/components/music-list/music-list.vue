@@ -4,11 +4,18 @@
   		<i class="icon-back"></i>
   	</div>
   	<h1 class="title" v-html="title"></h1>
-  	<div class="bg-image" :style="bgStyle">
+  	<div class="bg-image" :style="bgStyle" ref="bgImage">
   		<div class="filter"></div>
   	</div>
-    <scroll :data="songs" class="list">
-      <div class="song-list-wrapper">1
+  	<!-- 背景遮罩层 -->
+  	<div class="bg-layer" ref="layer"></div>
+    <scroll @scroll="scroll"
+    				:data="songs" 
+    				class="list" 
+    				ref="list" 
+    				:listenScroll="listenScroll" 
+    				:probeType="probeType">
+      <div class="song-list-wrapper">
         <song-list :songs="songs"></song-list>
       </div>
     </scroll>
@@ -33,15 +40,45 @@
   			default: ''
   		}
   	},
+  	data() {
+  		return {
+  			scrollY: 0
+  		}
+  	},
+  	created() {
+  		this.probeType = 3
+  		this.listenScroll = true
+  	},
+  	mounted() {
+  		// 避免clientHeight会重绘dom
+  		this.imageHeight = this.$refs.bgImage.clientHeight
+  		// layer最大滚动距离取负
+  		this.minTransalteY = -this.imageHeight
+  		// list组件的根元素的样式
+  		this.$refs.list.$el.style.top = this.imageHeight + 'px'
+  	},
+  	methods: {
+  		scroll(pos) {
+  			this.scrollY = pos.y
+  		}
+  	},
   	computed: {
+  		// 顶部背景图
   		bgStyle() {
   			return `background-image:url(${this.bgImage})`
-  		},
-      components: {
-        Scroll,
-        SongList
-      }
-  	}
+  		}
+  	},
+  	watch: {
+  		scrollY(newY) {
+  			let translateY = Math.max(this.minTransalteY, newY)
+  			// 让layer向上
+  			this.$refs.layer.style['transform'] = `translate3d(0, ${translateY}px, 0)`
+  		}
+  	},
+    components: {
+      Scroll,
+      SongList
+    }
   }
 </script>
 
@@ -82,9 +119,22 @@
     	position: relative
     	width: 100%
     	height: 0
+    	/* 宽高比10：7，上内边距先占位 */
     	padding-top: 70%
     	transform-origin: top
     	background-size: cover
+    .bg-layer
+    	position: relative
+    	height: 100%
+    	background: $color-background
+    	.filter
+    		position: absolute
+    		top: 0
+    		left: 0
+    		width: 100%
+    		/* 高度基于父的height+padding-top */
+    		height: 100%
+    		background: rgba(7, 17, 27, .4)
     .list
       position: fixed
       top: 0
