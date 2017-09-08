@@ -22,6 +22,12 @@
 	- _normalizeSinger(list)处理list,
 6. music-list.vue 音乐列表组件
 	- 歌手头像和歌曲列表
+	- 头像用padding-top先占位
+	- div.layer层，用于歌曲列表向上滚动时，用translate3d遮住bgImage
+		- 监听滚动事件，获取滚动位移
+		- 设置一个最大滚动距离，在watch: scrollY(newY)，实时translateY,当layer未达到指定位置时，translateY取newY,否则取最大滚动距离
+		- 滚动到顶部时，剩余的bgImage应覆盖在列表上，且height为40px,padding-top为0
+		- 回滚时，应复原
 
 ## 公用js
 1. dom.js 所有对dom的操作方法

@@ -25,6 +25,9 @@
 <script>
   import Scroll from 'base/scroll/scroll'
   import SongList from 'base/song-list/song-list'
+
+  const RESERVED_HEIGHT = 40
+
   export default {
   	props: {
   		bgImage: {
@@ -53,7 +56,7 @@
   		// 避免clientHeight会重绘dom
   		this.imageHeight = this.$refs.bgImage.clientHeight
   		// layer最大滚动距离取负
-  		this.minTransalteY = -this.imageHeight
+  		this.minTransalteY = -this.imageHeight + RESERVED_HEIGHT
   		// list组件的根元素的样式
   		this.$refs.list.$el.style.top = this.imageHeight + 'px'
   	},
@@ -70,9 +73,24 @@
   	},
   	watch: {
   		scrollY(newY) {
+  			// 在layer未达到指定位置，translateY取newY
   			let translateY = Math.max(this.minTransalteY, newY)
+  			let zIndex = 0
   			// 让layer向上
   			this.$refs.layer.style['transform'] = `translate3d(0, ${translateY}px, 0)`
+  			this.$refs.layer.style['transform'] = `-webkit-translate3d(0, ${translateY}px, 0)`
+  			// 滚到顶部时
+  			if (newY < this.minTransalteY) {
+  				zIndex = 10
+  				this.$refs.bgImage.style.paddingTop = 0
+  				this.$refs.bgImage.style.height = `${RESERVED_HEIGHT}px`
+  			} else {
+  				// 从顶部回滚时
+  				zIndex = 0
+  				this.$refs.bgImage.style.paddingTop = '70%'
+  				this.$refs.bgImage.style.height = 0
+  			}
+  			this.$refs.bgImage.style.zIndex = zIndex
   		}
   	},
     components: {
