@@ -32,6 +32,7 @@
 ## 公用js
 1. dom.js 所有对dom的操作方法
 	- 类名操作
+	- 自动添加浏览器前缀
 2. jsonp.js 处理jsonp请求
 3. singer.js 定义类
 4. song.js
@@ -79,3 +80,8 @@ import VueLazyLoad from 'vue-lazyload'
 1. fastclick
 	- 解决移动端延迟300ms的问题
 	- 与better-scroll冲突，在有点击功能的元素上添加needsclick类
+
+### vuex
+- 将所有状态存储在state中，通过mutations去改变状态，getters去获取状态
+1. 在singer.vue通过mapMutations映射setSinger方法，调用setSinger(singer)方法提交/改变状态
+2. 在singer-detail.vue中能过mapGetters映射取得'singer'
