@@ -5,7 +5,7 @@
   	</div>
   	<h1 class="title" v-html="title"></h1>
   	<div class="bg-image" :style="bgStyle" ref="bgImage">
-  		<div class="filter"></div>
+  		<div class="filter" ref="filter"></div>
   	</div>
   	<!-- 背景遮罩层 -->
   	<div class="bg-layer" ref="layer"></div>
@@ -25,15 +25,17 @@
 <script>
   import Scroll from 'base/scroll/scroll'
   import SongList from 'base/song-list/song-list'
-
+  import {prefixStyle} from 'common/js/dom'
   const RESERVED_HEIGHT = 40
+  const transform = prefixStyle('transform')
+  const backdrop = prefixStyle('backdrop-filter')
 
   export default {
   	props: {
   		bgImage: {
   			type: String,
   			default: ''
-  		},
+      },
   		songs: {
   			type: Array,
   			default: []
@@ -75,10 +77,24 @@
   		scrollY(newY) {
   			// 在layer未达到指定位置，translateY取newY
   			let translateY = Math.max(this.minTransalteY, newY)
+        // 每次滚动都被先初始化zindex
   			let zIndex = 0
+        let scale = 1
+        let blur = 0
+        console.log('transform')
   			// 让layer向上
-  			this.$refs.layer.style['transform'] = `translate3d(0, ${translateY}px, 0)`
-  			this.$refs.layer.style['transform'] = `-webkit-translate3d(0, ${translateY}px, 0)`
+  			this.$refs.layer.style[transform] = `translate3d(0, ${translateY}px, 0)`
+        const percent = Math.abs(newY / this.imageHeight)
+        // 向下拉时，bgImage放大
+        if (newY > 0) {
+          // 放大并覆盖在上面
+          zIndex = 10
+          scale = 1 + percent
+          // this.$refs.bgImage.style.zIndex = zIndex
+        } else {
+          blur = Math.min(20 * percent, 20)
+        }
+        this.$refs.filter.style[backdrop] = `blur(${blur}px)`
   			// 滚到顶部时
   			if (newY < this.minTransalteY) {
   				zIndex = 10
@@ -86,11 +102,12 @@
   				this.$refs.bgImage.style.height = `${RESERVED_HEIGHT}px`
   			} else {
   				// 从顶部回滚时
-  				zIndex = 0
   				this.$refs.bgImage.style.paddingTop = '70%'
   				this.$refs.bgImage.style.height = 0
   			}
-  			this.$refs.bgImage.style.zIndex = zIndex
+        // bgImage放大效果
+        this.$refs.bgImage.style.zIndex = zIndex
+        this.$refs.bgImage.style[transform] = `scale(${scale})`
   		}
   	},
     components: {
