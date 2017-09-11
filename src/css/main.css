@@ -548,6 +548,7 @@ section.about div.about div img.info {
   bottom: 20px;
   right: 20px;
   cursor: pointer;
+  z-index: 10;
 }
 
 .backTop i {
@@ -594,6 +595,7 @@ section.about div.about div img.info {
   width: auto;
   margin: 1.5% 1.5% .7%;
   margin: .2rem .2rem .1rem;
+  text-align: center;
 }
 
 .wrapper.about section.environment div {
@@ -603,6 +605,8 @@ section.about div.about div img.info {
   height: 316px;
   width: 4.3rem;
   height: 3.2rem;
+  min-width: 300px;
+  min-height: 210px;
   overflow: hidden;
   margin-left: .44rem;
   text-indent: 0;
@@ -614,6 +618,8 @@ section.about div.about div img.info {
   height: 316px;
   width: 21.5rem;
   height: 3.2rem;
+  min-width: 1500px;
+  min-height: 210px;
   overflow: hidden;
   margin-left: 0;
 }
@@ -734,8 +740,8 @@ section.about div.about div img.info {
   display: inline-block;
   text-align: center;
   vertical-align: top;
-  width: 54%;
-  width: 6.5rem;
+  width: 50%;
+  width: 5.6rem;
   min-width: 320px;
 }
 
@@ -748,8 +754,8 @@ section.about div.about div img.info {
   text-align: center;
   width: 41.3%;
   height: 100%;
-  width: 5rem;
-  height: 2rem;
+  width: 6.2rem;
+  height: 3rem;
   min-width: 300px;
   min-height: 200px;
   border: 1px solid #ccc;
