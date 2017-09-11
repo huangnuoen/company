@@ -2,7 +2,7 @@ $color: #0188e1;//主色调
 @mixin ellipsis {
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
-	-webkit-line-clamp: 3;
+	-webkit-line-clamp: 4;
 	text-overflow: ellipsis;
 	@media screen and (max-width: 610px) {
 		display: none;
@@ -280,9 +280,9 @@ section.instance {
 					@include ellipsis;
 					font-size: .9em;
 					width: 100%;
-					/* height: 80px; */
+					height: 90px;
 					width: 3rem;
-					/* height: .5rem; */
+					height: .9rem;
 					line-height: 1.6;
 					overflow: hidden;
 				}
@@ -416,6 +416,20 @@ section.about {
 		}
 	}
 }
+
+/* backTop按钮 */
+.backTop {
+	display: none;
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	cursor: pointer;
+	i {
+		color: #ccc;
+		font-size: 40px;
+	}
+}
+
 /* 关于公司页面 */
 .wrapper.about {
 	section.introduction, section.environment, section.join {
@@ -444,8 +458,49 @@ section.about {
 				margin: 0 auto;
 				p {
 					text-indent: .5rem;
+					line-height: 2;
 				}
 			}
+		}
+	}
+	section.environment {
+		width: auto;
+		margin: 1.5% 1.5% .7%;
+		margin: .2rem .2rem .1rem;
+		div {
+			display: inline-block;
+			position: relative;
+			width: 32.4%;
+			height: 316px;
+			width: 4.3rem;
+			height: 3.2rem;
+			overflow: hidden;
+			margin-left: .44rem;
+			text-indent: 0;
+			div {
+				position: absolute;
+				width: 500%;
+				height: 316px;
+				width: 4.3*5rem;
+				height: 3.2rem;
+				overflow: hidden;
+				margin-left: 0;
+				img {
+					float: left;
+					width: 20%;
+					height: 100%;
+					width: 4.3rem;
+					height: 3.2rem;
+					min-width: 300px;
+					min-height: 210px;
+					margin: 0;
+				}
+			}
+		}
+		article {
+			display: inline-block;
+			width: 8.2rem;
+			line-height: 1.8;
 		}
 	}
 	section.partner {

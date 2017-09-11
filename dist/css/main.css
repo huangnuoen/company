@@ -110,7 +110,7 @@ section.instance > div > div.instance div { display: inline-block; width: 56.5%;
 
 section.instance > div > div.instance div h3 { color: #0188e1; margin: .13rem 0; font-size: 1.2em; }
 
-section.instance > div > div.instance div p { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; text-overflow: ellipsis; font-size: .9em; width: 100%; /* height: 80px; */ width: 3rem; /* height: .5rem; */ line-height: 1.6; overflow: hidden; }
+section.instance > div > div.instance div p { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4; text-overflow: ellipsis; font-size: .9em; width: 100%; height: 90px; width: 3rem; height: .9rem; line-height: 1.6; overflow: hidden; }
 
 @media screen and (max-width: 610px) { section.instance > div > div.instance div p { display: none; } }
 
@@ -125,7 +125,7 @@ section.new div.new > div { width: 12.5%; width: 4rem; float: left; text-align: 
 
 section.new div.new > div h4 { margin: 3.5% 2.48%; margin: .15rem .1rem; word-break: keep-all; /* 不换行 */ white-space: nowrap; /* 不换行 */ overflow: hidden; /* 内容超出宽度时隐藏超出部分的内容 */ text-overflow: ellipsis; }
 
-section.new div.new > div p { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; text-overflow: ellipsis; color: #9e9e9e; margin: 0 7.49%; margin: 0 .3rem; height: 41px; height: .42rem; min-height: 40px; line-height: 20px; overflow: hidden; }
+section.new div.new > div p { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4; text-overflow: ellipsis; color: #9e9e9e; margin: 0 7.49%; margin: 0 .3rem; height: 41px; height: .42rem; min-height: 40px; line-height: 20px; overflow: hidden; }
 
 @media screen and (max-width: 610px) { section.new div.new > div p { display: none; } }
 
@@ -153,6 +153,11 @@ section.about div.about div.introduction p { text-indent: .3rem; line-height: 1.
 
 section.about div.about div img.info { margin: 3.9%; margin: .2rem; height: 36.6%; width: 49.5%; height: 2rem; width: 3.2rem; min-width: 200px; min-height: 140px; vertical-align: top; border-radius: .05rem; -webkit-box-shadow: 0 0.05rem 0.05rem rgba(0, 0, 0, 0.5); box-shadow: 0 0.05rem 0.05rem rgba(0, 0, 0, 0.5); }
 
+/* backTop按钮 */
+.backTop { display: none; position: fixed; bottom: 20px; right: 20px; cursor: pointer; }
+
+.backTop i { color: #ccc; font-size: 40px; }
+
 /* 关于公司页面 */
 .wrapper.about section.introduction div, .wrapper.about section.environment div, .wrapper.about section.join div { margin: 1.5% 1.5% .7%; margin: .2rem .2rem .1rem; text-indent: .3rem; line-height: 1.8; }
 
@@ -162,7 +167,17 @@ section.about div.about div img.info { margin: 3.9%; margin: .2rem; height: 36.6
 
 .wrapper.about section.introduction div article, .wrapper.about section.environment div article, .wrapper.about section.join div article { display: inline-block; width: 61.8%; width: 8.2rem; margin: 0 auto; }
 
-.wrapper.about section.introduction div article p, .wrapper.about section.environment div article p, .wrapper.about section.join div article p { text-indent: .5rem; }
+.wrapper.about section.introduction div article p, .wrapper.about section.environment div article p, .wrapper.about section.join div article p { text-indent: .5rem; line-height: 2; }
+
+.wrapper.about section.environment { width: auto; margin: 1.5% 1.5% .7%; margin: .2rem .2rem .1rem; }
+
+.wrapper.about section.environment div { display: inline-block; position: relative; width: 32.4%; height: 316px; width: 4.3rem; height: 3.2rem; overflow: hidden; margin-left: .44rem; text-indent: 0; }
+
+.wrapper.about section.environment div div { position: absolute; width: 500%; height: 316px; width: 21.5rem; height: 3.2rem; overflow: hidden; margin-left: 0; }
+
+.wrapper.about section.environment div div img { float: left; width: 20%; height: 100%; width: 4.3rem; height: 3.2rem; min-width: 300px; min-height: 210px; margin: 0; }
+
+.wrapper.about section.environment article { display: inline-block; width: 8.2rem; line-height: 1.8; }
 
 .wrapper.about section.partner { text-align: center; }
 
