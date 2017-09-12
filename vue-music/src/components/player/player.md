@@ -1,4 +1,5 @@
 ### player.vue 播放器组件
+actions--mutations--state--getter
 1. 注册在app.vue中
 2. 从state中getters'fullscreen'和'playlist',控制播放器的显示
 3. 当song-list.vue中的li被click时
