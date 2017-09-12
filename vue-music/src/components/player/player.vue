@@ -1,6 +1,10 @@
 <template>
   <div class="player" v-show="playlist.length>0">
-		<transition name="normal">
+		<transition name="normal"
+								@enter="enter"
+								@afterEnter="afterEnter"
+								@leave="leave"
+								@afterLeave="afterLeave">
 			<div class="normal-player" v-show="fullScreen">
 				<div class="background">
 					<img :src="currentSong.image" width="100%" height="100%">
@@ -85,6 +89,10 @@
   		open() {
   			this.setFullScreen(true)
   		},
+  		enter(el, done) {},
+  		afterEnter() {},
+  		leave(el, done) {},
+  		afterLeave() {},
   		...mapMutations({
   			setFullScreen: 'SET_FULL_SCREEN'
   		})
