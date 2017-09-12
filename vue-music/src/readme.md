@@ -28,6 +28,7 @@
 		- 设置一个最大滚动距离，在watch: scrollY(newY)，实时translateY,当layer未达到指定位置时，translateY取newY,否则取最大滚动距离
 		- 滚动到顶部时，剩余的bgImage应覆盖在列表上，且height为40px,padding-top为0
 		- 回滚时，应复原
+7. player.vue 播放器组件
 
 ## 公用js
 1. dom.js 所有对dom的操作方法
@@ -84,5 +85,5 @@ import VueLazyLoad from 'vue-lazyload'
 
 ### vuex
 - 将所有状态存储在state中，通过mutations去改变状态，getters去获取状态
-1. 在singer.vue通过mapMutations映射setSinger方法，调用setSinger(singer)方法提交/改变状态
-2. 在singer-detail.vue中能过mapGetters映射取得'singer'
+1. 在singer.vue的methods中通过mapMutations映射setSinger方法，调用setSinger(singer)方法提交/改变状态
+2. 在singer-detail.vue中的computed中通过mapGetters映射取得'singer'

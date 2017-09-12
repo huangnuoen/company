@@ -90,7 +90,6 @@
     },
     methods: {
       selectItem(item) {
-        console.log('click')
         // 触发当前实例的select事件，item交给响应该自定义事件的组件
         this.$emit('select', item)
       },

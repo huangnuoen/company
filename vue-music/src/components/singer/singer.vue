@@ -31,6 +31,7 @@
         })
         // 传入singer参数，修改mutation
         this.setSinger(singer)
+        console.log(singer)
       },
    		_getSingerList() {
   			getSingerList().then((res) => {
