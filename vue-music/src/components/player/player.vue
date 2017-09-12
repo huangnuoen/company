@@ -1,66 +1,70 @@
 <template>
   <div class="player" v-show="playlist.length>0">
-  	<div class="normal-player" v-show="fullScreen">
-  		<div class="background">
-  			<img :src="currentSong.image" width="100%" height="100%">
-  		</div>
-  		<div class="top">
-  			<div class="back" @click="back">
-  				<i class="icon-back"></i>
-  			</div>
-  			<h1 class="title" v-html="currentSong.name"></h1>
-  			<h2 class="subtitle" v-html="currentSong.singer"></h2>
-  		</div>
-  		<div class="middle">
-  			<div class="middle-l">
-  				<div class="cd-wrapper">
-  					<div class="cd">
-  						<img :src="currentSong.image" class="image">
-  					</div>
-  				</div>
-  				<div class="playing-lyric-wrapper">
-  					<div class="playing-lyric"></div>
-  				</div>
-  			</div>
-  			<div class="middle-r"></div>
-  		</div>
-  		<div class="bottom">
-  			<div class="dot-wrapper">
-  				<span class="dot"></span>
-  				<span class="dot"></span>
-  			</div>
-  			<div class="progress-wrapper"></div>
-  			<div class="operators">
-  				<div class="icon i-left">
-  					<i></i>
-  				</div>
-  				<div class="icon i-left">
-  					<i class="icon-prev"></i>
-  				</div>
-  				<div class="icon i-center">
-  					<i class="playIcon"></i>
-  				</div>
-  				<div class="icon i-right">
-  					<i class="icon-next"></i>
-  				</div>
-  				<div class="icon i-right">
-  					<i class="icon"></i>
-  				</div>
-  			</div>
-  		</div>
-  	</div>
-  	<div class="mini-player" v-show="!fullScreen" @click="open">
-  		<div class="icon">
-  			<img :src="currentSong.image" width="40" height="40">
-  		</div>
-  		<div class="text">
-  			<h2 class="name"v-html="currentSong.name"></h2>
-  			<p class="desc" v-html="currentSong.singer"></p>
-  		</div>
-  		<div class="control">
-  			<i class="icon-playlist"></i>
-  		</div>
-  	</div>
+		<transition name="normal">
+			<div class="normal-player" v-show="fullScreen">
+				<div class="background">
+					<img :src="currentSong.image" width="100%" height="100%">
+				</div>
+				<div class="top">
+					<div class="back" @click="back">
+						<i class="icon-back"></i>
+					</div>
+					<h1 class="title" v-html="currentSong.name"></h1>
+					<h2 class="subtitle" v-html="currentSong.singer"></h2>
+				</div>
+				<div class="middle">
+					<div class="middle-l">
+						<div class="cd-wrapper">
+							<div class="cd">
+								<img :src="currentSong.image" class="image">
+							</div>
+						</div>
+						<div class="playing-lyric-wrapper">
+							<div class="playing-lyric"></div>
+						</div>
+					</div>
+					<div class="middle-r"></div>
+				</div>
+				<div class="bottom">
+					<div class="dot-wrapper">
+						<span class="dot"></span>
+						<span class="dot"></span>
+					</div>
+					<div class="progress-wrapper"></div>
+					<div class="operators">
+						<div class="icon i-left">
+							<i></i>
+						</div>
+						<div class="icon i-left">
+							<i class="icon-prev"></i>
+						</div>
+						<div class="icon i-center">
+							<i class="playIcon"></i>
+						</div>
+						<div class="icon i-right">
+							<i class="icon-next"></i>
+						</div>
+						<div class="icon i-right">
+							<i class="icon"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+		</transition>
+		<transition name="mini">
+	  	<div class="mini-player" v-show="!fullScreen" @click="open">
+	  		<div class="icon">
+	  			<img :src="currentSong.image" width="40" height="40">
+	  		</div>
+	  		<div class="text">
+	  			<h2 class="name"v-html="currentSong.name"></h2>
+	  			<p class="desc" v-html="currentSong.singer"></p>
+	  		</div>
+	  		<div class="control">
+	  			<i class="icon-playlist"></i>
+	  		</div>
+	  	</div>
+		</transition>
   </div>
 </template>
 
@@ -234,6 +238,16 @@
 						text-align: left
 					.icon-favorite
 						color: $color-sub-theme
+			&.normal-enter-active, &.normal-leave-active
+				transition: all .4s
+				.top, .bottom
+					transition: all .4s cubic-bezier(.86, .18, .82, 1.32)
+			&.normal-enter, &.normal-leave-to
+				opacity: 0
+				.top
+					transform: translate3d(0, -100px, 0)
+				.bottom
+					transform: translate3d(0, 100px, 0)
 		.mini-player
 			display: flex
 			align-items: center
