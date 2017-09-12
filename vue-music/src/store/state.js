@@ -3,7 +3,7 @@ import {playMode} from 'common/js/config'
 const state = {
 	singer: {},
 	playing: false,
-	fullScrean: false,
+	fullScreen: false,
 	// 播放列表
 	playlist: [],
 	// 播放模式列表

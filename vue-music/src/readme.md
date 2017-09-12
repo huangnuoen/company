@@ -49,6 +49,7 @@
 	- 初次bscroll时，用mounted调用，父组件可能还没完全渲染好样式，需要传入data数据(推荐和歌单资源)监听，
 	- watch实时监听data的变化
 3. song-list.vue  歌曲列表组件
+	- 点击li派发select事件
 
 ## API接口
 1. recommend.js 获取推荐数据

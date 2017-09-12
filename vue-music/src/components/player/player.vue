@@ -1,7 +1,7 @@
 <template>
   <div class="player" v-show="playlist.length>0">
   	<div class="normal-player" v-show="fullScreen">播放器</div>
-  	<div class="mini-player"></div>
+  	<div class="mini-player" v-show="!fullScreen"></div>
   </div>
 </template>
 
