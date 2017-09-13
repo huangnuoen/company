@@ -18,7 +18,7 @@ section h2 {
   color: #0188e1;
   text-align: center;
   margin: 2.1% 0 3.26%;
-  margin: .3rem 0 .45rem;
+  margin: .3rem 0 .45rem 0;
   font-size: 1.4em;
 }
 
@@ -29,7 +29,7 @@ section h2 span:last-child {
   height: 2px;
   background: #0188e1;
   margin: 1.12% auto;
-  margin: .17rem auto;
+  margin: .17rem auto .17rem;
 }
 
 section:hover h2 span:last-child {
@@ -42,7 +42,7 @@ section:hover h2 span:last-child {
 section > div > img {
   width: 100%;
   height: 543px;
-  width: 13.66rem;
+  /* width: 13.66rem; */
   height: 4.5rem;
   /* object-fit: contain; */
 }
@@ -93,7 +93,7 @@ section.carousel ul li {
   min-width: 8px;
   min-height: 8px;
   margin: 0 8px;
-  margin: 0 .08rem;
+  margin: 0 .08rem 0 .08rem;
   border: 1px solid #fff;
   background-color: #999;
   border-radius: 50%;
@@ -129,7 +129,7 @@ section.production > div > div div.path {
   width: 270px;
   height: 270px;
   margin: 20px 130px;
-  margin: .32rem 1rem;
+  margin: .32rem 1rem .32rem 1rem;
   border-radius: 50%;
   border: 1px dashed #0188e1;
   position: relative;
@@ -179,28 +179,28 @@ section.production > div > div div.path div:hover {
 }
 
 section.production > div > div.community .path div:nth-child(1) {
-  -webkit-animation: moveX 10s cubic-bezier(0.36, 0, 0.64, 1) -5s infinite alternate, moveY 10s cubic-bezier(0.36, 0, 0.64, 1) 0s infinite alternate;
-          animation: moveX 10s cubic-bezier(0.36, 0, 0.64, 1) -5s infinite alternate, moveY 10s cubic-bezier(0.36, 0, 0.64, 1) 0s infinite alternate;
+  -webkit-animation: moveX 20s cubic-bezier(0.36, 0, 0.64, 1) -10s infinite alternate, moveY 20s cubic-bezier(0.36, 0, 0.64, 1) 0s infinite alternate;
+          animation: moveX 20s cubic-bezier(0.36, 0, 0.64, 1) -10s infinite alternate, moveY 20s cubic-bezier(0.36, 0, 0.64, 1) 0s infinite alternate;
 }
 
 section.production > div > div.community .path div:nth-child(2) {
-  -webkit-animation: moveX 10s cubic-bezier(0.36, 0, 0.64, 1) -9s infinite alternate, moveY 10s cubic-bezier(0.36, 0, 0.64, 1) -4s infinite alternate;
-          animation: moveX 10s cubic-bezier(0.36, 0, 0.64, 1) -9s infinite alternate, moveY 10s cubic-bezier(0.36, 0, 0.64, 1) -4s infinite alternate;
+  -webkit-animation: moveX 20s cubic-bezier(0.36, 0, 0.64, 1) -18s infinite alternate, moveY 20s cubic-bezier(0.36, 0, 0.64, 1) -8s infinite alternate;
+          animation: moveX 20s cubic-bezier(0.36, 0, 0.64, 1) -18s infinite alternate, moveY 20s cubic-bezier(0.36, 0, 0.64, 1) -8s infinite alternate;
 }
 
 section.production > div > div.community .path div:nth-child(3) {
-  -webkit-animation: moveX 10s cubic-bezier(0.36, 0, 0.64, 1) -13s infinite alternate, moveY 10s cubic-bezier(0.36, 0, 0.64, 1) -8s infinite alternate;
-          animation: moveX 10s cubic-bezier(0.36, 0, 0.64, 1) -13s infinite alternate, moveY 10s cubic-bezier(0.36, 0, 0.64, 1) -8s infinite alternate;
+  -webkit-animation: moveX 20s cubic-bezier(0.36, 0, 0.64, 1) -26s infinite alternate, moveY 20s cubic-bezier(0.36, 0, 0.64, 1) -16s infinite alternate;
+          animation: moveX 20s cubic-bezier(0.36, 0, 0.64, 1) -26s infinite alternate, moveY 20s cubic-bezier(0.36, 0, 0.64, 1) -16s infinite alternate;
 }
 
 section.production > div > div.community .path div:nth-child(4) {
-  -webkit-animation: moveX 10s cubic-bezier(0.36, 0, 0.64, 1) -17s infinite alternate, moveY 10s cubic-bezier(0.36, 0, 0.64, 1) -12s infinite alternate;
-          animation: moveX 10s cubic-bezier(0.36, 0, 0.64, 1) -17s infinite alternate, moveY 10s cubic-bezier(0.36, 0, 0.64, 1) -12s infinite alternate;
+  -webkit-animation: moveX 20s cubic-bezier(0.36, 0, 0.64, 1) -34s infinite alternate, moveY 20s cubic-bezier(0.36, 0, 0.64, 1) -24s infinite alternate;
+          animation: moveX 20s cubic-bezier(0.36, 0, 0.64, 1) -34s infinite alternate, moveY 20s cubic-bezier(0.36, 0, 0.64, 1) -24s infinite alternate;
 }
 
 section.production > div > div.community .path div:nth-child(5) {
-  -webkit-animation: moveX 10s cubic-bezier(0.36, 0, 0.64, 1) -21s infinite alternate, moveY 10s cubic-bezier(0.36, 0, 0.64, 1) -16s infinite alternate;
-          animation: moveX 10s cubic-bezier(0.36, 0, 0.64, 1) -21s infinite alternate, moveY 10s cubic-bezier(0.36, 0, 0.64, 1) -16s infinite alternate;
+  -webkit-animation: moveX 20s cubic-bezier(0.36, 0, 0.64, 1) -42s infinite alternate, moveY 20s cubic-bezier(0.36, 0, 0.64, 1) -32s infinite alternate;
+          animation: moveX 20s cubic-bezier(0.36, 0, 0.64, 1) -42s infinite alternate, moveY 20s cubic-bezier(0.36, 0, 0.64, 1) -32s infinite alternate;
 }
 
 section.production > div > div.community .path .path1 {
@@ -333,8 +333,8 @@ section.instance > div > div.instance {
   width: 5.5rem;
   padding: .3% .7%;
   margin: 0 1.5% 3%;
-  padding: .05rem .1rem;
-  margin: 0 .2rem .4rem;
+  padding: .05rem .1rem .05rem .1rem;
+  margin: 0 .2rem .4rem .2rem;
   background-color: #f5f3f1;
   border-radius: .05rem;
   overflow: hidden;
@@ -349,7 +349,7 @@ section.instance > div > div.instance img {
   width: 2rem;
   height: 1.5rem;
   padding: 1.9%;
-  padding: .1rem;
+  padding: .1rem .1rem .1rem .1rem;
   -o-object-fit: fill;
      object-fit: fill;
 }
@@ -364,7 +364,7 @@ section.instance > div > div.instance div {
 
 section.instance > div > div.instance div h3 {
   color: #0188e1;
-  margin: .13rem 0;
+  margin: .13rem 0 .13rem 0;
   font-size: 1.2em;
 }
 
@@ -401,7 +401,7 @@ section.new {
   width: 87.8%;
   width: 12rem;
   margin: 0 6.07%;
-  margin: 0 .83rem;
+  margin: 0 .83rem 0 .83rem;
   height: 308px;
   height: 4.2rem;
   min-height: 300px;
@@ -426,7 +426,7 @@ section.new div.new > div {
 
 section.new div.new > div h4 {
   margin: 3.5% 2.48%;
-  margin: .15rem .1rem;
+  margin: .15rem .1rem .15rem .1rem;
   word-break: keep-all;
   /* 不换行 */
   white-space: nowrap;
@@ -443,7 +443,7 @@ section.new div.new > div p {
   text-overflow: ellipsis;
   color: #9e9e9e;
   margin: 0 7.49%;
-  margin: 0 .3rem;
+  margin: 0 .3rem 0 .3rem;
   height: 41px;
   height: .42rem;
   min-height: 40px;
@@ -458,6 +458,7 @@ section.new div.new > div p {
 }
 
 section.new div.new > div img {
+  display: inline-block;
   width: 62.5%;
   height: 148px;
   width: 2.5rem;
@@ -468,7 +469,7 @@ section.new div.new > div time {
   display: inline-block;
   color: #9e9e9e;
   margin: 3% 0;
-  margin: .12rem 0;
+  margin: .12rem 0 .12rem 0;
 }
 
 @media screen and (max-width: 610px) {
@@ -487,6 +488,7 @@ section.new div.new > div time {
     display: none;
   }
   section.new div.new > div img {
+    display: inline-block;
     width: 62.5%;
     height: 185px;
     width: 7.5rem;
@@ -496,7 +498,7 @@ section.new div.new > div time {
 
 section.about {
   padding: 0 2.22% 3.7%;
-  padding: 0 .3rem .5rem;
+  padding: 0 .3rem .5rem .3rem;
 }
 
 section.about div.about {
@@ -559,7 +561,7 @@ section.about div.about div img.info {
 /* 关于公司页面 */
 .wrapper.about section.introduction div, .wrapper.about section.environment div, .wrapper.about section.join div {
   margin: 1.5% 1.5% .7%;
-  margin: .2rem .2rem .1rem;
+  margin: .2rem .2rem .1rem .2rem;
   text-indent: .3rem;
   line-height: 1.8;
 }
@@ -594,7 +596,7 @@ section.about div.about div img.info {
 .wrapper.about section.environment {
   width: auto;
   margin: 1.5% 1.5% .7%;
-  margin: .2rem .2rem .1rem;
+  margin: .2rem .2rem .1rem .2rem;
   text-align: center;
 }
 
@@ -614,9 +616,10 @@ section.about div.about div img.info {
 
 .wrapper.about section.environment div div {
   position: absolute;
+  left: 0;
   width: 500%;
   height: 316px;
-  width: 21.5rem;
+  /* width: 4.3*5rem; */
   height: 3.2rem;
   min-width: 1500px;
   min-height: 210px;
@@ -628,7 +631,7 @@ section.about div.about div img.info {
   float: left;
   width: 20%;
   height: 100%;
-  width: 4.3rem;
+  /* width: 4.3rem; */
   height: 3.2rem;
   min-width: 300px;
   min-height: 210px;
@@ -648,7 +651,7 @@ section.about div.about div img.info {
 .wrapper.about section.partner div {
   margin: 0 auto;
   padding: 0 4.45%;
-  padding: 0 .6rem;
+  padding: 0 .6rem 0 .6rem;
 }
 
 .wrapper.about section.partner div img {
@@ -660,7 +663,7 @@ section.about div.about div img.info {
   min-width: 120px;
   min-height: 42px;
   margin: 0 3.25% 1.9%;
-  margin: 0 .4rem .24rem;
+  margin: 0 .4rem .24rem .4rem;
   border: 1px dashed #eee;
   border-radius: .1rem;
   -o-object-fit: contain;
@@ -705,7 +708,7 @@ section.about div.about div img.info {
   color: #0188e1;
   font-size: 1.1em;
   display: inline-block;
-  margin: .2rem 1rem;
+  margin: .2rem 1rem .2rem 1rem;
 }
 
 .wrapper.about section.join > div:last-child h3 a:hover {
@@ -727,13 +730,13 @@ section.about div.about div img.info {
 /* 联系我们页面 */
 .wrapper.contact section.contact-wrapper {
   -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
 }
 
 .wrapper.contact section.contact-wrapper div.info {
   padding: .7% 5.9%;
-  padding: .1rem .8rem;
+  padding: .1rem .8rem .1rem .8rem;
 }
 
 .wrapper.contact section.contact-wrapper div.info div {
@@ -764,7 +767,7 @@ section.about div.about div img.info {
 
 .wrapper.contact section.contact-wrapper form {
   padding: 0 5.2% 1.5%;
-  padding: 0 .7rem .2rem;
+  padding: 0 .7rem .2rem .7rem;
 }
 
 .wrapper.contact section.contact-wrapper form div {
@@ -783,7 +786,7 @@ section.about div.about div img.info {
 .wrapper.contact section.contact-wrapper form button, .wrapper.contact section.contact-wrapper form input[type='submit'] {
   margin-left: 1%;
   padding: .3% 2.5%;
-  padding: 0.04rem .3rem;
+  padding: 0.04rem .3rem .04rem .3rem;
 }
 
 /* 公司业务页面 */
@@ -792,7 +795,7 @@ section.about div.about div img.info {
   width: 95%;
   width: 13rem;
   margin: 0 2.3%;
-  margin: 0 .33rem;
+  margin: 0 .33rem 0 .33rem;
   padding: 0 0 0 2.2%;
   padding: 0 0 0 .3rem;
   height: auto;
@@ -813,7 +816,7 @@ section.about div.about div img.info {
 .wrapper.production section.production aside > ul > li a {
   display: inline-block;
   padding: 8.4%;
-  padding: .15rem;
+  padding: .15rem .15rem .15rem .15rem;
   color: #000;
   border-bottom: 1px solid #ccc;
   width: 127%;
@@ -854,13 +857,13 @@ section.about div.about div img.info {
   border-bottom: 1px solid #ccc;
   padding: 1.06%;
   margin: 2.12%;
-  padding: .1rem;
-  margin: .2rem;
+  padding: .1rem .1rem .1rem .1rem;
+  margin: .2rem .2rem .2rem .2rem;
 }
 
 .wrapper.production section.production article p {
   text-indent: .2rem;
-  line-height: 1.8;
+  line-height: 2;
 }
 
 .wrapper.production section.production .fixedT {

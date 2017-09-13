@@ -18,13 +18,16 @@ header {
 
 header div.logo {
   display: inline-block;
+  width: 2.532rem;
+  height: .81rem;
 }
 
 header div.logo img {
+  display: inline-block;
   width: 249px;
   height: 79px;
-  width: 2.531rem;
-  height: .81rem;
+  width: 100%;
+  height: 100%;
 }
 
 header nav {
