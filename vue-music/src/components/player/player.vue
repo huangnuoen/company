@@ -73,6 +73,7 @@
 </template>
 
 <script>
+  import animation from 'create-keyframe-animation'
 	import {mapGetters, mapMutations} from 'vuex'
   export default {
   	computed: {
