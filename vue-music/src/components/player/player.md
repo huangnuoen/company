@@ -14,5 +14,11 @@ actions--mutations--state--getter
 	5.1 normal-player和mini-player的切换动画
 		- 用css可实现
 	5.2 小球飞入动画
-		- 用vue的动画钩子
+		- 用vue的动画钩子，cdWrapper从mini唱片移动到cdWrapper位置并放大
 		- 使用create-keyframe-animation库
+		- 获取mini唱片位置，normal唱片位置
+		- 定义动画各位时间段，使用create-keyframe-animation库设置注册动画
+		- enter() 定义唱片0%，60%，100%的状态；注册动画move;运行move,结束后调用done
+		- afterenter()  注销move动画；清空cdwrapper上的动画
+		- leave() 因无须先缩后放效果，直接定义cdwrapper.style.transition和transform；在transitionend触发后执行done
+		- afterleave()  清空cdwrapper.style.transition和transform

@@ -61,14 +61,14 @@ section.carousel div {
   position: absolute;
   width: 400%;
   /* (3+1)*100% */
-  height: 543px;
-  height: 4.5rem;
   z-index: 1;
 }
 
 section.carousel div img {
+  display: inline;
   width: 25%;
   /* 兼容ie8中不支持rem，用%设置宽度 */
+  height: 4.5rem;
   float: left;
 }
 
@@ -815,8 +815,8 @@ section.about div.about div img.info {
 
 .wrapper.production section.production aside > ul > li a {
   display: inline-block;
-  padding: 8.4%;
-  padding: .15rem .15rem .15rem .15rem;
+  padding: 5.4%;
+  padding: .09rem .09rem .09rem .09rem;
   color: #000;
   border-bottom: 1px solid #ccc;
   width: 127%;

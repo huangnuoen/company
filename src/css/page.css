@@ -19,16 +19,13 @@ section.page > span, section.page > time {
 section.page img {
   margin: 1.05%;
   margin: .1rem;
-  width: 41.3%;
-  height: 266px;
-  width: 4rem;
-  height: 3rem;
-  border: 1px solid #ccc;
+  width: 61.3%;
+  height: 300px;
+  width: 8rem;
+  height: 7rem;
   border-radius: 2px;
-  -webkit-box-shadow: 2px 2px 2px #ccc;
-          box-shadow: 2px 2px 2px #ccc;
-  -o-object-fit: cover;
-     object-fit: cover;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 section.page.production article img {
@@ -38,6 +35,7 @@ section.page.production article img {
 
 section.page p {
   text-indent: 0;
+  margin-top: .2rem;
 }
 
 section.page p.intro {

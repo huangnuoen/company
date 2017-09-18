@@ -18,7 +18,7 @@
 				</div>
 				<div class="middle">
 					<div class="middle-l">
-						<div class="cd-wrapper">
+						<div class="cd-wrapper" ref="cdWrapper">
 							<div class="cd">
 								<img :src="currentSong.image" class="image">
 							</div>
@@ -73,8 +73,12 @@
 </template>
 
 <script>
-  import animation from 'create-keyframe-animation'
+	// 动画库
+  import animations from 'create-keyframe-animation'
+  import {prefixStyle} from 'common/js/dom'
 	import {mapGetters, mapMutations} from 'vuex'
+
+	const transform = prefixStyle('transform')
   export default {
   	computed: {
   		...mapGetters([
@@ -90,10 +94,69 @@
   		open() {
   			this.setFullScreen(true)
   		},
-  		enter(el, done) {},
-  		afterEnter() {},
-  		leave(el, done) {},
-  		afterLeave() {},
+  		enter(el, done) {
+  			const {x, y, scale} = this._getPosAndScale()
+
+  			let animation = {
+  				0: {
+  					transform: `translate3d(${x}px,${y}px,0) scale(${scale})`
+  				},
+  				60: {
+  					transform: `translate3d(0,0,0) scale(1.1)`
+  				},
+  				100: {
+  					transform: `translate3d(0,0,0) scale(1)`
+  				}
+  			}
+
+  			animations.registerAnimation({
+  				name: 'move',
+  				animation,
+  				presets: {
+  					duration: 400,
+  					easing: 'linear'
+  				}
+  			})
+
+  			animations.runAnimation(this.$refs.cdWrapper, 'move', done)
+  		},
+  		afterEnter() {
+  			animations.unregisterAnimation('move')
+  			this.$refs.cdWrapper.style.animation = ''
+  		},
+  		leave(el, done) {
+  			this.$refs.cdWrapper.style.transition = 'all 0.4s'
+  			const {x, y, scale} = this._getPosAndScale()
+  			this.$refs.cdWrapper.style[transform] = `translate3d(${x}px,${y}px,0) scale(${scale})`
+  			// 完成后调用done
+  			this.$refs.cdWrapper.addEventListener('transitionend', done)
+  		},
+  		afterLeave() {
+  			// 取消动画
+  			this.$refs.cdWrapper.style.transition = ''
+  			this.$refs.cdWrapper.style[transform] = ''
+  		},
+  		// 获取偏移位置和放大倍数
+  		_getPosAndScale() {
+  			// mini's width, 中心的各边距
+  			const targetWidth = 40
+  			const paddingLeft = 40
+  			const paddingBottom = 30
+  			// normal上边距
+  			const paddingTop = 80
+  			// normal's width
+  			const width = window.innerWidth * 0.8
+  			// 缩小比例
+  			const scale = targetWidth / width
+  			// 偏移距离
+  			const x = -(window.innerWidth / 2 - paddingLeft)
+  			const y = window.innerHeight - paddingTop - width / 2 - paddingBottom
+  			return {
+  				x,
+  				y,
+  				scale
+  			}
+  		},
   		...mapMutations({
   			setFullScreen: 'SET_FULL_SCREEN'
   		})
