@@ -22,3 +22,10 @@ actions--mutations--state--getter
 		- afterenter()  注销move动画；清空cdwrapper上的动画
 		- leave() 因无须先缩后放效果，直接定义cdwrapper.style.transition和transform；在transitionend触发后执行done
 		- afterleave()  清空cdwrapper.style.transition和transform
+6. 播放音乐
+	6.1 <audio>元素，监听currentSong,启动play()
+	6.2 vuex获取state.playing_state和mutation
+	6.3 修改了playing_state并监听，根据此来调用play()&pause()
+	6.4 修改按钮样式
+		- 按钮切换，通过计算和绑定类名
+		- 唱片旋转控制，通过计算，绑定类名
