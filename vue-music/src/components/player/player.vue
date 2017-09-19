@@ -34,7 +34,11 @@
 						<span class="dot"></span>
 						<span class="dot"></span>
 					</div>
-					<div class="progress-wrapper"></div>
+					<div class="progress-wrapper">
+						<span class="time time-l">{{format(currentTime)}}</span>
+						<div class="progress-bar-wrapper"></div>
+						<span class="time time-r">{{format(currentSong.duration)}}</span>
+					</div>
 					<div class="operators">
 						<div class="icon i-left">
 							<i></i>
@@ -72,7 +76,7 @@
 	  		</div>
 	  	</div>
 		</transition>
-		<audio :src="currentSong.url" ref="audio" @canplay="ready" @error="error"></audio>
+		<audio :src="currentSong.url" ref="audio" @canplay="ready" @error="error" @timeupdate="updateTime"></audio>
   </div>
 </template>
 
@@ -87,7 +91,8 @@
   	data() {
   		return {
   			// 标识位
-  			songReady: false
+  			songReady: false,
+  			currentTime: 0
   		}
   	},
   	computed: {
@@ -200,6 +205,26 @@
   		// 保证正常运行
   		error() {
   			this.songReady = true
+  		},
+  		updateTime(e) {
+  			// 获取当前播放位置时间
+  			this.currentTime = e.target.currentTime
+  		},
+  		format(interval) {
+  			// 向下取整
+  			interval = interval | 0
+  			const minute = interval / 60 | 0
+  			const second = this._pad(interval % 60, 2)
+  			return `${minute}:${second}`
+  		},
+  		// 补0
+  		_pad(num, n = 2) {
+  			let len = num.toString().length
+  			while (len < n) {
+  				num = '0' + num
+  				len++
+  			}
+  			return num
   		},
   		// 获取偏移位置和放大倍数
   		_getPosAndScale() {
