@@ -31,5 +31,11 @@ actions--mutations--state--getter
 		- 唱片旋转控制，通过计算，绑定类名
 	6.5 上下曲切换
 7 进度条组件pro
-	- props获取父的percent 歌曲进度
-	- 监听percent，设定progress的width
+	7.1 进度条变化 
+		- props获取父的percent 歌曲进度
+		- 监听percent，设定progress的width，设置偏移距离
+	7.2 进度条拖动
+		- touchstart() 初始化this.touch对象，存储touch位置和现偏移
+		- touchmove() 计算移动距离，据此计算偏移距离，并修改样式
+		- touchend() 设置进度,计算百分比派发到父，传入百分比，在父中用this.$refs.audio.currentTime设置跳转
+

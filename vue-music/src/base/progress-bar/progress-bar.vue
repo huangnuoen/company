@@ -2,7 +2,11 @@
   <div class="progress-bar" ref="progressBar">
   	<div class="bar-inner">
   		<div class="progress" ref="progress"></div>
-  		<div class="progress-btn-wrapper" ref="progressBtn">
+  		<div class="progress-btn-wrapper"
+  				 ref="progressBtn"
+  				 @touchstart.prevent="progressTouchStart"
+  				 @touchmove.prevent="progressTouchMove"
+  				 @touchend="progressTouchEnd">
 	  		<div class="progress-btn"></div>
   		</div>
   	</div>
@@ -21,16 +25,51 @@
   			default: 0
   		}
   	},
+  	created() {
+  		// 记录touch信息，各touch事件的联系
+  		this.touch = {}
+  	},
+  	methods: {
+  		progressTouchStart(e) {
+  			this.touch.initiated = true
+  			this.touch.startX = e.touches[0].pageX
+  			this.touch.left = this.$refs.progress.clientWidth
+  		},
+  		progressTouchMove(e) {
+  			// 如果没触发touchstar事件,直接触发touchmove时
+  			if (!this.touch.initiated) {
+  				return
+  			}
+  			// 移动距离
+  			const deltaX = e.touches[0].pageX - this.touch.startX
+  			// 偏移距离应在0~barWidth之间
+  			const offsetWidth = Math.min(this.$refs.progressBar.clientWidth - progressBtnWidth, Math.max(0, this.touch.left + deltaX))
+  			this._offset(offsetWidth)
+  		},
+  		progressTouchEnd(e) {
+  			this.touch.initiated = false
+  			this._triggerPercent()
+  		},
+			// 告诉父要跳转到该进度
+  		_triggerPercent() {
+  			const barWidth = this.$refs.progressBar.clientWidth - progressBtnWidth
+  			const percent = this.$refs.progress.clientWidth / barWidth
+  			this.$emit('percentChange', percent)
+  		},
+  		// 进度条和小球的偏移
+  		_offset(offsetWidth) {
+  				this.$refs.progress.style.width = `${offsetWidth}px`
+  				this.$refs.progressBtn.style[transform] = `translate3d(${offsetWidth}px,0,0)`
+  		}
+  	},
   	watch: {
   		// 监听歌曲进度百分比
   		percent(newPercent) {
-  			if (newPercent >= 0) {
+  			// percent大于0且不在拖动状态时
+  			if (newPercent >= 0 && !this.touch.initiated) {
   				const barWidth = this.$refs.progressBar.clientWidth - progressBtnWidth
   				const offsetWidth = newPercent * barWidth
-  				// 进度条
-  				this.$refs.progress.style.width = `${offsetWidth}px`
-  				// 小球
-  				this.$refs.progressBtn.style[transform] = `translate3d(${offsetWidth}px,0,0)`
+  				this._offset(offsetWidth)
   			}
   		}
   	}
