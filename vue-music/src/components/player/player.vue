@@ -19,7 +19,7 @@
 				<div class="middle">
 					<div class="middle-l">
 						<div class="cd-wrapper" ref="cdWrapper">
-							<div class="cd">
+							<div class="cd" :class="cdCls">
 								<img :src="currentSong.image" class="image">
 							</div>
 						</div>
@@ -43,13 +43,13 @@
 							<i class="icon-prev"></i>
 						</div>
 						<div class="icon i-center">
-							<i class="playIcon"></i>
+							<i @click="togglePlaying" :class="playIcon"></i>
 						</div>
 						<div class="icon i-right">
 							<i class="icon-next"></i>
 						</div>
 						<div class="icon i-right">
-							<i class="icon"></i>
+							<i class="icon-not-favorite"></i>
 						</div>
 					</div>
 				</div>
@@ -58,17 +58,21 @@
 		<transition name="mini">
 	  	<div class="mini-player" v-show="!fullScreen" @click="open">
 	  		<div class="icon">
-	  			<img :src="currentSong.image" width="40" height="40">
+	  			<img :class="cdCls" :src="currentSong.image" width="40" height="40">
 	  		</div>
 	  		<div class="text">
 	  			<h2 class="name"v-html="currentSong.name"></h2>
 	  			<p class="desc" v-html="currentSong.singer"></p>
 	  		</div>
 	  		<div class="control">
+	  			<i @click.prevent.stop="togglePlaying" :class="miniIcon"></i>
+	  		</div>
+	  		<div class="control">
 	  			<i class="icon-playlist"></i>
 	  		</div>
 	  	</div>
 		</transition>
+		<audio :src="currentSong.url" ref="audio"></audio>
   </div>
 </template>
 
@@ -84,10 +88,25 @@
   		...mapGetters([
   			'fullScreen',
   			'playlist',
-  			'currentSong'
-  		])
+  			'currentSong',
+  			'playing'
+  		]),
+  		playIcon() {
+  			return this.playing ? 'icon-pause' : 'icon-play'
+  		},
+  		miniIcon() {
+  			return this.playing ? 'icon-pause-mini' : 'icon-play-mini'
+  		},
+  		cdCls() {
+  			return this.playing ? 'play' : 'play pause'
+  		}
   	},
   	methods: {
+  		togglePlaying() {
+  			this.setPlayState(!this.playing)
+  			const audio = this.$refs.audio
+  			this.playing ? audio.play() : audio.pause()
+  		},
   		back() {
   			this.setFullScreen(false)
   		},
@@ -158,8 +177,16 @@
   			}
   		},
   		...mapMutations({
-  			setFullScreen: 'SET_FULL_SCREEN'
+  			setFullScreen: 'SET_FULL_SCREEN',
+  			setPlayState: 'SET_PLAYING_STATE'
   		})
+  	},
+  	watch: {
+  		currentSong() {
+  			this.$nextTick(() => {
+  				this.$refs.audio.play()
+  			})
+  		}
   	}
   }
 </script>
@@ -239,6 +266,10 @@
 							box-sizing: border-box
 							border: 10px solid rgba(255, 255, 255, .2)
 							border-radius: 50%
+							&.play
+								animation: rotate 10s linear infinite
+							&.pause
+								animation-play-state: paused
 							.image
 								position: absolute
 								left: 0
@@ -372,5 +403,11 @@
 					position: absolute
 					left: 0
 					top: 0
+
+	@keyframes rotate
+		0%
+			transform: rotate(0deg)
+		100%
+			transform: rotate(360deg)
 
 </style>
