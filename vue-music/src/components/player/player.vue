@@ -37,7 +37,7 @@
 					<div class="progress-wrapper">
 						<span class="time time-l">{{format(currentTime)}}</span>
 						<div class="progress-bar-wrapper">
-							<progress-bar></progress-bar>
+							<progress-bar :percent="percent"></progress-bar>
 						</div>
 						<span class="time time-r">{{format(currentSong.duration)}}</span>
 					</div>
@@ -110,6 +110,9 @@
   		},
   		disableCls() {
   			return this.songReady ? '' : 'disable'
+  		},
+  		percent() {
+  			return this.currentTime / this.currentSong.duration
   		},
   		...mapGetters([
   			'fullScreen',
@@ -262,6 +265,7 @@
   				this.$refs.audio.play()
   			})
   		},
+  		// playing改变，改变播放状态
   		playing(newPlaying) {
   			const audio = this.$refs.audio
   			this.$nextTick(() => {

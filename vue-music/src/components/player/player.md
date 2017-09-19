@@ -29,3 +29,7 @@ actions--mutations--state--getter
 	6.4 修改按钮样式
 		- 按钮切换，通过计算和绑定类名
 		- 唱片旋转控制，通过计算，绑定类名
+	6.5 上下曲切换
+7 进度条组件pro
+	- props获取父的percent 歌曲进度
+	- 监听percent，设定progress的width
