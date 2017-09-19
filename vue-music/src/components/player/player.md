@@ -38,4 +38,7 @@ actions--mutations--state--getter
 		- touchstart() 初始化this.touch对象，存储touch位置和现偏移
 		- touchmove() 计算移动距离，据此计算偏移距离，并修改样式
 		- touchend() 设置进度,计算百分比派发到父，传入百分比，在父中用this.$refs.audio.currentTime设置跳转
+	7.3 进度条点击跳转
+		- click后，获取点击位置相对目标的位移
+		- 派发到父
 
