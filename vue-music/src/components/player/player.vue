@@ -40,13 +40,13 @@
 							<i></i>
 						</div>
 						<div class="icon i-left">
-							<i class="icon-prev"></i>
+							<i @click="prev" class="icon-prev"></i>
 						</div>
 						<div class="icon i-center">
 							<i @click="togglePlaying" :class="playIcon"></i>
 						</div>
 						<div class="icon i-right">
-							<i class="icon-next"></i>
+							<i @click="next" class="icon-next"></i>
 						</div>
 						<div class="icon i-right">
 							<i class="icon-not-favorite"></i>
@@ -61,7 +61,7 @@
 	  			<img :class="cdCls" :src="currentSong.image" width="40" height="40">
 	  		</div>
 	  		<div class="text">
-	  			<h2 class="name"v-html="currentSong.name"></h2>
+	  			<h2 class="name" v-html="currentSong.name"></h2>
 	  			<p class="desc" v-html="currentSong.singer"></p>
 	  		</div>
 	  		<div class="control">
@@ -89,7 +89,8 @@
   			'fullScreen',
   			'playlist',
   			'currentSong',
-  			'playing'
+  			'playing',
+  			'currentIndex'
   		]),
   		playIcon() {
   			return this.playing ? 'icon-pause' : 'icon-play'
@@ -102,6 +103,7 @@
   		}
   	},
   	methods: {
+  		// 切换播放状态
   		togglePlaying() {
   			this.setPlayState(!this.playing)
   			const audio = this.$refs.audio
@@ -155,6 +157,25 @@
   			this.$refs.cdWrapper.style.transition = ''
   			this.$refs.cdWrapper.style[transform] = ''
   		},
+  		prev() {
+  			let index = this.currentIndex - 1
+  			if (index === -1) {
+  				index = this.playlist.length - 1
+  			}
+  			this.setCurrentIndex(index)
+  		},
+  		next() {
+  			let index = this.currentIndex + 1
+  			if (index === this.playlist.length) {
+  				index = 0
+  			}
+  			// 修改currentIndex,currentsong也会发生改变
+  			this.setCurrentIndex(index)
+  			// 当前处于暂停状态的，则改为播放状态
+  			if (!this.playing) {
+  				this.togglePlaying()
+  			}
+  		},
   		// 获取偏移位置和放大倍数
   		_getPosAndScale() {
   			// mini's width, 中心的各边距
@@ -178,7 +199,8 @@
   		},
   		...mapMutations({
   			setFullScreen: 'SET_FULL_SCREEN',
-  			setPlayState: 'SET_PLAYING_STATE'
+  			setPlayState: 'SET_PLAYING_STATE',
+  			setCurrentIndex: 'SET_CURRENT_INDEX'
   		})
   	},
   	watch: {
