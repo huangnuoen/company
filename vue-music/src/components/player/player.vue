@@ -39,13 +39,13 @@
 						<div class="icon i-left">
 							<i></i>
 						</div>
-						<div class="icon i-left">
+						<div class="icon i-left" :class="disableCls">
 							<i @click="prev" class="icon-prev"></i>
 						</div>
-						<div class="icon i-center">
+						<div class="icon i-center" :class="disableCls">
 							<i @click="togglePlaying" :class="playIcon"></i>
 						</div>
-						<div class="icon i-right">
+						<div class="icon i-right" :class="disableCls">
 							<i @click="next" class="icon-next"></i>
 						</div>
 						<div class="icon i-right">
@@ -72,7 +72,7 @@
 	  		</div>
 	  	</div>
 		</transition>
-		<audio :src="currentSong.url" ref="audio"></audio>
+		<audio :src="currentSong.url" ref="audio" @canplay="ready" @error="error"></audio>
   </div>
 </template>
 
@@ -84,6 +84,12 @@
 
 	const transform = prefixStyle('transform')
   export default {
+  	data() {
+  		return {
+  			// 标识位
+  			songReady: false
+  		}
+  	},
   	computed: {
   		...mapGetters([
   			'fullScreen',
@@ -100,6 +106,9 @@
   		},
   		cdCls() {
   			return this.playing ? 'play' : 'play pause'
+  		},
+  		disableCls() {
+  			return this.songReady ? '' : 'disable'
   		}
   	},
   	methods: {
@@ -158,13 +167,21 @@
   			this.$refs.cdWrapper.style[transform] = ''
   		},
   		prev() {
+  			if (!this.songReady) {
+  				return   				
+  			}
   			let index = this.currentIndex - 1
   			if (index === -1) {
   				index = this.playlist.length - 1
   			}
   			this.setCurrentIndex(index)
+  			this.songReady = false
   		},
   		next() {
+  			// 只有audio缓冲好了才有效
+  			if (!this.songReady) {
+  				return   				
+  			}
   			let index = this.currentIndex + 1
   			if (index === this.playlist.length) {
   				index = 0
@@ -175,6 +192,14 @@
   			if (!this.playing) {
   				this.togglePlaying()
   			}
+  			this.songReady = false
+  		},
+  		ready() {
+  			this.songReady = true
+  		},
+  		// 保证正常运行
+  		error() {
+  			this.songReady = true
   		},
   		// 获取偏移位置和放大倍数
   		_getPosAndScale() {
