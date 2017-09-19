@@ -34,22 +34,28 @@
 						<span class="dot"></span>
 						<span class="dot"></span>
 					</div>
-					<div class="progress-wrapper"></div>
+					<div class="progress-wrapper">
+						<span class="time time-l">{{format(currentTime)}}</span>
+						<div class="progress-bar-wrapper">
+							<progress-bar></progress-bar>
+						</div>
+						<span class="time time-r">{{format(currentSong.duration)}}</span>
+					</div>
 					<div class="operators">
 						<div class="icon i-left">
 							<i class="icon-sequence"></i>
 						</div>
-						<div class="icon i-left">
-							<i class="icon-prev"></i>
+						<div class="icon i-left" :class="disableCls">
+							<i @click="prev" class="icon-prev"></i>
 						</div>
-						<div class="icon i-center">
+						<div class="icon i-center" :class="disableCls">
 							<i @click="togglePlaying" :class="playIcon"></i>
 						</div>
-						<div class="icon i-right">
-							<i class="icon-next"></i>
+						<div class="icon i-right" :class="disableCls">
+							<i @click="next" class="icon-next"></i>
 						</div>
 						<div class="icon i-right">
-							<i class="icon icon-not-favorite"></i>
+							<i class="icon-not-favorite"></i>
 						</div>
 					</div>
 				</div>
@@ -61,7 +67,7 @@
 	  			<img :class="cdCls" :src="currentSong.image" width="40" height="40">
 	  		</div>
 	  		<div class="text">
-	  			<h2 class="name"v-html="currentSong.name"></h2>
+	  			<h2 class="name" v-html="currentSong.name"></h2>
 	  			<p class="desc" v-html="currentSong.singer"></p>
 	  		</div>
 	  		<div class="control">
@@ -72,7 +78,7 @@
 	  		</div>
 	  	</div>
 		</transition>
-		<audio ref="audio" :src="currentSong.url"></audio>
+		<audio :src="currentSong.url" ref="audio" @canplay="ready" @error="error" @timeupdate="updateTime"></audio>
   </div>
 </template>
 
@@ -81,9 +87,17 @@
   import animations from 'create-keyframe-animation'
   import {prefixStyle} from 'common/js/dom'
 	import {mapGetters, mapMutations} from 'vuex'
+	import ProgressBar from 'base/progress-bar/progress-bar'
 
 	const transform = prefixStyle('transform')
   export default {
+  	data() {
+  		return {
+  			// 标识位
+  			songReady: false,
+  			currentTime: 0
+  		}
+  	},
   	computed: {
   		playIcon() {
   			return this.playing ? 'icon-pause' : 'icon-play'
@@ -94,14 +108,24 @@
   		cdCls() {
   			return this.playing ? 'play' : 'play pause'
   		},
+  		disableCls() {
+  			return this.songReady ? '' : 'disable'
+  		},
   		...mapGetters([
   			'fullScreen',
   			'playlist',
   			'currentSong',
-  			'playing'
+  			'playing',
+  			'currentIndex'
   		])
   	},
   	methods: {
+  		// 切换播放状态
+  		togglePlaying() {
+  			this.setPlayState(!this.playing)
+  			const audio = this.$refs.audio
+  			this.playing ? audio.play() : audio.pause()
+  		},
   		back() {
   			this.setFullScreen(false)
   		},
@@ -150,8 +174,60 @@
   			this.$refs.cdWrapper.style.transition = ''
   			this.$refs.cdWrapper.style[transform] = ''
   		},
-  		togglePlaying() {
-  			this.setPlayingState(!this.playing)
+  		prev() {
+  			if (!this.songReady) {
+  				return   				
+  			}
+  			let index = this.currentIndex - 1
+  			if (index === -1) {
+  				index = this.playlist.length - 1
+  			}
+  			this.setCurrentIndex(index)
+  			this.songReady = false
+  		},
+  		next() {
+  			// 只有audio缓冲好了才有效
+  			if (!this.songReady) {
+  				return   				
+  			}
+  			let index = this.currentIndex + 1
+  			if (index === this.playlist.length) {
+  				index = 0
+  			}
+  			// 修改currentIndex,currentsong也会发生改变
+  			this.setCurrentIndex(index)
+  			// 当前处于暂停状态的，则改为播放状态
+  			if (!this.playing) {
+  				this.togglePlaying()
+  			}
+  			this.songReady = false
+  		},
+  		ready() {
+  			this.songReady = true
+  		},
+  		// 保证正常运行
+  		error() {
+  			this.songReady = true
+  		},
+  		updateTime(e) {
+  			// 获取当前播放位置时间
+  			this.currentTime = e.target.currentTime
+  		},
+  		format(interval) {
+  			// 向下取整
+  			interval = interval | 0
+  			const minute = interval / 60 | 0
+  			const second = this._pad(interval % 60, 2)
+  			return `${minute}:${second}`
+  		},
+  		// 补0
+  		_pad(num, n = 2) {
+  			let len = num.toString().length
+  			while (len < n) {
+  				num = '0' + num
+  				len++
+  			}
+  			return num
   		},
   		// 获取偏移位置和放大倍数
   		_getPosAndScale() {
@@ -176,15 +252,14 @@
   		},
   		...mapMutations({
   			setFullScreen: 'SET_FULL_SCREEN',
-  			setPlayingState: 'SET_PLAYING_STATE'
+  			setPlayState: 'SET_PLAYING_STATE',
+  			setCurrentIndex: 'SET_CURRENT_INDEX'
   		})
   	},
   	watch: {
-  		// 监听currentSong变化，启动播放
   		currentSong() {
-  			// dom渲染后再播放
   			this.$nextTick(() => {
-	  			this.$refs.audio.play()
+  				this.$refs.audio.play()
   			})
   		},
   		playing(newPlaying) {
@@ -193,6 +268,9 @@
 	  			newPlaying ? audio.play() : audio.pause()
   			})
   		}
+  	},
+  	components: {
+  		ProgressBar
   	}
   }
 </script>
@@ -412,7 +490,7 @@
 
 	@keyframes rotate
 		0%
-			transfrom: rotate(0)
+			transform: rotate(0deg)
 		100%
 			transform: rotate(360deg)
 
