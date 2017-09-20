@@ -56,6 +56,7 @@
 ## API接口
 1. recommend.js 获取推荐数据
 2. singer.js 获取歌手数据
+3. song.js  获取歌词
 
 ## 后端请求
 1. dev-server.js 用express, axios库请后端请求数据

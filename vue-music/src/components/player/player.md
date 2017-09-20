@@ -67,5 +67,8 @@ actions--mutations--state--getter
 10. music-list.vue的随机播放按钮功能
 
 	10.1 点击按钮后
-	- 通过vuex的actions创建一系列mutations:修改播放模式，原始列表，随机列表，当前索引为0，全屏，播放状态
+	- 通过vuex的actions创建一系列mutations:修改播放模式，原始列表，生成随机列表，当前索引为0，全屏，播放状态
+	- 点击按钮后，再点击music-list中的歌曲时，会调用selectPlay,此时playlist为顺序列表，故而要增加判断
+		- 若在随机模式下，重新洗牌，修改playlist
+		- 将计算点击歌曲的在新列表的索引，更新currenIndex
 
