@@ -88,6 +88,7 @@
 	// 动画库
   import animations from 'create-keyframe-animation'
   import {prefixStyle} from 'common/js/dom'
+  import {shuffle} from 'common/js/util'
 	import {mapGetters, mapMutations} from 'vuex'
 	import {playMode} from 'common/js/config'
 	import ProgressBar from 'base/progress-bar/progress-bar'
@@ -249,10 +250,23 @@
   		changeMode() {
   			const mode = (this.mode + 1) % 3
   			this.setPlayMode(mode)
-  			// let list = null
+  			let list = null
   			if (mode === playMode.random) {
-  				
+  				list = shuffle(this.sequenceList)
+  			} else {
+  				list = this.sequenceList
   			}
+  			// 列表改变后，当前歌曲索引也会改变，要将currentIndex改成当前歌曲在新列表的索引
+  			this.resetCurrentIndex(list)
+  			// 修改播放列表
+  			this.setPlaylist(list)
+  		},
+  		resetCurrentIndex(list) {
+  			// 在当前列表找到当前歌曲的索引
+  			let index = list.findIndex((item) => {
+  				return item.id === this.currentSong.id
+  			})
+  			this.setCurrentIndex(index)
   		},
   		// 补0
   		_pad(num, n = 2) {
@@ -288,11 +302,17 @@
   			setFullScreen: 'SET_FULL_SCREEN',
   			setPlayState: 'SET_PLAYING_STATE',
   			setCurrentIndex: 'SET_CURRENT_INDEX',
-  			setPlayMode: 'SET_PLAY_MODE'
+  			setPlayMode: 'SET_PLAY_MODE',
+  			setPlaylist: 'SET_PLAYLIST'
   		})
   	},
   	watch: {
-  		currentSong() {
+  		currentSong(newSong, oldSong) {
+  			// 歌曲没改变时，保持原播放状态
+  			if (newSong.id === oldSong.id) {
+  				return
+  			}
+  			// dom渲染后再播放
   			this.$nextTick(() => {
   				this.$refs.audio.play()
   			})
