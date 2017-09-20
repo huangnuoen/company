@@ -80,7 +80,7 @@
 	  		</div>
 	  	</div>
 		</transition>
-		<audio :src="currentSong.url" ref="audio" @canplay="ready" @error="error" @timeupdate="updateTime"></audio>
+		<audio :src="currentSong.url" ref="audio" @canplay="ready" @error="error" @timeupdate="updateTime" @ended="end"></audio>
   </div>
 </template>
 
@@ -267,6 +267,18 @@
   				return item.id === this.currentSong.id
   			})
   			this.setCurrentIndex(index)
+  		},
+  		end() {
+  			console.log('end')
+  			if (this.mode === playMode.loop) {
+  				this.loop()
+  			} else {
+	  			this.next() 				
+  			}
+  		},
+  		loop() {
+  			this.$refs.audio.currentTime = 0
+  			this.$refs.audio.play()
   		},
   		// 补0
   		_pad(num, n = 2) {
