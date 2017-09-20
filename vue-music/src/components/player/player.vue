@@ -135,7 +135,8 @@
   			'currentSong',
   			'playing',
   			'currentIndex',
-  			'mode'
+  			'mode',
+  			'sequenceList'
   		])
   	},
   	methods: {
@@ -248,6 +249,10 @@
   		changeMode() {
   			const mode = (this.mode + 1) % 3
   			this.setPlayMode(mode)
+  			// let list = null
+  			if (mode === playMode.random) {
+  				
+  			}
   		},
   		// 补0
   		_pad(num, n = 2) {

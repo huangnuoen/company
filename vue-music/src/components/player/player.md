@@ -33,23 +33,29 @@ actions--mutations--state--getter
 		- 按钮切换，通过计算和绑定类名
 		- 唱片旋转控制，通过计算，绑定类名
 	6.5 上下曲切换
-7 进度条组件progress-bar.vue
+7. 进度条组件progress-bar.vue
 
 	7.1 进度条变化 
 		- props获取父的percent 歌曲进度
 		- 监听percent，设定progress的width，设置偏移距离
 	7.2 进度条拖动
-		- touchstart() 初始化this.touch对象，存储touch位置和现偏移
-		- touchmove() 计算移动距离，据此计算偏移距离，并修改样式
-		- touchend() 设置进度,计算百分比派发到父，传入百分比，在父中用this.$refs.audio.currentTime设置跳转
+	- touchstart() 初始化this.touch对象，存储touch位置和现偏移
+	- touchmove() 计算移动距离，据此计算偏移距离，并修改样式
+	- touchend() 设置进度,计算百分比派发到父，传入百分比，在父中用this.$refs.audio.currentTime设置跳转
 	7.3 进度条点击跳转
 		- click后，获取点击位置相对目标的位移
 		- 派发到父
-8 圆形进度条 progress-circle.vue
+
+8. 圆形进度条 progress-circle.vue
 
 	8.1 原理：通过<svg>的2个circle实现，内置<slot>可包裹任何dom,
 	8.2 用svg元素，内置2个circle元素
 		- svg.viewBox=0 0 100 100:视口大小，从(0,0)到(100,100)范围；svg.width和height=32：图形真正的宽度和高度，可通过这个控制图形大小
 		- circle.r=50:半径，cx=50,cy=50:圆心在(50,50);stroke-width=8:描边宽度为8；stroke-dasharray=100:画100px的虚线；stroke-dashoffset=100:虚线起始向前偏移量;scale(.9):缩小成圆
 		- 实现：当percent变大时，offset变小，array慢慢出现
+
+9. 播放模式切换
+
+	9.1 点击后改变mode,通过vuex提交到state,绑定类名修改样式
+	9.2 修改播放列表
 
