@@ -71,7 +71,7 @@
 	  			<p class="desc" v-html="currentSong.singer"></p>
 	  		</div>
 	  		<div class="control">
-	  			<progress-circle>
+	  			<progress-circle :radius="radius" :percent="percent">
 		  			<i @click.prevent.stop="togglePlaying" :class="miniIcon" class="icon-mini"></i>
 	  			</progress-circle>
 	  		</div>
@@ -98,7 +98,8 @@
   		return {
   			// 标识位
   			songReady: false,
-  			currentTime: 0
+  			currentTime: 0,
+  			radius: 32
   		}
   	},
   	computed: {
