@@ -63,7 +63,6 @@
       },
       refresh() {
         this.scroll && this.scroll.refresh()
-        console.log('refresh重新刷新', this.$refs.wrapper.firstChild.clientHeight)
       },
       scrollTo() {
         this.scroll && this.scroll.scrollTo.apply(this.scroll, arguments)

@@ -302,6 +302,13 @@
   		// 每句歌词改变时回调一次，传入lines对象当前的line
   		handleLyric({lineNum, txt}) {
   			this.currentLineNum = lineNum
+  			if (lineNum > 5) {
+  				// 将当行歌词的前面第5行滚动到顶部，保持当行歌词在中间
+  				let lineEl = this.$refs.lyricLine[lineNum - 5]
+  				this.$refs.lyricList.scrollToElement(lineEl, 1000)
+  			} else {
+  				this.$refs.lyricList.scrollTo(0, 0, 1000)
+  			}
   		},
   		// 补0
   		_pad(num, n = 2) {
