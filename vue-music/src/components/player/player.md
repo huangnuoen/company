@@ -64,3 +64,8 @@ actions--mutations--state--getter
 		- 采用findIndex()找到当前歌曲索引
 		- 为什么进度能保持？可能因为audio的src没有来得及改变吧
 
+10. music-list.vue的随机播放按钮功能
+
+	10.1 点击按钮后
+	- 通过vuex的actions创建一系列mutations:修改播放模式，原始列表，随机列表，当前索引为0，全屏，播放状态
+
