@@ -30,7 +30,7 @@
 					<div class="middle-r" ref="lyricList">
 						<div class="lyric-wrapper">
 							<div v-if="currentLyric">
-								<p class="text" ref="lyricLine" v-for="line in currentLyric.lines">{{line.txt}}</p>
+								<p class="text" :class="{'current': index === currentLineNum}" ref="lyricLine" v-for="(line, index) in currentLyric.lines">{{line.txt}}</p>
 							</div>
 						</div>
 					</div>
@@ -110,7 +110,8 @@
   			songReady: false,
   			currentTime: 0,
   			radius: 32,
-  			currentLyric: null
+  			currentLyric: null,
+  			currentLineNum: 0
   		}
   	},
   	computed: {
@@ -291,9 +292,15 @@
   		},
   		getLyric() {
   			this.currentSong.getLyric().then((lyric) => {
-  				this.currentLyric = new Lyric(lyric)
-  				console.log(this.currentLyric)
+  				this.currentLyric = new Lyric(lyric, this.handleLyric)
+  				if (this.playing) {
+  					this.currentLyric.play()
+  				}
   			})
+  		},
+  		// 每句歌词改变时回调一次，传入lines对象当前的line
+  		handleLyric({lineNum, txt}) {
+  			this.currentLineNum = lineNum
   		},
   		// 补0
   		_pad(num, n = 2) {
