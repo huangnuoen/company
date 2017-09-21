@@ -1,3 +1,5 @@
+import {getLyric} from 'api/song'
+ import {ERR_OK} from 'api/config'
 /*  构造歌曲信息类
 *  集中维护代码，拓展性高
 */
@@ -12,6 +14,15 @@ export default class Song {
 		this.duration = duration
 		this.image = image
 		this.url = url
+	}
+	// 获取歌词
+	getLyric() {
+		getLyric(this.mid).then((res) => {
+			if (res.retcode === ERR_OK) {
+				this.lyric = res.lyric
+				console.log(res)
+			}
+		})
 	}
 }
 /* 工厂方法，调用该方法只须传入musicData即可生成song实例

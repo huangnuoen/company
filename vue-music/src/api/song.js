@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {commonParams, options} from './config'
+import {commonParams} from './config'
 
 export function getLyric(mid) {
 	// 本地存放目录

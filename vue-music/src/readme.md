@@ -57,12 +57,14 @@
 1. recommend.js 获取推荐数据
 2. singer.js 获取歌手数据
 3. song.js  获取歌词
+	- axios从本地服务器获取
+	- dev-server.js中,用axios配置头部信息
 
 ## 后端请求
 1. dev-server.js 用express, axios库请后端请求数据
 2. express.Router()实例，向后端请求数据
 3. axios.get()重新配置header, params信息
-4. 
+4. 前端可通过axios.get()向本地服务器请求
 
 ### app.vue
 1. 用<keep-alive>保存当前路由状态

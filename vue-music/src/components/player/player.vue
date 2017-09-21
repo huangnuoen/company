@@ -327,6 +327,7 @@
   			// dom渲染后再播放
   			this.$nextTick(() => {
   				this.$refs.audio.play()
+  				this.currentSong.getLyric()
   			})
   		},
   		// playing改变，改变播放状态
