@@ -101,6 +101,7 @@
 	import {playMode} from 'common/js/config'
 	import ProgressBar from 'base/progress-bar/progress-bar'
 	import ProgressCircle from 'base/progress-circle/progress-circle'
+	import Scroll from 'base/scroll/scroll'
 
 	const transform = prefixStyle('transform')
   export default {
@@ -362,7 +363,8 @@
   	},
   	components: {
   		ProgressBar,
-  		ProgressCircle
+  		ProgressCircle,
+  		Scroll
   	}
   }
 </script>
