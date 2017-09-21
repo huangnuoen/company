@@ -18,7 +18,7 @@ export function getLyric(mid) {
 	return axios.get(url, {
 		params: data
 	}).then((res) => {
-		// 成功后传入数据
+		// 成功后传入数据,返回promise,resolve(res.data)
 		return Promise.resolve(res.data)
 	})
 }

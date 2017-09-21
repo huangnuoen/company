@@ -57,12 +57,13 @@ apiRoutes.get('/lyric', function(req, res) {
     params: req.query
   }).then((response) => {
     var ret = response.data
+    // ret是jsoncallback的话，要获取callback中的内容，再解析成json
     if (typeof ret === 'string') {
       // 以任何字母数字下划线(开头，)结尾，子表达式是{不为()的任意字符多个}
       var reg = /^\w+\(({[^()]+})\)$/
       var matches = ret.match(reg)
       if (matches) {
-        // 第一个匹配到的子串
+        // 将第一个匹配到的子串解析成json
         ret = JSON.parse(matches[1])
       }
     }

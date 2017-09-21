@@ -27,7 +27,13 @@
 							<div class="playing-lyric"></div>
 						</div>
 					</div>
-					<div class="middle-r"></div>
+					<div class="middle-r" ref="lyricList">
+						<div class="lyric-wrapper">
+							<div v-if="currentLyric">
+								<p class="text" ref="lyricLine" v-for="line in currentLyric.lines">{{line.txt}}</p>
+							</div>
+						</div>
+					</div>
 				</div>
 				<div class="bottom">
 					<div class="dot-wrapper">
@@ -87,6 +93,8 @@
 <script>
 	// 动画库
   import animations from 'create-keyframe-animation'
+  // 处理歌词库
+  import Lyric from 'lyric-parser'
   import {prefixStyle} from 'common/js/dom'
   import {shuffle} from 'common/js/util'
 	import {mapGetters, mapMutations} from 'vuex'
@@ -101,7 +109,8 @@
   			// 标识位
   			songReady: false,
   			currentTime: 0,
-  			radius: 32
+  			radius: 32,
+  			currentLyric: null
   		}
   	},
   	computed: {
@@ -280,6 +289,12 @@
   			this.$refs.audio.currentTime = 0
   			this.$refs.audio.play()
   		},
+  		getLyric() {
+  			this.currentSong.getLyric().then((lyric) => {
+  				this.currentLyric = new Lyric(lyric)
+  				console.log(this.currentLyric)
+  			})
+  		},
   		// 补0
   		_pad(num, n = 2) {
   			let len = num.toString().length
@@ -327,7 +342,7 @@
   			// dom渲染后再播放
   			this.$nextTick(() => {
   				this.$refs.audio.play()
-  				this.currentSong.getLyric()
+  				this.getLyric()
   			})
   		},
   		// playing改变，改变播放状态
@@ -437,6 +452,17 @@
 					width: 100%
 					height: 100%
 					overflow: hidden
+					.lyric-wrapper
+						width: 80%
+						margin: 0 auto
+						overflow: hidden
+						text-align: center
+						.text
+							line-height: 32px
+							color: $color-text-l
+							font-size: $font-size-medium
+							&.current
+								color: $color-text
 			.bottom
 				position: absolute
 				bottom: 50px

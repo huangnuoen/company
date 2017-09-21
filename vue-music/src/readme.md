@@ -38,6 +38,8 @@
 3. singer.js 定义类
 4. song.js
 	- 歌曲类，配置每首歌的基本信息
+		- 配置方法：获取歌词,返回**promise对象**，再由vue组件用resolve处理
+		- 歌词是base码，通过js-base64库转义
 	- createSong工厂方法，直接new一个song,调用该方法只须传入musicData即可生成song实例，简化代码，不必在每次new的时候传一串参数
 5. util.js
 	- shuffle()将数组打乱
@@ -65,6 +67,8 @@
 2. express.Router()实例，向后端请求数据
 3. axios.get()重新配置header, params信息
 4. 前端可通过axios.get()向本地服务器请求
+
+	4.1 歌词部分获得的data是callback，还需要将string转为json
 
 ### app.vue
 1. 用<keep-alive>保存当前路由状态

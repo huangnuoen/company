@@ -57,6 +57,7 @@
           // 解构赋值,取得item.musicData
           let {musicData} = item
           if (musicData.songid && musicData.albummid) {
+          	// 传入歌曲信息，创建song对象
             ret.push(createSong(musicData))
           }
         })
