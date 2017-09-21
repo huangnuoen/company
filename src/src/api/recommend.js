@@ -15,7 +15,7 @@ export function getRecommend() {
 }
 
 export function getDiscList() {
-	// 从本地服务器请求
+	// 从服务器请求
 	const url = '/api/getDiscList'
 	const data = Object.assign({}, commonParams, {
 		platform: 'yqq',
