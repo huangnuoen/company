@@ -27,13 +27,13 @@
 							<div class="playing-lyric"></div>
 						</div>
 					</div>
-					<div class="middle-r" ref="lyricList">
+					<scroll class="middle-r" ref="lyricList" :data="currentLyric && currentLyric.lines">
 						<div class="lyric-wrapper">
 							<div v-if="currentLyric">
 								<p class="text" :class="{'current': index === currentLineNum}" ref="lyricLine" v-for="(line, index) in currentLyric.lines">{{line.txt}}</p>
 							</div>
 						</div>
-					</div>
+					</scroll>
 				</div>
 				<div class="bottom">
 					<div class="dot-wrapper">
