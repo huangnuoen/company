@@ -20,7 +20,7 @@
 						 @touchstart.prevent="middleTouchStart"
 						 @touchmove.prevent="middleTouchMove"
 						 @touchend="middleTouchEnd">
-					<div class="middle-l">
+					<div class="middle-l" ref="middleL">
 						<div class="cd-wrapper" ref="cdWrapper">
 							<div class="cd" :class="cdCls">
 								<img :src="currentSong.image" class="image">
@@ -337,22 +337,27 @@
   			// middle-r偏移过程的偏移量是当前位置+手指位移,且在[-window.innerwidth,0]间
   			const offsetWidth = Math.min(0, Math.max(-window.innerWidth, left + deltaX))
   			// 偏移比例
-  			this.touch.percent = -offsetWidth / window.innerWidth
+  			this.touch.percent = Math.abs(offsetWidth / window.innerWidth)
   			// 歌词偏移
   			this.$refs.lyricList.$el.style[transform] = `translate3d(${offsetWidth}px,0,0)`
-  			// 在移动过程中不市过渡时间
+  			// 在移动过程中不设过渡时间
         this.$refs.lyricList.$el.style[transitionDuration] = 0
+        this.$refs.middleL.style.opacity = 1 - this.touch.percent
+        this.$refs.middleL.style[transitionDuration] = 0
   		},
   		middleTouchEnd() {
   			let offsetWidth
+  			let opacity
   			// cd页面时
   			if (this.currentShow === 'cd') {
   				// 滑动比例大于10%，直接到达最终位置
   				if (this.touch.percent > 0.1) {
   					offsetWidth = -window.innerWidth
   					this.currentShow = 'lyric'
+  					opacity = 0
   				} else {
   					offsetWidth = 0
+  					opacity = 1
   				}
   			} else {
   				// lyric页面时
@@ -360,13 +365,17 @@
   				if (this.touch.percent < 0.9) {
   					offsetWidth = 0
   					this.currentShow = 'cd'
+  					opacity = 1
   				} else {
   					offsetWidth = -window.innerWidth
+  					opacity = 0
   				}
   			}
   			const time = 300
         this.$refs.lyricList.$el.style[transform] = `translate3d(${offsetWidth}px,0,0)`
         this.$refs.lyricList.$el.style[transitionDuration] = `${time}ms`
+        this.$refs.middleL.style.opacity = opacity
+        this.$refs.middleL.style[transitionDuration] = `${time}ms`
   		},
   		// 补0
   		_pad(num, n = 2) {
