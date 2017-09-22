@@ -78,7 +78,9 @@ actions--mutations--state--getter
 		- 将计算点击歌曲的在新列表的索引，更新currenIndex
 11. 歌词处理
 
-	11.1 调用song.getLyric(),返回resolve(this.lyric)的Promise对象，通过then()回调处理歌词
+	11.1 watch到currentSong变化时，
+	- 如果存在currentLyric，则先停止:this.currentLyric.stop()
+	- 在audio.play后调用song.getLyric(),返回resolve(this.lyric)的Promise对象，通过then()回调处理歌词
 
 	11.2 使用lyric-parser库处理歌词
 	- new Lyric(lyric, this.handleLyric),传入lyric和回调函数（每句歌词改变时就会回调一次），返回处理好的歌词对象，包括lines等信息
@@ -86,6 +88,7 @@ actions--mutations--state--getter
 	- this.handleLyric({lineNum, txt}),歌词处理函数要传入lines对象，此处用解构赋值
 		- 将lineNum当前行数赋值给this.currentLineNum
 		- 在<p>中，当this.currentLineNum===index时，绑定active类高亮当前行
+		- 设置当前行在中间
 
 	11.3 唱片歌词左右滑动切换
 	- 添加this.currentShow标识当前显示

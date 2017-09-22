@@ -115,6 +115,7 @@
   			songReady: false,
   			currentTime: 0,
   			radius: 32,
+  			// 当前歌词
   			currentLyric: null,
   			currentLineNum: 0,
   			// 标识cd或lyric显示
@@ -312,9 +313,17 @@
   		// 每句歌词改变时回调一次，传入lines对象当前的line
   		handleLyric({lineNum, txt}) {
   			this.currentLineNum = lineNum
+  			if (lineNum > 5) {
+  				// 将当前行的前第5行滚动到顶部
+  				let lineEl = this.$refs.lyricLine[lineNum - 5]
+  				this.$refs.lyricList.scrollToElement(lineEl, 1000)
+  			} else {
+  				this.$refs.lyricList.scrollTo(0, 0, 1000)
+  			}
   		},
   		// 中部左右滑动
   		middleTouchStart(e) {
+  			console.log('start')
   			this.touch.initiated = true
   			const touch = e.touches[0]
   			// 存储页面位置
@@ -325,6 +334,7 @@
   			if (!this.touch.initiated) {
   				return
   			}
+  			console.log('move')
   			const touch = e.touches[0]
   			const deltaX = touch.pageX - this.touch.startX
   			const deltaY = touch.pageY - this.touch.startY
@@ -346,6 +356,7 @@
         this.$refs.middleL.style[transitionDuration] = 0
   		},
   		middleTouchEnd() {
+  			console.log('end')
   			let offsetWidth
   			let opacity
   			// cd页面时
@@ -376,7 +387,9 @@
         this.$refs.lyricList.$el.style[transitionDuration] = `${time}ms`
         this.$refs.middleL.style.opacity = opacity
         this.$refs.middleL.style[transitionDuration] = `${time}ms`
+        this.touch.initiated = false
   		},
+
   		// 补0
   		_pad(num, n = 2) {
   			let len = num.toString().length
@@ -420,6 +433,11 @@
   			// 歌曲没改变时，保持原播放状态
   			if (newSong.id === oldSong.id) {
   				return
+  			}
+  			// 歌曲改变且有歌词时
+  			if (this.currentLyric) {
+  				// 停止歌词播放
+  				this.currentLyric.stop()
   			}
   			// dom渲染后再播放
   			this.$nextTick(() => {
