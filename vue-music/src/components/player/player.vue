@@ -107,6 +107,7 @@
 	import Scroll from 'base/scroll/scroll'
 
 	const transform = prefixStyle('transform')
+	const transitionDuration = prefixStyle('transitionDuration')
   export default {
   	data() {
   		return {
@@ -337,7 +338,10 @@
   			const offsetWidth = Math.min(0, Math.max(-window.innerWidth, left + deltaX))
   			// 偏移比例
   			this.touch.percent = -offsetWidth / window.innerWidth
+  			// 歌词偏移
   			this.$refs.lyricList.$el.style[transform] = `translate3d(${offsetWidth}px,0,0)`
+  			// 在移动过程中不市过渡时间
+        this.$refs.lyricList.$el.style[transitionDuration] = 0
   		},
   		middleTouchEnd() {
   			let offsetWidth
@@ -360,7 +364,9 @@
   					offsetWidth = -window.innerWidth
   				}
   			}
+  			const time = 300
         this.$refs.lyricList.$el.style[transform] = `translate3d(${offsetWidth}px,0,0)`
+        this.$refs.lyricList.$el.style[transitionDuration] = `${time}ms`
   		},
   		// 补0
   		_pad(num, n = 2) {

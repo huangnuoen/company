@@ -14,11 +14,11 @@
 	- 从vuex的getters中通过...mapGetters()取得'singer'
 	- 调用getSingerDetail(),传入singer.id,获取该歌手信息
 	- 没有id时(在本页刷新则获取不到id，singer为空，singer只有在点击singer.vue中的li时才会创建)，回退到歌手页面
-	```
-  if (!this.singer.id) {
-    this.$router.push('/singer')
-  }
-	```	
+		```
+	  if (!this.singer.id) {
+	    this.$router.push('/singer')
+	  }
+		```	
 	- _normalizeSinger(list)处理list,
 6. music-list.vue 音乐列表组件
 	- 歌手头像和歌曲列表
