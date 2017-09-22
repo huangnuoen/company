@@ -16,7 +16,10 @@
 					<h1 class="title" v-html="currentSong.name"></h1>
 					<h2 class="subtitle" v-html="currentSong.singer"></h2>
 				</div>
-				<div class="middle">
+				<div class="middle"
+						 @touchstart.prevent="middleTouchStart"
+						 @touchmove.prevent="middleTouchMove"
+						 @touchend="middleTouchEnd">
 					<div class="middle-l">
 						<div class="cd-wrapper" ref="cdWrapper">
 							<div class="cd" :class="cdCls">
@@ -37,8 +40,8 @@
 				</div>
 				<div class="bottom">
 					<div class="dot-wrapper">
-						<span class="dot"></span>
-						<span class="dot"></span>
+						<span class="dot" :class="{'active': currentShow==='cd'}"></span>
+						<span class="dot" :class="{'active': currentShow==='lyric'}"></span>
 					</div>
 					<div class="progress-wrapper">
 						<span class="time time-l">{{format(currentTime)}}</span>
@@ -112,8 +115,14 @@
   			currentTime: 0,
   			radius: 32,
   			currentLyric: null,
-  			currentLineNum: 0
+  			currentLineNum: 0,
+  			// 标识cd或lyric显示
+  			currentShow: 'cd'
   		}
+  	},
+		// 不需要getter,seetter
+  	created() {
+  		this.touch = {}
   	},
   	computed: {
   		playIcon() {
@@ -303,6 +312,32 @@
   		handleLyric({lineNum, txt}) {
   			this.currentLineNum = lineNum
   		},
+  		// 中部左右滑动
+  		middleTouchStart(e) {
+  			this.touch.initiated = true
+  			const touch = e.touches[0]
+  			// 存储页面位置
+  			this.touch.startX = touch.pageX
+  			this.touch.startY = touch.pageY
+  		},
+  		middleTouchMove(e) {
+  			if (!this.touch.initiated) {
+  				return
+  			}
+  			const touch = e.touches[0]
+  			const deltaX = touch.pageX - this.touch.startX
+  			const deltaY = touch.pageY - this.touch.startY
+  			// 如果纵向位移大于横向位移，则左右不移动，判断为歌词纵向滚动
+  			if (Math.abs(deltaY) > Math.abs(deltaX)) {
+  				return
+  			}
+  			// middle的最终左偏移量2种情况
+  			const left = this.currentShow === 'cd' ? 0 : -window.innerWidth
+  			// middle偏移过程的偏移量是当前位置+手指位移,且在[-window.innerwidth,0]间
+  			const offsetWidth = Math.min(0, Math.max(-window.innerWidth, left + deltaX))
+  			this.$refs.lyricList.$el.style[transform] = `translate3d(${offsetWidth}px,0,0)`
+  		},
+  		middleTouchEnd(e) {},
   		// 补0
   		_pad(num, n = 2) {
   			let len = num.toString().length
