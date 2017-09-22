@@ -331,13 +331,37 @@
   			if (Math.abs(deltaY) > Math.abs(deltaX)) {
   				return
   			}
-  			// middle的最终左偏移量2种情况
+  			// middle-r的最终左偏移量2种情况
   			const left = this.currentShow === 'cd' ? 0 : -window.innerWidth
-  			// middle偏移过程的偏移量是当前位置+手指位移,且在[-window.innerwidth,0]间
+  			// middle-r偏移过程的偏移量是当前位置+手指位移,且在[-window.innerwidth,0]间
   			const offsetWidth = Math.min(0, Math.max(-window.innerWidth, left + deltaX))
+  			// 偏移比例
+  			this.touch.percent = -offsetWidth / window.innerWidth
   			this.$refs.lyricList.$el.style[transform] = `translate3d(${offsetWidth}px,0,0)`
   		},
-  		middleTouchEnd(e) {},
+  		middleTouchEnd() {
+  			let offsetWidth
+  			// cd页面时
+  			if (this.currentShow === 'cd') {
+  				// 滑动比例大于10%，直接到达最终位置
+  				if (this.touch.percent > 0.1) {
+  					offsetWidth = -window.innerWidth
+  					this.currentShow = 'lyric'
+  				} else {
+  					offsetWidth = 0
+  				}
+  			} else {
+  				// lyric页面时
+  				// 右滑比例大于0.1，即middle-r占屏宽小于90%
+  				if (this.touch.percent < 0.9) {
+  					offsetWidth = 0
+  					this.currentShow = 'cd'
+  				} else {
+  					offsetWidth = -window.innerWidth
+  				}
+  			}
+        this.$refs.lyricList.$el.style[transform] = `translate3d(${offsetWidth}px,0,0)`
+  		},
   		// 补0
   		_pad(num, n = 2) {
   			let len = num.toString().length
