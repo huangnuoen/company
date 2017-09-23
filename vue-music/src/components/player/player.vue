@@ -27,7 +27,7 @@
 							</div>
 						</div>
 						<div class="playing-lyric-wrapper">
-							<div class="playing-lyric"></div>
+							<div class="playing-lyric">{{playingLyric}}</div>
 						</div>
 					</div>
 					<scroll class="middle-r" ref="lyricList" :data="currentLyric && currentLyric.lines">
@@ -119,7 +119,8 @@
   			currentLyric: null,
   			currentLineNum: 0,
   			// 标识cd或lyric显示
-  			currentShow: 'cd'
+  			currentShow: 'cd',
+  			playingLyric: ''
   		}
   	},
 		// 不需要getter,seetter
@@ -337,6 +338,7 @@
   			} else {
   				this.$refs.lyricList.scrollTo(0, 0, 1000)
   			}
+  			this.playingLyric = txt
   		},
   		// 中部左右滑动
   		middleTouchStart(e) {
@@ -564,6 +566,16 @@
 								width: 100%
 								height: 100%
 								border-radius: 50%
+					.playing-lyric-wrapper
+						width: 80%
+						margin: 30px auto 0 auto
+						overflow: hidden
+						text-align: center
+						.playing-lyric
+							height: 20px
+							line-height: 20px
+							font-size: $font-size-medium
+							color: $color-text-l
 				.middle-r
 					display: inline-block
 					vertical-align: top
