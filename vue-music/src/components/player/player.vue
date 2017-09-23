@@ -171,6 +171,7 @@
   			}
   			this.setPlayState(!this.playing)
   			if (this.currentLyric) {
+  				console.log('toggle')
   				this.currentLyric.togglePlay()
   			}
   		},
@@ -471,6 +472,7 @@
   			// 歌曲改变且有歌词时
   			if (this.currentLyric) {
   				// 停止歌词播放
+  				console.log('stop')
   				this.currentLyric.stop()
   			}
   			// dom渲染后再播放

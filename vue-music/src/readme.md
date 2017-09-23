@@ -43,6 +43,9 @@
 	- createSong工厂方法，直接new一个song,调用该方法只须传入musicData即可生成song实例，简化代码，不必在每次new的时候传一串参数
 5. util.js
 	- shuffle()将数组打乱
+6. mixin.js 放置混合组件
+	- const playlistMixin = {}
+		- 在该Mixin中完成：当playlist存在时，$refs.list设置新bottom,并refresh()
 
 ## 基础vue组件
 1. slider.vue

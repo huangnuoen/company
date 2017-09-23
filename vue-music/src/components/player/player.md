@@ -32,9 +32,9 @@ actions--mutations--state--getter
 	if (newSong.id === oldSong.id) {
 		return
 	}
-
 	```
-	- 启动play()
+	- 歌曲改变且存在this.currentLyric时，停止this.currentLyric.stop()
+	- 在setTimeout()中启动play()和获取歌词，一是等待dom渲染，二是微信后台js不执行，歌曲播完后，无法执行end(),ready(),无法设置this.songReady=true,重新进入后js开始执行，无法播放下一首，setTimeout()设置1s延时，将任务添加，重新进入时，便会执行该任务
 	6.2 vuex获取state.playing_state和mutation
 	6.3 修改了playing_state并监听，根据此来调用play()&pause()
 

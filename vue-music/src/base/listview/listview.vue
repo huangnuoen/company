@@ -118,6 +118,9 @@
       scroll(pos) {
         this.scrollY = pos.y
       },
+      refresh() {
+        this.$refs.listview.refresh()
+      },
       // 滚动至索引位,并更新scrollY
       _scrollTo(index) {
         console.log(index)
