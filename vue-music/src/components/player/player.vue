@@ -472,8 +472,8 @@
   			// 歌曲改变且有歌词时
   			if (this.currentLyric) {
   				// 停止歌词播放
-  				console.log('stop')
   				this.currentLyric.stop()
+  				console.log('stop')
   			}
   			// dom渲染后再播放
   			// 修复微信后台js不执行问题，重新进入后延时调用播放

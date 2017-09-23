@@ -29,6 +29,8 @@
 		- 滚动到顶部时，剩余的bgImage应覆盖在列表上，且height为40px,padding-top为0
 		- 回滚时，应复原
 7. player.vue 播放器组件
+8. disc.vue 歌单详情页 
+	- 二级路由，在router中配置
 
 ## 公用js
 1. dom.js 所有对dom的操作方法
@@ -60,6 +62,9 @@
 
 ## API接口
 1. recommend.js 获取推荐数据
+	- 获取轮播推荐数据
+	- 获取推荐歌单列表
+	- 获取推荐歌单歌曲列表
 2. singer.js 获取歌手数据
 3. song.js  获取歌词
 	- axios从本地服务器获取
