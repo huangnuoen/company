@@ -226,27 +226,36 @@
   			if (!this.songReady) {
   				return   				
   			}
-  			let index = this.currentIndex - 1
-  			if (index === -1) {
-  				index = this.playlist.length - 1
+  			if (this.playlist.length === 1) {
+  				this.loop()
+  			} else {
+	  			let index = this.currentIndex - 1
+	  			if (index === -1) {
+	  				index = this.playlist.length - 1
+	  			}
+	  			this.setCurrentIndex(index)
   			}
-  			this.setCurrentIndex(index)
-  			this.songReady = false
+  			this.songReady = false 				
   		},
   		next() {
   			// 只有audio缓冲好了才有效
   			if (!this.songReady) {
   				return   				
   			}
-  			let index = this.currentIndex + 1
-  			if (index === this.playlist.length) {
-  				index = 0
-  			}
-  			// 修改currentIndex,currentsong也会发生改变
-  			this.setCurrentIndex(index)
-  			// 当前处于暂停状态的，则改为播放状态
-  			if (!this.playing) {
-  				this.togglePlaying()
+  			// 当列表只有一首歌时，index不会改变，无法进行下首播放，要自动调用loop
+  			if (this.playlist.length === 1) {
+  				this.loop()
+  			} else {
+	  			let index = this.currentIndex + 1
+	  			if (index === this.playlist.length) {
+	  				index = 0
+	  			}
+	  			// 修改currentIndex,currentsong也会发生改变
+	  			this.setCurrentIndex(index)
+	  			// 当前处于暂停状态的，则改为播放状态
+	  			if (!this.playing) {
+	  				this.togglePlaying()
+	  			}
   			}
   			this.songReady = false
   		},
@@ -325,6 +334,11 @@
   				if (this.playing) {
   					this.currentLyric.play()
   				}
+  			}).catch(() => {
+  				// 异常时清空
+  				this.currentLyric = null
+  				this.playingLyric = ''
+  				this.currentLineNum = 0
   			})
   		},
   		// 每句歌词改变时回调一次，传入lines对象当前的line
@@ -339,6 +353,7 @@
   				this.$refs.lyricList.scrollTo(0, 0, 1000)
   			}
   			this.playingLyric = txt
+  			console.log(lineNum)
   		},
   		// 中部左右滑动
   		middleTouchStart(e) {
@@ -459,10 +474,12 @@
   				this.currentLyric.stop()
   			}
   			// dom渲染后再播放
-  			this.$nextTick(() => {
+  			// 修复微信后台js不执行问题，重新进入后延时调用播放
+  			// this.$nextTick(() => {
+  			setTimeout(() => {
   				this.$refs.audio.play()
   				this.getLyric()
-  			})
+  			}, 1000)
   		},
   		// playing改变，改变播放状态
   		playing(newPlaying) {

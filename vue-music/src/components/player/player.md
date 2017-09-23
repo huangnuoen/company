@@ -26,7 +26,15 @@ actions--mutations--state--getter
 	- afterleave()  清空cdwrapper.style.transition和transform
 6. 播放音乐
 
-	6.1 <audio>元素，监听currentSong,启动play()
+	6.1 <audio>元素，监听currentSong
+	- 在暂停时切换随机模式时，list改变，index也改变，currentSong随即改变（watch到）,立即play()，但当前歌曲id是不变的，应保持暂停状态，所以增加判断
+	```
+	if (newSong.id === oldSong.id) {
+		return
+	}
+
+	```
+	- 启动play()
 	6.2 vuex获取state.playing_state和mutation
 	6.3 修改了playing_state并监听，根据此来调用play()&pause()
 
