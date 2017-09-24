@@ -64,6 +64,11 @@
 3. song-list.vue  歌曲列表组件
 	- 点击li派发select事件
 	- props:rank,根据些判断是否增加排行样式
+4. search-box
+	- input双向绑定
+	- 清空按钮
+	- 监听query，并传回父组件
+	- 父组件传入占位符
 
 ## API接口
 1. recommend.js 获取推荐数据
