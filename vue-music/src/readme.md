@@ -63,6 +63,7 @@
 	- watch实时监听data的变化
 3. song-list.vue  歌曲列表组件
 	- 点击li派发select事件
+	- props:rank,根据些判断是否增加排行样式
 
 ## API接口
 1. recommend.js 获取推荐数据
@@ -73,6 +74,9 @@
 3. song.js  获取歌词
 	- axios从本地服务器获取
 	- dev-server.js中,用axios配置头部信息
+4. rank.js 
+	- 获取排行榜列表
+	- 获取排行榜歌单列表
 
 ## 后端请求
 1. dev-server.js 用express, axios库请后端请求数据
