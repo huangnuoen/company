@@ -6,11 +6,11 @@ export const commonParams = {
 	notice: 0,
 	format: 'jsonp'
 }
-// 一般配置
+// 一般配置，设置参数
 export const options = {
 	param: 'jsonpCallback'
 }
-// 特定前缀，服务器规定了固定回调函数名
+// 特定前缀，因为服务器规定了固定回调函数名
 export const optionsPlaylist = {
 	param: 'jsonpCallback',
 	prefix: 'playlistinfoCallback'

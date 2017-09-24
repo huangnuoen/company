@@ -21,7 +21,7 @@
 		```	
 	- _normalizeSinger(list)处理list,
 6. music-list.vue 音乐列表组件
-	- 歌手头像和歌曲列表
+	- bgimg和歌曲列表
 	- 头像用padding-top先占位
 	- div.layer层，用于歌曲列表向上滚动时，用translate3d遮住bgImage
 		- 监听滚动事件，获取滚动位移
@@ -31,6 +31,10 @@
 7. player.vue 播放器组件
 8. disc.vue 歌单详情页 
 	- 二级路由，在router中配置
+	- 引入子组件music-list
+		- 传入bgimg,title,songs即可
+	- songs: 处理获取的res.cdlist[0].songlist数据
+		- 遍历每个musicData,将它重新整合，新生成一个song类
 
 ## 公用js
 1. dom.js 所有对dom的操作方法

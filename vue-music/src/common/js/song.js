@@ -4,6 +4,7 @@ import {Base64} from 'js-base64'
 
 /*  构造歌曲信息类
 *  集中维护代码，拓展性高
+*  重新整合信息
 *  获取歌词方法
 */
 export default class Song {

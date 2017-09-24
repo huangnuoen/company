@@ -51,5 +51,6 @@ export function getSongList(disstid) {
 		hostUin: 0,
 		needNewCode: 0
 	})
+	// 发送jsonp请求，返回promise对象，res是json数据 
 	return jsonp(url, data, optionsPlaylist)
 }

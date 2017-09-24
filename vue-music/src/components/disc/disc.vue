@@ -1,6 +1,6 @@
 <template>
   <transition name="slider">
-  	<music-list :bgImage="bgImage" :title="title"></music-list>
+  	<music-list :bgImage="bgImage" :title="title" :songs="songs"></music-list>
   </transition>
 </template>
 
@@ -8,8 +8,14 @@
 	import MusicList from 'components/music-list/music-list'
 	import {mapGetters} from 'vuex'
 	import {getSongList} from 'api/recommend'
+	import {createSong} from 'common/js/song'
 	import {ERR_OK} from 'api/config'
   export default {
+  	data() {
+  		return {
+  			songs: []
+  		}
+  	},
   	computed: {
   		title() {
   			return this.disc.dissname
@@ -25,24 +31,29 @@
   		this._getSongList()
   	},
   	methods: {
-      _getSongList() {
-        getSongList(this.disc.dissid).then((res) => {
-          if (res.code === ERR_OK) {
-          	console.log(res.cdlist[0])
-          }
-        }).catch(() => {
-        	console.log('fail')
-        })
-      }
-   	// 	_getSongList() {
-  		// 	// 调用api方法
-  		// 	getSongList(this.disc.dissid).then((res) => {
-	  	// 		console.log('success')
-  		// 		if (res.code === ERR_OK) {
-  		// 			console.log(res)
-  		// 		}
-  		// 	})
-  		// }
+   		_getSongList() {
+        // 没有id时(在本页刷新则获取不到id)，回退到推荐页面
+   			if (!this.disc.dissid) {
+   				this.$router.push('/recommend')
+   			}
+  			// 调用api方法
+  			getSongList(this.disc.dissid).then((res) => {
+  				if (res.code === ERR_OK) {
+  					this.songs = this._normalizeSongs(res.cdlist[0].songlist)
+  				}
+  			})
+  		},
+  		_normalizeSongs(list) {
+  			let ret = []
+  			// 处理列表
+  			list.forEach((musicData) => {
+  				if (musicData.songid && musicData.albumid) {
+  					// 新建歌曲对象
+  					ret.push(createSong(musicData))
+  				}
+  			})
+  			return ret
+  		}
   	},
   	components: {
   		MusicList

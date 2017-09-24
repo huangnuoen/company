@@ -3,7 +3,6 @@
     <music-list :songs="songs"
                 :title="title"
                 :bg-image="bgImage"></music-list>
-	  </div>
 	</transition>
 </template>
 
