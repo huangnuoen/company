@@ -18,6 +18,7 @@ export default class Song {
 		this.image = image
 		this.url = url
 	}
+	
 	// 获取歌词,返回promise,通过resolve处理lyric
 	getLyric() {
 		if (this.lyric) {

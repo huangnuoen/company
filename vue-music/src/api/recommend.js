@@ -1,6 +1,6 @@
 import axios from 'axios'
 import jsonp from 'common/js/jsonp'
-import {commonParams, options} from './config'
+import {commonParams, options, optionsPlaylist} from './config'
 // 获取推荐数据
 export function getRecommend() {
 	// 数据来源
@@ -38,20 +38,18 @@ export function getDiscList() {
 	})
 }
 
-export function getSongList(dissid) {
+export function getSongList(disstid) {
 	const url = 'https://c.y.qq.com/qzone/fcg-bin/fcg_ucc_getcdinfo_byids_cp.fcg'
 
 	const data = Object.assign({}, commonParams, {
-		dissid,
+		disstid,
 		type: 1,
 		json: 1,
 		utf8: 1,
 		onlysong: 0,
 		platform: 'yqq',
 		hostUin: 0,
-		needNewCode: 0,
-		g_tk: 677232076
+		needNewCode: 0
 	})
-
-	return jsonp(url, data, options)
+	return jsonp(url, data, optionsPlaylist)
 }
