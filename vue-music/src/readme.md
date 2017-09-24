@@ -35,6 +35,12 @@
 		- 传入bgimg,title,songs即可
 	- songs: 处理获取的res.cdlist[0].songlist数据
 		- 遍历每个musicData,将它重新整合，新生成一个song类
+9. rank.vue
+10. search.vue
+	- 引入search-box,suggest
+11. suggest.vue
+	- 显示搜索结果
+	- 调用search()获取搜索结果数据
 
 ## 公用js
 1. dom.js 所有对dom的操作方法
@@ -83,6 +89,9 @@
 4. rank.js 
 	- 获取排行榜列表
 	- 获取排行榜歌单列表
+5. search.js
+	- 获取搜索热词
+	- 获取搜索结果数据 
 
 ## 后端请求
 1. dev-server.js 用express, axios库请后端请求数据
