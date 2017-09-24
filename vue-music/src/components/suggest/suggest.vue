@@ -35,6 +35,7 @@
 		data() {
 			return {
 				page: 1,
+				// 搜索结果
 				result: []
 			}
 		},
@@ -43,7 +44,6 @@
 			search() {
 				search(this.query, this.page, this.showSinger).then((res) => {
 					if (res.code === ERR_OK) {
-						console.log(res)
 						this.result = this._genResult(res.data)
 					}
 				})
@@ -65,13 +65,19 @@
 			_genResult(data) {
 				// 存储zhida,type,song.list
 				let ret = []
+				// 如果是歌手，则添加type和zhida
 				if (data.zhida && data.zhida.singerid) {
 					// ...将对象转为用,分隔的参数,
+					// 将data.zhida对象转为参数，将type也转为参数，合成一个对象
 					ret.push({...data.zhida, ...{type: TYPE_SINGER}})
 				}
+				// 歌曲
 				if (data.song) {
+					// 将song.list数组和ret连接成新数组
 					ret = ret.concat(data.song.list)
+					console.log(data.song, ret)
 				}
+				// [歌手信息?，歌曲信息，歌曲信息]
 				return ret
 			}
 		},

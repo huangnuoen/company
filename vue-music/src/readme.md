@@ -41,6 +41,12 @@
 11. suggest.vue
 	- 显示搜索结果
 	- 调用search()获取搜索结果数据
+	- 处理数据
+		- 数据中有歌手时，添加zhida和type标识，推送到result
+		- 将song.list数组用concat(),连接到result后
+		- result存储了歌手信息和歌曲信息
+	- 根据result显示数据
+		- 有type标识的添加不同类
 
 ## 公用js
 1. dom.js 所有对dom的操作方法
