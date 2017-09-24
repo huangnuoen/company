@@ -22,6 +22,11 @@
         type: Boolean,
         default: false
       },
+      // 是否上拉刷新
+      pullup: {
+        type: Boolean,
+        default: false
+      },
       // 父组件的data
       data: {
         tpye: Array,
@@ -52,6 +57,17 @@
           this.scroll.on('scroll', (pos) => {
             // 触发当前实例的scroll事件,将pos传给响应该自定义事件的组件
             me.$emit('scroll', pos)
+          })
+        }
+
+        if (this.pullup) {
+          // 滚动结束时
+          this.scroll.on('scrollEnd', () => {
+            // 滚动到底部时
+            if (this.scroll.y <= (this.scroll.maxScrollY + 50)) {
+              // 派发滚动到底部事件
+              this.$emit('scrollToEnd')
+            }
           })
         }
       },

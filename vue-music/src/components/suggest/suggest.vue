@@ -1,24 +1,23 @@
 <template>
-  <div class="suggest">
-    <div class="suggest">
-      <ul class="suggest-list">
-        <li class="suggest-item" v-for="item in result">
-          <div class="icon">
-            <i :class="getIconCls(item)"></i>
-          </div>
-          <div class="name">
-            <p class="text" v-html="getDisplayName(item)"></p>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div>
+  <scroll class="suggest" :data="result">
+    <ul class="suggest-list">
+      <li class="suggest-item" v-for="item in result">
+        <div class="icon">
+          <i :class="getIconCls(item)"></i>
+        </div>
+        <div class="name">
+          <p class="text" v-html="getDisplayName(item)"></p>
+        </div>
+      </li>
+    </ul>
+  </scroll>
 </template>
 
 <script>
 	import {search} from 'api/search'
 	import {ERR_OK} from 'api/config'
-	import {filterSinger} from 'common/js/song'
+	import {createSong} from 'common/js/song'
+	import Scroll from 'base/scroll/scroll'
 	const TYPE_SINGER = 'singer'
 
 	export default {
@@ -59,7 +58,7 @@
 				if (item.type === TYPE_SINGER) {
 					return item.singername
 				} else {
-					return `${item.songname}-${filterSinger(item.singer)}`
+					return `${item.name}-${item.singer}`
 				}
 			},
 			_genResult(data) {
@@ -74,10 +73,19 @@
 				// 歌曲
 				if (data.song) {
 					// 将song.list数组和ret连接成新数组
-					ret = ret.concat(data.song.list)
+					ret = ret.concat(this._normalizeSongs(data.song.list))
 					console.log(data.song, ret)
 				}
 				// [歌手信息?，歌曲信息，歌曲信息]
+				return ret
+			},
+			_normalizeSongs(list) {
+				let ret = []
+				list.forEach((musicData) => {
+					if (musicData.songid && musicData.albummid) {
+						ret.push(createSong(musicData))
+					}
+				})
 				return ret
 			}
 		},
@@ -85,6 +93,9 @@
 			query() {
 				this.search()
 			}
+		},
+		components: {
+			Scroll
 		}
 	}
 </script>

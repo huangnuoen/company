@@ -38,6 +38,8 @@
 9. rank.vue
 10. search.vue
 	- 引入search-box,suggest
+	- 从search-box中$emit获取query,传入suggest中
+	- shorcut-wrapper和search-result用query是否存在来控制v-show
 11. suggest.vue
 	- 显示搜索结果
 	- 调用search()获取搜索结果数据
@@ -47,6 +49,7 @@
 		- result存储了歌手信息和歌曲信息
 	- 根据result显示数据
 		- 有type标识的添加不同类
+	- props:query,并监听,调用search()
 
 ## 公用js
 1. dom.js 所有对dom的操作方法
