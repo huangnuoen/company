@@ -50,6 +50,7 @@
 	- 根据result显示数据
 		- 有type标识的添加不同类
 	- props:query,并监听,调用search()
+	- 上拉刷新
 
 ## 公用js
 1. dom.js 所有对dom的操作方法

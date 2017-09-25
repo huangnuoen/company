@@ -1,5 +1,8 @@
 <template>
-  <scroll class="suggest" :data="result">
+  <scroll class="suggest"
+  				:pullup="pullup"
+  				:data="result" 
+  				@scrollToEnd="searchMore">
     <ul class="suggest-list">
       <li class="suggest-item" v-for="item in result">
         <div class="icon">
@@ -18,7 +21,9 @@
 	import {ERR_OK} from 'api/config'
 	import {createSong} from 'common/js/song'
 	import Scroll from 'base/scroll/scroll'
+
 	const TYPE_SINGER = 'singer'
+	const perpage = 20
 
 	export default {
 		props: {
@@ -34,6 +39,8 @@
 		data() {
 			return {
 				page: 1,
+				pullup: true,
+				hasMore: true,
 				// 搜索结果
 				result: []
 			}
@@ -41,11 +48,20 @@
 		methods: {
 			// 请求服务端检索
 			search() {
-				search(this.query, this.page, this.showSinger).then((res) => {
+				this.hasMore = true
+				search(this.query, this.page, this.showSinger, perpage).then((res) => {
 					if (res.code === ERR_OK) {
 						this.result = this._genResult(res.data)
+						// 检查data中的song数量
+						this._checkMore(res.data)
 					}
 				})
+			},
+			searchMore() {
+				if (!this.hasMore) {
+					return
+				}
+				// search(this.query, this.page,this.showSinger)
 			},
 			getIconCls(item) {
 				if (item.type === TYPE_SINGER) {
@@ -87,6 +103,14 @@
 					}
 				})
 				return ret
+			},
+			_checkMore(data) {
+				const song = data.song
+				console.log(song.curnum, song.curpage, song.totalnum, song.curnum + song.curpage * perpage)
+				// 如果歌曲当前显示数量
+				if (!song.list.length || (song.curnum + song.curpage * perpage) > song.totalnum) {
+					this.hasMore = false
+				}
 			}
 		},
 		watch: {

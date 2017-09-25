@@ -60,6 +60,7 @@
           })
         }
 
+        // 适当时候派发事件
         if (this.pullup) {
           // 滚动结束时
           this.scroll.on('scrollEnd', () => {
