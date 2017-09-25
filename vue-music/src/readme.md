@@ -40,6 +40,7 @@
 	- 引入search-box,suggest
 	- 从search-box中$emit获取query,传入suggest中
 	- shorcut-wrapper和search-result用query是否存在来控制v-show
+	- 设置二级路由，singerDetail
 11. suggest.vue
 	- 显示搜索结果
 	- 调用search()获取搜索结果数据
@@ -56,6 +57,7 @@
 		- hasMore标识是否还有更多,_checkMore()检查是否还有更多，
 		- this.page控制请求第几页
 		- loading放在li后，用hasMore控制v-show
+	- 点击搜索结果会跳转
 
 ## 公用js
 1. dom.js 所有对dom的操作方法

@@ -5,7 +5,7 @@
   				ref="suggest"
   				@scrollToEnd="searchMore">
     <ul class="suggest-list">
-      <li class="suggest-item" v-for="item in result">
+      <li class="suggest-item" @click="selectItem(item)" v-for="item in result">
         <div class="icon">
           <i :class="getIconCls(item)"></i>
         </div>
@@ -19,11 +19,13 @@
 </template>
 
 <script>
+	import Singer from 'common/js/singer'
 	import {search} from 'api/search'
 	import {ERR_OK} from 'api/config'
 	import {createSong} from 'common/js/song'
 	import Scroll from 'base/scroll/scroll'
 	import Loading from 'base/loading/loading'
+	import {mapMutations} from 'vuex'
 
 	const TYPE_SINGER = 'singer'
 	const perpage = 20
@@ -51,10 +53,10 @@
 		methods: {
 			// 请求服务端检索
 			search() {
-				this.hasMore = true
 				this.page = 1
+				this.hasMore = true
 				// 在每个第一次检索时，都滚动到顶部
-				this.$refs.suggest.scroll(0, 0)
+				this.$refs.suggest.scrollTo(0, 0)
 				search(this.query, this.page, this.showSinger, perpage).then((res) => {
 					if (res.code === ERR_OK) {
 						this.result = this._genResult(res.data)
@@ -90,6 +92,20 @@
 					return `${item.name}-${item.singer}`
 				}
 			},
+			selectItem(item) {
+				// 歌手页面
+				if (item.type === TYPE_SINGER) {
+					const singer = new Singer({
+						id: item.singermid,
+						name: item.singername
+					})
+					this.$router.push({
+						path: `/search/${singer.id}`
+					})
+					// 更新state.signer,以便singer-detail可以获取到新数据
+					this.setSinger(singer)
+				}
+			},
 			_genResult(data) {
 				// 存储zhida,type,song.list
 				let ret = []
@@ -123,7 +139,10 @@
 				if (!song.list.length || (song.curnum + (song.curpage - 1) * perpage) >= song.totalnum) {
 					this.hasMore = false
 				}
-			}
+			},
+			...mapMutations({
+				setSinger: 'SET_SINGER'
+			})
 		},
 		watch: {
 			query() {

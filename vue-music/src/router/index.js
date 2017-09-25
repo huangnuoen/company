@@ -51,7 +51,14 @@ export default new Router({
 		},
 		{
 			path: '/search',
-			component: Search
+			component: Search,
+			children: [
+				{
+					// 传入不同id生成不同路由
+					path: ':id',
+					component: SingerDetail
+				}
+			]
 		}
 	]
 })
