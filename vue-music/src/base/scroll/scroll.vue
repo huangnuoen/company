@@ -64,7 +64,8 @@
         if (this.pullup) {
           // 滚动结束时
           this.scroll.on('scrollEnd', () => {
-            // 滚动到底部时
+            // 滚动距离超过scroll的距离时，即到底部时，再预留出50px
+            console.log(this.scroll.y, this.scroll.maxScrollY)
             if (this.scroll.y <= (this.scroll.maxScrollY + 50)) {
               // 派发滚动到底部事件
               this.$emit('scrollToEnd')

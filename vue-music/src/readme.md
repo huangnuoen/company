@@ -51,6 +51,11 @@
 		- 有type标识的添加不同类
 	- props:query,并监听,调用search()
 	- 上拉刷新
+		- scrollToEnd触发时，执行searchmore()
+			- this.result改变，传回scroll组件，refresh()
+		- hasMore标识是否还有更多,_checkMore()检查是否还有更多，
+		- this.page控制请求第几页
+		- loading放在li后，用hasMore控制v-show
 
 ## 公用js
 1. dom.js 所有对dom的操作方法
