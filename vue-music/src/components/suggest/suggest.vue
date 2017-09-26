@@ -25,7 +25,7 @@
 	import {createSong} from 'common/js/song'
 	import Scroll from 'base/scroll/scroll'
 	import Loading from 'base/loading/loading'
-	import {mapMutations} from 'vuex'
+	import {mapMutations, mapActions} from 'vuex'
 
 	const TYPE_SINGER = 'singer'
 	const perpage = 20
@@ -104,6 +104,9 @@
 					})
 					// 更新state.signer,以便singer-detail可以获取到新数据
 					this.setSinger(singer)
+				} else {
+					// 歌曲页面
+					this.insertSong(item)
 				}
 			},
 			_genResult(data) {
@@ -142,7 +145,10 @@
 			},
 			...mapMutations({
 				setSinger: 'SET_SINGER'
-			})
+			}),
+			...mapActions([
+				'insertSong'
+			])
 		},
 		watch: {
 			query() {

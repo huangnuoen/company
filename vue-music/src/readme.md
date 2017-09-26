@@ -57,7 +57,11 @@
 		- hasMore标识是否还有更多,_checkMore()检查是否还有更多，
 		- this.page控制请求第几页
 		- loading放在li后，用hasMore控制v-show
-	- 点击搜索结果会跳转
+	- 点击搜索结果会跳转到/search/:id二级路由
+		- 歌手：跳转到singer-detail页面
+			- new Singer，新建singer对象，更新state.singer,以便singer-detail获取渲染
+		- 歌曲：跳转到播放页面
+			- 点击歌曲后，将歌曲添加到当前列表，要修改playlist,suqencelist,currentindex等
 
 ## 公用js
 1. dom.js 所有对dom的操作方法
