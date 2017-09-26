@@ -35,7 +35,6 @@ export default class Song {
 					// base64可转义
 					this.lyric = Base64.decode(res.lyric)
 					resolve(this.lyric)
-					console.log(this.lyric)
 				} else {
 					reject('no lyric')
 				}
@@ -60,7 +59,7 @@ export function createSong(musicData) {
 	})
 }
 
-export function filterSinger(singer) {
+function filterSinger(singer) {
 	let ret = []
 	if (!singer) {
 		return ''
