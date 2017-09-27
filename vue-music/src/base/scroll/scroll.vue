@@ -28,6 +28,11 @@
         type: Boolean,
         default: false
       },
+      // 是否在开始滚动派发事件
+      beforeScroll: {
+        type: Boolean,
+        default: false
+      },
       // 父组件的data
       data: {
         tpye: Array,
@@ -66,11 +71,18 @@
           // 滚动结束时
           this.scroll.on('scrollEnd', () => {
             // 滚动距离超过scroll的距离时，即到底部时，再预留出50px
-            console.log(this.scroll.y, this.scroll.maxScrollY)
             if (this.scroll.y <= (this.scroll.maxScrollY + 50)) {
               // 派发滚动到底部事件
               this.$emit('scrollToEnd')
             }
+          })
+        }
+
+        if (this.beforeScroll) {
+          // 监听开始滚动事件
+          this.scroll.on('beforeScrollStart', () => {
+            console.log('blur1')
+            this.$emit('beforeScroll')
           })
         }
       },

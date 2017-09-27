@@ -1,9 +1,11 @@
 <template>
   <scroll class="suggest"
   				:pullup="pullup"
+  				:beforeScroll="pullup"
   				:data="result" 
   				ref="suggest"
-  				@scrollToEnd="searchMore">
+  				@scrollToEnd="searchMore"
+  				@beforeScroll="listScroll">
     <ul class="suggest-list">
       <li class="suggest-item" @click="selectItem(item)" v-for="item in result">
         <div class="icon">
@@ -50,6 +52,7 @@
 				page: 1,
 				pullup: true,
 				hasMore: true,
+				beforeScroll: true,
 				// 搜索结果
 				result: []
 			}
@@ -112,6 +115,9 @@
 					// 歌曲页面
 					this.insertSong(item)
 				}
+			},
+			listScroll() {
+				this.$emit('listScroll')
 			},
 			_genResult(data) {
 				// 存储zhida,type,song.list
