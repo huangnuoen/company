@@ -81,7 +81,6 @@
         if (this.beforeScroll) {
           // 监听开始滚动事件
           this.scroll.on('beforeScrollStart', () => {
-            console.log('blur1')
             this.$emit('beforeScroll')
           })
         }

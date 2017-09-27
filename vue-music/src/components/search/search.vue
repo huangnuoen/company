@@ -16,7 +16,7 @@
   		</div>
   	</div>
   	<div class="search-result" v-show="query">
-	  	<suggest :query="query" @listScroll="blurInput"></suggest>
+	  	<suggest :query="query" @listScroll="blurInput" @select="saveSearch"></suggest>
    	</div>
    	<router-view></router-view>
   </div>
@@ -48,6 +48,7 @@
   		blurInput() {
   			this.$refs.searchBox.blur()
   		},
+  		saveSearch() {},
   		// 获取热门搜索
   		_getHotKey() {
   			getHotKey().then((res) => {

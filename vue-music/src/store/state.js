@@ -11,7 +11,9 @@ const state = {
 	mode: playMode.sequence,
 	currentIndex: -1,
 	disc: {},
-	topList: {}
+	topList: {},
+	// 搜索历史
+	searchHistory: []
 }
 
 export default state

@@ -115,6 +115,8 @@
 					// 歌曲页面
 					this.insertSong(item)
 				}
+				// 派发
+				this.$emit('select')
 			},
 			listScroll() {
 				this.$emit('listScroll')
