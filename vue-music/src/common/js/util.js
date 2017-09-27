@@ -21,12 +21,12 @@ function getRandomInt(min, max) {
 */
 export function debounce(func, delay) {
 	let timer
-	// ...args指func的参数，args指func的参数组,相当于arguments,why
+	// ...args指func的参数，args指func的参数组,相当于arguments,var args = arguments
 	return function(...args) {
 		if (timer) {
 			clearTimeout(timer)
 		}
-		console.log(arguments, args)
+		// console.log(arguments, args)
 		timer = setTimeout(() => {
 			// 调用func,传入args参数数组
 			func.apply(this, args)
