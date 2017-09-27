@@ -15,14 +15,20 @@ function getRandomInt(min, max) {
 	return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
-/* 节流 */
+/* 节流
+*  如果定时队列有内容，又触发了，则清空先前队列，再添加新定时器，
+*  实现间隔在delay内的不连续触发func函数
+*/
 export function debounce(func, delay) {
 	let timer
+	// ...args指func的参数，args指func的参数组,相当于arguments,why
 	return function(...args) {
 		if (timer) {
 			clearTimeout(timer)
 		}
+		console.log(arguments, args)
 		timer = setTimeout(() => {
+			// 调用func,传入args参数数组
 			func.apply(this, args)
 		}, delay)
 	}

@@ -6,6 +6,7 @@
 
 <script>
   import BScroll from 'better-scroll'
+
   export default {
     props: {
       // 是否实时派发滚动事件
