@@ -62,6 +62,8 @@
 			- new Singer，新建singer对象，更新state.singer,以便singer-detail获取渲染
 		- 歌曲：跳转到播放页面
 			- 点击歌曲后，将歌曲添加到当前列表，要修改playlist,suqencelist,currentindex等
+12. playlist
+	- 播放列表
 
 ## 公用js
 1. dom.js 所有对dom的操作方法
