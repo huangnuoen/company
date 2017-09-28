@@ -102,6 +102,10 @@
 	- 父组件传入占位符
 5. search-list 显示搜索历史列表
 	- 派发触发点击添加，删除事件
+6. confirm 弹出层
+	- props接收text,confirmBtnText...
+	- 通过showflag来控制显示
+	- 提供一些方法供父组件使用
 
 ## API接口
 1. recommend.js 获取推荐数据
