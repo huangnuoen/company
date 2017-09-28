@@ -1,6 +1,7 @@
 import axios from 'axios'
 import jsonp from 'common/js/jsonp'
-import {commonParams, options, optionsPlaylist} from './config'
+import {commonParams, options} from './config'
+
 // 获取推荐数据
 export function getRecommend() {
 	// 数据来源
@@ -14,6 +15,7 @@ export function getRecommend() {
 	return jsonp(url, data, options)
 }
 
+// 获取推荐歌单
 export function getDiscList() {
 	// 从本地服务器请求
 	const url = '/api/getDiscList'
@@ -38,7 +40,33 @@ export function getDiscList() {
 	})
 }
 
+// 已经无法从服务器直接获取歌单歌曲列表，需要从本地获取
 export function getSongList(disstid) {
+	// 从本地服务器请求
+	const url = '/api/songlist'
+	const data = Object.assign({}, commonParams, {
+		disstid,
+		type: 1,
+		json: 1,
+		utf8: 1,
+		onlysong: 0,
+		platform: 'yqq',
+		hostUin: 0,
+		needNewCode: 0,
+		format: 'json'
+	})
+	// 向服务器请求
+	return axios.get(url, {
+		// 配置参数
+		params: data
+	}).then((res) => {
+		// 新建Promise对象，成功时传入res.data
+		return Promise.resolve(res.data)
+	})
+}
+
+// 已经无法从服务器直接获取歌单歌曲列表
+/*export function getSongList(disstid) {
 	const url = 'https://c.y.qq.com/qzone/fcg-bin/fcg_ucc_getcdinfo_byids_cp.fcg'
 
 	const data = Object.assign({}, commonParams, {
@@ -53,4 +81,4 @@ export function getSongList(disstid) {
 	})
 	// 发送jsonp请求，返回promise对象，res是json数据 
 	return jsonp(url, data, optionsPlaylist)
-}
+}*/

@@ -1,4 +1,6 @@
 import {playMode} from 'common/js/config'
+import {loadSearch} from 'common/js/cache'
+
 /* 所有原始底层状态 */
 const state = {
 	singer: {},
@@ -12,8 +14,8 @@ const state = {
 	currentIndex: -1,
 	disc: {},
 	topList: {},
-	// 搜索历史
-	searchHistory: []
+	// 搜索历史初始化为本地缓存
+	searchHistory: loadSearch()
 }
 
 export default state

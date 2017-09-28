@@ -76,9 +76,11 @@
 	- createSong工厂方法，直接new一个song,调用该方法只须传入musicData即可生成song实例，简化代码，不必在每次new的时候传一串参数
 5. util.js
 	- shuffle()将数组打乱
+	- 节流函数debounce()
 6. mixin.js 放置混合组件
 	- const playlistMixin = {}
 		- 在该Mixin中完成：当playlist存在时，$refs.list设置新bottom,并refresh()
+7. cache.js 浏览器缓存
 
 ## 基础vue组件
 1. slider.vue
@@ -88,6 +90,7 @@
 	- <slot>可随意在父组件中插入要scroll的DOM
 	- 初次bscroll时，用mounted调用，父组件可能还没完全渲染好样式，需要传入data数据(推荐和歌单资源)监听，
 	- watch实时监听data的变化
+	- 适当时候派发事件
 3. song-list.vue  歌曲列表组件
 	- 点击li派发select事件
 	- props:rank,根据些判断是否增加排行样式
@@ -149,3 +152,4 @@ import VueLazyLoad from 'vue-lazyload'
 - 将所有状态存储在state中，通过mutations去改变状态，getters去获取状态
 1. 在singer.vue的methods中通过mapMutations映射setSinger方法，调用setSinger(singer)方法提交/改变状态
 2. 在singer-detail.vue中的computed中通过mapGetters映射取得'singer'
+3. actions
