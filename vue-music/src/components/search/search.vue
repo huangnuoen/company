@@ -4,25 +4,27 @@
 	  	<search-box ref="searchBox" @query="onQueryChange"></search-box>
   	</div>
   	<div class="shortcut-wrapper" v-show="!query">
-  		<div class="shortcut">
-  			<div class="hot-key">
-  				<h1 class="title">热门搜索</h1>
-  				<ul>
-  					<li @click="addQuery(item.k)" class="item" v-for="item in hotKey">
-  					<span>{{item.k}}</span>
-  					</li>
-  				</ul>
-  			</div>
-        <div class="search-history" v-show="searchHistory.length">
-          <h1 class="title">
-            <span class="text">搜索历史</span>
-            <span class="clear" @click="showConfirm">
-              <i class="icon-clear"></i>
-            </span>
-          </h1>
-          <search-list :searches="searchHistory" @select="addQuery" @delete="deleteSearchHistory"></search-list>
+  		<scroll class="shortcut" :data="showcut" ref="shortcut">
+        <div>
+    			<div class="hot-key">
+    				<h1 class="title">热门搜索</h1>
+    				<ul>
+    					<li @click="addQuery(item.k)" class="item" v-for="item in hotKey">
+    					<span>{{item.k}}</span>
+    					</li>
+    				</ul>
+    			</div>
+          <div class="search-history" v-show="searchHistory.length">
+            <h1 class="title">
+              <span class="text">搜索历史</span>
+              <span class="clear" @click="showConfirm">
+                <i class="icon-clear"></i>
+              </span>
+            </h1>
+            <search-list :searches="searchHistory" @select="addQuery" @delete="deleteSearchHistory"></search-list>
+          </div>
         </div>
-  		</div>
+  		</scroll>
   	</div>
   	<div class="search-result" v-show="query">
 	  	<suggest :query="query" @listScroll="blurInput" @select="saveSearch"></suggest>
@@ -33,6 +35,7 @@
 </template>
 
 <script>
+  import Scroll from 'base/scroll/scroll'
 	import SearchBox from 'base/search-box/search-box'
   import Suggest from 'components/suggest/suggest'
   import SearchList from 'base/search-list/search-list'
@@ -52,6 +55,10 @@
   		this._getHotKey()
   	},
     computed: {
+      // 为了传入scroll组件，连接2个数据，一个变化即showcut也会改变
+      showcut() {
+        return this.hotKey.concat(this.searchHistory)
+      },
       ...mapGetters([
         'searchHistory'
       ])
@@ -88,11 +95,22 @@
         'clearSearchHistory'
       ])
   	},
+    watch: {
+      // query新值为空时，即从suggest换到shortcut页面时，
+      query(newQuery) {
+        if (!newQuery) {
+          setTimeout(() => {
+            this.$refs.shortcut.refresh()
+          }, 111020)
+        }
+      }
+    },
   	components: {
   		SearchBox,
   		Suggest,
   		SearchList,
-      Confirm
+      Confirm,
+      Scroll
   	}
   }
 </script>
