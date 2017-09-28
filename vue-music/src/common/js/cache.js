@@ -43,3 +43,29 @@ function insertArray(arr, val, compare, maxLen) {
 export function loadSearch() {
 	return storage.get(SEARCH_KEY, [])
 }
+
+// 将query从本地缓存中删除
+export function deleteSearch(query) {
+	let searches = storage.get(SEARCH_KEY, [])
+	// 删除该项
+	deleteFromArray(searches, (item) => {
+		return query === item
+	})
+	// 设置缓存
+	storage.set(SEARCH_KEY, searches)
+	return searches
+}
+
+// 清空搜索历史
+export function clearSearch() {
+	storage.remove(SEARCH_KEY)
+	return []
+}
+
+// 删除arr中的某一项
+function deleteFromArray(arr, compare) {
+	const index = arr.findIndex(compare)
+	if (index > -1) {
+		arr.splice(index, 1)
+	}
+}

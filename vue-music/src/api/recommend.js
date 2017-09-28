@@ -66,7 +66,8 @@ export function getSongList(disstid) {
 }
 
 // 已经无法从服务器直接获取歌单歌曲列表
-/*export function getSongList(disstid) {
+/*
+export function getSongList(disstid) {
 	const url = 'https://c.y.qq.com/qzone/fcg-bin/fcg_ucc_getcdinfo_byids_cp.fcg'
 
 	const data = Object.assign({}, commonParams, {
@@ -81,4 +82,5 @@ export function getSongList(disstid) {
 	})
 	// 发送jsonp请求，返回promise对象，res是json数据 
 	return jsonp(url, data, optionsPlaylist)
-}*/
+}
+*/
