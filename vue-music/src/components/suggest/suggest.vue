@@ -121,6 +121,9 @@
 			listScroll() {
 				this.$emit('listScroll')
 			},
+			refresh() {
+				this.$refs.suggest.refresh()
+			},
 			_genResult(data) {
 				// 存储zhida,type,song.list
 				let ret = []

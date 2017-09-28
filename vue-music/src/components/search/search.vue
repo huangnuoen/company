@@ -3,7 +3,7 @@
   	<div class="search-box-wrapper">
 	  	<search-box ref="searchBox" @query="onQueryChange"></search-box>
   	</div>
-  	<div class="shortcut-wrapper" v-show="!query">
+  	<div ref="shortcutWrapper" class="shortcut-wrapper" v-show="!query">
   		<scroll class="shortcut" :data="showcut" ref="shortcut">
         <div>
     			<div class="hot-key">
@@ -26,7 +26,7 @@
         </div>
   		</scroll>
   	</div>
-  	<div class="search-result" v-show="query">
+  	<div ref="searchResult" class="search-result" v-show="query">
 	  	<suggest :query="query" @listScroll="blurInput" @select="saveSearch"></suggest>
    	</div>
     <confirm ref="confirm" text="是否清空所有搜索历史" confirmBtnText="清空" @confirm="clearSearchHistory"></confirm>
@@ -43,8 +43,10 @@
 	import {getHotKey} from 'api/search'
 	import {ERR_OK} from 'api/config'
   import {mapActions, mapGetters} from 'vuex'
+  import {playlistMixin} from 'common/js/mixin'
 
   export default {
+    mixins: [playlistMixin],
   	data() {
   		return {
   			hotKey: [],
@@ -80,6 +82,13 @@
       showConfirm() {
         this.$refs.confirm.show()
       },
+      handlePlaylist(playlist) {
+        const bottom = playlist.length > 0 ? '60px' : ''
+        this.$refs.shortcutWrapper.style.bottom = bottom
+        this.$refs.shortcut.refresh()
+        this.$refs.searchResult.style.bottom = bottom
+        this.$refs.suggest.refresh()
+      },
   		// 获取热门搜索
   		_getHotKey() {
   			getHotKey().then((res) => {
@@ -96,12 +105,12 @@
       ])
   	},
     watch: {
-      // query新值为空时，即从suggest换到shortcut页面时，
       query(newQuery) {
+        // 从suggest中点击后，showcut会更新，但当前dom显示的是suggest,showcut没有显示,故而要在query为空时，即showcut显示后，再refresh()
         if (!newQuery) {
           setTimeout(() => {
             this.$refs.shortcut.refresh()
-          }, 111020)
+          }, 20)
         }
       }
     },
