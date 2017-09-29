@@ -137,7 +137,6 @@
 				if (data.song) {
 					// 将song.list数组和ret连接成新数组
 					ret = ret.concat(this._normalizeSongs(data.song.list))
-					console.log(data.song, ret)
 				}
 				// [歌手信息?，歌曲信息，歌曲信息]
 				return ret

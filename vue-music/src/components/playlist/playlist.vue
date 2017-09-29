@@ -13,7 +13,7 @@
         </div>
         <scroll ref="listContent" :data="sequenceList" class="list-content">
           <ul>
-            <li class="item" v-for="item in sequenceList">
+            <li class="item" v-for="(item,index) in sequenceList" @click="selectItem(item, index)">
               <i class="current" :class="getCurrentIcon(item)"></i>
               <span class="text">{{item.name}}</span>
               <span class="like">
@@ -41,7 +41,8 @@
 
 <script>
   import Scroll from 'base/scroll/scroll'
-  import {mapGetters} from 'vuex'
+  import {mapGetters, mapMutations} from 'vuex'
+  import {playMode} from 'common/js/config'
 
 	export default {
     data() {
@@ -52,12 +53,15 @@
     computed: {
       ...mapGetters([
         'sequenceList',
-        'currentSong'
+        'currentSong',
+        'mode',
+        'playlist'
       ])
     },
     methods: {
       show() {
         this.showFlag = true
+        // 显示后再刷新一次
         setTimeout(() => {
           this.$refs.listContent.refresh()
         }, 20)
@@ -65,12 +69,28 @@
       hide() {
         this.showFlag = false
       },
+      // 为当前播放歌曲加类名
       getCurrentIcon(item) {
         if (this.currentSong.id === item.id) {
           return 'icon-play'
         }
         return ''
-      }
+      },
+      selectItem(item, index) {
+        // index是sequencelist的索引，当为随机播放模式时,应取在playlist中的索引
+        if (this.mode === playMode.random) {
+        // 获取点击歌曲在随机播放列表中的索引
+          index = this.playlist.findIndex((song) => {
+            return item.id === song.id
+          })
+        }
+        this.setCurrentIndex(index)
+        this.setPlayState(true)
+      },
+      ...mapMutations({
+        setCurrentIndex: 'SET_CURRENT_INDEX',
+        setPlayState: 'SET_PLAYING_STATE'
+      })
     },
     components: {
       Scroll
