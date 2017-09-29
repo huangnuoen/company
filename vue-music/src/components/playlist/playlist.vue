@@ -6,14 +6,14 @@
           <h1 class="title">
             <i class="icon"></i>
             <span class="text"></span>
-            <span class="clear">
+            <span class="clear" @click="showConfirm">
               <i class="icon-clear"></i>
             </span>
           </h1>
         </div>
         <scroll ref="listContent" :data="sequenceList" class="list-content">
-          <ul ref="list">
-            <li class="item" v-for="(item,index) in sequenceList" @click="selectItem(item, index)">
+          <transition-group name="list" tag="ul" ref="list">
+            <li :key="item.id" class="item" v-for="(item,index) in sequenceList" @click="selectItem(item, index)">
               <i class="current" :class="getCurrentIcon(item)"></i>
               <span class="text">{{item.name}}</span>
               <span class="like">
@@ -23,7 +23,7 @@
                 <i class="icon-delete"></i>
               </span>
             </li>
-          </ul>
+          </transition-group>
         </scroll :data="sequenceList">
         <div class="list-operate">
           <div class="add">
@@ -35,12 +35,14 @@
           <span>关闭</span>
         </div>
       </div>
+      <confirm ref="confirm" text="是否清空播放列表" confirmBtnText="清空" @confirm="confirmClear"></confirm>
     </div>
   </transition>
 </template>
 
 <script>
   import Scroll from 'base/scroll/scroll'
+  import Confirm from 'base/confirm/confirm'
   import {mapGetters, mapMutations, mapActions} from 'vuex'
   import {playMode} from 'common/js/config'
 
@@ -93,7 +95,7 @@
         const index = this.sequenceList.findIndex((song) => {
           return current.id === song.id
         })
-        this.$refs.listContent.scrollToElement(this.$refs.list.children[index], 300)
+        this.$refs.listContent.scrollToElement(this.$refs.list.$el.children[index], 300)
       },
       deleteOne(item) {
         this.deleteSong(item)
@@ -102,12 +104,20 @@
           this.hide()
         }
       },
+      showConfirm() {
+        this.$refs.confirm.show()
+      },
+      confirmClear() {
+        this.deleteSongList()
+        this.hide()
+      },
       ...mapMutations({
         setCurrentIndex: 'SET_CURRENT_INDEX',
         setPlayState: 'SET_PLAYING_STATE'
       }),
       ...mapActions([
-        'deleteSong'
+        'deleteSong',
+        'deleteSongList'
       ])
     },
     watch: {
@@ -120,7 +130,8 @@
       }
     },
     components: {
-      Scroll
+      Scroll,
+      Confirm
     }
   }
 </script>
@@ -179,6 +190,10 @@
           height: 40px
           padding: 0 30px 0 20px
           overflow: hidden
+          &.list-enter-active, &.list-leave-active
+            transition: all .1s
+          &.list-enter, &.list-leave-to
+            height: 0
           .current
             flex: 0 0 20px
             width: 20px

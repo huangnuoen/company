@@ -1,6 +1,7 @@
 <template>
   <transition name="confirm-fade">
-    <div class="confirm" v-show="showFlag">
+    <!-- 阻止冒泡到父组件 -->
+    <div class="confirm" v-show="showFlag" @click.stop>
       <div class="confirm-wrapper">
         <div class="confirm-content">
           <p class="text">{{text}}</p>

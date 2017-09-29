@@ -117,3 +117,6 @@ actions--mutations--state--getter
 			- 偏移比例大于10%时，直接到达最终位置，更新this.currentShow
 		- lyric页面时
 		 - 右滑比例大于0.1，即middle-r占屏宽小于90%时，直接到达最终位置，更新this.currentShow
+
+12. 点击出现playlist.vue
+13. watch:currentSong变化时，要先判断其id是否有变，有新id是否存在，再进行操作

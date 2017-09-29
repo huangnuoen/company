@@ -470,6 +470,10 @@
   	},
   	watch: {
   		currentSong(newSong, oldSong) {
+        // 如果没有新歌曲
+        if (!newSong.id) {
+          return
+        }
   			// 歌曲没改变时，保持原播放状态
   			if (newSong.id === oldSong.id) {
   				return

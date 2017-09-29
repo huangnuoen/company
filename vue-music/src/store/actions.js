@@ -112,11 +112,16 @@ export const deleteSong = function({commit, state}, song) {
 	commit(types.SET_CURRENT_INDEX, currentIndex)
 
 	// 列表已经没歌曲时
-	if (!playlist.length) {
-		commit(types.SET_PLAYING_STATE, false)
-	} else {
-		commit(types.SET_PLAYING_STATE, true)
-	}
+	const playingState = playlist.length > 0
+	commit(types.SET_PLAYING_STATE, playingState)
+}
+
+/* 清空播放列表 */
+export const deleteSongList = function({commit}) {
+	commit(types.SET_PLAYLIST, [])
+	commit(types.SET_SEQUENCE_LIST, [])
+	commit(types.SET_CURRENT_INDEX, -1)
+	commit(types.SET_PLAYING_STATE, false)
 }
 
 /* 保存历史到本地和state */

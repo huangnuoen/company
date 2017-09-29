@@ -1,7 +1,7 @@
 import {mapGetters} from 'vuex'
-/* 混合组件
-*  处理mini播放器出现后各组件bottom设置问题并refresh
-*/
+/* 混合组件 */
+
+/* 处理mini播放器出现后各组件bottom设置问题并refresh */
 export const playlistMixin = {
 	computed: {
 		...mapGetters([
@@ -29,3 +29,4 @@ export const playlistMixin = {
 		}
 	}
 }
+
