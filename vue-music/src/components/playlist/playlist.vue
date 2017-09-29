@@ -19,7 +19,7 @@
               <span class="like">
                 <i class="icon-not-favorite"></i>
               </span>
-              <span class="delete">
+              <span class="delete" @click.stop="deleteOne(item)">
                 <i class="icon-delete"></i>
               </span>
             </li>
@@ -41,7 +41,7 @@
 
 <script>
   import Scroll from 'base/scroll/scroll'
-  import {mapGetters, mapMutations} from 'vuex'
+  import {mapGetters, mapMutations, mapActions} from 'vuex'
   import {playMode} from 'common/js/config'
 
 	export default {
@@ -85,6 +85,7 @@
             return item.id === song.id
           })
         }
+        // 更新当前索引和播放状态
         this.setCurrentIndex(index)
         this.setPlayState(true)
       },
@@ -94,10 +95,20 @@
         })
         this.$refs.listContent.scrollToElement(this.$refs.list.children[index], 300)
       },
+      deleteOne(item) {
+        this.deleteSong(item)
+        // 当列表为空时隐藏
+        if (!this.playlist.length) {
+          this.hide()
+        }
+      },
       ...mapMutations({
         setCurrentIndex: 'SET_CURRENT_INDEX',
         setPlayState: 'SET_PLAYING_STATE'
-      })
+      }),
+      ...mapActions([
+        'deleteSong'
+      ])
     },
     watch: {
       // 当前歌曲变化时且在播放列表页时
