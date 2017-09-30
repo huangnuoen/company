@@ -90,7 +90,7 @@
 6. mixin.js 放置混合组件
 	- 播放器适配底部：const playlistMixin = {}
 		- 在该Mixin中完成：当playlist存在时，$refs.list设置新bottom,并refresh()
-	- 播放器和播放列表的共有功能：
+	- 播放器和播放列表的共有功能：播放模式切换，播放状态切换，播放模式样式切换，重置当前索引，设置播放列表
 7. cache.js 浏览器缓存
 
 ## 基础vue组件

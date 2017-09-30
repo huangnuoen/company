@@ -427,7 +427,8 @@
   			}
   		},
   		...mapMutations({
-  			setFullScreen: 'SET_FULL_SCREEN'
+  			setFullScreen: 'SET_FULL_SCREEN',
+        setPlaylist: 'SET_PLAYLIST'
   		})
   	},
   	watch: {
