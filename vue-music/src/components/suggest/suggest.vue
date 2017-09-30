@@ -40,7 +40,7 @@
 		props: {
 			query: {
 				type: String,
-				default: '1'
+				default: ''
 			},
 			showSinger: {
 				type: Boolean,
@@ -165,6 +165,7 @@
 			])
 		},
 		watch: {
+			// query变化时搜索
 			query() {
 				this.search()
 			}

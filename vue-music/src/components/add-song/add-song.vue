@@ -4,22 +4,32 @@
     <div class="add-song" v-show="showFlag" @click.stop>
       <div class="header">
         <h1 class="title">添加歌曲到列表</h1>
-        <div class="close">
+        <div class="close" @click="hide">
           <i class="icon-close"></i>
         </div>
       </div>
-      <div class="search-box-wrapper"></div>
-      <div class="shortcut"></div>
-      <div class="search-result"></div>
+      <div class="search-box-wrapper">
+        <search-box placeholder="搜索歌曲" @query="onQueryChange"></search-box>
+      </div>
+      <div class="shortcut" v-show="!query"></div>
+      <div class="search-result" v-show="query">
+        <suggest :query="query" :showSinger="showSinger" @select="selectSuggest"></suggest>
+      </div>
     </div>
   </transition>  
 </template>
 
 <script>
+  import SearchBox from 'base/search-box/search-box'
+  import Suggest from 'components/suggest/suggest'
+  import {mapActions} from 'vuex'
+
 	export default {
     data() {
       return {
-        showFlag: false
+        showFlag: false,
+        query: '',
+        showSinger: false
       }
     },
     methods: {
@@ -28,7 +38,21 @@
       },
       hide() {
         this.showFlag = false
-      }
+      },
+      onQueryChange(query) {
+        this.query = query
+      },
+      // 记录搜索历史
+      selectSuggest() {
+        this.saveSearchHistory(this.query)
+      },
+      ...mapActions([
+        'saveSearchHistory'
+      ])
+    },
+    components: {
+      SearchBox,
+      Suggest
     }
   }
 </script>
@@ -46,7 +70,7 @@
     background: $color-background
     &.slide-enter-active, &slide-leave-active
       transition: all .3s
-    &.slide-enter, &side-leave-to
+    &.slide-enter, &.slide-leave-to
       transform: translate3d(100%, 0, 0)
     .header
       position: relative
@@ -65,4 +89,7 @@
           padding: 12px
           font-size: 20px
           color: $color-theme
+
+    .search-box-wrapper
+      margin: 20px
 </style>
