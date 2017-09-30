@@ -9,7 +9,7 @@
         </div>
       </div>
       <div class="search-box-wrapper">
-        <search-box placeholder="搜索歌曲" @query="onQueryChange"></search-box>
+        <search-box ref="searchBox" placeholder="搜索歌曲" @query="onQueryChange"></search-box>
       </div>
       <div class="shortcut" v-show="!query"></div>
       <div class="search-result" v-show="query">
@@ -22,13 +22,13 @@
 <script>
   import SearchBox from 'base/search-box/search-box'
   import Suggest from 'components/suggest/suggest'
-  import {mapActions} from 'vuex'
+  import {searchMixin} from 'common/js/mixin'
 
 	export default {
+    mixins: [searchMixin],
     data() {
       return {
         showFlag: false,
-        query: '',
         showSinger: false
       }
     },
@@ -39,16 +39,10 @@
       hide() {
         this.showFlag = false
       },
-      onQueryChange(query) {
-        this.query = query
-      },
       // 记录搜索历史
       selectSuggest() {
         this.saveSearchHistory(this.query)
-      },
-      ...mapActions([
-        'saveSearchHistory'
-      ])
+      }
     },
     components: {
       SearchBox,
@@ -92,4 +86,15 @@
 
     .search-box-wrapper
       margin: 20px
+    .shortcut
+      .list-wrapper
+        position: absolute
+        top: 165px
+        bottom: 0
+        width: 100%
+    .search-result
+      position: fixed
+      top: 124px
+      bottom: 0
+      width: 100%
 </style>

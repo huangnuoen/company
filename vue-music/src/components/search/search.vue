@@ -42,15 +42,17 @@
   import Confirm from 'base/confirm/confirm'
 	import {getHotKey} from 'api/search'
 	import {ERR_OK} from 'api/config'
-  import {mapActions, mapGetters} from 'vuex'
-  import {playlistMixin} from 'common/js/mixin'
+  import {mapActions} from 'vuex'
+  import {playlistMixin, searchMixin} from 'common/js/mixin'
 
   export default {
-    mixins: [playlistMixin],
+    mixins: [
+      playlistMixin,
+      searchMixin
+    ],
   	data() {
   		return {
-  			hotKey: [],
-  			query: ''
+  			hotKey: []
   		}
   	},
   	created() {
@@ -60,25 +62,9 @@
       // 为了传入scroll组件，连接2个数据，一个变化即showcut也会改变
       showcut() {
         return this.hotKey.concat(this.searchHistory)
-      },
-      ...mapGetters([
-        'searchHistory'
-      ])
+      }
     },
   	methods: {
-  		addQuery(query) {
-  			this.$refs.searchBox.setQuery(query)
-  		},
-  		onQueryChange(query) {
-  			this.query = query
-  		},
-  		blurInput() {
-  			this.$refs.searchBox.blur()
-  		},
-  		// 保存搜索历史
-  		saveSearch() {
-        this.saveSearchHistory(this.query)
-      },
       showConfirm() {
         this.$refs.confirm.show()
       },
@@ -99,8 +85,6 @@
   			})
   		},
       ...mapActions([
-        'saveSearchHistory',
-        'deleteSearchHistory',
         'clearSearchHistory'
       ])
   	},
