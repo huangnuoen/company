@@ -88,8 +88,9 @@
 	- shuffle()将数组打乱
 	- 节流函数debounce()
 6. mixin.js 放置混合组件
-	- const playlistMixin = {}
+	- 播放器适配底部：const playlistMixin = {}
 		- 在该Mixin中完成：当playlist存在时，$refs.list设置新bottom,并refresh()
+	- 播放器和播放列表的共有功能：
 7. cache.js 浏览器缓存
 
 ## 基础vue组件

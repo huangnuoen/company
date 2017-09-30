@@ -4,7 +4,7 @@
       <div class="list-wrapper" @click.stop>
         <div class="list-header">
           <h1 class="title">
-            <i class="icon"></i>
+            <i class="icon" :class="iconMode" @click="changeMode"></i>
             <span class="text"></span>
             <span class="clear" @click="showConfirm">
               <i class="icon-clear"></i>
@@ -43,22 +43,16 @@
 <script>
   import Scroll from 'base/scroll/scroll'
   import Confirm from 'base/confirm/confirm'
-  import {mapGetters, mapMutations, mapActions} from 'vuex'
+  import {mapActions} from 'vuex'
   import {playMode} from 'common/js/config'
+  import {playerMixin} from 'common/js/mixin'
 
 	export default {
+    mixins: [playerMixin],
     data() {
       return {
         showFlag: false
       }
-    },
-    computed: {
-      ...mapGetters([
-        'sequenceList',
-        'currentSong',
-        'mode',
-        'playlist'
-      ])
     },
     methods: {
       show() {
@@ -111,10 +105,6 @@
         this.deleteSongList()
         this.hide()
       },
-      ...mapMutations({
-        setCurrentIndex: 'SET_CURRENT_INDEX',
-        setPlayState: 'SET_PLAYING_STATE'
-      }),
       ...mapActions([
         'deleteSong',
         'deleteSongList'

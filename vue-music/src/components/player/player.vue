@@ -100,17 +100,18 @@
   // 处理歌词库
   import Lyric from 'lyric-parser'
   import {prefixStyle} from 'common/js/dom'
-  import {shuffle} from 'common/js/util'
 	import {mapGetters, mapMutations} from 'vuex'
-	import {playMode} from 'common/js/config'
+  import {playMode} from 'common/js/config'
 	import ProgressBar from 'base/progress-bar/progress-bar'
 	import ProgressCircle from 'base/progress-circle/progress-circle'
 	import Scroll from 'base/scroll/scroll'
   import Playlist from 'components/playlist/playlist'
+  import {playerMixin} from 'common/js/mixin'
 
 	const transform = prefixStyle('transform')
 	const transitionDuration = prefixStyle('transitionDuration')
   export default {
+    mixins: [playerMixin],
   	data() {
   		return {
   			// 标识位
@@ -145,24 +146,10 @@
   		percent() {
   			return this.currentTime / this.currentSong.duration
   		},
-  		iconMode() {
-  			if (this.mode === playMode.sequence) {
-  				return 'icon-sequence'
-  			} else if (this.mode === playMode.loop) {
-  				return 'icon-loop'
-  			} else {
-  				return 'icon-random'
-  			}
-  			// return this.mode === playMode.sequence ? 'icon-sequence' : (this.mode === this.playMode.loop ? 'icon-loop' ? 'icon-random')
-  		},
   		...mapGetters([
   			'fullScreen',
-  			'playlist',
-  			'currentSong',
   			'playing',
-  			'currentIndex',
-  			'mode',
-  			'sequenceList'
+  			'currentIndex'
   		])
   	},
   	methods: {
@@ -292,27 +279,6 @@
   				// 毫秒单位
   				this.currentLyric.seek(currentTime * 1000)
   			}
-  		},
-  		changeMode() {
-  			const mode = (this.mode + 1) % 3
-  			this.setPlayMode(mode)
-  			let list = null
-  			if (mode === playMode.random) {
-  				list = shuffle(this.sequenceList)
-  			} else {
-  				list = this.sequenceList
-  			}
-  			// 列表改变后，当前歌曲索引也会改变，要将currentIndex改成当前歌曲在新列表的索引
-  			this.resetCurrentIndex(list)
-  			// 修改播放列表
-  			this.setPlaylist(list)
-  		},
-  		resetCurrentIndex(list) {
-  			// 在当前列表找到当前歌曲的索引
-  			let index = list.findIndex((item) => {
-  				return item.id === this.currentSong.id
-  			})
-  			this.setCurrentIndex(index)
   		},
   		end() {
   			// 播放结束切换下一首
@@ -461,11 +427,7 @@
   			}
   		},
   		...mapMutations({
-  			setFullScreen: 'SET_FULL_SCREEN',
-  			setPlayState: 'SET_PLAYING_STATE',
-  			setCurrentIndex: 'SET_CURRENT_INDEX',
-  			setPlayMode: 'SET_PLAY_MODE',
-  			setPlaylist: 'SET_PLAYLIST'
+  			setFullScreen: 'SET_FULL_SCREEN'
   		})
   	},
   	watch: {
