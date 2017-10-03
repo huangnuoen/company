@@ -1,9 +1,12 @@
 /* 浏览器缓存 */
 import storage from 'good-storage'
 
-// 定义不同key
+// 定义不同key,搜索缓存
 const SEARCH_KEY = '__search__'
 const SEARCH_MAX_LENGTH = 15
+// 播放缓存
+const PLAY_KEY = '__play__'
+const PLAY_MAX_LENGTH = 200
 
 // 保存搜索历史
 export function saveSearch(query) {
@@ -68,4 +71,20 @@ function deleteFromArray(arr, compare) {
 	if (index > -1) {
 		arr.splice(index, 1)
 	}
+}
+
+// 保存播放历史并返回该数组
+export function savePlay(song) {
+	let songs = storage.get(PLAY_KEY, [])
+	insertArray(songs, song, (item) => {
+		return song.id === item.id
+	}, PLAY_MAX_LENGTH)
+
+	storage.set(PLAY_KEY, songs)
+	return songs
+}
+
+// 读取播放历史缓存
+export function loadPlay() {
+	return storage.get(PLAY_KEY, [])
 }

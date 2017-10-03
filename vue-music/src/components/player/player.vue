@@ -100,7 +100,7 @@
   // 处理歌词库
   import Lyric from 'lyric-parser'
   import {prefixStyle} from 'common/js/dom'
-	import {mapGetters, mapMutations} from 'vuex'
+	import {mapGetters, mapMutations, mapActions} from 'vuex'
   import {playMode} from 'common/js/config'
 	import ProgressBar from 'base/progress-bar/progress-bar'
 	import ProgressCircle from 'base/progress-circle/progress-circle'
@@ -251,6 +251,7 @@
   		},
   		ready() {
   			this.songReady = true
+        this.savePlayHistory(this.currentSong)
   		},
   		// 保证正常运行
   		error() {
@@ -429,7 +430,10 @@
   		...mapMutations({
   			setFullScreen: 'SET_FULL_SCREEN',
         setPlaylist: 'SET_PLAYLIST'
-  		})
+  		}),
+      ...mapActions([
+        'savePlayHistory'
+      ])
   	},
   	watch: {
   		currentSong(newSong, oldSong) {

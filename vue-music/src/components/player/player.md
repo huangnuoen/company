@@ -120,3 +120,4 @@ actions--mutations--state--getter
 
 12. 点击出现playlist.vue
 13. watch:currentSong变化时，要先判断其id是否有变，有新id是否存在，再进行操作
+14. 存储最近播放历史

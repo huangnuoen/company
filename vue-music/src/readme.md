@@ -119,6 +119,7 @@
 	- props接收text,confirmBtnText...
 	- 通过showflag来控制显示
 	- 提供一些方法供父组件使用
+7. switches.vue 开关切换组件,可自定义不同内容和数量
 
 ## API接口
 1. recommend.js 获取推荐数据
