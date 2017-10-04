@@ -14,8 +14,15 @@
       <div class="shortcut" v-show="!query">
         <switches @switch="switchItem" :switches="switches" :currentIndex="currentIndex"></switches>
         <div class="list-wrapper">
-          <scroll v-if="currentIndex===0" :data="playHistory">
-            <song-list></song-list>
+          <scroll class="list-scroll" v-if="currentIndex===0" :data="playHistory">
+            <div class="list-inner">
+              <song-list :songs="playHistory" @select="selectSong"></song-list>
+            </div>
+          </scroll>
+          <scroll class="list-scroll" v-if="currentIndex===1" :data="searchHistory">
+            <div class="list-inner">
+              <search-list :searches="searchHistory" @delete="deleteSearchHistory" @select="addQuery"></search-list>
+            </div>
           </scroll>
         </div>
       </div>
@@ -32,8 +39,10 @@
   import Scroll from 'base/scroll/scroll'
   import SongList from 'base/song-list/song-list'
   import Suggest from 'components/suggest/suggest'
+  import SearchList from 'base/search-list/search-list'
   import {searchMixin} from 'common/js/mixin'
-  import {mapGetters} from 'vuex'
+  import Song from 'common/js/song'
+  import {mapGetters, mapActions} from 'vuex'
 
 	export default {
     mixins: [searchMixin],
@@ -50,7 +59,8 @@
     },
     computed: {
       ...mapGetters([
-        'playHistory'
+        'playHistory',
+        'searchHistory'
       ])
     },
     methods: {
@@ -66,14 +76,24 @@
       },
       switchItem(index) {
         this.currentIndex = index
-      }
+      },
+      selectSong(song, index) {
+        // 该song不是song对象，要先转化为song
+        if (index !== 0) {
+          this.insertSong(new Song(song))
+        }
+      },
+      ...mapActions([
+        'insertSong'
+      ])
     },
     components: {
       SearchBox,
       Suggest,
       Switches,
       Scroll,
-      SongList
+      SongList,
+      SearchList
     }
   }
 </script>
@@ -119,6 +139,11 @@
         top: 165px
         bottom: 0
         width: 100%
+        .list-scroll
+          height: 100%
+          overflow
+          .list-inner
+            padding: 20px 30px
     .search-result
       position: fixed
       top: 124px
