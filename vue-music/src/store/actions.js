@@ -95,6 +95,7 @@ export const deleteSong = function({commit, state}, song) {
 	let playlist = state.playlist.slice()
 	let sequenceList = state.sequenceList.slice()
 	let currentIndex = state.currentIndex
+
 	// 找到歌曲索引，删除
 	let fpIndex = findIndex(playlist, song)
 	playlist.splice(fpIndex, 1)
@@ -111,7 +112,7 @@ export const deleteSong = function({commit, state}, song) {
 	commit(types.SET_SEQUENCE_LIST, sequenceList)
 	commit(types.SET_CURRENT_INDEX, currentIndex)
 
-	// 列表已经没歌曲时
+	// 列表已经没歌曲时和当前歌曲没改变时状态不变
 	const playingState = playlist.length > 0
 	commit(types.SET_PLAYING_STATE, playingState)
 }
