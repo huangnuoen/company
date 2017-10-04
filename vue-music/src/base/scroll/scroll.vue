@@ -33,6 +33,10 @@
         type: Boolean,
         default: false
       },
+      refreshDelay: {
+        type: Number,
+        default: 20
+      },
       // 父组件的data
       data: {
         tpye: Array,
@@ -106,8 +110,9 @@
     watch: {
       data() {
         setTimeout(() => {
+          console.log('scroll', this.data)
           this.refresh()
-        }, 20)
+        }, this.refreshDelay)
         // console.log('watch监听', this.$refs.wrapper.firstChild.clientHeight)
       }
     }

@@ -77,6 +77,7 @@ export const playerMixin = {
 		...mapMutations({
 			setPlayState: 'SET_PLAYING_STATE',
 			setCurrentIndex: 'SET_CURRENT_INDEX',
+      setPlaylist: 'SET_PLAYLIST',
 			setPlayMode: 'SET_PLAY_MODE'
 		})
 	}
@@ -86,7 +87,8 @@ export const playerMixin = {
 export const searchMixin = {
 	data() {
 		return {
-			query: ''
+			query: '',
+			refreshDelay: 100
 		}
 	},
 	computed: {

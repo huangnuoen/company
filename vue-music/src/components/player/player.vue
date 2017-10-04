@@ -428,8 +428,7 @@
   			}
   		},
   		...mapMutations({
-  			setFullScreen: 'SET_FULL_SCREEN',
-        setPlaylist: 'SET_PLAYLIST'
+  			setFullScreen: 'SET_FULL_SCREEN'
   		}),
       ...mapActions([
         'savePlayHistory'

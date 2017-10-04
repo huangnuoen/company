@@ -19,7 +19,7 @@
               <song-list :songs="playHistory" @select="selectSong"></song-list>
             </div>
           </scroll>
-          <scroll ref="searchList" class="list-scroll" v-if="currentIndex===1" :data="searchHistory">
+          <scroll ref="searchList" class="list-scroll" :refreshDelay="refreshDelay" v-if="currentIndex===1" :data="searchHistory">
             <div class="list-inner">
               <search-list :searches="searchHistory" @delete="deleteSearchHistory" @select="addQuery"></search-list>
             </div>
@@ -106,6 +106,16 @@
       ...mapActions([
         'insertSong'
       ])
+    },
+    watch: {
+      query(newQuery) {
+        // 从suggest中点击后，searchList会更新，但当前dom显示的是suggest,searchList没有显示,故而要在query为空时，即searchList显示后，再refresh()
+        if (!newQuery) {
+          setTimeout(() => {
+            this.$refs.searchList.refresh()
+          }, 20)
+        }
+      }
     },
     components: {
       SearchBox,
