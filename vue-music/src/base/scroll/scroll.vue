@@ -110,7 +110,6 @@
     watch: {
       data() {
         setTimeout(() => {
-          console.log('scroll', this.data)
           this.refresh()
         }, this.refreshDelay)
         // console.log('watch监听', this.$refs.wrapper.firstChild.clientHeight)

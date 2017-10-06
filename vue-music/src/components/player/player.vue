@@ -234,7 +234,9 @@
   			}
   			// 当列表只有一首歌时，index不会改变，无法进行下首播放，要自动调用loop
   			if (this.playlist.length === 1) {
+          // 不会触发this.ready(),而songReady应一直为true
   				this.loop()
+          return
   			} else {
 	  			let index = this.currentIndex + 1
 	  			if (index === this.playlist.length) {
@@ -301,6 +303,11 @@
   		},
   		getLyric() {
   			this.currentSong.getLyric().then((lyric) => {
+          // this.currentSong.lyric会先获取到，再执行resolve(lyric),异步获取,会延迟，
+          // currentsong.lyric只有一个,lyric可有多个，当2个不是同一个时，说明currentsong更新而lyric还没获取到
+          // if (this.currentSong.lyric !== lyric) {
+          //   return
+          // }
   				this.currentLyric = new Lyric(lyric, this.handleLyric)
   				if (this.playing) {
   					this.currentLyric.play()
@@ -324,7 +331,6 @@
   				this.$refs.lyricList.scrollTo(0, 0, 1000)
   			}
   			this.playingLyric = txt
-  			console.log(lineNum)
   		},
   		// 中部左右滑动
   		middleTouchStart(e) {
@@ -456,7 +462,8 @@
   			// this.$nextTick(() => {
   			this.timer = setTimeout(() => {
   				this.$refs.audio.play()
-  				this.getLyric()
+          // 获取歌词是异步的
+          this.getLyric()
   			}, 1000)
   		},
   		// playing改变，改变播放状态
