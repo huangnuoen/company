@@ -192,3 +192,4 @@ import VueLazyLoad from 'vue-lazyload'
 	- 设置静态资源目录
 	- 配置端口，监听请求资源
 3. node prod.server.js
+4. 利用vue-router和webpack的import()提供的异步入口对组件做懒加载处理
