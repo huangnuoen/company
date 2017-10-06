@@ -64,7 +64,7 @@
 							<i @click="next" class="icon-next"></i>
 						</div>
 						<div class="icon i-right">
-							<i class="icon-not-favorite"></i>
+							<i class="icon" :class="getFavoriteIcon(currentSong)" @click="toggleFavorite(currentSong)"></i>
 						</div>
 					</div>
 				</div>
@@ -90,7 +90,7 @@
 	  	</div>
 		</transition>
     <playlist ref="playlist"></playlist>
-		<audio :src="currentSong.url" ref="audio" @canplay="ready" @error="error" @timeupdate="updateTime" @ended="end"></audio>
+		<audio :src="currentSong.url" ref="audio" @play="ready" @error="error" @timeupdate="updateTime" @ended="end"></audio>
   </div>
 </template>
 
@@ -153,7 +153,7 @@
   		])
   	},
   	methods: {
-  		// 切换播放状态
+  		// 切换播放状态,要保证歌曲开始播放才能执行
   		togglePlaying() {
   			if (!this.songReady) {
   				return
@@ -249,6 +249,7 @@
   			}
   			this.songReady = false
   		},
+      // 当媒介就绪开始播放时
   		ready() {
   			this.songReady = true
         this.savePlayHistory(this.currentSong)
@@ -448,12 +449,12 @@
   			if (this.currentLyric) {
   				// 停止歌词播放
   				this.currentLyric.stop()
-  				console.log('stop')
   			}
+        clearTimeout(this.timer)
   			// dom渲染后再播放
   			// 修复微信后台js不执行问题，重新进入后延时调用播放
   			// this.$nextTick(() => {
-  			setTimeout(() => {
+  			this.timer = setTimeout(() => {
   				this.$refs.audio.play()
   				this.getLyric()
   			}, 1000)

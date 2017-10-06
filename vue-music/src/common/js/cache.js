@@ -7,6 +7,9 @@ const SEARCH_MAX_LENGTH = 15
 // 播放缓存
 const PLAY_KEY = '__play__'
 const PLAY_MAX_LENGTH = 200
+// 喜欢听
+const FAVORITE_KEY = '__favorite__'
+const FAVORITE_MAX_LENGTH = 200
 
 // 保存搜索历史
 export function saveSearch(query) {
@@ -87,4 +90,29 @@ export function savePlay(song) {
 // 读取播放历史缓存
 export function loadPlay() {
 	return storage.get(PLAY_KEY, [])
+}
+
+// 将song添加喜欢列表
+export function saveFavorite(song) {
+	let songs = storage.get(FAVORITE_KEY, [])
+	// 检查是否有该song
+	insertArray(songs, song, (item) => {
+		return item.id === song.id
+	}, FAVORITE_MAX_LENGTH)
+	storage.set(FAVORITE_KEY, songs)
+	return songs
+}
+
+// 删除喜欢列表中的song
+export function deleteFavorite(song) {
+	let songs = storage.get(FAVORITE_KEY, [])
+	deleteFromArray(songs, (item) => {
+		return song.id === item.id
+	})
+	storage.set(FAVORITE_KEY, songs)
+	return songs
+}
+
+export function loadFavorite() {
+	return storage.get(FAVORITE_KEY, [])
 }

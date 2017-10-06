@@ -77,6 +77,8 @@
 	- 在suggest点击添加歌曲后,search-list不能滚动？？？
 		- 解决：监听query变化刷新
 14. user-center  用户中心 一级路由
+	- 在m-header设置一级路由进入
+	- 标记我喜欢听的
 
 
 ## 公用js
@@ -170,6 +172,7 @@ import VueLazyLoad from 'vue-lazyload'
 
 ### router/index.js
 1. 配置路由，并设置默认值
+2. 设置一级路由和二级路由
 
 ### 引入库
 1. fastclick

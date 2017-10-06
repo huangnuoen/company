@@ -1,5 +1,5 @@
 import {playMode} from 'common/js/config'
-import {loadSearch, loadPlay} from 'common/js/cache'
+import {loadSearch, loadPlay, loadFavorite} from 'common/js/cache'
 
 /* 所有原始底层状态 */
 const state = {
@@ -17,7 +17,8 @@ const state = {
 	// 搜索历史初始化为本地缓存
 	searchHistory: loadSearch(),
 	// 播放数组
-	playHistory: loadPlay()
+	playHistory: loadPlay(),
+	favoriteList: loadFavorite()
 }
 
 export default state
