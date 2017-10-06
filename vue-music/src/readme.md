@@ -184,3 +184,11 @@ import VueLazyLoad from 'vue-lazyload'
 1. 在singer.vue的methods中通过mapMutations映射setSinger方法，调用setSinger(singer)方法提交/改变状态
 2. 在singer-detail.vue中的computed中通过mapGetters映射取得'singer'
 3. actions
+
+### 编译打包
+1. npm run build 编译
+2. 根目录新建prod.server.js
+	- 利用express写服务，用axios请求资源
+	- 设置静态资源目录
+	- 配置端口，监听请求资源
+3. node prod.server.js
