@@ -1,0 +1,143 @@
+.textField {
+    width:100%;
+    height:100%;
+    position: absolute;
+}
+.textContent {
+    width:100%;
+    height:100%;
+    position: absolute;
+}
+.textField {
+    /*z-index: 1000;*/
+}
+/*scenes page4*/
+.iconDialog {
+    width:100%;
+    height:100%;
+    position: absolute;
+}
+/*scenes page5&page8*/
+.popLamp {
+	width: 65%;
+	height: 79%;
+	position: absolute;
+	left: 32.5%;
+	top: 100%;
+}
+#lampPop {
+	width: 68%;
+	height: 77.5%;
+	left: 31.9%;
+	top: 100%;
+	opacity: 0;
+}
+#pageFiveLeft,#page8Pop {
+	width: 32%;
+}
+/*scenes page7*/
+#scenesMerged {
+	width: 68%;
+	height: 235%;
+	left: 31.9%;
+	top: 23%;
+}
+#scenesLamp {
+	width: 68%;
+	height: 235%;
+	left: 31.9%;
+	top: 100%;
+}
+#scenesLamp1 {
+	width: 68%;
+	height: 235%;
+	left: 31.9%;
+	top: 23%;
+}
+#scenesRightTop {
+	width: 68%;
+	height: 24.1%;
+	right: 2px;
+}
+/*scenes page8*/
+#scenesMerged1 {
+	width: 68%;
+	height: 235%;
+	left: 31.9%;
+	top: -55%;
+}
+#scenesRightTop1 {
+	width: 68%;
+	height: 22%;
+	top: -1px;
+	right: 0;
+}
+/*scenes page9*/
+#scenesMerged2 {
+	width: 68%;
+	height: 235%;
+	left: 31.9%;
+	top: -135%;
+}
+/*monitor*/
+.bottomPop {
+	top: 80px;
+}
+/*monitor*/
+.bottomPop {
+	top: 80px;
+}
+#turnToMonitor {
+	width: 	200%;
+	left:-100%;
+}
+.moveFinger {
+	position: absolute;
+}
+.tapWrapper,.holdWrapper {
+	width: 50%;
+	position: absolute;
+	top: 67%;
+}
+.tapWrapper {
+	left: 0;
+}
+.holdWrapper {
+	left: 50%;
+}
+.tap,.hold,.widgets {
+	font-weight: bolder;
+}
+/*IQ*/
+.multiSensor {
+    top: 0%;
+}
+.frontDoor {
+	width: 70%;
+    height: 44%;
+    top: 58%;
+}
+.conditionTime {
+	width: 65%;
+    height: 36%;
+    top: 24%;
+}
+.ceilingLight {
+	width: 70%;
+    height: 74%;
+    top: 26%;
+}
+/*topBack*/
+.topBack {
+	display: flex;
+	align-items: center;
+}
+.tBack {
+	width: 8%;
+	height: 100%;
+}
+.tBack svg {
+	position: static;
+	width: 46%;
+	height: 100%;
+}

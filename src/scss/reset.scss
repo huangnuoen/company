@@ -1,30 +1,11 @@
-$color: #0188e1;//主色调
-//媒体查询规则
-$width-small: 400px;
-$width-medium: 760px;
-$width-large: 1200px;
-@mixin responsive($width) {
-	@if $width == wide-screens {
-		@media screen and(min-width: $width-large) {
-			@content;
-		}
-	}
-	@else if $width == medium-screens {
-		@media screen and (max-width: ($width-large)-1) and (min-width: ($width-small)+1) {
-			@content;
-		}
-	}
-	@else if $width == small-screens {
-		@media screen and (max-width: $width-small) {
-			@content;
-		}
-	}
-}
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 	vertical-align: middle;
+}
+body {
+	width: 100%;
 }
 nav, section, header, footer, article, aside {
 	display: block;
@@ -34,61 +15,4 @@ a, a:hover {
 }
 ul, ol, li{
 	list-style: none;
-}
-html, body, .wrapper {
-	width: 100%;
-	width: 13.66rem;
-}
-/* 网站默认字体大小 */
-/* body {
-	font-size: 100%;
-} */
-body {
-	font-family: 'Microsoft Yahei',Arial, Helvetica, sans-serif;
-	font-size: 16px;
-	@include responsive(wide-screens) {
-		font-size: 16px;
-	}
-	@include responsive(medium-screens) {
-		font-size: 14px;
-	}
-	@include responsive(small-screens) {
-		font-size: 12px;
-	}
-}
-h1, h2, h3, h4, h5, h6 {
-	font-family: "黑体";
-}
-/* 默认按钮样式 */
-button, a.btn, input[type='submit'] {
-	border: 1px solid transparent;
-	background-color: $color;
-	color: #fff;
-	padding: 1.35% 2.7%;
-	padding: .04rem .08rem;
-	border-radius: .05rem;
-	box-shadow: 0 .03rem .1rem rgba(0, 0, 0, .5);
-	text-shadow: 0 -.02rem .02rem rgba(0, 0, 0, .5);
-	&:hover {
-		background-color: transparent;
-		border-color: $color;
-		color: $color;
-		text-shadow: none;
-		transition: all 1s;
-	}
-}
-/* 返回按钮 */
-header+section+section {
-	position: relative;
-	.back {
-		position: absolute;
-		top: .1rem;
-		right: .2rem;
-		img {
-			width: .4rem;
-			height: .32rem;
-			box-shadow: none;
-			border: none;
-		}
-	}	
 }

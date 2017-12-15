@@ -1,10 +1,13 @@
-@charset "UTF-8";
 * {
   margin: 0;
   padding: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   vertical-align: middle;
+}
+
+body {
+  width: 100%;
 }
 
 nav, section, header, footer, article, aside {
@@ -17,81 +20,4 @@ a, a:hover {
 
 ul, ol, li {
   list-style: none;
-}
-
-html, body, .wrapper {
-  width: 100%;
-  width: 13.66rem;
-}
-
-/* 网站默认字体大小 */
-/* body {
-	font-size: 100%;
-} */
-body {
-  font-family: 'Microsoft Yahei',Arial, Helvetica, sans-serif;
-  font-size: 16px;
-}
-
-@media screen and (min-width: 1200px) {
-  body {
-    font-size: 16px;
-  }
-}
-
-@media screen and (max-width: 1199px) and (min-width: 401px) {
-  body {
-    font-size: 14px;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  body {
-    font-size: 12px;
-  }
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: "黑体";
-}
-
-/* 默认按钮样式 */
-button, a.btn, input[type='submit'] {
-  border: 1px solid transparent;
-  background-color: #0188e1;
-  color: #fff;
-  padding: 1.35% 2.7%;
-  padding: .04rem .08rem;
-  border-radius: .05rem;
-  -webkit-box-shadow: 0 0.03rem 0.1rem rgba(0, 0, 0, 0.5);
-          box-shadow: 0 0.03rem 0.1rem rgba(0, 0, 0, 0.5);
-  text-shadow: 0 -0.02rem 0.02rem rgba(0, 0, 0, 0.5);
-}
-
-button:hover, a.btn:hover, input[type='submit']:hover {
-  background-color: transparent;
-  border-color: #0188e1;
-  color: #0188e1;
-  text-shadow: none;
-  -webkit-transition: all 1s;
-  transition: all 1s;
-}
-
-/* 返回按钮 */
-header + section + section {
-  position: relative;
-}
-
-header + section + section .back {
-  position: absolute;
-  top: .1rem;
-  right: .2rem;
-}
-
-header + section + section .back img {
-  width: .4rem;
-  height: .32rem;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  border: none;
 }
