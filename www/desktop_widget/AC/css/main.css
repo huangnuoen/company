@@ -1,0 +1,60 @@
+.toggle_content{
+
+}
+.onOffButton{
+    left: 0;
+    width: 20%;
+    top: 12px;
+}
+#signImg {
+    left: 50%;
+}
+.AC_content{
+    position: absolute;
+    height:50%;
+    width: 90%;
+    top:20%;
+    left: 5%;
+}
+.ac{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+#svgH{
+    position: absolute;
+    width: 92%;
+    left: 4%;
+    height: 100%;
+}
+#ACtextHolder{
+    position: absolute;
+    width: 100%;
+    height: 20%;
+    top:80%;
+}
+.texts{
+    position: absolute;
+    width: 20%;
+    height: 100%;
+    text-align: center;
+    color: #585757;
+}
+.powertexts{
+    left: 0;
+}
+.energySavetexts{
+    left: 20%;
+}
+.strongCooltexts{
+    left: 40%;
+}
+.cooltexts{
+    left: 60%;
+}
+.warmtexts{
+    left: 80%;
+}
+.setOpacity {
+    opacity:0.45;
+}

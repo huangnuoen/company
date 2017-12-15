@@ -1,0 +1,491 @@
+html, body {
+    -ms-touch-action : manipulation;
+    touch-action     : manipulation;
+    font-family      : Akkurat, Arial, sans-serif;
+    width            : 100%;
+    height           : 100%;
+    margin: 0;
+    padding: 0;
+    overflow:hidden;
+    /*overflow:hidden;*/
+    /*scroll:no;*/
+}
+* {
+    -webkit-box-sizing : border-box;
+    -moz-box-sizing    : border-box;
+    box-sizing         : border-box;
+    -webkit-tap-highlight-color : rgba(0, 0, 0, 0);
+    -webkit-user-select   : none;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+}
+.main_content {
+    position: absolute;
+    width: 90%;
+    height: 95%;
+    left: 5%;
+    top:5%;
+    border: 1px solid #C7C8C8;
+    overflow: hidden;
+    border-radius:16px;
+    background-color: #ffffff;
+    background-color:white;
+}
+.colorBox{
+    background-color: rgba(0,0,0,0);
+}
+/*Head start*/
+.head_content{
+    position: absolute;
+    height: 20%;
+    width: 100%;
+    /*background-color: #e8a482;*/
+    top:0;
+}
+.head_holder{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: #EEEEEE;
+}
+.deviceName{
+    color:#595757;
+    position: absolute;
+    font-size: larger;
+    top:20px;
+    left: 40px;
+}
+.details{
+    position: absolute;
+    height: 30px;
+    width: 50px;
+    top:16px;
+    right: 40px;
+}
+#detailsButtonSVG{
+    position: absolute;
+    height: 80%;
+    width: 100%;
+}
+
+.closeIconSide {
+    position: absolute;
+    width:50px;
+    height:50px;
+    left: 92%;
+    top: 1%;
+}
+
+.closeIcon{
+    position: absolute;
+    width:50px;
+    height:50px;
+}
+
+.closeShadow {
+    position: absolute;
+    border-radius: 50%;
+    box-shadow: 0 5px 6px #555555;
+    width: 50px;
+    height: 50px;
+}
+
+.closeIconSvg {
+    position: absolute;
+    width:100%;
+    height:100%;
+}
+/*Head End*/
+
+/*body Start*/
+.body_content{
+    position: absolute;
+    height: 80%;
+    width: 100%;
+    top:20%;
+    /*background-color: #EAF1F3;*/
+}
+/*body End*/
+
+/*playback/music start*/
+.playBackMainContent,.musicMainContent {
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    top: 25%;
+    left: 25%;
+}
+.popupReward,.popupForward {
+    width: 15%;
+    height: 40%;
+    position: absolute;
+    top: 0;
+}
+.popupReward {
+    left: 0;
+}
+.popupForward {
+    right: 0;
+}
+.popupReward svg,.popupForward svg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+.popupPlayOrPause {
+    width: 30%;
+    height: 40%;
+    position: absolute;
+    left: 35%;
+}
+.popupPlayOrPause svg, .popupBack svg,.popupStop img, .popupNext svg, .popupStop svg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+.popupBack, .popupNext {
+    width: 15%;
+    height: 50%;
+    position: absolute;
+    top: 50%;
+}
+.popupBack {
+    left: 18%;
+}
+.popupNext {
+    left: 68%;
+}
+.popupStop {
+    width: 15%;
+    height: 50%;
+    position: absolute;
+    top: 50%;
+    left: 43%;
+}
+/*playback/music end*/
+
+/*colorButtons start*/
+.colorBtnMainContent {
+    width: 70%;
+    height: 40%;
+    position: absolute;
+    top: 30%;
+    left: 15%;
+}
+.colorCircleBtn {
+    width: 25%;
+    height: 100%;
+    position: absolute;
+}
+.firstColorBtn {
+    left: 0;
+}
+.secondColorBtn {
+    left: 25%;
+}
+.thirdColorBtn {
+    left: 50%;
+}
+.fourthColorBtn {
+    left: 75%;
+}
+.colorCircleBtn svg {
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    left: 25%;
+}
+.colorCircleBtn p {
+    margin-top: 80%;
+    text-align: center;
+    color: #9E9E9F;
+    font-size: 12px;
+}
+/*colorButtons end*/
+
+/*tv volume start*/
+.tvVolumeMainContent {
+    width: 50%;
+    height: 15%;
+    position: absolute;
+    top: 42.5%;
+    left: 25%;
+}
+.tvMute,.tvDecrease,.tvIncrease {
+    width: 33.3%;
+    height: 100%;
+    position: absolute;
+}
+.tvDecrease {
+    left: 33.3%;
+}
+.tvIncrease {
+    right: 0;
+}
+.tvVolumeMainContent svg {
+    width: 80%;
+    height: 80%;
+    position: absolute;
+    left: 10%;
+    top: 10%;
+}
+/*tv volume end*/
+
+/*generic start*/
+.genericMainContent {
+    width: 50%;
+    height: 40%;
+    position: absolute;
+    top: 30%;
+    left: 25%;
+}
+.genericCircle {
+    width: 33.3%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+}
+.genericCircle svg {
+    width: 60%;
+    height: 60%;
+    position: absolute;
+    left: 20%;
+}
+.genericSecondCircle {
+    left: 33.3%;
+}
+.genericThirdCircle {
+    right: 0;
+}
+.genericCircle p {
+    text-align: center;
+    color: #9E9E9F;
+    font-size: 12px;
+    margin-top: 90%;
+}
+.onOffButton_content{
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    left: 120%;
+    top: -50%;
+}
+#onOffButtonSVG {
+    width:100%;
+    height:100%;
+    position:absolute;
+}
+.onOffRemote{
+    position: absolute;
+    width: 22px;
+    height: 30px;
+    left: 15%;
+    top: 2%;
+}
+/*vol/chan start*/
+.volOrChanMainContent {
+    width: 50%;
+    height: 55%;
+    position: absolute;
+    top: 22.5%;
+    left: 25%;
+}
+.volumeUp svg, .volumeDown svg, .volMute svg, .volPrev svg, .volNext svg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+.volumeUp,.volumeDown,.volMute,.volPrev,.volNext {
+    width: 15%;
+    height: 15%;
+    position: absolute;
+}
+.volumeUp {
+    top: 0;
+    left: 0;
+}
+.volumeDown {
+    top: 85%;
+    left: 0;
+}
+.volMute{
+    top: 42.5%;
+    left: 42.5%;
+}
+.volPrev {
+    top: 0;
+    right: 0;
+}
+.volNext {
+    top: 85%;
+    right: 0;
+}
+/*number pad start*/
+.numberPadMainContent {
+    width: 40%;
+    height: 70%;
+    position: absolute;
+    left: 30%;
+    top: 15%;
+}
+.numberPadBtn {
+    width: 33.3%;
+    height: 25%;
+    position: absolute;
+}
+.numberPadBtn svg {
+    width: 80%;
+    height: 100%;
+    left: 10%;
+    position: absolute;
+}
+.numberOne {
+    left: 0;
+    top: 0;
+}
+.numberTwo {
+    left: 33.3%;
+    top: 0;
+}
+.numberThree {
+    left: 66.6%;
+    top: 0;
+}
+.numberFour {
+    left: 0;
+    top: 25%;
+}
+.numberFive {
+    left: 33.3%;
+    top: 25%;
+}
+.numberSix {
+    left: 66.6%;
+    top: 25%;
+}
+.numberSeven {
+    left: 0%;
+    top: 50%;
+}
+.numberEight {
+    left: 33.3%;
+    top: 50%;
+}
+.numberNine {
+    left: 66.6%;
+    top: 50%;
+}
+.numberPadIcon {
+    left: 0;
+    top: 75%;
+}
+#numberPadIconSVG, #numberTickSVG {
+    width: 50%;
+    left: 25%;
+}
+#numberTickSVG {
+    height: 55%;
+    top: 30%;
+}
+.numberZero {
+    left: 33.3%;
+    top: 75%;
+}
+.numberTick {
+    left: 66.6%;
+    top: 75%;
+}
+/*navigation start*/
+.navAndRbMainContent {
+    width: 90%;
+    height: 80%;
+    position: absolute;
+    top: 10%;
+    left: 5%;
+}
+.navAndRbTop {
+    position: absolute;
+    width: 100%;
+    height: 70%;
+    border-bottom: 1px solid #C8C9CA;
+}
+.navAndRbBottom {
+    width: 100%;
+    height: 30%;
+    top: 70%;
+    position: absolute;
+}
+.navTopBtn {
+    width: 10%;
+    height: 33.3%;
+    position: absolute;
+}
+.navTopBtn svg {
+    width: 100%;
+    height: 45%;
+    position: absolute;
+}
+.navIncrease,.navMute, .navDecrease {
+    left: 10%;
+}
+.navOrRbPrev,.navRecycle,.navOrRbNext {
+    right: 10%;
+}
+.navIncrease,.navOrRbPrev {
+    top: 0;
+}
+.navMute,.navRecycle {
+    top: 33.3%;
+}
+.navDecrease,.navOrRbNext {
+    top: 66.6%;
+}
+.navAndRbMiddleBtn {
+    width: 35%;
+    height: 80%;
+    position: absolute;
+    left: 32.5%;
+}
+.navAndRbMiddleBtn svg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+.navBottomBtn {
+    width: 25%;
+    height: 100%;
+    position: absolute;
+}
+.navBottomBtn svg {
+    width: 43%;
+    height: 30%;
+    bottom: 0;
+    position: absolute;
+}
+.navHome {
+    left: 10%;
+}
+.navQuery {
+    left: 35%;
+}
+.navWarning {
+    left: 60%;
+}
+.navReturn {
+    left: 80%;
+}
+/*navigation end*/
+
+
+.IRButtons{
+    opacity: 0.45;
+}
+.svg_pic{
+    position: absolute;
+    width: 95%;
+    left: 2.5%;
+    height: 90%;
+    top:5%;
+}

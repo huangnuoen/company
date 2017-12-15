@@ -1,0 +1,263 @@
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title></title>
+    <link rel="stylesheet" href="CSS/main.css" type="text/css"/>
+    <!--<link rel="stylesheet" href="main.css" type="text/css"/>-->
+</head>
+<body>
+<section id="main_content" class="main_content">
+    <div class="main_content" id="RGB">
+        <div class="body_content">
+            <div class="onOffButton">
+                <on-off-button></on-off-button>
+            </div>
+            <div class="brightnessController">
+                <brightness-controller></brightness-controller>
+            </div>
+        </div>
+        <div class="routing_content">
+            <div class="RGB_routing_content"></div>
+        </div>
+        <!--<div id="loading_mask" class="loading_mask"></div>-->
+    </div>
+    <div id="Dimmer" class="widgets">
+        <div class="onOffButton">
+            <on-off-button></on-off-button>
+        </div>
+        <div class="brightnessController">
+            <brightness-controller></brightness-controller>
+        </div>
+        <!--<div id="loading_mask" class="loading_mask"></div>-->
+    </div>
+
+    <div id="Plug" class="widgets">
+        <span class="OnOffstatus"></span>
+        <svg version="1.1" class="svg_pic OnOffSVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="32.797px" height="35.531px" viewBox="0 0 32.797 35.531" enable-background="new 0 0 32.797 35.531" xml:space="preserve">
+            <g>
+                <path class="OnOff_button" fill="transparent" stroke="#D0672B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+                    M21.704,5.321c5.568,2.132,9.517,7.52,9.517,13.831c0,8.179-6.638,14.808-14.831,14.808c-8.187,0-14.826-6.629-14.826-14.808
+                    c0-6.346,4-11.765,9.619-13.869"></path>
+                <line class="OnOff_button" fill="transparent" stroke="#D0672B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="16.391" y1="1.56" x2="16.391" y2="14.704"></line>
+            </g>
+        </svg>
+    </div>
+
+
+    <div id="MultisensorR" class="widgets">
+        <table class="holderTable_noCam">
+            <tr>
+                <td id="multisensorBrightnessname" class="tdName"></td>
+                <td class="tdValue">
+                    <div id="multisensorBrightnessvalue" class="td_div"></div>
+                </td>
+            </tr>
+            <tr>
+                <td id="multisensorMotionname" class="tdName"></td>
+                <td class="tdValue">
+                    <div id="multisensorMotionvalue" class="td_div"></div>
+                </td>
+            </tr>
+            <tr>
+                <td id="multisensortemperaturename" class="tdName"></td>
+                <td class="tdValue">
+                    <div id="multisensortemperatureValue" class="td_div"></div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="Cube" class="widgets" data-role="page">
+        <table class="holderTable">
+            <tr>
+                <td id="Brightnessname" class="tdName"></td>
+                <td class="tdValue">
+                    <div id="Brightnessvalue" class="td_div"></div>
+                </td>
+            </tr>
+            <tr>
+                <td id="Motionname" class="tdName"></td>
+                <td class="tdValue">
+                    <div id="Motionvalue" class="td_div"></div>
+                </td>
+            </tr>
+            <tr>
+                <td id="temperaturename" class="tdName"></td>
+                <td class="tdValue">
+                    <div id="temperatureValue" class="td_div"></div>
+                </td>
+            </tr>
+            <tr>
+                <td id="pm25name" class="tdName">PM2.5:</td>
+                <td class="tdValue">
+                    <div id="pm25Value" class="td_div"></div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="NewMotion" class="widgets" data-role="page">
+        <table class="holderTable">
+            <tr>
+                <td id="NewMotionName" class="tdName">Motion</td>
+                <td class="tdValue">
+                    <div id="NewMotionValue" class="td_div"></div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="Doorlock" class="widgets">
+        <span class="OnOffstatus"></span>
+        <svg version="1.1" class="svg_pic OnOffSVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="32.797px" height="35.531px" viewBox="0 0 32.797 35.531" enable-background="new 0 0 32.797 35.531" xml:space="preserve">
+            <g>
+                <path class="OnOff_button" fill="transparent" stroke="#D0672B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+                    M21.704,5.321c5.568,2.132,9.517,7.52,9.517,13.831c0,8.179-6.638,14.808-14.831,14.808c-8.187,0-14.826-6.629-14.826-14.808
+                    c0-6.346,4-11.765,9.619-13.869"></path>
+                <line class="OnOff_button" fill="transparent" stroke="#D0672B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="16.391" y1="1.56" x2="16.391" y2="14.704"></line>
+            </g>
+        </svg>
+    </div>
+
+    <div id="Siren" class="widgets">
+        <siren-picker></siren-picker>
+    </div>
+
+    <div class="Door_window" id="Door_window">
+        <table class="holderTable_noCam">
+            <tr>
+                <td id="Door_window_Motion" class="tdName"></td>
+                <td class="tdValue">
+                    <div id="Door_window_Motion_value" class="td_div"></div>
+                </td>
+            </tr>
+            <tr>
+                <td id="Door_window_battery" class="tdName"></td>
+                <td class="tdValue">
+                    <div id="Door_window_battery_value" class="td_div">0</div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="ac" class="widgets">
+        <picker></picker>
+    </div>
+    <div id="wallSwitch" class="widgets">
+        <wall-switch></wall-switch>
+    </div>
+
+    <div id="Curtain" class="widgets">
+        <div class="switchProcessBar">
+            <switch-process-bar></switch-process-bar>
+        </div>
+    </div>
+    <div id="wallShutter" class="widgets">
+        <shutter-button></shutter-button>
+    </div>
+</section>
+<template id="_ACPicker">
+    <div class="pickerHolder diver">
+        <div class="mode diver">{{mode}}:</div>
+        <div class="divider diver"></div>
+        <div id="acPlug" class="diver" v-on:click="toggleClick">
+            <div class="acPlugStatus diver">{{status}}</div>
+            <svg version="1.1" class="acSvg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="32.797px" height="35.531px" viewBox="0 0 32.797 35.531" enable-background="new 0 0 32.797 35.531" xml:space="preserve">
+                <g>
+                    <path class="OnOff_button" fill="transparent" v-bind:stroke="[OnOff?'#D0672B':'#595758']" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+                        M21.704,5.321c5.568,2.132,9.517,7.52,9.517,13.831c0,8.179-6.638,14.808-14.831,14.808c-8.187,0-14.826-6.629-14.826-14.808
+                        c0-6.346,4-11.765,9.619-13.869"></path>
+                    <line class="OnOff_button" fill="transparent" v-bind:stroke="[OnOff?'#D0672B':'#595758']" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="16.391" y1="1.56" x2="16.391" y2="14.704"></line>
+                </g>
+            </svg>
+        </div>
+        <div class="scrollWindow diver" v-bind:id="myid">
+            <div class="scrollCellHolder diver">
+                <div class="scrollCell diver"
+                     v-for="(Info, key, index) in cellInfo"
+                     v-bind:style="Info.style"
+                     v-bind:command="Info.command">
+                    {{Info.text}}
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+<template id="_sirenPicker">
+    <div class="pickerHolder sirenDiver">
+        <div class="sirenDiver sirenSeparator">
+        </div>
+        <div class="sirenScrollWindow sirenDiver" v-bind:id="sound.pickerId" v-bind:style="sound.style">
+            <div class="scrollCellHolder sirenDiver">
+                <div class="scrollCell sirenDiver"
+                     v-for="(Info, key, index) in sound.pickerInfo"
+                     v-bind:style="Info.style">
+                    {{Info.text}}
+                </div>
+            </div>
+        </div>
+        <div class="sirenScrollWindow sirenDiver" v-bind:id="volume.pickerId" v-bind:style="volume.style">
+            <div class="scrollCellHolder sirenDiver">
+                <div class="scrollCell sirenDiver"
+                     v-for="(Info, key, index) in volume.pickerInfo"
+                     v-bind:style="Info.style">
+                    {{Info.text}}
+                </div>
+            </div>
+        </div>
+        <div class="sirenScrollWindow sirenDiver" v-bind:id="length.pickerId" v-bind:style="length.style">
+            <div class="scrollCellHolder sirenDiver">
+                <div class="scrollCell sirenDiver"
+                     v-for="(Info, key, index) in length.pickerInfo"
+                     v-bind:style="Info.style">
+                    {{Info.text}}
+                </div>
+            </div>
+        </div>
+        <div class="sirenDiver soundTitle">{{sound.title}}</div>
+        <div class="sirenDiver volumeTitle">{{volume.title}}</div>
+        <div class="sirenDiver lengthTitle">{{length.title}}</div>
+        <div class="testHolder sirenDiver">
+            <div class="testButton sirenDiver" v-on:click="toggleClick">
+                {{test}}
+            </div>
+        </div>
+    </div>
+</template>
+
+<template id="_shutterButton">
+    <div class="shutterButtonContent">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="图层_1" x="0px" y="0px" width="628.321px" height="285.699px" viewBox="0 0 628.321 285.699" enable-background="new 0 0 628.321 285.699" xml:space="preserve">
+            <g @click="start" id="start">
+                <path v-bind:style="changeStart" d="M272.354,320.368l-23.691-21.443c-0.877-0.794-0.877-2.172,0-2.966l23.691-21.44  c1.286-1.164,3.342-0.251,3.342,1.483v42.883C275.696,320.619,273.64,321.531,272.354,320.368">
+                    <!--<set attributeName="fill" to="#E66C25" begin="start.click" ></set>-->
+                </path>
+                <rect fill="transparent" x="180" y="180" width="150px" height="250px"></rect>
+            </g>
+            <g @click="end" id="end">
+                <path v-bind:style="changeEnd" d="M590.114,274.519l23.691,21.441c0.878,0.794,0.878,2.172,0,2.966l-23.691,21.441  c-1.286,1.163-3.342,0.251-3.342-1.484V276C586.771,274.268,588.828,273.355,590.114,274.519">
+                    <!--<set attributeName="fill" to="#E66C25" begin="end.click" ></set>-->
+                </path>
+                <rect fill="transparent" x="550" y="180" width="150px" height="250px"></rect>
+            </g>
+            <g @click="stop" id="stop">
+                <rect xmlns="http://www.w3.org/2000/svg" v-bind:style="changeStop" x="403.269" y="276.478" fill="#B3B2B3" width="42" height="42"></rect>
+                <!--<line fill="none" v-bind:style="changeStop" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="417.389" y1="272.943" x2="417.389" y2="321.943">-->
+                    <!--&lt;!&ndash;<set attributeName="stroke" to="#E66C25" begin="stop.click" ></set>&ndash;&gt;-->
+                <!--</line>-->
+                <!--<line fill="none" v-bind:style="changeStop" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="430.516" y1="272.943" x2="430.516" y2="321.943">-->
+                    <!--&lt;!&ndash;<set attributeName="stroke" to="#E66C25" begin="stop.click" ></set>&ndash;&gt;-->
+                <!--</line>-->
+                <rect fill="transparent" x="350" y="180" width="150px" height="250px"></rect>
+            </g>
+        </svg>
+    </div>
+</template>
+<script src="../cordova.js"></script>
+<script src="../cordova_plugins.js"></script>
+<script type="text/javascript" src="../libs/Oomi-command.js"></script>
+<script type="text/javascript" src="../libs/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="../libs/fastClick.js"></script>
+<script type="text/javascript" data-main="JS/main.js" src="../libs/require.js"></script >
+</body>
+</html>

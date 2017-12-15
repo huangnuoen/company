@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="图层_1" x="0px" y="0px" width="1281.201px" height="798.771px" viewBox="0 0 1281.201 798.771" enable-background="new 0 0 1281.201 798.771" xml:space="preserve">
+<g opacity="0.5">
+	<g>
+		<defs>
+			<rect id="SVGID_1_" x="480.18" y="463.04" width="729.97" height="0.75"/>
+		</defs>
+		<clipPath id="SVGID_2_">
+			<use xlink:href="#SVGID_1_" overflow="visible"/>
+		</clipPath>
+		
+			<line clip-path="url(#SVGID_2_)" fill="none" stroke="#C6C8C8" stroke-width="0.75" stroke-miterlimit="10" x1="480.178" y1="463.419" x2="1210.145" y2="463.419"/>
+	</g>
+</g>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<path fill="#FFFFFF" d="M1228.939,431.634H621.561c-6.627,0-12-5.372-12-12V276.222c0-6.627,5.373-12,12-12h607.378  c6.627,0,12,5.373,12,12v143.412C1240.939,426.262,1235.566,431.634,1228.939,431.634"/>
+<g opacity="0.5">
+	<g>
+		<defs>
+			<rect id="SVGID_3_" x="899.129" y="372.62" width="308.17" height="1"/>
+		</defs>
+		<clipPath id="SVGID_4_">
+			<use xlink:href="#SVGID_3_" overflow="visible"/>
+		</clipPath>
+		
+			<line clip-path="url(#SVGID_4_)" fill="none" stroke="#FF9012" stroke-miterlimit="10" x1="899.133" y1="373.124" x2="1207.301" y2="373.124"/>
+	</g>
+</g>
+<g opacity="0.5">
+	<g>
+		<defs>
+			<rect id="SVGID_5_" x="899.129" y="318.62" width="308.17" height="1"/>
+		</defs>
+		<clipPath id="SVGID_6_">
+			<use xlink:href="#SVGID_5_" overflow="visible"/>
+		</clipPath>
+		
+			<line clip-path="url(#SVGID_6_)" fill="none" stroke="#FF9012" stroke-miterlimit="10" x1="899.131" y1="319.124" x2="1207.303" y2="319.124"/>
+	</g>
+</g>
+<text transform="matrix(1 0 0 1 1036.8608 353.3647)" fill="#FF9012" font-family="'DroidSansFallback'" font-size="25">No</text>
+<g opacity="0.5">
+	<g>
+		<defs>
+			<rect id="SVGID_7_" x="1037.84" y="390.65" width="100.76" height="23.63"/>
+		</defs>
+		<clipPath id="SVGID_8_">
+			<use xlink:href="#SVGID_7_" overflow="visible"/>
+		</clipPath>
+		<g clip-path="url(#SVGID_8_)">
+			<text transform="matrix(1 0 0 1 1037.8374 408.6982)" fill="#585858" font-family="'DroidSansFallback'" font-size="21" letter-spacing="-1">Yes</text>
+		</g>
+	</g>
+</g>
+<g opacity="0.5">
+	<g>
+		<defs>
+			<rect id="SVGID_9_" x="717" y="279.73" width="46.18" height="23.63"/>
+		</defs>
+		<clipPath id="SVGID_10_">
+			<use xlink:href="#SVGID_9_" overflow="visible"/>
+		</clipPath>
+		<g clip-path="url(#SVGID_10_)">
+			<text transform="matrix(1 0 0 1 716.9995 297.7788)" fill="#585858" font-family="'DroidSansFallback'" font-size="21">Light</text>
+		</g>
+	</g>
+</g>
+<g opacity="0.5">
+	<g>
+		<defs>
+			<rect id="SVGID_11_" x="638.62" y="318.62" width="202.95" height="1"/>
+		</defs>
+		<clipPath id="SVGID_12_">
+			<use xlink:href="#SVGID_11_" overflow="visible"/>
+		</clipPath>
+		
+			<line clip-path="url(#SVGID_12_)" fill="none" stroke="#FF9012" stroke-miterlimit="10" x1="638.617" y1="319.124" x2="841.567" y2="319.124"/>
+	</g>
+</g>
+<g opacity="0.5">
+	<g>
+		<defs>
+			<rect id="SVGID_13_" x="638.62" y="372.62" width="202.95" height="1"/>
+		</defs>
+		<clipPath id="SVGID_14_">
+			<use xlink:href="#SVGID_13_" overflow="visible"/>
+		</clipPath>
+		
+			<line clip-path="url(#SVGID_14_)" fill="none" stroke="#FF9012" stroke-miterlimit="10" x1="638.618" y1="373.124" x2="841.566" y2="373.124"/>
+	</g>
+</g>
+<text transform="matrix(1 0 0 1 699.9058 353.3647)" fill="#FF9012" font-family="'DroidSansFallback'" font-size="25">Motion</text>
+<g opacity="0.5">
+	<g>
+		<defs>
+			<rect id="SVGID_15_" x="679.27" y="390.65" width="121.65" height="23.63"/>
+		</defs>
+		<clipPath id="SVGID_16_">
+			<use xlink:href="#SVGID_15_" overflow="visible"/>
+		</clipPath>
+		<g clip-path="url(#SVGID_16_)">
+			<text transform="matrix(1 0 0 1 679.2651 408.6982)"><tspan x="0" y="0" fill="#585858" font-family="'DroidSansFallback'" font-size="21" letter-spacing="-1">T</tspan><tspan x="10.143" y="0" fill="#585858" font-family="'DroidSansFallback'" font-size="21">empe</tspan><tspan x="64.722" y="0" fill="#585858" font-family="'DroidSansFallback'" font-size="21">r</tspan><tspan x="72.197" y="0" fill="#585858" font-family="'DroidSansFallback'" font-size="21">ature</tspan></text>
+		</g>
+	</g>
+</g>
+</svg>

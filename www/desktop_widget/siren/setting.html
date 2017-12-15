@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title></title>
+    <link rel="stylesheet" href="css/mainSetting.css" type="text/css">
+</head>
+<body>
+<div class="main_content" id="Siren">
+    <siren-picker></siren-picker>
+</div>
+<template id="_sirenPicker">
+    <div class="pickerHolder sirenDiver">
+        <div class="sirenDiver sirenSeparator">
+        </div>
+        <div class="sirenScrollWindow sirenDiver" v-bind:id="sound.pickerId" v-bind:style="sound.style">
+            <div class="scrollCellHolder sirenDiver">
+                <div class="scrollCell sirenDiver"
+                     v-for="(Info, key, index) in sound.pickerInfo"
+                     v-bind:style="Info.style">
+                    {{Info.text}}
+                </div>
+            </div>
+        </div>
+        <div class="sirenScrollWindow sirenDiver" v-bind:id="volume.pickerId" v-bind:style="volume.style">
+            <div class="scrollCellHolder sirenDiver">
+                <div class="scrollCell sirenDiver"
+                     v-for="(Info, key, index) in volume.pickerInfo"
+                     v-bind:style="Info.style">
+                    {{Info.text}}
+                </div>
+            </div>
+        </div>
+        <div class="sirenDiver soundTitle">{{sound.title}}</div>
+        <div class="sirenDiver volumeTitle">{{volume.title}}</div>
+        <div class="testHolder sirenDiver">
+            <div class="testButton sirenDiver" v-on:click="toggleClick">
+                {{test}}
+            </div>
+        </div>
+    </div>
+</template>
+<script src="../../cordova.js"></script>
+<script src="../../cordova_plugins.js"></script>
+<script type="text/javascript" data-main="js/setting.js" src="../../libs/require.js"></script >
+</body>
+</html>

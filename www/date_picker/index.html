@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" href="style_js_image/layout.css" type="text/css">
+</head>
+<body >
+    <div id="timeContainer">
+        <div id="divider"></div>
+        <div id="done">done</div>
+
+        <!--<div id="mySwitch"></div>-->
+    </div>
+    <template id="hourTemplate">
+        <div id="hour" class="ElementHolder">
+            <div id="hour_select" class="showtime">
+                <div id="hour_scroll" class="scrollContent">
+                    <!--{{#each hourText }}-->
+                    <div  class="scroll hourScroll {{hourClass}}">{{hour}}</div>
+                    <!--{{/each}}-->
+                </div>
+            </div>
+            <div id="HourTopic" class="topic"></div>
+        </div>
+    </template>
+    <template id="minTemplate">
+        <div id="min" class="ElementHolder">
+            <div id="min_select" class="showtime">
+                <div id="min_scroll" class="scrollContent">
+                    <!--{{#each minText }}-->
+                    <div  class="scroll minScroll {{minClass}}">{{min}}</div>
+                    <!--{{/each}}-->
+                </div>
+            </div>
+            <div id="MinTopic" class="topic"></div>
+        </div>
+    </template>
+    <template id="monthTemplate">
+        <div id="month" class="ElementHolder">
+            <div id="month_select" class="showtime">
+                <div id="month_scroll" class="scrollContent">
+                    <!--{{#each monthText }}-->
+                    <div  class="scroll monthScroll {{monthClass}}">{{month}}</div>
+                    <!--{{/each}}-->
+                </div>
+            </div>
+            <div id="MonthTopic" class="topic"></div>
+        </div>
+    </template>
+    <template id="dayTemplate">
+        <div id="day" class="ElementHolder">
+            <div id="day_select" class="showtime">
+                <div id="day_scroll" class="scrollContent">
+                    <!--{{#each dayText }}-->
+                    <div  class="scroll dayScroll {{dayClass}}">{{day}}</div>
+                    <!--{{/each}}-->
+                </div>
+            </div>
+            <div id="DayTopic" class="topic"></div>
+        </div>
+    </template>
+    <template id="yearTemplate">
+        <div id="year" class="ElementHolder">
+            <div id="year_select" class="showtime">
+                <div id="year_scroll" class="scrollContent">
+                    <!--{{#each yearText }}-->
+                    <div  class="scroll yearScroll {{yearClass}}">{{year}}</div>
+                    <!--{{/each}}-->
+                </div>
+            </div>
+            <div id="YearTopic" class="topic"></div>
+        </div>
+    </template>
+    <template id="AmPmTemplate">
+        <div id="AmPm" class="ElementHolder">
+            <div id="AmPm_select" class="showtime">
+                <div id="AmPm_scroll" class="scrollContent">
+                    <!--{{#each AmPmText }}-->
+                    <div  class="scroll AmPmScroll {{AmPmClass}}">{{AmPm}}</div>
+                    <!--{{/each}}-->
+                </div>
+            </div>
+            <div id="AmPmTopic" class="topic"></div>
+        </div>
+    </template>
+    <!--<div id="trigger"></div>-->
+    <script src="../libs/jquery-1.11.3.js"></script>
+    <script src="../cordova.js"></script>
+    <script src="../cordova_plugins.js"></script>
+    <script type="text/javascript" src="../libs/handlebars.js"></script>
+    <script src="../libs/iscroll.js"></script>
+    <script type="text/javascript" src="../libs/Oomi-command.js"></script>
+    <script type="text/javascript" src="../libs/Oomi-common.js"></script>
+    <script src="../internationalization/LanguageSelector.js"></script>
+    <!--<script src="../libs/OomiTime.js"></script>-->
+    <script src="style_js_image/test.js" ></script>
+
+<!--<script src='style_js/sugar.js'></script>-->
+</body>
+</html>

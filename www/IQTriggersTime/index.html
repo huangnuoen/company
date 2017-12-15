@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" href="style_js_image/layout.css" type="text/css">
+</head>
+<body >
+<div id="main_content">
+<svg version="1.1" id="svgHolder" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="280px" height="140px" viewBox="0 0 280 140" enable-background="new 0 0 247.031 106.875" xml:space="preserve">
+    <g id="Sun" class="selectedDay">
+        <rect  x="10" y="10" width="50" height="50"  rx="12" ry="12" fill="transparent" stroke-width="3" class="selectedRect" stroke="#c7c8c8"></rect>
+        <!--<text transform="matrix(1 0 0 1 26 50)" fill="#FFFFFF" class="selectedText" font-family="'DroidSansFallback'" font-size="35">S</text>-->
+        <text transform="matrix(1 0 0 1 15 42)" fill="#c7c8c8" class="selectedText" font-family="'DroidSansFallback'" font-size="20"></text>
+    </g>
+    <g id="Mon" class="selectedDay">
+        <rect  x="80" y="10" width="50" height="50"rx="12" ry="12"  fill="transparent" stroke-width="3" class="selectedRect" stroke="#c7c8c8"></rect>
+        <!--<text transform="matrix(1 0 0 1 88.5 50)" fill="#FFFFFF" class="selectedText" font-family="'DroidSansFallback'" font-size="35">M</text>-->
+        <text transform="matrix(1 0 0 1 84.5 42)" fill="#c7c8c8" class="selectedText" font-family="'DroidSansFallback'" font-size="20"></text>
+    </g>
+    <g id="Tue" class="selectedDay">
+        <rect  x="150" y="10" width="50" height="50"rx="12" ry="12"  fill="transparent" stroke-width="3" class="selectedRect" stroke="#c7c8c8"></rect>
+        <!--<text transform="matrix(1 0 0 1 166.5 50)" fill="#FFFFFF" class="selectedText" font-family="'DroidSansFallback'" font-size="35">T</text>-->
+        <text transform="matrix(1 0 0 1 155 42)" fill="#c7c8c8" class="selectedText" font-family="'DroidSansFallback'" font-size="20"></text>
+    </g>
+    <g id="Wed" class="selectedDay">
+        <rect  x="220" y="10" width="50" height="50"rx="12" ry="12"  fill="transparent" stroke-width="3" class="selectedRect" stroke="#c7c8c8"></rect>
+        <!--<text transform="matrix(1 0 0 1 228 50)" fill="#FFFFFF" class="selectedText" font-family="'DroidSansFallback'" font-size="35">W</text>-->
+        <text transform="matrix(1 0 0 1 225 42)" fill="#c7c8c8" class="selectedText" font-family="'DroidSansFallback'" font-size="20"></text>
+    </g>
+    <g id="Thu" class="selectedDay">
+        <rect  x="10" y="80" width="50" height="50"rx="12" ry="12"  fill="transparent" stroke-width="3" class="selectedRect" stroke="#c7c8c8"></rect>
+        <!--<text transform="matrix(1 0 0 1 15 120)" fill="#FFFFFF" class="selectedText" font-family="'DroidSansFallback'" font-size="35">TH</text>-->
+        <text transform="matrix(1 0 0 1 15 112)" fill="#c7c8c8" class="selectedText" font-family="'DroidSansFallback'" font-size="20"></text>
+    </g>
+    <g id="Fri" class="selectedDay">
+        <rect  x="80" y="80" width="50" height="50"rx="12" ry="12"  fill="transparent" stroke-width="3" class="selectedRect" stroke="#c7c8c8"></rect>
+        <!--<text transform="matrix(1 0 0 1 96 120)" fill="#FFFFFF" class="selectedText" font-family="'DroidSansFallback'" font-size="35">F</text>-->
+        <text transform="matrix(1 0 0 1 85 112)" fill="#c7c8c8" class="selectedText" font-family="'DroidSansFallback'" font-size="20"></text>
+    </g>
+    <g id="Sat" class="selectedDay">
+        <rect  x="150" y="80" width="50" height="50"rx="12" ry="12"  fill="transparent" stroke-width="3" class="selectedRect" stroke="#c7c8c8"></rect>
+        <!--<text transform="matrix(1 0 0 1 166 120)" fill="#FFFFFF" class="selectedText" font-family="'DroidSansFallback'" font-size="35">S</text>-->
+        <text transform="matrix(1 0 0 1 155 112)" fill="#c7c8c8" class="selectedText" font-family="'DroidSansFallback'" font-size="20"></text>
+    </g>
+</svg>
+
+    <div id="timeContainer">
+        <div id="divider"></div>
+        <div id="hourTopic" class="topic"></div>
+        <div id="minTopic" class="topic"></div>
+        <div id="AmPmTopic" class="topic"></div>
+    </div>
+    <!--<div id="done">done</div>-->
+</div>
+<template id="trigger24" >
+    <div id="hour" class="timeTemplate ElementHolder">
+        <div id="hour_select" class="showtime">
+            <div id="hour_scroll" class="scrollContent">
+                <!--{{#each hourText }}-->
+                <div  class="scroll hourScroll {{hourClass}}">{{hour}}</div>
+                <!--{{/each}}-->
+            </div>
+        </div>
+
+    </div>
+
+    <div id="min" class="timeTemplate ElementHolder">
+        <div id="min_select" class="showtime">
+            <div id="min_scroll" class="scrollContent">
+            <!--{{#each minText }}-->
+                <div class="scroll minScroll {{minClass}}">{{min}}</div>
+            <!--{{/each}}-->
+            </div>
+        </div>
+    </div>
+
+    <div id="AmPm" class="timeTemplate ElementHolder">
+        <div id="AmPm_select" class="showtime">
+            <div id="AmPm_scroll" class="scrollContent">
+                <!--{{#each AmPmText }}-->
+                <div class="scroll AmPmScroll {{AmPmClass}}">{{AmPm}}</div>
+                <!--{{/each}}-->
+            </div>
+        </div>
+    </div>
+
+</template>
+<template id="trigger12">
+
+</template>
+
+    <script src="../libs/jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="../libs/handlebars.js"></script>
+    <script src="../libs/iscroll.js"></script>
+    <script src="../cordova.js"></script>
+    <script src="../cordova_plugins.js"></script>
+    <script type="text/javascript" src="../libs/Oomi-command.js"></script>
+    <script type="text/javascript" src="../libs/Oomi-common.js"></script>
+    <script src="../internationalization/LanguageSelector.js"></script>
+    <!--<script src="style_js_image/main.js" ></script>-->
+    <script src="style_js_image/testings.js" ></script>
+    <!--<script src='style_js/sugar.js'></script>-->
+</body>
+</html>

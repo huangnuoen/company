@@ -1,0 +1,225 @@
+.powerOn{
+    animation-name:innerFadeIn;
+    animation-duration:0.4s;
+    animation-timing-function:linear;
+    animation-fill-mode:forwards;
+    animation-direction:normal;
+    -webkit-animation-name:innerFadeIn;
+    -webkit-animation-duration:0.4s;
+    -webkit-animation-timing-function:linear;
+    -webkit-animation-fill-mode:forwards;
+    -webkit-animation-direction:normal;
+}
+.powerOff{
+    animation-name:innerRecover;
+    animation-duration:0.4s;
+    animation-timing-function:linear;
+    animation-fill-mode:forwards;
+    animation-direction:normal;
+    -webkit-animation-name:innerRecover;
+    -webkit-animation-duration:0.4s;
+    -webkit-animation-timing-function:linear;
+    -webkit-animation-fill-mode:forwards;
+    -webkit-animation-direction:normal;
+}
+@-webkit-keyframes  innerFadeIn {
+    from {  stroke: #595758;  }
+    to {  stroke: #D0672B;  }
+}
+@-webkit-keyframes  innerRecover {
+    from {  stroke: #D0672B;  }
+    to {  stroke: #595758;  }
+}
+@keyframes innerFadeIn {
+    from {  stroke: #595758;  }
+    to {  stroke: #D0672B;  }
+}
+@keyframes innerRecover {
+    from {  stroke: #D0672B;  }
+    to {  stroke: #595758;  }
+}
+
+.LockOn{
+    stroke-dasharray: 27.85;
+    animation-name:LockOnFadeIn;
+    animation-duration:0.4s;
+    animation-timing-function:linear;
+    animation-fill-mode:forwards;
+    animation-direction:normal;
+    -webkit-animation-name:LockOnFadeIn;
+    -webkit-animation-duration:0.4s;
+    -webkit-animation-timing-function:linear;
+    -webkit-animation-delay:0s;
+    -webkit-animation-fill-mode:forwards;
+    -webkit-animation-direction:normal;
+}
+.LockOff{
+    stroke-dasharray: 27.85;
+    animation-name:LockOffFadeIn;
+    animation-duration:0.4s;
+    animation-timing-function:linear;
+    animation-fill-mode:forwards;
+    animation-direction:normal;
+    -webkit-animation-name:LockOffFadeIn;
+    -webkit-animation-duration:0.4s;
+    -webkit-animation-timing-function:linear;
+    -webkit-animation-fill-mode:forwards;
+    -webkit-animation-direction:normal;
+}
+@-webkit-keyframes LockOnFadeIn {
+            from{  stroke-dashoffset: 27.85;  }
+            to {  stroke-dashoffset: 0;  }
+        }
+@-webkit-keyframes LockOffFadeIn {
+            from {  stroke-dashoffset: 0;  }
+            to {  stroke-dashoffset: 27.85;  }
+        }
+@keyframes LockOnFadeIn {
+    from {  stroke-dashoffset: 27.85;  }
+    to {  stroke-dashoffset: 0;  }
+}
+@keyframes LockOffFadeIn {
+    from {  stroke-dashoffset: 0;  }
+    to {  stroke-dashoffset: 27.85;  }
+}
+
+.green2yellow{
+    animation-name:green2yellow;
+    animation-duration:0.8s;
+    animation-timing-function:linear, linear;
+    animation-fill-mode:forwards, forwards;
+    animation-direction:normal, alternate;
+    -webkit-animation-name:green2yellow;
+    -webkit-animation-duration:0.8s;
+    -webkit-animation-timing-function:linear, linear;
+    -webkit-animation-fill-mode:forwards, forwards;
+    -webkit-animation-direction:normal, alternate;
+}
+@-webkit-keyframes green2yellow {
+            from {  stroke: #8DC21F;  }
+            to {  stroke: #FAED00;  }
+        }
+
+@keyframes green2yellow {
+    from {  stroke: #8DC21F;  }
+    to {  stroke: #FAED00;  }
+}
+
+.green2red{
+    animation-name:green2red;
+    animation-duration:0.8s;
+    animation-timing-function:linear, linear;
+    animation-fill-mode:forwards, forwards;
+    animation-direction:normal, alternate;
+    -webkit-animation-name:green2red;
+    -webkit-animation-duration:0.8s;
+    -webkit-animation-timing-function:linear, linear;
+    -webkit-animation-fill-mode:forwards, forwards;
+    -webkit-animation-direction:normal, alternate;
+}
+@-webkit-keyframes green2red {
+            from {  stroke: #8DC21F;  }
+            to {  stroke: #E50012;  }
+        }
+@keyframes green2red {
+    from {  stroke: #8DC21F;  }
+    to {  stroke: #E50012;  }
+}
+
+.yellow2green{
+    animation-name:yellow2green;
+    animation-duration:0.8s;
+    animation-timing-function:linear, linear;
+    animation-fill-mode:forwards, forwards;
+    animation-direction:normal, alternate;
+    -webkit-animation-name:yellow2green;
+    -webkit-animation-duration:0.8s;
+    -webkit-animation-timing-function:linear, linear;
+    -webkit-animation-fill-mode:forwards, forwards;
+    -webkit-animation-direction:normal, alternate;
+}
+@-webkit-keyframes yellow2green {
+    from {  stroke: #FAED00;  }
+    to {  stroke: #8DC21F;  }
+}
+
+@keyframes yellow2green {
+    from {  stroke: #FAED00;  }
+    to {  stroke: #8DC21F;  }
+}
+
+.yellow2red{
+    animation-name:yellow2red;
+    animation-duration:0.8s;
+    animation-timing-function:linear, linear;
+    animation-fill-mode:forwards, forwards;
+    animation-direction:normal, alternate;
+    -webkit-animation-name:yellow2red;
+    -webkit-animation-duration:0.8s;
+    -webkit-animation-timing-function:linear, linear;
+    -webkit-animation-fill-mode:forwards, forwards;
+    -webkit-animation-direction:normal, alternate;
+}
+@-webkit-keyframes yellow2red {
+    to {  stroke: #E50012;  }
+    from {  stroke: #FAED00;  }
+}
+
+@keyframes yellow2red {
+    to {  stroke: #E50012;  }
+    from {  stroke: #FAED00;  }
+}
+
+
+
+.red2yellow{
+    animation-name:red2yellow;
+    animation-duration:0.8s;
+    animation-timing-function:linear, linear;
+    animation-fill-mode:forwards, forwards;
+    animation-direction:normal, alternate;
+    -webkit-animation-name:red2yellow;
+    -webkit-animation-duration:0.8s;
+    -webkit-animation-timing-function:linear, linear;
+    -webkit-animation-fill-mode:forwards, forwards;
+    -webkit-animation-direction:normal, alternate;
+}
+@-webkit-keyframes red2yellow {
+    from {  stroke: #E50012;  }
+    to {  stroke: #FAED00;  }
+}
+
+@keyframes red2yellow {
+    from {  stroke: #E50012;  }
+    to {  stroke: #FAED00;  }
+}
+
+.red2green{
+    animation-name:red2green;
+    animation-duration:0.8s;
+    animation-timing-function:linear, linear;
+    animation-fill-mode:forwards, forwards;
+    animation-direction:normal, alternate;
+    -webkit-animation-name:red2green;
+    -webkit-animation-duration:0.8s;
+    -webkit-animation-timing-function:linear, linear;
+    -webkit-animation-fill-mode:forwards, forwards;
+    -webkit-animation-direction:normal, alternate;
+}
+@-webkit-keyframes red2green {
+    to {  stroke: #8DC21F;  }
+    from {  stroke: #E50012;  }
+}
+@keyframes red2green {
+    to {  stroke: #8DC21F;  }
+    from {  stroke: #E50012;  }
+}
+.green{
+    stroke: #8DC21F;
+}
+.red{
+    stroke: #E50012;
+}
+.yellow{
+    stroke: #FAED00;
+}

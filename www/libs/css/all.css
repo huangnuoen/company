@@ -1,0 +1,22 @@
+/*#load_img{*/
+    /*position: relative;*/
+    /*width: 100px;*/
+    /*height: 26px;*/
+    /*margin: auto auto auto auto;*/
+    /*top: 20px ;*/
+    /*margin: auto;*/
+/*}*/
+#header_title{
+    position: absolute;
+    height: 24px;
+    top: 0;
+    left: 5px;
+    text-align: left;
+    width: 97%;
+    font-size: 18px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    -o-text-overflow:ellipsis;
+    white-space:nowrap;
+    color:#9d9d9e ;
+}

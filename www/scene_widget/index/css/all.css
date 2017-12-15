@@ -1,0 +1,166 @@
+/*
+    Created By Margaret on 2017/03/01
+ */
+html, body {
+    -ms-touch-action : manipulation;
+    touch-action     : manipulation;
+    font-family      : Akkurat, Arial, sans-serif;
+    width            : 100%;
+    height           : 100%;
+    margin: 0;
+    padding: 0;
+    overflow:hidden;
+}
+* {
+    -webkit-box-sizing : border-box;
+    -moz-box-sizing    : border-box;
+    box-sizing         : border-box;
+    -webkit-tap-highlight-color : rgba(0, 0, 0, 0);
+    -webkit-user-select   : none;
+    user-select: none;
+    margin:0;
+    padding:0;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+}
+#app, #oomiScene, #sceneWrapper, #sceneImg, #backgroundGradient #backgroundGradientSVG{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+#app{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+#oomiScene{
+    overflow: hidden;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border: 1px solid #C7C8C8;
+}
+
+#sceneWrapper {
+    width: 50%;
+    height: 50%;
+    top:15%;
+    left: 25%;
+}
+#sceneName {
+    width:100%;
+    height:25%;
+    text-align: center;
+    position: relative;
+    top:68%;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #595757;
+    font-size: 17px;
+}
+.sceneNameP {
+    position: static;
+    display: inline-block;
+    white-space:pre;
+}
+#sceneNameP2{
+    left: 100%;
+    position: absolute;
+}
+#sceneNameP{
+    left: 0;
+}
+#sceneImg {
+    width:100%;
+    height:100%;
+    object-fit: contain;
+}
+.blocker{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+}
+.shake-rotate {
+    display: inline-block;
+    transform-origin: center center;
+}
+.shakeOn{
+    animation-name:innerFadeIn;
+    animation-duration:0.4s;
+    animation-timing-function:linear;
+    animation-fill-mode:forwards;
+    animation-direction:normal;
+    animation-iteration-count: infinite;
+    -webkit-animation-name:innerFadeIn;
+    -webkit-animation-duration:0.4s;
+    -webkit-animation-timing-function:linear;
+    -webkit-animation-fill-mode:forwards;
+    -webkit-animation-direction:normal;
+    -webkit-animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes  innerFadeIn {
+    0% {  -webkit-transform:  rotate(-2deg);  }
+    25% {  -webkit-transform:  rotate(0deg);  }
+    50% {  -webkit-transform:  rotate(2deg);   }
+    75% {  -webkit-transform:  rotate(0deg);   }
+    100% {  -webkit-transform:  rotate(-2deg);   }
+}
+@keyframes innerFadeIn {
+    0% {  transform: translate(0, 0) rotate(-2deg);  }
+    25% {  transform: translate(0, 0) rotate(0deg);  }
+    50% {  transform: translate(0, 0) rotate(2deg);   }
+    75% {  transform: translate(0, 0) rotate(0deg);   }
+    100% {  transform: translate(0, 0) rotate(-2deg);   }
+}
+.marquee{
+    position: absolute;
+    animation-name:marqueeIn;
+    animation-duration:8s;
+    animation-timing-function:linear;
+    animation-fill-mode:forwards;
+    animation-direction:normal;
+    animation-iteration-count: infinite;
+    -webkit-animation-name:marqueeIn;
+    -webkit-animation-duration:8s;
+    -webkit-animation-timing-function:linear;
+    -webkit-animation-fill-mode:forwards;
+    -webkit-animation-direction:normal;
+    -webkit-animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes  marqueeIn {
+    from {left: 0}
+    to {left: -100%}
+}
+@keyframes marqueeIn {
+    from {left: 0}
+    to {left: -100%}
+}
+.marquee2{
+    position: absolute;
+    animation-name:marqueeIn2;
+    animation-duration:8s;
+    animation-timing-function:linear;
+    animation-fill-mode:forwards;
+    animation-direction:normal;
+    animation-iteration-count: infinite;
+    -webkit-animation-name:marqueeIn2;
+    -webkit-animation-duration:8s;
+    -webkit-animation-timing-function:linear;
+    -webkit-animation-fill-mode:forwards;
+    -webkit-animation-direction:normal;
+    -webkit-animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes  marqueeIn2 {
+    from {left: 100%}
+    to {left: 0}
+}
+@keyframes marqueeIn2 {
+    from {left: 100%}
+    to {left: 0}
+}

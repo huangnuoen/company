@@ -1,0 +1,42 @@
+<template id="desktopIRWidget">
+    <div class="widgetWrapper" @click="widgetClicked()">
+        <div id="oomiDevice">
+            <div class="irBorderLeft">
+                <svg version="1.1" id="borderLeftSVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="10px" height="200px" viewBox="0 0 10 200" enable-background="new 0 0 10 200" xml:space="preserve">
+                    <g v-if="linearRainbowOrNot">
+                        <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#CB261C"></stop>
+                            <stop offset="50%" style="stop-color:#D37E53"></stop>
+                            <stop offset="70%" style="stop-color:#E08653"></stop>
+                            <stop offset="100%" style="stop-color:#D8AA3B"></stop>
+                        </linearGradient>
+                        <rect id="rect_background" x="-100" y="-300" width="108" height="800" fill="url(#SVGID_1_)" ></rect>
+                    </g>
+                    <g v-if="!linearRainbowOrNot">
+                        <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#B4B4B5"></stop>
+                            <stop offset="50%" style="stop-color:#B4B4B5"></stop>
+                            <stop offset="70%" style="stop-color:#B4B4B5"></stop>
+                            <stop offset="100%" style="stop-color:#B4B4B5"></stop>
+                        </linearGradient>
+                        <rect id="rect_background" x="-100" y="-300" width="108" height="800" fill="url(#SVGID_1_)" ></rect>
+                    </g>
+                </svg>
+            </div>
+            <figure id="imgWrapper">
+                <img v-bind:src="deviceImg" id="deviceImg" />
+            </figure>
+            <div id="deviceDetails">
+                <img />
+                <span id="deviceName">{{deviceName}}</span>
+            </div>
+        </div>
+        <!--<div class="circleWrapper">-->
+            <!--<svg version="1.1" class="svg_pic" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="200px" height="200px" viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">-->
+                <!--<circle class="outCircle" cx="0" cy="100" r="0" opacity="0.4" fill="#E8AC90" ></circle>-->
+                <!--<circle class="inCircle" cx="0" cy="100" r="0" opacity="0.6" fill="#E8AC90" ></circle>-->
+            <!--</svg>-->
+        <!--</div>-->
+        <div class="border"></div>
+    </div>
+</template>

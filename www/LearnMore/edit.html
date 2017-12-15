@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title></title>
+    <link rel="stylesheet" href="edit/layout.css" type="text/css"/>
+    <link rel="stylesheet" href="../libs/css/all.css" type="text/css"/>
+    <!--<script src="jquery-1.11.3.edit"></script>-->
+</head>
+<body>
+<div id="dvCompute"></div>
+<section class="main_content">
+    <section class="left_body" id="left_body">
+        <div id="edit">
+            <form id="editTextForm">
+                <!--Name:<input id="nameTextField" onkeyup="value=value.replace(/[^\w]/ig,''); value.length > 21?value=value.slice(0,20):value;" maxlength="20" type="text" value="">-->
+                <!--Name:<input id="nameTextField" onkeyup="value=value.replace(/[^\w^\s]/ig,''); if(value[0] == ' '){alert(value);value=value.trim()}" maxLength="20" type="text" value="">-->
+                <!--Name:<input id="nameTextField" onkeypress=" return ((/[^\w\s]/ig).test(String.fromCharCode(event.keyCode))==false)" onkeyup=" if(value.length == 1){if(value[0]==' '){value=''}}" maxLength="20" type="text" value="">-->
+                <span id="editWidgetName"></span><input id="nameTextField" maxLength="20" class="input form-input" type="text" value="">
+                <input type="text" class="clearer" id="clearBtn" value="×">
+            </form>
+            <svg version="1.1" id="editButton_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 30.2 31.6" enable-background="new 0 0 30.2 31.6" xml:space="preserve">
+                <g id="editButton">
+                    <polygon fill="none" stroke="#FF9012" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points=" 22.1,2.1 19.3,4.8 25.2,10.7 28,7.9 		"></polygon>
+                    <rect x="10.8" y="5.6" transform="matrix(-0.707 -0.7072 0.7072 -0.707 14.8499 36.3033)" fill="none" stroke="#FF9012" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" width="8.3" height="18.9"></rect>
+                    <polygon fill="none" stroke="#FF9012" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points=" 10.2,25.7 4.3,19.8 3.7,20.5 2,28 9.5,26.4 		"></polygon>
+                    <line fill="none" stroke="#FF9012" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="2" y1="29.7" x2="27.6" y2="29.7"></line>
+                    <rect fill="transparent" stroke="none" x="0" y="0" width="32" height="32"></rect>
+                </g>
+            </svg>
+        </div>
+        <div id="widget">
+            <div class="power">
+                <svg version="1.1" class="svg_pic" id="svg_pic" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 342.1 357.3" enable-background="new 0 0 342.1 357.3" xml:space="preserve">
+                    <g>
+                        <text class="widget_name" id="widget_name"  transform="matrix(1 0 0 1 9.9878 23.4913)" fill="#717071" font-family="'Roboto-Regular'" font-size="26"></text>
+                        <g id="learnMore_trigger_1">
+                            <path fill="#B9BCC3" d="M319.2,88.2c0,6.1-4.9,11-11,11h-269c-6.1,0-11-4.9-11-11v-38c0-6.1,4.9-11,11-11h269c6.1,0,11,4.9,11,11 V88.2z"></path>
+                            <radialGradient id="SVGID_2_" cx="143.1111" cy="55.7389" r="111.8358" gradientUnits="userSpaceOnUse">
+                                <stop  offset="0" style="stop-color:#FFFFFF"></stop>
+                                <stop  offset="0.2952" style="stop-color:#FBFBFB"></stop>
+                                <stop  offset="0.5978" style="stop-color:#EFEFEF"></stop>
+                                <stop  offset="0.9027" style="stop-color:#DADADB"></stop>
+                                <stop  offset="1" style="stop-color:#D2D2D3"></stop>
+                            </radialGradient>
+                            <path fill="url(#SVGID_2_)" d="M316,86.3c0,5.5-4.4,9.9-9.9,9.9H41.3c-5.5,0-9.9-4.4-9.9-9.9V52.1c0-5.5,4.4-9.9,9.9-9.9h264.8 c5.5,0,9.9,4.4,9.9,9.9V86.3z"></path>
+                            <linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="173.7099" y1="100.1367" x2="173.7099" y2="41.8817">
+                                <stop  offset="0" style="stop-color:#FFFFFF"></stop>
+                                <stop  offset="0.2952" style="stop-color:#FBFBFB"></stop>
+                                <stop  offset="0.5978" style="stop-color:#EFEFF0"></stop>
+                                <stop  offset="0.9027" style="stop-color:#DADADD"></stop>
+                                <stop  offset="1" style="stop-color:#D2D2D5"></stop>
+                            </linearGradient>
+                            <path fill="url(#SVGID_3_)" d="M312.2,84.4c0,4.9-4,8.8-8.8,8.8H44.1c-4.9,0-8.8-3.9-8.8-8.8V53.9c0-4.9,4-8.8,8.8-8.8h259.2 c4.9,0,8.8,4,8.8,8.8V84.4z"></path>
+                            <text id="learnMore_text_1" transform="matrix(1 0 0 1 55.9878 74.4322)" fill="#9E9E9F" font-family="'Roboto-Regular'" font-size="18">
+                                <!--Device Pages + Adding Widgets-->
+                                <set attributeName="fill" to="#FF8F12" begin="learnMore_trigger_1.click" dur="0.5s"></set>
+                            </text>
+                        </g>
+
+                        <g id="learnMore_trigger_2">
+                            <path fill="#B9BCC3" d="M319.2,165.3c0,6.1-4.9,11-11,11h-269c-6.1,0-11-4.9-11-11v-38c0-6.1,4.9-11,11-11h269c6.1,0,11,4.9,11,11 V165.3z"></path>
+                            <radialGradient id="SVGID_4_" cx="143.1111" cy="132.9052" r="111.8359" gradientUnits="userSpaceOnUse">
+                                <stop  offset="0" style="stop-color:#FFFFFF"></stop>
+                                <stop  offset="0.2952" style="stop-color:#FBFBFB"></stop>
+                                <stop  offset="0.5978" style="stop-color:#EFEFEF"></stop>
+                                <stop  offset="0.9027" style="stop-color:#DADADB"></stop>
+                                <stop  offset="1" style="stop-color:#D2D2D3"></stop>
+                            </radialGradient>
+                            <path fill="url(#SVGID_4_)" d="M316,163.4c0,5.5-4.4,9.9-9.9,9.9H41.3c-5.5,0-9.9-4.4-9.9-9.9v-34.2c0-5.5,4.4-9.9,9.9-9.9h264.8 c5.5,0,9.9,4.4,9.9,9.9V163.4z"></path>
+                            <linearGradient id="SVGID_5_" gradientUnits="userSpaceOnUse" x1="173.7099" y1="177.3025" x2="173.7099" y2="119.0487">
+                                <stop  offset="0" style="stop-color:#FFFFFF"></stop>
+                                <stop  offset="0.2952" style="stop-color:#FBFBFB"></stop>
+                                <stop  offset="0.5978" style="stop-color:#EFEFF0"></stop>
+                                <stop  offset="0.9027" style="stop-color:#DADADD"></stop>
+                                <stop  offset="1" style="stop-color:#D2D2D5"></stop>
+                            </linearGradient>
+                            <path fill="url(#SVGID_5_)" d="M312.2,161.6c0,4.9-4,8.8-8.8,8.8H44.1c-4.9,0-8.8-3.9-8.8-8.8v-30.5c0-4.9,4-8.8,8.8-8.8h259.2 c4.9,0,8.8,4,8.8,8.8V161.6z"></path>
+                            <text id="learnMore_text_2" transform="matrix(1 0 0 1 55.9878 151.5987)" fill="#9E9E9F" font-family="'Roboto-Regular'" font-size="18">
+                                <!--Adding New Oomi Devices-->
+                                <set attributeName="fill" to="#FF8F12" begin="learnMore_trigger_2.click" dur="0.5s"></set>
+                            </text>
+                        </g>
+
+                        <g id="learnMore_trigger_3">
+                            <path fill="#B9BCC3" d="M319.2,321.2c0,6.1-4.9,11-11,11h-269c-6.1,0-11-4.9-11-11v-38c0-6.1,4.9-11,11-11h269c6.1,0,11,4.9,11,11 V321.2z"></path>
+                            <radialGradient id="SVGID_6_" cx="143.1111" cy="288.7391" r="111.8359" gradientUnits="userSpaceOnUse">
+                                <stop  offset="0" style="stop-color:#FFFFFF"></stop>
+                                <stop  offset="0.2952" style="stop-color:#FBFBFB"></stop>
+                                <stop  offset="0.5978" style="stop-color:#EFEFEF"></stop>
+                                <stop  offset="0.9027" style="stop-color:#DADADB"></stop>
+                                <stop  offset="1" style="stop-color:#D2D2D3"></stop>
+                            </radialGradient>
+                            <path fill="url(#SVGID_6_)" d="M316,319.3c0,5.5-4.4,9.9-9.9,9.9H41.3c-5.5,0-9.9-4.4-9.9-9.9v-34.2c0-5.5,4.4-9.9,9.9-9.9h264.8 c5.5,0,9.9,4.4,9.9,9.9V319.3z"></path>
+                            <linearGradient id="SVGID_7_" gradientUnits="userSpaceOnUse" x1="173.7099" y1="333.1365" x2="173.7099" y2="274.8827">
+                                <stop  offset="0" style="stop-color:#FFFFFF"></stop>
+                                <stop  offset="0.2952" style="stop-color:#FBFBFB"></stop>
+                                <stop  offset="0.5978" style="stop-color:#EFEFF0"></stop>
+                                <stop  offset="0.9027" style="stop-color:#DADADD"></stop>
+                                <stop  offset="1" style="stop-color:#D2D2D5"></stop>
+                            </linearGradient>
+                            <path fill="url(#SVGID_7_)" d="M312.2,317.4c0,4.9-4,8.8-8.8,8.8H44.1c-4.9,0-8.8-3.9-8.8-8.8v-30.5c0-4.9,4-8.8,8.8-8.8h259.2 c4.9,0,8.8,4,8.8,8.8V317.4z"></path>
+                            <text id="learnMore_text_3" transform="matrix(1 0 0 1 55.9878 307.4326)" fill="#9E9E9F" font-family="'Roboto-Regular'" font-size="18">
+                                <!--Become a Widget Pro-->
+                                <set attributeName="fill" to="#FF8F12" begin="learnMore_trigger_3.click" dur="0.5s"></set>
+                            </text>
+                        </g>
+
+                        <g id="learnMore_trigger_4">
+                            <path fill="#B9BCC3" d="M319.2,243c0,6.1-4.9,11-11,11h-269c-6.1,0-11-4.9-11-11v-38c0-6.1,4.9-11,11-11h269c6.1,0,11,4.9,11,11 V243z"></path>
+                            <radialGradient id="SVGID_8_" cx="143.1111" cy="210.5719" r="111.8358" gradientUnits="userSpaceOnUse">
+                                <stop  offset="0" style="stop-color:#FFFFFF"></stop>
+                                <stop  offset="0.2952" style="stop-color:#FBFBFB"></stop>
+                                <stop  offset="0.5978" style="stop-color:#EFEFEF"></stop>
+                                <stop  offset="0.9027" style="stop-color:#DADADB"></stop>
+                                <stop  offset="1" style="stop-color:#D2D2D3"></stop>
+                            </radialGradient>
+                            <path fill="url(#SVGID_8_)" d="M316,241.1c0,5.5-4.4,9.9-9.9,9.9H41.3c-5.5,0-9.9-4.4-9.9-9.9v-34.2c0-5.5,4.4-9.9,9.9-9.9h264.8 c5.5,0,9.9,4.4,9.9,9.9V241.1z"></path>
+                            <linearGradient id="SVGID_9_" gradientUnits="userSpaceOnUse" x1="173.7099" y1="254.9697" x2="173.7099" y2="196.7146">
+                                <stop  offset="0" style="stop-color:#FFFFFF"></stop>
+                                <stop  offset="0.2952" style="stop-color:#FBFBFB"></stop>
+                                <stop  offset="0.5978" style="stop-color:#EFEFF0"></stop>
+                                <stop  offset="0.9027" style="stop-color:#DADADD"></stop>
+                                <stop  offset="1" style="stop-color:#D2D2D5"></stop>
+                            </linearGradient>
+                            <path fill="url(#SVGID_9_)" d="M312.2,239.2c0,4.9-4,8.8-8.8,8.8H44.1c-4.9,0-8.8-3.9-8.8-8.8v-30.5c0-4.9,4-8.8,8.8-8.8h259.2 c4.9,0,8.8,4,8.8,8.8V239.2z"></path>
+                            <text id="learnMore_text_4" transform="matrix(1 0 0 1 55.9878 229.2652)" fill="#9E9E9F" font-family="'Roboto-Regular'" font-size="18">
+                                <!--Hidden Oomi Touch Controls-->
+                                <set attributeName="fill" to="#FF8F12" begin="learnMore_trigger_4.click" dur="0.5s"></set>
+                            </text>
+                        </g>
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </section>
+    <section class="back" id="back">
+        <svg version="1.1" class="svg_pic2"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 159.8 52" enable-background="new 0 0 159.8 52" xml:space="preserve">
+            <g >
+                <path id="backFill" fill="transparent" stroke="#231815" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M158.7,26 c0,13.8-11.2,25-25,25H26.1c-13.8,0-25-11.2-25-25l0,0c0-13.8,11.2-25,25-25h107.6C147.5,1,158.7,12.2,158.7,26L158.7,26z">
+                    <!--<set attributeName="fill" to="#FF8F12" begin="svg_pic2.click" dur="0.6s"></set>-->
+                </path>
+                <path fill="none" stroke="#231815" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d=" M69.4,21.5H87c3.8,0,6.8,3,6.8,6.8l0,0c0,3.8-3,6.8-6.8,6.8H69.7"></path>
+                <polyline fill="none" stroke="#231815" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points=" 72.5,26.8 69.3,24.1 66,21.4 69.3,18.7 72.5,16"></polyline>
+            </g>
+        </svg>
+    </section>
+    <!--<div id="loading_mask"></div>-->
+</section>
+<script src="../libs/jquery-1.11.3.js"></script>
+<script src="../cordova.js"></script>
+<script src="../cordova_plugins.js"></script>
+<script src="../libs/Oomi-command.js"></script>
+<script src="../libs/Oomi-common.js"></script>
+<!--<script src="../libs/spin.js"></script>-->
+<script src="../internationalization/LanguageSelector.js"></script>
+<script src="edit/main.js"></script>
+</body>

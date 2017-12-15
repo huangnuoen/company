@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>D/W Sensor Popup Widget</title>
+    <!--<link rel="import" href="../src/templates/componentsTemplate.html">-->
+    <link href="../src/templates/all.css" rel="stylesheet" type="text/css" />
+    <link href="../src/templates/all2.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../src/templates/animations.css" type="text/css">
+    <script src="../../libs/require.js" data-main="js/main.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="closeIconSide">
+    <close-button></close-button>
+</div>
+<div class="main_content">
+    <div class="head_content">
+        <pop-up-header></pop-up-header>
+    </div>
+    <div class="body_content">
+        <dw-details></dw-details>
+    </div>
+</div>
+
+<template id="_closeButton">
+    <div @click="clickOff()">
+        <div class="closeIcon">
+            <svg version="1.1" class="closeIconSvg"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+         width="79px" height="78.678px" viewBox="0 0 79 78.678" enable-background="new 0 0 79 78.678" xml:space="preserve">
+            <path fill-rule="evenodd" clip-rule="evenodd" v-bind:style="changeFill" fill="#FFFFFF" d="M39.911,78.678c-20.674,0-37.5-16.823-37.5-37.497
+            c0-20.677,16.826-37.503,37.5-37.503c20.676,0,37.5,16.826,37.5,37.503C77.411,61.854,60.592,78.678,39.911,78.678"/>
+            <line fill="none" stroke="#B3B2B3" v-bind:style="changeStroke" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="27.551" y1="28.817" x2="52.27" y2="53.536"/>
+            <line fill="none" stroke="#B3B2B3" v-bind:style="changeStroke" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="27.551" y1="53.536" x2="52.27" y2="28.818"/>
+            </svg>
+        </div>
+        <div class="closeShadow"></div>
+    </div>
+</template>
+
+<template id="_header">
+    <div class="head_holder">
+        <div class="deviceName" >{{deviceName}}</div>
+        <div class="roomName" >{{roomName}}</div>
+        <div class="locationHolder">
+            <svg version="1.1" class="locationIcon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="9.656px" height="14.172px" viewBox="0 0 9.656 14.172" enable-background="new 0 0 9.656 14.172" xml:space="preserve">
+                <path fill-rule="evenodd" clip-rule="evenodd" fill="#898989" d="M4.833,0.075c-2.629,0-4.76,2.13-4.76,4.759s4.76,9.268,4.76,9.268
+                    s4.76-6.639,4.76-9.268S7.462,0.075,4.833,0.075z M4.833,7.432c-1.497,0-2.71-1.214-2.71-2.711c0-1.497,1.213-2.71,2.71-2.71
+                    s2.71,1.213,2.71,2.71C7.543,6.218,6.33,7.432,4.833,7.432z"></path>
+            </svg>
+        </div>
+        <div class="details">
+            <svg version="1.1" class="detailsButtonSVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="61.031px" height="40.656px" viewBox="0 0 61.031 40.656" enable-background="new 0 0 61.031 40.656" xml:space="preserve">
+                <g id="ButtonDetails" v-on:click="DetailsClick">
+                    <path fill="transparent" stroke="#595758" stroke-width="1.7284" stroke-miterlimit="10" d="M0.933,20.326
+                        c0,10.709,8.686,19.394,19.397,19.394h20.365c10.709,0,19.392-8.685,19.392-19.394l0,0c0-10.711-8.683-19.396-19.392-19.396H20.33
+                        C9.619,0.93,0.933,9.614,0.933,20.326L0.933,20.326z">
+                        <set attributeName="fill" to="#E76C26" begin="ButtonDetails.click" dur="0.3s"></set>
+                        <set attributeName="stroke" to="#ffffff" begin="ButtonDetails.click" dur="0.3s"></set>
+                    </path>
+                    <path fill="#595758" d="M23.272,29.183c-4.891,0.521-9.302-3.031-9.831-7.927c-0.523-4.892,3.03-9.295,7.923-9.822
+                        c3.355-0.363,6.481,1.193,8.291,3.789c0.344-0.659,0.758-1.28,1.227-1.854C28.606,10.563,25,8.931,21.142,9.35
+                        c-6.053,0.648-10.435,6.081-9.783,12.134c0.653,6.053,6.085,10.432,12.141,9.781c2.996-0.323,5.582-1.816,7.354-3.983
+                        c-0.471-0.578-0.878-1.198-1.226-1.866C28.203,27.454,25.939,28.893,23.272,29.183z">
+                        <set attributeName="fill" to="#ffffff" begin="ButtonDetails.click" dur="0.3s"></set>
+                    </path>
+                    <path fill="#595758" d="M37.521,9.385c-2.996,0.324-5.584,1.823-7.351,3.983c0.464,0.574,0.876,1.198,1.222,1.865
+                        c1.427-2.042,3.689-3.477,6.354-3.762c4.893-0.53,9.304,3.023,9.828,7.917c0.523,4.894-3.029,9.302-7.919,9.827
+                        c-3.355,0.358-6.485-1.194-8.288-3.789c-0.348,0.658-0.759,1.276-1.232,1.854c2.281,2.806,5.885,4.437,9.744,4.021
+                        c6.052-0.652,10.434-6.082,9.782-12.138C49.01,13.113,43.574,8.731,37.521,9.385z">
+                        <set attributeName="fill" to="#ffffff" begin="ButtonDetails.click" dur="0.3s"></set>
+                    </path>
+                    <path fill="#595758" d="M32.105,15.233c-0.345-0.667-0.755-1.291-1.223-1.865c-0.469,0.574-0.883,1.195-1.227,1.854
+                        c0.53,0.766,0.942,1.616,1.217,2.536c0.113,0.385,0.206,0.781,0.267,1.189c0.021,0.132,0.037,0.271,0.054,0.404
+                        c0.083,0.784,0.062,1.553-0.052,2.302c0.187,1.657,0.86,3.049,1.21,3.213c0.737-1.613,1.089-3.422,0.96-5.303
+                        c-0.007-0.144-0.017-0.288-0.03-0.436C33.13,17.728,32.716,16.416,32.105,15.233z">
+                        <set attributeName="fill" to="#ffffff" begin="ButtonDetails.click" dur="0.3s"></set>
+                    </path>
+                    <path fill="#595758" d="M30.152,22.887c-0.108-0.354-0.196-0.72-0.259-1.094c-0.025-0.165-0.047-0.33-0.067-0.495
+                        c-0.084-0.805-0.062-1.598,0.062-2.363c-0.194-1.646-0.979-3.093-1.232-3.133c-0.705,1.569-1.062,3.311-0.963,5.132
+                        c0.013,0.195,0.032,0.39,0.049,0.588c0.152,1.4,0.562,2.715,1.178,3.894c0.341,0.668,0.753,1.288,1.215,1.866
+                        c0.473-0.578,0.885-1.196,1.232-1.854C30.837,24.662,30.424,23.809,30.152,22.887z">
+                        <set attributeName="fill" to="#ffffff" begin="ButtonDetails.click" dur="0.3s"></set>
+                    </path>
+
+                </g>
+            </svg>
+        </div>
+    </div>
+</template>
+
+<template id="_dw_details">
+    <div class="dwWrapper">
+        <div class="commonTopNotice">
+            <div @click="clickDwButton()">
+                <svg version="1.1" id="commonNoticeSvg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30.484px" height="30.484px" viewBox="0 0 30.484 30.484" enable-background="new 0 0 30.484 30.484" xml:space="preserve">
+                    <g>
+                        <path fill="transparent" stroke="#D0672B" stroke-width="2" stroke-miterlimit="10" d="M29.411,22.037c0,4.076-3.303,7.377-7.379,7.377H8.451c-4.078,0-7.379-3.301-7.379-7.377V8.453c0-4.076,3.302-7.379,7.379-7.379 h13.581c4.076,0,7.379,3.303,7.379,7.379V22.037z"></path>
+                        <polyline v-bind:class="[OnOffLock?'LockOn':'LockOff']" fill="none" stroke="#D0672B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="7.515,15.409 12.827,19.88 22.967,10.608"></polyline>
+                    </g>
+                </svg>
+                <span>Notifications</span>
+            </div>
+        </div>
+        <div class="dwBottomSide" >
+            <div>
+                <figure class="dwSignsWrapper">
+                    <img v-bind:src="dwSignsSrc" class="dwSignsContent" />
+                </figure>
+                <p class="dwStatus">{{dwStatus}}</p>
+            </div>
+        </div>
+    </div>
+</template>
+
+</body>
+</html>

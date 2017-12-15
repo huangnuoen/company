@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>sceneWidget</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <!--<link href="../templates/sceneTemplates.html" rel="import" />-->
+    <link href="css/all.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+    <div id="app">
+        <oomi-scene-widget></oomi-scene-widget>
+        <div class="blocker"></div>
+    </div>
+    <template id="_scene_Widget">
+        <div id="oomiScene" @click="sceneClicked" >
+            <div id="backgroundGradient">
+                <svg version="1.1" id="backgroundGradientSVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="200px" height="200px" viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+                    <g>
+                        <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="200" y1="200" x2="0" y2="200">
+                            <stop  offset="0%" style="stop-color:#CB261C"></stop>
+                            <stop  offset="30%" style="stop-color:#C65A17"></stop>
+                            <stop  offset="60%" style="stop-color:#CA701B"></stop>
+                            <stop  offset="100%" style="stop-color:#E69C2B"></stop>
+                        </linearGradient>
+                        <rect id="rect_background" x="-100" y="-385" width="400" height="400" fill="url(#SVGID_1_)" ></rect>
+                    </g>
+                </svg>
+            </div>
+            <div id="sceneWrapper">
+                <img id="sceneImg" v-bind:src="sceneImgSrc" />
+            </div>
+            <div id="sceneName">
+                <p class="sceneNameP" id="sceneNameP1">{{sceneName}}</p>
+                <p class="sceneNameP" id="sceneNameP2">{{sceneName}}</p>
+            </div>
+        </div>
+    </template>
+    <script src="../../libs/jquery-1.11.3.js"></script>
+    <script src="../../libs/vue.js"></script>
+    <script src="../../libs/TweenMax.min.js"></script>
+    <script src="../../libs/TimelineMax.min.js"></script>
+    <script src="../../libs/AttrPlugin.min.js"></script>
+    <script src="../../libs/CSSPlugin.min.js"></script>
+    <script src="../component/sceneWidget.js"></script>
+    <script src="../../libs/Oomi-command.js"></script>
+    <script src="../../cordova.js"></script>
+    <script src="../../cordova_plugins.js"></script>
+</body>
+</html>

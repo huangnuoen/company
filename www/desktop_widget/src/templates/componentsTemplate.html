@@ -1,0 +1,1375 @@
+<!--Multisensor-->
+<template id="_mutisensor_details">
+    <div class="sensorWrapper">
+        <div class="sensorTopNotice">
+            <div @click="clickOptionButton()">
+                <svg version="1.1" id="sensorNoticeSvg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30.484px" height="30.484px" viewBox="0 0 30.484 30.484" enable-background="new 0 0 30.484 30.484" xml:space="preserve">
+                    <g>
+                        <path fill="transparent" stroke="#D0672B" stroke-width="2" stroke-miterlimit="10" d="M29.411,22.037c0,4.076-3.303,7.377-7.379,7.377H8.451c-4.078,0-7.379-3.301-7.379-7.377V8.453c0-4.076,3.302-7.379,7.379-7.379 h13.581c4.076,0,7.379,3.303,7.379,7.379V22.037z"></path>
+                        <polyline v-bind:class="[OnOffLock?'LockOn':'LockOff']" fill="none" stroke="#D0672B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="7.515,15.409 12.827,19.88 22.967,10.608"></polyline>
+                    </g>
+                    </svg>
+                <span>Notifications</span>
+            </div>
+        </div>
+        <div class="sensorBottomWrapper">
+            <ul>
+                <li v-for="sensorItem in sensorDetails">
+                    <figure class="sensorLeftSide">
+                        <img v-bind:src="sensorItem.sensorSrc" />
+                    </figure>
+                    <div class="sensorBorder"></div>
+                    <div class="sensorRightSide">
+                        <p class="sensorSignStatus">{{sensorItem.sensorSignStatus}}</p>
+                        <p class="sensorSignName">{{sensorItem.sensorSignName}}</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</template>
+
+<!--DW-->
+<template id="_dw_details">
+    <div class="dwWrapper">
+        <div class="commonTopNotice">
+            <div @click="clickDwButton()">
+                <svg version="1.1" id="commonNoticeSvg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30.484px" height="30.484px" viewBox="0 0 30.484 30.484" enable-background="new 0 0 30.484 30.484" xml:space="preserve">
+                    <g>
+                        <path fill="transparent" stroke="#D0672B" stroke-width="2" stroke-miterlimit="10" d="M29.411,22.037c0,4.076-3.303,7.377-7.379,7.377H8.451c-4.078,0-7.379-3.301-7.379-7.377V8.453c0-4.076,3.302-7.379,7.379-7.379 h13.581c4.076,0,7.379,3.303,7.379,7.379V22.037z"></path>
+                        <polyline v-bind:class="[OnOffLock?'LockOn':'LockOff']" fill="none" stroke="#D0672B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="7.515,15.409 12.827,19.88 22.967,10.608"></polyline>
+                    </g>
+                </svg>
+                <span>Notifications</span>
+            </div>
+        </div>
+        <div class="dwBottomSide" >
+            <div>
+                <figure class="dwSignsWrapper">
+                    <img v-bind:src="dwSignsSrc" class="dwSignsContent" />
+                </figure>
+                <p class="dwStatus">{{dwStatus}}</p>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template id="_toggleButton">
+    <div v-on:click="toggleClick" class="toggleButton_content">
+        <svg version="1.1" id="ToggleButtonSVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30.484px" height="30.484px" viewBox="0 0 30.484 30.484" enable-background="new 0 0 30.484 30.484" xml:space="preserve">
+            <g>
+                <path  fill="transparent" stroke="#D0672B" stroke-width="2" stroke-miterlimit="10" d="M29.411,22.037c0,4.076-3.303,7.377-7.379,7.377H8.451c-4.078,0-7.379-3.301-7.379-7.377V8.453c0-4.076,3.302-7.379,7.379-7.379 h13.581c4.076,0,7.379,3.303,7.379,7.379V22.037z"></path>
+                <polyline fill="none" v-bind:class="[OnOffLock?'LockOn':'LockOff']" stroke="#D0672B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="7.515,15.409 12.827,19.88 22.967,10.608"></polyline>
+            </g>
+        </svg>
+        <div class="onOffText">On/Off Lock</div>
+    </div>
+</template>
+<!--<template id="_onOffButton">-->
+    <!--<div class="onOffButton_content">-->
+        <!--<svg version="1.1" id="onOffButtonSVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="32.797px" height="35.531px" viewBox="0 0 32.797 35.531" enable-background="new 0 0 32.797 35.531" xml:space="preserve">-->
+            <!--<g v-on:click="onOffClick" >-->
+                <!--<path v-bind:class="[isOn?'powerOn':'powerOff']" fill="transparent" stroke="#D0672B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="-->
+                    <!--M21.704,5.321c5.568,2.132,9.517,7.52,9.517,13.831c0,8.179-6.638,14.808-14.831,14.808c-8.187,0-14.826-6.629-14.826-14.808-->
+                    <!--c0-6.346,4-11.765,9.619-13.869"></path>-->
+                <!--<line v-bind:class="[isOn?'powerOn':'powerOff']" fill="transparent" stroke="#D0672B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="16.391" y1="1.56" x2="16.391" y2="14.704"></line>-->
+            <!--</g>-->
+        <!--</svg>-->
+    <!--</div>-->
+<!--</template>-->
+<template id="_onOffButton">
+    <div class="onOffButton_content">
+        <svg version="1.1" id="onOffButtonSVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="32.797px" height="35.531px" viewBox="0 0 32.797 35.531" enable-background="new 0 0 32.797 35.531" xml:space="preserve">
+            <g v-on:click="onOffClick">
+                <circle cx="16" cy="18" r="35" fill="transparent"></circle>
+                <path id="onOffButtonSVGPath" v-bind:class="[isOn?'powerOn':'powerOff']" fill="transparent" stroke="#D0672B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+                    M21.704,5.321c5.568,2.132,9.517,7.52,9.517,13.831c0,8.179-6.638,14.808-14.831,14.808c-8.187,0-14.826-6.629-14.826-14.808
+                    c0-6.346,4-11.765,9.619-13.869"></path>
+                <line v-bind:class="[isOn?'powerOn':'powerOff']" fill="transparent" stroke="#D0672B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="16.391" y1="1.56" x2="16.391" y2="14.704"></line>
+            </g>
+        </svg>
+    </div>
+</template>
+
+<template id="_onOffLock">
+    <div class="onOffLock_content" @click="chooseLockOrNot">
+        <svg version="1.1" id="lockedNoticeSVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30.484px" height="30.484px" viewBox="0 0 30.484 30.484" enable-background="new 0 0 30.484 30.484" xml:space="preserve">
+            <g>
+                <path fill="transparent" stroke="#D0672B" stroke-width="2" stroke-miterlimit="10" d="M29.411,22.037c0,4.076-3.303,7.377-7.379,7.377H8.451c-4.078,0-7.379-3.301-7.379-7.377V8.453c0-4.076,3.302-7.379,7.379-7.379 h13.581c4.076,0,7.379,3.303,7.379,7.379V22.037z"></path>
+                <polyline fill="none" v-bind:class="[isLocked?'LockOn':'LockOff']" stroke="#D0672B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="7.515,15.409 12.827,19.88 22.967,10.608"></polyline>
+            </g>
+        </svg>
+        <span>On/Off Lock</span>
+    </div>
+</template>
+
+<!--air-->
+<template id="_airDetails">
+    <div class="airSensorWrapper">
+        <div class="airNotification">
+            <svg @click="clickDwButton()" version="1.1" id="commonNoticeSvg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30.484px" height="30.484px" viewBox="0 0 30.484 30.484" enable-background="new 0 0 30.484 30.484" xml:space="preserve">
+                    <g>
+                        <path fill="transparent" stroke="#D0672B" stroke-width="2" stroke-miterlimit="10" d="M29.411,22.037c0,4.076-3.303,7.377-7.379,7.377H8.451c-4.078,0-7.379-3.301-7.379-7.377V8.453c0-4.076,3.302-7.379,7.379-7.379 h13.581c4.076,0,7.379,3.303,7.379,7.379V22.037z"></path>
+                        <polyline v-bind:class="[OnOffLock?'LockOn':'LockOff']" fill="none" stroke="#D0672B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="7.515,15.409 12.827,19.88 22.967,10.608"></polyline>
+                    </g>
+                </svg>
+            <span>Notifications</span>
+        </div>
+        <div class="commonAirStyle vocWrapper">
+            <p>Volatile Organic Compounds</p>
+            <div class="commonAirValueStyle">
+                <p class="airCommonStatus">Good</p>
+                <p class="airCommonValue">0.24 mg/mm</p>
+            </div>
+        </div>
+        <div class="commonAirStyle pmWrapper">
+            <p>Fine Particulate Matter(PM2.5)</p>
+            <div class="commonAirValueStyle">
+                <p class="airCommonStatus">Good</p>
+                <p class="airCommonValue">0.24 mg/mm</p>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template id="_processBar">
+    <div class="processBar_content">
+        <svg version="1.1" id="processBarSvg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100px" height="100px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+            <circle cx="50" cy="50" r="43" stroke="#EEEEEF"  stroke-width="7" fill="none"></circle>
+             <path v-bind:class="ringColor" stroke-linecap="round"  id="processBarRing" transform='translate(50,50)' v-bind:d="newD" stroke-width="7" fill="none" stroke="#8DC21F" ></path>
+        </svg>
+        <div class="wattsHolder">
+            <div class="wattsValue">{{watts}}</div>
+            <div class="wattsTitle">Watts</div>
+        </div>
+    </div>
+</template>
+
+<template id="_closeButton">
+    <div class="closeIcon" >
+        <div class="closeShadow"></div>
+        <svg version="1.1" class="closeIconSvg"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="80px" height="80px" viewBox="0 0 80 80" enable-background="new 0 0 80 80" xml:space="preserve">
+                <!--<path fill-rule="evenodd" clip-rule="evenodd" v-bind:style="changeFill" fill="#FFFFFF" d="M39.911,78.678c-20.674,0-37.5-16.823-37.5-37.497 c0-20.677,16.826-37.503,37.5-37.503c20.676,0,37.5,16.826,37.5,37.503C77.411,61.854,60.592,78.678,39.911,78.678"></path>-->
+                <g id="clickOffButton" @click="clickOff">
+                    <circle cx="40" cy="40" r="40" fill="#ffffff">
+                        <set attributeName="fill" to="#E66C25" begin="clickOffButton.click" dur="0.3s"></set>
+                    </circle>
+                    <line fill="none" stroke="#B3B2B3"  stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="27.551" y1="28.817" x2="52.27" y2="53.536">
+                        <set attributeName="stroke" to="#FFFFFF" begin="clickOffButton.click" dur="0.3s"></set>
+                    </line>
+                    <line fill="none" stroke="#B3B2B3"  stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="27.551" y1="53.536" x2="52.27" y2="28.818">
+                        <set attributeName="stroke" to="#FFFFFF" begin="clickOffButton.click" dur="0.3s"></set>
+                    </line>
+                </g>>
+            </svg>
+    </div>
+</template>
+
+<!--<template id="_closeButton">-->
+    <!--<div class="closeIcon" >-->
+        <!--<div class="closeShadow"></div>-->
+        <!--<svg version="1.1" class="closeIconSvg"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="80px" height="80px" viewBox="0 0 80 80" enable-background="new 0 0 80 80" xml:space="preserve">-->
+            <!--&lt;!&ndash;<path fill-rule="evenodd" clip-rule="evenodd" v-bind:style="changeFill" fill="#FFFFFF" d="M39.911,78.678c-20.674,0-37.5-16.823-37.5-37.497 c0-20.677,16.826-37.503,37.5-37.503c20.676,0,37.5,16.826,37.5,37.503C77.411,61.854,60.592,78.678,39.911,78.678"></path>&ndash;&gt;-->
+            <!--<g id="clickOffButton" @click="clickOff">-->
+                <!--<circle cx="40" cy="40" r="40" fill="#ffffff">-->
+                    <!--<set attributeName="fill" to="#E66C25" begin="clickOffButton.click" dur="0.3s"></set>-->
+                <!--</circle>-->
+                <!--<line fill="none" stroke="#B3B2B3"  stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="27.551" y1="28.817" x2="52.27" y2="53.536">-->
+                    <!--<set attributeName="stroke" to="#FFFFFF" begin="clickOffButton.click" dur="0.3s"></set>-->
+                <!--</line>-->
+                <!--<line fill="none" stroke="#B3B2B3"  stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="27.551" y1="53.536" x2="52.27" y2="28.818">-->
+                   <!--<set attributeName="stroke" to="#FFFFFF" begin="clickOffButton.click" dur="0.3s"></set>-->
+                <!--</line>-->
+            <!--</g>>-->
+        <!--</svg>-->
+    <!--</div>-->
+<!--</template>-->
+
+<template id="_header">
+    <div class="head_holder">
+        <div class="deviceName" >{{deviceName}}</div>
+        <div class="roomName" >{{roomName}}</div>
+        <div class="locationHolder">
+            <svg version="1.1" class="locationIcon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="9.656px" height="14.172px" viewBox="0 0 9.656 14.172" enable-background="new 0 0 9.656 14.172" xml:space="preserve">
+                <path fill-rule="evenodd" clip-rule="evenodd" fill="#898989" d="M4.833,0.075c-2.629,0-4.76,2.13-4.76,4.759s4.76,9.268,4.76,9.268
+                    s4.76-6.639,4.76-9.268S7.462,0.075,4.833,0.075z M4.833,7.432c-1.497,0-2.71-1.214-2.71-2.711c0-1.497,1.213-2.71,2.71-2.71
+                    s2.71,1.213,2.71,2.71C7.543,6.218,6.33,7.432,4.833,7.432z"></path>
+            </svg>
+        </div>
+        <div class="details">
+            <svg version="1.1" class="detailsButtonSVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="61.031px" height="40.656px" viewBox="0 0 61.031 40.656" enable-background="new 0 0 61.031 40.656" xml:space="preserve">
+                <g id="ButtonDetails" v-on:click="DetailsClick">
+                    <path fill="transparent" stroke="#595758" stroke-width="1.7284" stroke-miterlimit="10" d="M0.933,20.326
+                        c0,10.709,8.686,19.394,19.397,19.394h20.365c10.709,0,19.392-8.685,19.392-19.394l0,0c0-10.711-8.683-19.396-19.392-19.396H20.33
+                        C9.619,0.93,0.933,9.614,0.933,20.326L0.933,20.326z">
+                        <set attributeName="fill" to="#E76C26" begin="ButtonDetails.click" dur="0.3s"></set>
+                        <set attributeName="stroke" to="#ffffff" begin="ButtonDetails.click" dur="0.3s"></set>
+                    </path>
+                    <path fill="#595758" d="M23.272,29.183c-4.891,0.521-9.302-3.031-9.831-7.927c-0.523-4.892,3.03-9.295,7.923-9.822
+                        c3.355-0.363,6.481,1.193,8.291,3.789c0.344-0.659,0.758-1.28,1.227-1.854C28.606,10.563,25,8.931,21.142,9.35
+                        c-6.053,0.648-10.435,6.081-9.783,12.134c0.653,6.053,6.085,10.432,12.141,9.781c2.996-0.323,5.582-1.816,7.354-3.983
+                        c-0.471-0.578-0.878-1.198-1.226-1.866C28.203,27.454,25.939,28.893,23.272,29.183z">
+                        <set attributeName="fill" to="#ffffff" begin="ButtonDetails.click" dur="0.3s"></set>
+                    </path>
+                    <path fill="#595758" d="M37.521,9.385c-2.996,0.324-5.584,1.823-7.351,3.983c0.464,0.574,0.876,1.198,1.222,1.865
+                        c1.427-2.042,3.689-3.477,6.354-3.762c4.893-0.53,9.304,3.023,9.828,7.917c0.523,4.894-3.029,9.302-7.919,9.827
+                        c-3.355,0.358-6.485-1.194-8.288-3.789c-0.348,0.658-0.759,1.276-1.232,1.854c2.281,2.806,5.885,4.437,9.744,4.021
+                        c6.052-0.652,10.434-6.082,9.782-12.138C49.01,13.113,43.574,8.731,37.521,9.385z">
+                        <set attributeName="fill" to="#ffffff" begin="ButtonDetails.click" dur="0.3s"></set>
+                    </path>
+                    <path fill="#595758" d="M32.105,15.233c-0.345-0.667-0.755-1.291-1.223-1.865c-0.469,0.574-0.883,1.195-1.227,1.854
+                        c0.53,0.766,0.942,1.616,1.217,2.536c0.113,0.385,0.206,0.781,0.267,1.189c0.021,0.132,0.037,0.271,0.054,0.404
+                        c0.083,0.784,0.062,1.553-0.052,2.302c0.187,1.657,0.86,3.049,1.21,3.213c0.737-1.613,1.089-3.422,0.96-5.303
+                        c-0.007-0.144-0.017-0.288-0.03-0.436C33.13,17.728,32.716,16.416,32.105,15.233z">
+                        <set attributeName="fill" to="#ffffff" begin="ButtonDetails.click" dur="0.3s"></set>
+                    </path>
+                    <path fill="#595758" d="M30.152,22.887c-0.108-0.354-0.196-0.72-0.259-1.094c-0.025-0.165-0.047-0.33-0.067-0.495
+                        c-0.084-0.805-0.062-1.598,0.062-2.363c-0.194-1.646-0.979-3.093-1.232-3.133c-0.705,1.569-1.062,3.311-0.963,5.132
+                        c0.013,0.195,0.032,0.39,0.049,0.588c0.152,1.4,0.562,2.715,1.178,3.894c0.341,0.668,0.753,1.288,1.215,1.866
+                        c0.473-0.578,0.885-1.196,1.232-1.854C30.837,24.662,30.424,23.809,30.152,22.887z">
+                        <set attributeName="fill" to="#ffffff" begin="ButtonDetails.click" dur="0.3s"></set>
+                    </path>
+
+                </g>
+            </svg>
+        </div>
+    </div>
+</template>
+<!--<template id="_header">-->
+    <!--<div class="head_holder">-->
+        <!--<div class="deviceName" >{{deviceName}}</div>-->
+        <!--<div class="roomName" >{{roomName}}</div>-->
+        <!--<div class="locationHolder">-->
+            <!--<svg version="1.1" class="locationIcon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="9.656px" height="14.172px" viewBox="0 0 9.656 14.172" enable-background="new 0 0 9.656 14.172" xml:space="preserve">-->
+                <!--<path fill-rule="evenodd" clip-rule="evenodd" fill="#898989" d="M4.833,0.075c-2.629,0-4.76,2.13-4.76,4.759s4.76,9.268,4.76,9.268-->
+                    <!--s4.76-6.639,4.76-9.268S7.462,0.075,4.833,0.075z M4.833,7.432c-1.497,0-2.71-1.214-2.71-2.711c0-1.497,1.213-2.71,2.71-2.71-->
+                    <!--s2.71,1.213,2.71,2.71C7.543,6.218,6.33,7.432,4.833,7.432z"></path>-->
+            <!--</svg>-->
+        <!--</div>-->
+        <!--<div class="details">-->
+            <!--<svg version="1.1" class="detailsButtonSVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="61.031px" height="40.656px" viewBox="0 0 61.031 40.656" enable-background="new 0 0 61.031 40.656" xml:space="preserve">-->
+                <!--<g id="ButtonDetails" v-on:click="DetailsClick">-->
+                    <!--<path fill="transparent" stroke="#595758" stroke-width="1.7284" stroke-miterlimit="10" d="M0.933,20.326-->
+                        <!--c0,10.709,8.686,19.394,19.397,19.394h20.365c10.709,0,19.392-8.685,19.392-19.394l0,0c0-10.711-8.683-19.396-19.392-19.396H20.33-->
+                        <!--C9.619,0.93,0.933,9.614,0.933,20.326L0.933,20.326z">-->
+                        <!--<set attributeName="fill" to="#E76C26" begin="ButtonDetails.click" dur="0.3s"></set>-->
+                        <!--<set attributeName="stroke" to="#ffffff" begin="ButtonDetails.click" dur="0.3s"></set>-->
+                    <!--</path>-->
+                    <!--<path fill="#595758" d="M23.272,29.183c-4.891,0.521-9.302-3.031-9.831-7.927c-0.523-4.892,3.03-9.295,7.923-9.822-->
+                        <!--c3.355-0.363,6.481,1.193,8.291,3.789c0.344-0.659,0.758-1.28,1.227-1.854C28.606,10.563,25,8.931,21.142,9.35-->
+                        <!--c-6.053,0.648-10.435,6.081-9.783,12.134c0.653,6.053,6.085,10.432,12.141,9.781c2.996-0.323,5.582-1.816,7.354-3.983-->
+                        <!--c-0.471-0.578-0.878-1.198-1.226-1.866C28.203,27.454,25.939,28.893,23.272,29.183z">-->
+                        <!--<set attributeName="fill" to="#ffffff" begin="ButtonDetails.click" dur="0.3s"></set>-->
+                    <!--</path>-->
+                    <!--<path fill="#595758" d="M37.521,9.385c-2.996,0.324-5.584,1.823-7.351,3.983c0.464,0.574,0.876,1.198,1.222,1.865-->
+                        <!--c1.427-2.042,3.689-3.477,6.354-3.762c4.893-0.53,9.304,3.023,9.828,7.917c0.523,4.894-3.029,9.302-7.919,9.827-->
+                        <!--c-3.355,0.358-6.485-1.194-8.288-3.789c-0.348,0.658-0.759,1.276-1.232,1.854c2.281,2.806,5.885,4.437,9.744,4.021-->
+                        <!--c6.052-0.652,10.434-6.082,9.782-12.138C49.01,13.113,43.574,8.731,37.521,9.385z">-->
+                        <!--<set attributeName="fill" to="#ffffff" begin="ButtonDetails.click" dur="0.3s"></set>-->
+                    <!--</path>-->
+                    <!--<path fill="#595758" d="M32.105,15.233c-0.345-0.667-0.755-1.291-1.223-1.865c-0.469,0.574-0.883,1.195-1.227,1.854-->
+                        <!--c0.53,0.766,0.942,1.616,1.217,2.536c0.113,0.385,0.206,0.781,0.267,1.189c0.021,0.132,0.037,0.271,0.054,0.404-->
+                        <!--c0.083,0.784,0.062,1.553-0.052,2.302c0.187,1.657,0.86,3.049,1.21,3.213c0.737-1.613,1.089-3.422,0.96-5.303-->
+                        <!--c-0.007-0.144-0.017-0.288-0.03-0.436C33.13,17.728,32.716,16.416,32.105,15.233z">-->
+                        <!--<set attributeName="fill" to="#ffffff" begin="ButtonDetails.click" dur="0.3s"></set>-->
+                    <!--</path>-->
+                    <!--<path fill="#595758" d="M30.152,22.887c-0.108-0.354-0.196-0.72-0.259-1.094c-0.025-0.165-0.047-0.33-0.067-0.495-->
+                        <!--c-0.084-0.805-0.062-1.598,0.062-2.363c-0.194-1.646-0.979-3.093-1.232-3.133c-0.705,1.569-1.062,3.311-0.963,5.132-->
+                        <!--c0.013,0.195,0.032,0.39,0.049,0.588c0.152,1.4,0.562,2.715,1.178,3.894c0.341,0.668,0.753,1.288,1.215,1.866-->
+                        <!--c0.473-0.578,0.885-1.196,1.232-1.854C30.837,24.662,30.424,23.809,30.152,22.887z">-->
+                        <!--<set attributeName="fill" to="#ffffff" begin="ButtonDetails.click" dur="0.3s"></set>-->
+                    <!--</path>-->
+                <!--</g>-->
+            <!--</svg>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</template>-->
+<!--only for device group header-->
+<template id="_headerForGroup">
+    <div class="head_holder">
+        <div class="deviceName" >{{deviceName}}</div>
+        <div class="roomName" >{{roomName}}</div>
+        <div class="details">
+            <svg version="1.1"  @click="DetailsClick()" v-show="editShowOrNot" id="detailsButtonSVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 width="37.667px" height="35.667px" viewBox="0 0 37.667 35.667" enable-background="new 0 0 37.667 35.667" xml:space="preserve">
+                <g id="groupEditBtn">
+                    <rect x="0" y="0" height="36" width="38"  fill="transparent"></rect>
+                    <path fill="none" stroke="#595758" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+                        M31.147,15.563v14.308c0,1.256-1.019,2.275-2.276,2.275H6.436c-1.257,0-2.276-1.02-2.276-2.275V7.435
+                        c0-1.257,1.02-2.275,2.276-2.275h14.828">
+                        <set attributeName="stroke" to="#E76C26" begin="groupEditBtn.click" dur="0.3s"></set>
+                    </path>
+                    <path fill="none" stroke="#595758" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+                        M20.448,21.434l-4.774-4.774L29.052,3.282c0.445-0.446,1.168-0.446,1.613,0l3.16,3.16c0.446,0.446,0.446,1.169,0,1.614
+                        L20.448,21.434z">
+                        <set attributeName="stroke" to="#E76C26" begin="groupEditBtn.click" dur="0.3s"></set>
+                    </path>
+                    <polyline fill="none" stroke="#595758" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+                        15.673,16.66 14.513,22.595 20.448,21.433 ">
+                        <set attributeName="stroke" to="#E76C26" begin="groupEditBtn.click" dur="0.3s"></set>
+                    </polyline>
+                    <line fill="none" stroke="#595758" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="27.6" y1="4.733" x2="32.375" y2="9.506">
+                        <set attributeName="stroke" to="#E76C26" begin="groupEditBtn.click" dur="0.3s"></set>
+                    </line>
+                </g>
+            </svg>
+        </div>
+        <div class="groupDeviceDetails">
+            <div v-on:click="exitGroupDetails" class="editGroupDetails">
+                <svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                     width="38.75px" height="26.5px" viewBox="0 0 38.75 26.5" enable-background="new 0 0 38.75 26.5" xml:space="preserve">
+                    <g id="groupReturn">
+                        <rect x="0" y="0" height="27" width="39"  fill="transparent"></rect>
+                        <path fill="none" stroke="#B2B2B2" stroke-miterlimit="10" d="M13.884,24.373L3.524,14.203c-0.184-0.178-0.287-0.426-0.287-0.682
+                            c0-0.259,0.105-0.504,0.289-0.684L13.886,2.732">
+                            <set attributeName="stroke" to="#E76C26" begin="groupReturn.click" dur="0.3s"></set>
+                        </path>
+                        <path fill="none" stroke="#B2B2B2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+                            M13.884,24.373L3.524,14.203c-0.184-0.178-0.287-0.426-0.287-0.682c0-0.259,0.105-0.504,0.289-0.684L13.886,2.732">
+                            <set attributeName="stroke" to="#E76C26" begin="groupReturn.click" dur="0.3s"></set>
+                        </path>
+                        <line fill="none" stroke="#B2B2B2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="5.56" y1="13.523" x2="35.711" y2="13.523">
+                            <set attributeName="stroke" to="#E76C26" begin="groupReturn.click" dur="0.3s"></set>
+                        </line>
+                    </g>
+                </svg>
+            </div>
+            <div class="editGroupDevice">
+                <div>
+                    <span>{{ChangeName}}</span>
+                    <span @click="changeDeviceName()">{{editDeviceName}}</span>
+                    <img @click="changeDeviceName()" src="../src/assets/img/group-clickIn.svg" alt="clickIn" />
+                </div>
+                <div>
+                    <span>{{ChangeDevices}}</span>
+                    <span @click="changeSelected()">{{editSelectedAmount}}{{selectedName}}</span>
+                    <img @click="changeSelected()" src="../src/assets/img/group-clickIn.svg" alt="clickIn" />
+                </div>
+                <div @click="deleteGroup()">
+                    <span>{{DeleteGroup}}</span>
+                    <img src="../src/assets/img/group-clickIn.svg" alt="clickIn" />
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template id="_brightnessController">
+    <div class="brightnessController_content">
+        <svg version="1.1" id="brightnessControllerSVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="6px" height="300px" viewBox="0 0 200 6" enable-background="new 0 0 200 6" xml:space="preserve">
+            <linearGradient id="blackGradient" gradientUnits="objectBoundingBox" x1="0" y1="1" x2="1" y2="1">
+                    <stop offset="0%"  stop-color="#000000"></stop>
+                    <stop offset="100%" stop-color="#ffffff"></stop>
+            </linearGradient>
+            <rect x="0" y="0" height="6" width="200" stroke="#C9CACA" stroke-width="0.5" fill="url(#blackGradient)" rx="3" ry="3"></rect>
+            <circle class="BrightnessPointer" cx="7" cy="3" r="7.5" stroke="#9E9E9F" stroke-width="0.5" fill="#ffffff"></circle>
+            <!--<circle class="BrightnessPointer" cx="7" cy="3" r="4" stroke="transparent" fill="#D0672B"></circle>-->
+            <circle class="BrightnessPointer" cx="7" cy="3" r="20" stroke="transparent" fill="transparent"></circle>
+            <text v-show="brightValue" class="brightnessValue" x="20" y="-5" font-family="Verdana" fill="#AAA9A9" font-size="16">{{cx}}</text>
+        </svg>
+    </div>
+</template>
+
+<template id="_RGBRouting">
+    <div id="RGBRouting_content" class="RGB_routing_content">
+        <div class='navigationHolder'>
+            <svg version="1.1" id="navigationHolderSVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="726.73px" height="36.354px" viewBox="0 0 726.73 36.354" enable-background="new 0 0 726.73 36.354" xml:space="preserve">
+                    <line fill="none" stroke="#C8C9CA" stroke-miterlimit="10" x1="0.73" y1="34.275" x2="726.73" y2="34.275"></line>
+                    <line fill="none" stroke="#C8C9CA" stroke-miterlimit="10" x1="182.23" y1="20.542" x2="182.23" y2="0.096"></line>
+                    <line fill="none" stroke="#C8C9CA" stroke-miterlimit="10" x1="362.423" y1="20.542" x2="362.423" y2="0.096"></line>
+                    <line fill="none" stroke="#C8C9CA" stroke-miterlimit="10" x1="544.242" y1="20.542" x2="544.242" y2="0.096"></line>
+                    <g>
+                        <line class="RoutingUnderline" fill="none" stroke="#DB6929" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="2.064" y1="34.275" x2="180.063" y2="34.275"></line>
+                    </g>
+                </svg>
+            <div class="SolidRout">
+                <router-link :to="{ name: 'Solid' }" class='link-Solid' v-on:click.native='isClick'>{{Solid}}</router-link>
+            </div>
+            <div class="RainbowRout" >
+                <router-link :to="{ name: 'Rainbow' }" class='link-Rainbow' v-on:click.native='hideRainbow'>{{Rainbow}}</router-link>
+            </div>
+            <div class="PatternRout"  >
+                <router-link :to="{ name: 'Pattern' }" class='link-Pattern' v-on:click.native='hideRainbow'>{{Pattern}}</router-link>
+            </div>
+            <div class="RandomRout"  >
+                <router-link :to="{ name: 'Random' }" class='link-Random' v-on:click.native='hideRainbow'>{{Random}}</router-link>
+            </div>
+        </div>
+        <div class="RGBController">
+            <router-view ></router-view>
+        </div>
+        <div class="solidRainbow" v-if="roundRainbowShow" >
+            <svg xmlns="http://www.w3.org/2000/svg" class="ring" version="1.1" width="100%" height="100%" viewBox="0 0 240 240">
+                <defs>
+                    <linearGradient id="redyel" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0%" stop-color="#ff0000"></stop>
+                        <stop offset="100%" stop-color="#ffff00"></stop>
+                    </linearGradient>
+                    <linearGradient id="yelgre" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0%" stop-color="#ffff00"></stop>
+                        <stop offset="100%" stop-color="#00ff00"></stop>
+                    </linearGradient>
+                    <linearGradient id="grecya" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0%" stop-color="#00ff00"></stop>
+                        <stop offset="100%" stop-color="#00ffff"></stop>
+                    </linearGradient>
+                    <linearGradient id="cyablu" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0%" stop-color="#00ffff"></stop>
+                        <stop offset="100%" stop-color="#0000ff"></stop>
+                    </linearGradient>
+                    <linearGradient id="blumag" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0%" stop-color="#0000ff"></stop>
+                        <stop offset="100%" stop-color="#ff00ff"></stop>
+                    </linearGradient>
+                    <linearGradient id="magred" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0%" stop-color="#ff00ff"></stop>
+                        <stop offset="100%" stop-color="#ff0000"></stop>
+                    </linearGradient>
+                </defs>
+                <g  transform="translate(0,0)">
+                    <rect x="-10"   y="-10" height="300" width="51" fill="url(#redyel)"></rect>
+                    <rect x="40"  y="-10" height="300" width="41" fill="url(#yelgre)"></rect>
+                    <rect x="80"  y="-10" height="300" width="41" fill="url(#grecya)"></rect>
+                    <rect x="120" y="-10" height="300" width="41" fill="url(#cyablu)"></rect>
+                    <rect x="160" y='-10' height="300" width="41" fill="url(#blumag)"></rect>
+                    <rect x="200" y="-10" height="300" width="51" fill="url(#magred)"></rect>
+                </g>
+            </svg>
+            <router-link class="solida link-Solid" :to="{ name: 'solidRainbow' }" v-on:click.native="roundRainbowClick"></router-link>
+        </div>
+        <div class="roundRainbow" v-if="solidRainbowShow" >
+            <svg xmlns="http://www.w3.org/2000/svg" class="ring" version="1.1" width="100%" height="100%" viewBox="-30 -30 260 260">
+                <defs>
+                    <linearGradient id="redyel" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stop-color="#ff0000"></stop>
+                        <stop offset="100%" stop-color="#ffff00"></stop>
+                    </linearGradient>
+                    <linearGradient id="yelgre" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#ffff00"></stop>
+                        <stop offset="100%" stop-color="#00ff00"></stop>
+                    </linearGradient>
+                    <linearGradient id="grecya" gradientUnits="objectBoundingBox" x1="1" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#00ff00"></stop>
+                        <stop offset="100%" stop-color="#00ffff"></stop>
+                    </linearGradient>
+                    <linearGradient id="cyablu" gradientUnits="objectBoundingBox" x1="1" y1="1" x2="0" y2="0">
+                        <stop offset="0%" stop-color="#00ffff"></stop>
+                        <stop offset="100%" stop-color="#0000ff"></stop>
+                    </linearGradient>
+                    <linearGradient id="blumag" gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0">
+                        <stop offset="0%" stop-color="#0000ff"></stop>
+                        <stop offset="100%" stop-color="#ff00ff"></stop>
+                    </linearGradient>
+                    <linearGradient id="magred" gradientUnits="objectBoundingBox" x1="0" y1="1" x2="1" y2="0">
+                        <stop offset="0%" stop-color="#ff00ff"></stop>
+                        <stop offset="100%" stop-color="#ff0000"></stop>
+                    </linearGradient>
+                </defs>
+                <g fill="none" stroke-width="35" transform="translate(100,100)">
+                    <path d="M 0,-100    A 100,100 0 0,1 86.6,-50" stroke="url(#redyel)"></path>
+                    <path d="M 86.6,-50  A 100,100 0 0,1 86.6,50" stroke="url(#yelgre)"></path>
+                    <path d="M 86.6,50   A 100,100 0 0,1 0,100" stroke="url(#grecya)"></path>
+                    <path d="M 0,100     A 100,100 0 0,1 -86.6,50" stroke="url(#cyablu)"></path>
+                    <path d="M -86.6,50  A 100,100 0 0,1 -86.6,-50" stroke="url(#blumag)"></path>
+                    <path d="M -86.6,-50 A 100,100 0 0,1 0,-100" stroke="url(#magred)"></path>
+                </g>
+            </svg>
+            <router-link class="solida link-Solid" :to="{ name: 'roundRainbow' }" v-on:click.native="solidRainbowClick"></router-link>
+        </div>
+    </div>
+</template>
+
+<template id="_RGBRouting4Hue">
+    <div id="RGBRouting_content4Hue">
+        <!--<div class='navigationHolder'>-->
+            <!--<svg version="1.1" id="navigationHolderSVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="726.73px" height="36.354px" viewBox="0 0 726.73 36.354" enable-background="new 0 0 726.73 36.354" xml:space="preserve">-->
+                    <!--<line fill="none" stroke="#C8C9CA" stroke-miterlimit="10" x1="0.73" y1="34.275" x2="726.73" y2="34.275"></line>-->
+                    <!--<line fill="none" stroke="#C8C9CA" stroke-miterlimit="10" x1="362.423" y1="20.542" x2="362.423" y2="0.096"></line>-->
+                    <!--<g>-->
+                        <!--<line class="RoutingUnderline" fill="none" stroke="#DB6929" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="2.064" y1="34.275" x2="180.063" y2="34.275"></line>-->
+                    <!--</g>-->
+                <!--</svg>-->
+            <!--<div class="Solid">-->
+                <!--<router-link :to="{ name: 'Solid' }" class='link-Solid' v-on:click.native='isClick'>{{Solid}}</router-link>-->
+            <!--</div>-->
+            <!--<div class="Random"  >-->
+                <!--<router-link :to="{ name: 'Random' }" class='link-Random' v-on:click.native='hideRainbow'>{{Random}}</router-link>-->
+            <!--</div>-->
+        <!--</div>-->
+        <div class="RGBController">
+            <router-view ></router-view>
+        </div>
+        <div class="solidRainbow" v-if="roundRainbowShow" >
+            <svg xmlns="http://www.w3.org/2000/svg" class="ring" version="1.1" width="100%" height="100%" viewBox="0 0 240 240">
+                <defs>
+                    <linearGradient id="redyel" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0%" stop-color="#ff0000"></stop>
+                        <stop offset="100%" stop-color="#ffff00"></stop>
+                    </linearGradient>
+                    <linearGradient id="yelgre" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0%" stop-color="#ffff00"></stop>
+                        <stop offset="100%" stop-color="#00ff00"></stop>
+                    </linearGradient>
+                    <linearGradient id="grecya" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0%" stop-color="#00ff00"></stop>
+                        <stop offset="100%" stop-color="#00ffff"></stop>
+                    </linearGradient>
+                    <linearGradient id="cyablu" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0%" stop-color="#00ffff"></stop>
+                        <stop offset="100%" stop-color="#0000ff"></stop>
+                    </linearGradient>
+                    <linearGradient id="blumag" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0%" stop-color="#0000ff"></stop>
+                        <stop offset="100%" stop-color="#ff00ff"></stop>
+                    </linearGradient>
+                    <linearGradient id="magred" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0%" stop-color="#ff00ff"></stop>
+                        <stop offset="100%" stop-color="#ff0000"></stop>
+                    </linearGradient>
+                </defs>
+                <g  transform="translate(0,0)">
+                    <rect x="-10"   y="-10" height="300" width="51" fill="url(#redyel)"></rect>
+                    <rect x="40"  y="-10" height="300" width="41" fill="url(#yelgre)"></rect>
+                    <rect x="80"  y="-10" height="300" width="41" fill="url(#grecya)"></rect>
+                    <rect x="120" y="-10" height="300" width="41" fill="url(#cyablu)"></rect>
+                    <rect x="160" y='-10' height="300" width="41" fill="url(#blumag)"></rect>
+                    <rect x="200" y="-10" height="300" width="51" fill="url(#magred)"></rect>
+                </g>
+            </svg>
+            <router-link class="solida link-Solid" :to="{ name: 'solidRainbow' }" v-on:click.native="roundRainbowClick"></router-link>
+        </div>
+        <div class="roundRainbow" v-if="solidRainbowShow" >
+            <svg xmlns="http://www.w3.org/2000/svg" class="ring" version="1.1" width="100%" height="100%" viewBox="-30 -30 260 260">
+                <defs>
+                    <linearGradient id="redyel" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stop-color="#ff0000"></stop>
+                        <stop offset="100%" stop-color="#ffff00"></stop>
+                    </linearGradient>
+                    <linearGradient id="yelgre" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#ffff00"></stop>
+                        <stop offset="100%" stop-color="#00ff00"></stop>
+                    </linearGradient>
+                    <linearGradient id="grecya" gradientUnits="objectBoundingBox" x1="1" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#00ff00"></stop>
+                        <stop offset="100%" stop-color="#00ffff"></stop>
+                    </linearGradient>
+                    <linearGradient id="cyablu" gradientUnits="objectBoundingBox" x1="1" y1="1" x2="0" y2="0">
+                        <stop offset="0%" stop-color="#00ffff"></stop>
+                        <stop offset="100%" stop-color="#0000ff"></stop>
+                    </linearGradient>
+                    <linearGradient id="blumag" gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0">
+                        <stop offset="0%" stop-color="#0000ff"></stop>
+                        <stop offset="100%" stop-color="#ff00ff"></stop>
+                    </linearGradient>
+                    <linearGradient id="magred" gradientUnits="objectBoundingBox" x1="0" y1="1" x2="1" y2="0">
+                        <stop offset="0%" stop-color="#ff00ff"></stop>
+                        <stop offset="100%" stop-color="#ff0000"></stop>
+                    </linearGradient>
+                </defs>
+                <g fill="none" stroke-width="35" transform="translate(100,100)">
+                    <path d="M 0,-100    A 100,100 0 0,1 86.6,-50" stroke="url(#redyel)"></path>
+                    <path d="M 86.6,-50  A 100,100 0 0,1 86.6,50" stroke="url(#yelgre)"></path>
+                    <path d="M 86.6,50   A 100,100 0 0,1 0,100" stroke="url(#grecya)"></path>
+                    <path d="M 0,100     A 100,100 0 0,1 -86.6,50" stroke="url(#cyablu)"></path>
+                    <path d="M -86.6,50  A 100,100 0 0,1 -86.6,-50" stroke="url(#blumag)"></path>
+                    <path d="M -86.6,-50 A 100,100 0 0,1 0,-100" stroke="url(#magred)"></path>
+                </g>
+            </svg>
+            <router-link class="solida link-Solid" :to="{ name: 'roundRainbow' }" v-on:click.native="solidRainbowClick"></router-link>
+        </div>
+    </div>
+</template>
+
+<template id="_solidCommon">
+    <div id="solidCommon_content" class="RGBControllerContent">
+        <div class="solidCommonBar">
+            <div class="solidCommonTitle"></div>
+            <div class="RGBBar">
+                <div v-for="(color, key, index) in barColors"
+                     v-bind:style="color.styleOBJ"
+                     v-bind:command="color.command"
+                     v-bind:id="color.command"
+                     class="colorBox" >
+                    <svg xmlns="http://www.w3.org/2000/svg" class="bulbClickedIcon" width="34.562" height="22.437" viewBox="0 0 34.562 22.437">
+                        <path id="圆角矩形_1_拷贝" data-name="圆角矩形 1 拷贝" class="cls-1" fill="#fff" d="M240.107,113.515l-19.536,19.556a1.974,1.974,0,0,1-2.121,0L206.429,121.05a1.5,1.5,0,0,1,2.121-2.121l10.95,10.95,18.485-18.486A1.5,1.5,0,0,1,240.107,113.515Z" transform="translate(-206 -110.969)"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div class="SavedColor">
+            <div class="SavedColorTitle"></div>
+            <div class="SavedColorBar">
+                <div v-for="(color, key, index) in savedColors"
+                     v-bind:style="color.styleOBJ"
+                     v-bind:command="color.command"
+                     v-bind:class="color.command"
+                     class="saveColorBox">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="bulbClickedIcon" width="34.562" height="22.437" viewBox="0 0 34.562 22.437">
+                        <path id="圆角矩形_1_拷贝" data-name="圆角矩形 1 拷贝" class="cls-1" fill="#fff" d="M240.107,113.515l-19.536,19.556a1.974,1.974,0,0,1-2.121,0L206.429,121.05a1.5,1.5,0,0,1,2.121-2.121l10.95,10.95,18.485-18.486A1.5,1.5,0,0,1,240.107,113.515Z" transform="translate(-206 -110.969)"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <!--<div class="jumpToRGBCircle">-->
+        <!--Jump-->
+        <!--</div>-->
+    </div>
+</template>
+
+<template id="_chooseRGB">
+    <div id="chooseRGB_content" class="chooseRGBContent">
+        <div class="chooseRGBRing">
+            <div class="chooseRGBRingTitle"></div>
+            <canvas  id="rainbowCanvas"></canvas>
+            <svg xmlns="http://www.w3.org/2000/svg" class="innerCircleSVG" version="1.1" width="100%" height="100%" viewBox="0 0 100 100">
+                <circle id="innerCircle" cx="50" cy="50" r="50" fill="transparent"></circle>
+            </svg>
+            <div id="rainbowDragger"></div>
+            <div class="choosePointer" id="choosePointer">
+                <svg xmlns="http://www.w3.org/2000/svg" class="choosePointerSVG" version="1.1" width="100%" height="100%" viewBox="0 0 100 100">
+                    <circle  class="chooseCircle" cx="50" cy="50" r="42" fill="transparent" stroke-width="3" stroke="transparent"></circle>
+                </svg>
+                <div id="drag_thing"></div>
+            </div>
+        </div>
+        <div class="colorBrightnessHolder">
+            <div class="colorBrightness">
+                <!--<brightness-controller></brightness-controller>-->
+            </div>
+        </div>
+        <div class="SavedColorHolder">
+            <div class="SavedColorTitle"></div>
+            <div class="SavedColorBar">
+                <div v-for="(color, key, index) in savedColors"
+                     v-bind:style="color.styleOBJ"
+                     v-bind:command="color.command"
+                     v-bind:id="color.id"
+                     v-bind:index="key"
+                     v-bind:class="'chooseRGB'+color.command"
+                     class="saveColorBox">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="bulbClickedIcon" width="34.562" height="22.437" viewBox="0 0 34.562 22.437">
+                        <path id="圆角矩形_1_拷贝" data-name="圆角矩形 1 拷贝" class="cls-1" fill="#fff" d="M240.107,113.515l-19.536,19.556a1.974,1.974,0,0,1-2.121,0L206.429,121.05a1.5,1.5,0,0,1,2.121-2.121l10.95,10.95,18.485-18.486A1.5,1.5,0,0,1,240.107,113.515Z" transform="translate(-206 -110.969)"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="addSaved">
+                <div class="addSavedButton">
+                    <span v-on:click="save" v-show="showAdd">+ {{saveText}}</span>
+                    <svg v-on:click="deleteBox" version="1.1" v-show="!showAdd" id="chooseDelSVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         width="38px" height="38.333px" viewBox="0 0 38 38.333" enable-background="new 0 0 38 38.333" xml:space="preserve">
+                        <path fill="#E76D26" d="M32.92,9.183h-6.752l-0.496-2.489l-0.068-0.191L25.54,6.396c-0.285-0.469-0.617-0.887-1.551-0.887
+                            c-0.087,0-0.18,0.002-0.23,0.008h-9.162c-0.502,0-1.436,0-1.873,1.045l-0.027,0.063l-0.512,2.558h-6.75
+                            c-0.547,0-1.316,0.408-1.316,1.315c0,0.899,0.784,1.317,1.316,1.317h1.773l1.188,22.541c0.016,0.3,0.203,1.279,1.926,1.279h17.713
+                            c1.176,0,1.273-1.752,1.314-2.481l1.779-21.339h1.793c0.547,0,1.316-0.409,1.316-1.317C34.237,9.699,33.719,9.183,32.92,9.183
+                             M15.147,8.151h8.061l0.258,1.032h-8.574L15.147,8.151z M26.772,33.002H10.99L9.844,11.816h18.645L26.772,33.002z"></path>
+                        <path fill="#E76D26" d="M21.315,31.969c0.727,0,1.316-0.59,1.316-1.315V14.163c0-0.726-0.59-1.318-1.316-1.318
+                            s-1.316,0.593-1.316,1.318v16.491C19.999,31.379,20.588,31.969,21.315,31.969"></path>
+                        <path fill="#E76D26" d="M16.428,31.969c0.727,0,1.315-0.59,1.315-1.315V14.163c0-0.726-0.589-1.318-1.315-1.318
+                            s-1.316,0.593-1.316,1.318v16.491C15.112,31.379,15.702,31.969,16.428,31.969"></path>
+                        <path fill="#E76D26" d="M32.92,9.183h-6.752l-0.496-2.489l-0.068-0.191L25.54,6.396c-0.285-0.469-0.617-0.887-1.551-0.887
+                            c-0.087,0-0.18,0.002-0.23,0.008h-9.162c-0.502,0-1.436,0-1.873,1.045l-0.027,0.063l-0.512,2.558h-6.75
+                            c-0.547,0-1.316,0.408-1.316,1.315c0,0.899,0.784,1.317,1.316,1.317h1.773l1.188,22.541c0.016,0.3,0.203,1.279,1.926,1.279h17.713
+                            c1.176,0,1.273-1.752,1.314-2.481l1.779-21.339h1.793c0.547,0,1.316-0.409,1.316-1.317C34.237,9.699,33.719,9.183,32.92,9.183
+                             M15.147,8.151h8.061l0.258,1.032h-8.574L15.147,8.151z M26.772,33.002H10.99L9.844,11.816h18.645L26.772,33.002z"></path>
+                        <path fill="#E76D26" d="M21.315,31.969c0.727,0,1.316-0.59,1.316-1.315V14.163c0-0.726-0.59-1.318-1.316-1.318
+                            s-1.316,0.593-1.316,1.318v16.491C19.999,31.379,20.588,31.969,21.315,31.969"></path>
+                        <path fill="#E76D26" d="M16.428,31.969c0.727,0,1.315-0.59,1.315-1.315V14.163c0-0.726-0.589-1.318-1.315-1.318
+                            s-1.316,0.593-1.316,1.318v16.491C15.112,31.379,15.702,31.969,16.428,31.969"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<!-- Rainbow -->
+<template id="_rainbow">
+    <div id="rainbow_content" class="rainbowContent">
+        <div class="rainbowSpeed">
+            <div class="speedTopic speed"><span>{{speed}}:</span></div>
+            <div v-on:click="s1" class="slowest speed"><span>{{Slowest}}</span></div>
+            <div v-on:click="s2" class="slow speed"><span>{{Slow}}</span></div>
+            <div v-on:click="s3" class="normal speed"><span>{{Normal}}</span></div>
+            <div v-on:click="s4" class="fast speed"><span>{{Fast}}</span></div>
+            <div v-on:click="s5" class="fastest speed"><span>{{Fastest}}</span></div>
+        </div>
+        <div class="rainbowTransition">
+            <div class="transTopic">{{Transition}}</div>
+            <div  class="buttonHolder">
+                <div v-on:click="t1" class="continuous transi">
+                    <img src="../src/assets/img/bulb-continuous.png" class="rainbowSVG" alt="continuous" />
+                    <span>{{continuous}}</span>
+                </div>
+                <div v-on:click="t2" class="smooth transi">
+                    <img src="../src/assets/img/bulb-smooth.png" class="rainbowSVG" alt="smooth" />
+                    <span>{{smooth}}</span>
+                </div>
+                <div v-on:click="t3" class="instant transi">
+                    <img src="../src/assets/img/bulb-instant.png" class="rainbowSVG" alt="instant" />
+                    <span>{{instant}}</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</template>
+
+<!--random-->
+<template id="_random">
+    <div class="random" >
+        <div class="randomTitle">
+            {{randomText}}
+        </div>
+        <div class="randomButton" v-on:click="randomClick">
+            {{ChangeNow}}
+        </div>
+    </div>
+</template>
+
+<!--Pattern-->
+<template id="_pattern">
+    <div class="pattern_content">
+        <div class="selectPattern">
+            <div class="PatternHolder">
+                <div id="patternTitle">{{pattern}}:</div>
+                    <div class="patternSavedColor">
+                        <div v-for="(color, key, index) in bars['savedColors']"
+                             v-bind:style="color.styleOBJ"
+                             v-bind:command="color.command"
+                             v-bind:id="color.command"
+                             v-bind:index="key"
+                             class="colorBoxSaved">
+                        </div>
+                    </div>
+                    <div id="editPatternButton">
+                        <svg version="1.1" v-on:click="editPattern" id="firstEditPatternSVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         width="35.5px" height="35px" viewBox="0 0 35.5 35" enable-background="new 0 0 35.5 35" xml:space="preserve">
+                            <path fill="none" stroke="#B2B2B2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+                                M29.869,15.511v14.235c0,1.251-1.016,2.265-2.266,2.265H5.282c-1.251,0-2.265-1.014-2.265-2.265V7.424
+                                c0-1.251,1.014-2.265,2.265-2.265h14.754"></path>
+                            <path fill="none" stroke="#B2B2B2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+                                M19.223,21.354l-4.75-4.751l13.311-13.31c0.442-0.443,1.161-0.443,1.606,0l3.144,3.145c0.444,0.443,0.444,1.162,0,1.605
+                                L19.223,21.354z"></path>
+                            <polyline fill="none" stroke="#B2B2B2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+                                14.473,16.602 13.317,22.508 19.223,21.354 "></polyline>
+                            <line fill="none" stroke="#B2B2B2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="26.34" y1="4.735" x2="31.09" y2="9.486"></line>
+                        </svg>
+                    </div>
+                </div>
+            <div class="PatternSpeed">
+                <div class="speedTopic speed"><span>{{speed}}:</span></div>
+                <div v-on:click="s1" class="slowest speed"><span>{{Slowest}}</span></div>
+                <div v-on:click="s2" class="slow speed"><span>{{Slow}}</span></div>
+                <div v-on:click="s3" class="normal speed"><span>{{Normal}}</span></div>
+                <div v-on:click="s4" class="fast speed"><span>{{Fast}}</span></div>
+                <div v-on:click="s5" class="fastest speed"><span>{{Fastest}}</span></div>
+            </div>
+            <div class="PatternTransition">
+                <div class="transTopic">{{Transition}}</div>
+                <div class="buttonHolderPattern">
+                    <div  class="buttonHolder">
+                        <div v-on:click="t1" class="continuous transi">
+                            <img src="../src/assets/img/bulb-continuous.png" class="rainbowSVG" alt="continuous" />
+                            <span>{{continuous}}</span>
+                        </div>
+                        <div v-on:click="t2" class="smooth transi">
+                            <img src="../src/assets/img/bulb-smooth.png" class="rainbowSVG" alt="smooth" />
+                            <span>{{smooth}}</span>
+                        </div>
+                        <div v-on:click="t3" class="instant transi">
+                            <img src="../src/assets/img/bulb-instant.png" class="rainbowSVG" alt="instant" />
+                            <span>{{instant}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="editPattern">
+            <div class="editPatternTitle">{{patternTitle}}</div>
+            <div v-on:click="exitPattern" class="editPatternBack">
+                <svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                     width="38.75px" height="26.5px" viewBox="0 0 38.75 26.5" enable-background="new 0 0 38.75 26.5" xml:space="preserve">
+                    <path fill="none" stroke="#B2B2B2" stroke-miterlimit="10" d="M13.884,24.373L3.524,14.203c-0.184-0.178-0.287-0.426-0.287-0.682
+                        c0-0.259,0.105-0.504,0.289-0.684L13.886,2.732"></path>
+                    <path fill="none" stroke="#B2B2B2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+                        M13.884,24.373L3.524,14.203c-0.184-0.178-0.287-0.426-0.287-0.682c0-0.259,0.105-0.504,0.289-0.684L13.886,2.732"></path>
+                    <line fill="none" stroke="#B2B2B2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="5.56" y1="13.523" x2="35.711" y2="13.523"></line>
+                </svg>
+            </div>
+            <div class="PatternAddDelete" v-show="showAddOrDelWrapper">
+                <svg version="1.1" id="PatternSVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="33.5px" height="32.833px" viewBox="0 0 33.5 32.833" enable-background="new 0 0 33.5 32.833" xml:space="preserve">
+                    <g v-show="showAdd" @click="addBox">
+                        <line fill="transparent" stroke="#DC6928" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="2.429" y1="13.742" x2="25.732" y2="13.742"></line>
+                        <line fill="transparent" stroke="#DC6928" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="14.081" y1="25.395" x2="14.081" y2="2.09"></line>
+                        <rect x="0" y="0" width="33" height="33" fill="transparent"></rect>
+                    </g>
+                    <g v-show="showDel" @click="removeColorBox()">
+                        <rect x="0" y="0" width="33" height="33" fill="transparent"></rect>
+                        <path fill="#585757" d="M30.052,5.228H23.3l-0.496-2.488l-0.068-0.191l-0.063-0.106c-0.286-0.47-0.618-0.888-1.552-0.888
+                        c-0.086,0-0.18,0.002-0.23,0.008h-9.162c-0.502,0-1.435,0-1.873,1.046L9.827,2.671L9.315,5.228h-6.75
+                        c-0.547,0-1.317,0.408-1.317,1.316c0,0.898,0.786,1.317,1.317,1.317h1.773l1.188,22.54c0.016,0.301,0.203,1.279,1.926,1.279h17.712
+                        c1.176,0,1.274-1.752,1.315-2.48l1.779-21.339h1.793c0.547,0,1.316-0.409,1.316-1.317C31.368,5.744,30.851,5.228,30.052,5.228
+                         M12.278,4.196h8.06l0.259,1.031h-8.574L12.278,4.196z M23.903,29.048H8.123L6.976,7.861H25.62L23.903,29.048z"></path>
+                        <path fill="#585757" d="M18.446,28.015c0.726,0,1.316-0.59,1.316-1.315V10.208c0-0.727-0.591-1.318-1.316-1.318
+                            c-0.727,0-1.316,0.592-1.316,1.318v16.491C17.13,27.425,17.72,28.015,18.446,28.015"></path>
+                        <path fill="#585757" d="M13.56,28.015c0.727,0,1.316-0.59,1.316-1.315V10.208c0-0.727-0.589-1.318-1.316-1.318
+                            c-0.726,0-1.316,0.592-1.316,1.318v16.491C12.243,27.425,12.833,28.015,13.56,28.015"></path>
+                        <path fill="#585757" d="M30.552,5.229H23.8L23.304,2.74l-0.068-0.191l-0.063-0.106c-0.286-0.47-0.618-0.888-1.552-0.888
+                            c-0.086,0-0.18,0.002-0.23,0.008h-9.162c-0.502,0-1.435,0-1.873,1.046l-0.027,0.063L9.815,5.229h-6.75
+                            c-0.547,0-1.317,0.408-1.317,1.316c0,0.898,0.786,1.317,1.317,1.317h1.773l1.188,22.54c0.016,0.301,0.203,1.279,1.926,1.279h17.712
+                            c1.176,0,1.274-1.752,1.315-2.48l1.779-21.339h1.793c0.547,0,1.316-0.409,1.316-1.317C31.868,5.745,31.351,5.229,30.552,5.229
+                             M12.778,4.197h8.06l0.259,1.031h-8.574L12.778,4.197z M24.403,29.049H8.623L7.476,7.862H26.12L24.403,29.049z"></path>
+                        <path fill="#585757" d="M18.946,28.016c0.726,0,1.316-0.59,1.316-1.315V10.209c0-0.727-0.591-1.318-1.316-1.318
+                            c-0.727,0-1.315,0.592-1.315,1.318V26.7C17.631,27.426,18.22,28.016,18.946,28.016"></path>
+                        <path fill="#585757" d="M14.06,28.016c0.727,0,1.316-0.59,1.316-1.315V10.209c0-0.727-0.589-1.318-1.316-1.318
+                            c-0.726,0-1.316,0.592-1.316,1.318V26.7C12.743,27.426,13.333,28.016,14.06,28.016"></path>
+                        <rect x="0" y="0" width="33" height="33" fill="transparent"></rect>
+                    </g>
+                </svg>
+            </div>
+            <div class="editPatternBoxes">
+                <div v-for="(color, key, index) in bars['savedColors']"
+                     v-bind:style="color.styleOBJ"
+                     v-bind:command="color.command"
+                     v-bind:id="color.command"
+                     v-bind:index="key"
+                     class="colorBox">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="bulbClickedIcon" width="34.562" height="22.437" viewBox="0 0 34.562 22.437">
+                        <path id="圆角矩形_1_拷贝" data-name="圆角矩形 1 拷贝" class="cls-1" fill="#fff" d="M240.107,113.515l-19.536,19.556a1.974,1.974,0,0,1-2.121,0L206.429,121.05a1.5,1.5,0,0,1,2.121-2.121l10.95,10.95,18.485-18.486A1.5,1.5,0,0,1,240.107,113.515Z" transform="translate(-206 -110.969)"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="PatternConstruction">{{patternTur}}</div>
+            <div class="PatternBoxesBar">
+                <div v-for="(color, key, index) in bars['barColors']"
+                     v-bind:style="color.styleOBJ"
+                     v-bind:command="color.command"
+                     v-bind:id="color.id"
+                     class="PatternSaveColorBox">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="bulbClickedIcon" width="34.562" height="22.437" viewBox="0 0 34.562 22.437">
+                        <path id="圆角矩形_1_拷贝" data-name="圆角矩形 1 拷贝" class="cls-1" fill="#fff" d="M240.107,113.515l-19.536,19.556a1.974,1.974,0,0,1-2.121,0L206.429,121.05a1.5,1.5,0,0,1,2.121-2.121l10.95,10.95,18.485-18.486A1.5,1.5,0,0,1,240.107,113.515Z" transform="translate(-206 -110.969)"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template id="_nestthermostatContent">
+    <div class="nestThermContent">
+        <div class="humiditySign">
+            <svg version="1.1" id="nestHumiditySVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+             width="24.417px" height="34.5px" viewBox="0 0 24.417 34.5" enable-background="new 0 0 24.417 34.5" xml:space="preserve">
+                <g>
+                    <g>
+                        <path fill="#B3B2B3" d="M11.377,19.32c0,0.309-0.03,0.604-0.091,0.889c-0.061,0.285-0.175,0.549-0.343,0.791
+                            c-0.214,0.317-0.482,0.565-0.804,0.741c-0.322,0.178-0.712,0.267-1.168,0.267c-0.458,0-0.847-0.089-1.169-0.267
+                            C7.479,21.565,7.211,21.317,6.997,21c-0.168-0.242-0.282-0.506-0.343-0.791c-0.061-0.284-0.091-0.58-0.091-0.889
+                            c0-0.308,0.03-0.604,0.091-0.888c0.061-0.285,0.175-0.548,0.343-0.791c0.215-0.317,0.482-0.564,0.805-0.742
+                            c0.322-0.176,0.711-0.266,1.169-0.266c0.456,0,0.847,0.09,1.168,0.266c0.322,0.178,0.59,0.425,0.804,0.742
+                            c0.168,0.243,0.282,0.506,0.343,0.791C11.347,18.716,11.377,19.013,11.377,19.32z M9.992,19.32c0-0.187-0.012-0.368-0.035-0.546
+                            C9.933,18.598,9.884,18.438,9.81,18.3c-0.075-0.141-0.18-0.253-0.315-0.336c-0.135-0.084-0.309-0.127-0.524-0.127
+                            s-0.39,0.043-0.525,0.127C8.31,18.047,8.205,18.159,8.13,18.3c-0.075,0.139-0.124,0.298-0.147,0.475
+                            c-0.023,0.178-0.035,0.359-0.035,0.546c0,0.188,0.012,0.369,0.035,0.546c0.023,0.178,0.073,0.336,0.147,0.477
+                            c0.074,0.141,0.18,0.251,0.314,0.336c0.136,0.084,0.311,0.126,0.525,0.126s0.389-0.042,0.524-0.126
+                            c0.135-0.085,0.24-0.195,0.315-0.336c0.074-0.141,0.123-0.299,0.147-0.477C9.979,19.689,9.992,19.508,9.992,19.32z M9.236,26.976
+                            l-1.035-0.784l7.066-9.613l1.063,0.741L9.236,26.976z M17.884,24.148c0,0.308-0.03,0.604-0.091,0.889
+                            c-0.062,0.284-0.176,0.55-0.343,0.791c-0.215,0.318-0.483,0.564-0.805,0.742c-0.321,0.177-0.712,0.266-1.169,0.266
+                            s-0.847-0.089-1.169-0.266c-0.321-0.178-0.59-0.424-0.805-0.742c-0.167-0.241-0.281-0.507-0.343-0.791
+                            c-0.061-0.284-0.091-0.581-0.091-0.889s0.03-0.604,0.091-0.888c0.062-0.285,0.175-0.549,0.343-0.791
+                            c0.215-0.317,0.483-0.564,0.805-0.741c0.322-0.178,0.712-0.267,1.169-0.267s0.848,0.089,1.169,0.267
+                            c0.321,0.177,0.59,0.424,0.805,0.741c0.167,0.242,0.281,0.506,0.343,0.791C17.854,23.544,17.884,23.841,17.884,24.148z
+                             M16.499,24.148c0-0.187-0.012-0.368-0.034-0.546c-0.023-0.176-0.072-0.335-0.147-0.476s-0.18-0.251-0.314-0.336
+                            c-0.136-0.084-0.311-0.126-0.525-0.126s-0.39,0.042-0.524,0.126c-0.136,0.085-0.241,0.195-0.315,0.336
+                            c-0.075,0.141-0.124,0.3-0.146,0.476c-0.023,0.178-0.035,0.359-0.035,0.546s0.012,0.368,0.035,0.546
+                            c0.022,0.178,0.071,0.336,0.146,0.476c0.074,0.141,0.18,0.253,0.315,0.336c0.135,0.084,0.31,0.126,0.524,0.126
+                            s0.39-0.042,0.525-0.126c0.135-0.083,0.239-0.195,0.314-0.336c0.075-0.14,0.124-0.298,0.147-0.476
+                            C16.487,24.517,16.499,24.335,16.499,24.148z"></path>
+                        <g>
+                            <path fill="#B3B2B3" d="M12.224,33.804c-6.342,0-11.501-5.16-11.501-11.502c0-6.035,10.209-20.57,10.644-21.187
+                                c0.394-0.558,1.322-0.558,1.715,0c0.435,0.616,10.644,15.151,10.644,21.187C23.725,28.644,18.566,33.804,12.224,33.804z
+                                 M12.224,3.566c-3.25,4.781-9.402,14.671-9.402,18.735c0,5.185,4.217,9.402,9.402,9.402c5.184,0,9.402-4.218,9.402-9.402
+                                C21.625,18.235,15.474,8.348,12.224,3.566z"></path>
+                        </g>
+                    </g>
+                </g>
+            </svg>
+        </div>
+        <div class="humiditySensorValue">
+            <p id="humidityValue">{{humidityValue}}%</p>
+            <p>Humidity Sensor</p>
+        </div>
+        <div class="TempValueSensorValue">
+            <p id="TempValue">{{TempValue}}</p>
+            <p>Temperature Sensor</p>
+        </div>
+        <div class="nestDataChart" v-show="autoEcoModeNest">
+            <div v-show="twinMinMax" class="nestCommon nestChartLeft">
+                <svg version="1.1" id="nestArrowUpSVG" @click="minAdd()" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                     width="39.5px" height="28px" viewBox="0 0 39.5 28" enable-background="new 0 0 39.5 28" xml:space="preserve">
+                    <g id="nestArrowUp1">
+                        <rect fill="transparent" x="0" y="0" width="40px" height="28px"></rect>
+                        <path fill="none" stroke="#B3B2B3" stroke-width="1.386" stroke-miterlimit="10" d="M4.545,21.699l14.098-14.36
+                            c0.246-0.254,0.59-0.399,0.945-0.399c0.359,0,0.698,0.147,0.947,0.401l14.01,14.362">
+                            <set attributeName="stroke" to="#F26F21" begin="nestArrowUp1.click" dur="0.3"></set>
+                        </path>
+                        <path fill="none" stroke="#B3B2B3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+                            M4.545,21.699l14.098-14.36c0.246-0.254,0.59-0.399,0.945-0.399c0.359,0,0.698,0.147,0.947,0.401l14.01,14.362">
+                            <set attributeName="stroke" to="#F26F21" begin="nestArrowUp1.click" dur="0.3"></set>
+                        </path>
+                    </g>
+                </svg>
+                <p>Min</p>
+                <svg version="1.1" id="nestArrowDownSVG" @click="minPlus()" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 width="39.5px" height="28px" viewBox="0 0 39.5 28" enable-background="new 0 0 39.5 28" xml:space="preserve">
+                    <g id="nestArrowDown1">
+                        <rect fill="transparent" x="0" y="0" width="40px" height="28px"></rect>
+                        <path fill="none" stroke="#B3B2B3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+                        M34.75,7.158L20.65,21.52c-0.246,0.254-0.59,0.398-0.944,0.398c-0.36,0-0.698-0.146-0.948-0.402L4.75,7.155">
+                            <set attributeName="stroke" to="#F26F21" begin="nestArrowDown1.click" dur="0.3"></set>
+                        </path>
+                    </g>
+                </svg>
+            </div>
+            <div  class="nestMiddleChart">
+                <div id="firstModeNestTemp">
+                    <span id="nestMin">{{setMinNestTemperature}}</span>
+                    <span id="nestMax">{{setMaxNestTemperature}}</span>
+                </div>
+            </div>
+            <div v-show="twinMinMax" class="nestCommon nestChartRight">
+                <svg version="1.1" id="nestArrowUpSVG" @click="maxAdd()" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 width="39.5px" height="28px" viewBox="0 0 39.5 28" enable-background="new 0 0 39.5 28" xml:space="preserve">
+                    <g id="nestArrowUp">
+                        <rect fill="transparent" x="0" y="0" width="40px" height="28px"></rect>
+                        <path fill="none" stroke="#B3B2B3" stroke-width="1.386" stroke-miterlimit="10" d="M4.545,21.699l14.098-14.36
+                            c0.246-0.254,0.59-0.399,0.945-0.399c0.359,0,0.698,0.147,0.947,0.401l14.01,14.362">
+                            <set attributeName="stroke" to="#F26F21" begin="nestArrowUp.click" dur="0.3"></set>
+                        </path>
+                        <path fill="none" stroke="#B3B2B3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+                            M4.545,21.699l14.098-14.36c0.246-0.254,0.59-0.399,0.945-0.399c0.359,0,0.698,0.147,0.947,0.401l14.01,14.362">
+                            <set attributeName="stroke" to="#F26F21" begin="nestArrowUp.click" dur="0.3"></set>
+                        </path>
+                    </g>
+                </svg>
+                <p>Max</p>
+                <svg version="1.1" id="nestArrowDownSVG" @click="maxPlus()" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 width="39.5px" height="28px" viewBox="0 0 39.5 28" enable-background="new 0 0 39.5 28" xml:space="preserve">
+                    <g id="nestArrowDown">
+                        <rect fill="transparent" x="0" y="0" width="40px" height="28px" dur="0.3"></rect>
+                        <path fill="none" stroke="#B3B2B3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+                        M34.75,7.158L20.65,21.52c-0.246,0.254-0.59,0.398-0.944,0.398c-0.36,0-0.698-0.146-0.948-0.402L4.75,7.155">
+                            <set attributeName="stroke" to="#F26F21" begin="nestArrowDown.click" dur="0.3"></set>
+                        </path>
+                    </g>
+                </svg>
+            </div>
+        </div>
+        <div class="nestDataChart" v-show="!autoEcoModeNest">
+            <div class="nestCommon nestChartLeft">
+                <svg version="1.1" id="nestArrowLeftSVG" @click="othersModePlus()" v-show="offOrNot" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 width="31px" height="38.75px" viewBox="0 0 31 38.75" enable-background="new 0 0 31 38.75" xml:space="preserve">
+                    <g id="nestArrowLeft">
+                        <rect fill="transparent" x="0" y="0" width="31px" height="39px"></rect>
+                        <path fill="none" stroke="#B3B2B3" stroke-width="1.386" stroke-miterlimit="10" d="M22.874,34.405L8.513,20.307
+                            c-0.254-0.247-0.398-0.591-0.398-0.945c0-0.36,0.146-0.698,0.401-0.946l14.361-14.01">
+                            <set attributeName="stroke" to="#F26F21" begin="nestArrowLeft.click" dur="0.3"></set>
+                        </path>
+                        <path fill="none" stroke="#B3B2B3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+                            M22.874,34.405L8.513,20.307c-0.254-0.247-0.398-0.591-0.398-0.945c0-0.36,0.146-0.698,0.401-0.946l14.361-14.01">
+                            <set attributeName="stroke" to="#F26F21" begin="nestArrowLeft.click" dur="0.3"></set>
+                        </path>
+                    </g>
+                </svg>
+            </div>
+            <div class="nestMiddleChart">
+                <div id="secondModeNestTemp">
+                    <span>{{setOthersModeTemp}}</span>
+                </div>
+            </div>
+            <div class="nestCommon nestChartRight">
+                <svg version="1.1" id="nestArrowRightSVG" @click="othersModeAdd()" v-show="offOrNot" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 width="31px" height="38.75px" viewBox="0 0 31 38.75" enable-background="new 0 0 31 38.75" xml:space="preserve">
+                    <g id="nestArrowRight">
+                        <rect fill="transparent" x="0" y="0" width="31px" height="39px"></rect>
+                        <path fill="none" stroke="#B3B2B3" stroke-width="1.386" stroke-miterlimit="10" d="M9.509,34.375l14.359-14.099
+                            c0.255-0.247,0.399-0.591,0.399-0.945c0-0.36-0.147-0.698-0.401-0.946L9.505,4.375">
+                            <set attributeName="stroke" to="#F26F21" begin="nestArrowRight.click" dur="0.3"></set>
+                        </path>
+                        <path fill="none" stroke="#B3B2B3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+                            M9.509,34.375l14.359-14.099c0.255-0.247,0.399-0.591,0.399-0.945c0-0.36-0.147-0.698-0.401-0.946L9.505,4.375">
+                            <set attributeName="stroke" to="#F26F21" begin="nestArrowRight.click" dur="0.3"></set>
+                        </path>
+                    </g>
+                </svg>
+            </div>
+        </div>
+        <div class="nestMode">
+            <div id="modeTitle">Mode:</div>
+            <div v-for="(mode,index) in modes" v-bind:class="{modeClicked: index == currentModeIndex}" @click="changeNestStatus(index)">{{mode.modeItem}}</div>
+        </div>
+        <div class="Nestloading">
+
+        </div>
+    </div>
+</template>
+<template id="_nestRangePicker">
+        <div id="nestRangePicker">
+            <svg version="1.1" id="nestRangePickerSVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="283.465px" height="283.465px" viewBox="0 0 283.465 283.465" enable-background="new 0 0 283.465 283.465" xml:space="preserve">
+                <g>
+                    <line fill="none" class="nestLiner nestLine0" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="78.379" y1="239.809" x2="91.5" y2="219.603"></line>
+                    <line fill="none" class="nestLiner nestLine1" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="73.345" y1="236.349" x2="87.506" y2="216.856"></line>
+                    <line fill="none" class="nestLiner nestLine2" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="68.498" y1="232.63" x2="83.66" y2="213.904"></line>
+                    <line fill="none" class="nestLiner nestLine3" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="63.853" y1="228.662" x2="79.975" y2="210.757"></line>
+                    <line fill="none" class="nestLiner nestLine4" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="59.422" y1="224.457" x2="76.459" y2="207.421"></line>
+                    <line fill="none" class="nestLiner nestLine5" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="55.217" y1="220.026" x2="73.121" y2="203.903"></line>
+                    <line fill="none" class="nestLiner nestLine6" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="51.249" y1="215.381" x2="69.974" y2="200.218"></line>
+                    <line fill="none" class="nestLiner nestLine7" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="47.53" y1="210.534" x2="67.023" y2="196.372"></line>
+                    <line fill="none" class="nestLiner nestLine8" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="44.07" y1="205.5" x2="64.277" y2="192.378"></line>
+                    <line fill="none" class="nestLiner nestLine9" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="40.878" y1="200.291" x2="61.744" y2="188.244"></line>
+                    <line fill="none" class="nestLiner nestLine10" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="37.964" y1="194.923" x2="59.432" y2="183.985"></line>
+                    <line fill="none" class="nestLiner nestLine11" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="35.334" y1="189.409" x2="57.345" y2="179.609"></line>
+                    <line fill="none" class="nestLiner nestLine12" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="32.996" y1="183.766" x2="55.49" y2="175.131"></line>
+                    <line fill="none" class="nestLiner nestLine13" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="30.957" y1="178.007" x2="53.871" y2="170.562"></line>
+                    <line fill="none" class="nestLiner nestLine14" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="29.222" y1="172.149" x2="52.494" y2="165.913"></line>
+                    <line fill="none" class="nestLiner nestLine15" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="27.796" y1="166.21" x2="51.363" y2="161.2"></line>
+                    <line fill="none" class="nestLiner nestLine16" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="26.683" y1="160.203" x2="50.48" y2="156.434"></line>
+                    <line fill="none" class="nestLiner nestLine17" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="25.885" y1="154.146" x2="49.848" y2="151.628"></line>
+                    <line fill="none" class="nestLiner nestLine18" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="25.405" y1="148.057" x2="49.467" y2="146.796"></line>
+                    <line fill="none" class="nestLiner nestLine19" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="25.246" y1="141.95" x2="49.34" y2="141.95"></line>
+                    <line fill="none" class="nestLiner nestLine20" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="25.405" y1="135.843" x2="49.467" y2="137.104"></line>
+                    <line fill="none" class="nestLiner nestLine21" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="25.885" y1="129.753" x2="49.848" y2="132.272"></line>
+                    <line fill="none" class="nestLiner nestLine22" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="26.683" y1="123.696" x2="50.48" y2="127.466"></line>
+                    <line fill="none" class="nestLiner nestLine23" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="27.796" y1="117.689" x2="51.363" y2="122.7"></line>
+                    <line fill="none" class="nestLiner nestLine24" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="29.222" y1="111.75" x2="52.494" y2="117.986"></line>
+                    <line fill="none" class="nestLiner nestLine25" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="30.957" y1="105.893" x2="53.871" y2="113.338"></line>
+                    <line fill="none" class="nestLiner nestLine26" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="32.996" y1="100.134" x2="55.49" y2="108.769"></line>
+                    <line fill="none" class="nestLiner nestLine27" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="35.334" y1="94.49" x2="57.345" y2="104.29"></line>
+                    <line fill="none" class="nestLiner nestLine28" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="37.964" y1="88.977" x2="59.432" y2="99.915"></line>
+                    <line fill="none" class="nestLiner nestLine29" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="40.878" y1="83.608" x2="61.744" y2="95.655"></line>
+                    <line fill="none" class="nestLiner nestLine30" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="44.07" y1="78.399" x2="64.277" y2="91.522"></line>
+                    <line fill="none" class="nestLiner nestLine31" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="47.53" y1="73.365" x2="67.023" y2="87.527"></line>
+                    <line fill="none" class="nestLiner nestLine32" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="51.249" y1="68.519" x2="69.974" y2="83.682"></line>
+                    <line fill="none" class="nestLiner nestLine33" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="55.217" y1="63.873" x2="73.121" y2="79.996"></line>
+                    <line fill="none" class="nestLiner nestLine34" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="59.422" y1="59.442" x2="76.459" y2="76.479"></line>
+                    <line fill="none" class="nestLiner nestLine35" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="63.853" y1="55.237" x2="79.975" y2="73.143"></line>
+                    <line fill="none" class="nestLiner nestLine36" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="68.498" y1="51.27" x2="83.66" y2="69.995"></line>
+                    <line fill="none" class="nestLiner nestLine37" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="73.345" y1="47.551" x2="87.506" y2="67.044"></line>
+                    <line fill="none" class="nestLiner nestLine38" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="78.379" y1="44.091" x2="91.5" y2="64.298"></line>
+                    <line fill="none" class="nestLiner nestLine39" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="83.587" y1="40.899" x2="95.635" y2="61.766"></line>
+                    <line fill="none" class="nestLiner nestLine40" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="88.956" y1="37.984" x2="99.895" y2="59.452"></line>
+                    <line fill="none" class="nestLiner nestLine41" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="94.47"  y1="35.354" x2="104.27" y2="57.366"></line>
+                    <line fill="none" class="nestLiner nestLine42" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="100.113" y1="33.017" x2="108.748" y2="55.511"></line>
+                    <line fill="none" class="nestLiner nestLine43" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="105.872" y1="30.978" x2="113.316" y2="53.893"></line>
+                    <line fill="none" class="nestLiner nestLine44" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="111.729" y1="29.242" x2="117.965" y2="52.516"></line>
+                    <line fill="none" class="nestLiner nestLine45" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="117.669" y1="27.816" x2="122.679" y2="51.384"></line>
+                    <line fill="none" class="nestLiner nestLine46" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="123.676" y1="26.703" x2="127.444" y2="50.501"></line>
+                    <line fill="none" class="nestLiner nestLine47" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="129.732" y1="25.906" x2="132.251" y2="49.868"></line>
+                    <line fill="none" class="nestLiner nestLine48" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="135.822" y1="25.427" x2="137.083" y2="49.489"></line>
+                    <line fill="none" class="nestLiner nestLine49" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="141.929" y1="25.267" x2="141.929" y2="49.362"></line>
+                    <line fill="none" class="nestLiner nestLine50" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="146.774" y1="49.488" x2="148.035" y2="25.427"></line>
+                    <line fill="none" class="nestLiner nestLine51" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="151.607" y1="49.868" x2="154.126" y2="25.906"></line>
+                    <line fill="none" class="nestLiner nestLine52" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="156.413" y1="50.501" x2="160.183" y2="26.703"></line>
+                    <line fill="none" class="nestLiner nestLine53" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="161.179" y1="51.384" x2="166.188" y2="27.817"></line>
+                    <line fill="none" class="nestLiner nestLine54" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="165.893" y1="52.516" x2="172.129" y2="29.243"></line>
+                    <line fill="none" class="nestLiner nestLine55" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="170.54"  y1="53.893" x2="177.986" y2="30.978"></line>
+                    <line fill="none" class="nestLiner nestLine56" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="175.109" y1="55.511" x2="183.744" y2="33.017"></line>
+                    <line fill="none" class="nestLiner nestLine57" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="179.588" y1="57.365" x2="189.388" y2="35.354"></line>
+                    <line fill="none" class="nestLiner nestLine58" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="183.963" y1="59.452" x2="194.902" y2="37.984"></line>
+                    <line fill="none" class="nestLiner nestLine59" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="188.224" y1="61.766" x2="200.271" y2="40.899"></line>
+                    <line fill="none" class="nestLiner nestLine60" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="192.356" y1="64.298" x2="205.479" y2="44.091"></line>
+                    <line fill="none" class="nestLiner nestLine61" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="196.352" y1="67.044" x2="210.514" y2="47.552"></line>
+                    <line fill="none" class="nestLiner nestLine62" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="200.197" y1="69.995" x2="215.359" y2="51.27"></line>
+                    <line fill="none" class="nestLiner nestLine63" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="203.883" y1="73.143" x2="220.004" y2="55.237"></line>
+                    <line fill="none" class="nestLiner nestLine64" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="207.399" y1="76.479" x2="224.436" y2="59.442"></line>
+                    <line fill="none" class="nestLiner nestLine65" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="210.735" y1="79.996" x2="228.641" y2="63.874"></line>
+                    <line fill="none" class="nestLiner nestLine66" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="213.884" y1="83.682" x2="232.608" y2="68.519"></line>
+                    <line fill="none" class="nestLiner nestLine67" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="216.835" y1="87.527" x2="235.895" y2="73.044"></line>
+                    <line fill="none" class="nestLiner nestLine68" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="219.58"  y1="91.522" x2="239.787" y2="78.399"></line>
+                    <line fill="none" class="nestLiner nestLine69" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="222.113" y1="95.655" x2="242.979" y2="83.608"></line>
+                    <line fill="none" class="nestLiner nestLine70" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="224.426" y1="99.915" x2="245.895" y2="88.978"></line>
+                    <line fill="none" class="nestLiner nestLine71" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="226.513" y1="104.29" x2="248.065" y2="95.085"></line>
+                    <line fill="none" class="nestLiner nestLine72" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="228.368" y1="108.769" x2="250.861" y2="100.134"></line>
+                    <line fill="none" class="nestLiner nestLine73" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="229.986" y1="113.338" x2="252.9" y2="105.894"></line>
+                    <line fill="none" class="nestLiner nestLine74" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="231.363" y1="117.986" x2="254.635" y2="111.751"></line>
+                    <line fill="none" class="nestLiner nestLine75" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="232.494" y1="122.699" x2="256.062" y2="117.689"></line>
+                    <line fill="none" class="nestLiner nestLine76" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="233.378" y1="127.466" x2="257.176" y2="123.696"></line>
+                    <line fill="none" class="nestLiner nestLine77" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="234.011" y1="132.271" x2="257.973" y2="129.753"></line>
+                    <line fill="none" class="nestLiner nestLine78" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="234.011" y1="132.271" x2="257.973" y2="129.753"></line>
+                    <line fill="none" class="nestLiner nestLine79" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="234.391" y1="137.104" x2="258.452" y2="135.843"></line>
+                    <line fill="none" class="nestLiner nestLine80" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="234.518" y1="141.95" x2="258.612" y2="141.95"></line>
+                    <line fill="none" class="nestLiner nestLine81" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="234.391" y1="146.796" x2="258.452" y2="148.058"></line>
+                    <line fill="none" class="nestLiner nestLine82" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="234.011" y1="151.628" x2="257.973" y2="154.147"></line>
+                    <line fill="none" class="nestLiner nestLine83" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="233.378" y1="156.434" x2="257.981" y2="161.001"></line>
+                    <line fill="none" class="nestLiner nestLine84" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="232.494" y1="161.2" x2="256.062" y2="166.21"></line>
+                    <line fill="none" class="nestLiner nestLine85" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="231.363" y1="165.913" x2="254.635" y2="172.149"></line>
+                    <line fill="none" class="nestLiner nestLine86" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="229.986" y1="170.562" x2="252.9" y2="178.007"></line>
+                    <line fill="none" class="nestLiner nestLine87" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="228.368" y1="175.131" x2="250.861" y2="183.767"></line>
+                    <line fill="none" class="nestLiner nestLine88" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="226.513" y1="179.609" x2="248.524" y2="189.409"></line>
+                    <line fill="none" class="nestLiner nestLine89" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="224.426" y1="183.984" x2="245.895" y2="194.923"></line>
+                    <line fill="none" class="nestLiner nestLine90" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="222.113" y1="188.244" x2="242.979" y2="200.292"></line>
+                    <line fill="none" class="nestLiner nestLine91" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="219.58"  y1="192.377" x2="239.787" y2="205.5"></line>
+                    <line fill="none" class="nestLiner nestLine92" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="216.835" y1="196.372" x2="236.326" y2="210.534"></line>
+                    <line fill="none" class="nestLiner nestLine93" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="213.884" y1="200.218" x2="232.608" y2="215.381"></line>
+                    <line fill="none" class="nestLiner nestLine94" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="210.735" y1="203.903" x2="228.641" y2="220.026"></line>
+                    <line fill="none" class="nestLiner nestLine95" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="207.399" y1="207.42" x2="224.436" y2="224.457"></line>
+                    <line fill="none" class="nestLiner nestLine96" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="203.883" y1="210.757" x2="220.004" y2="228.662"></line>
+                    <line fill="none" class="nestLiner nestLine97" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="200.197" y1="213.904" x2="215.359" y2="232.63"></line>
+                    <line fill="none" class="nestLiner nestLine98" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="196.352" y1="216.855" x2="210.514" y2="236.349"></line>
+                    <line fill="none" class="nestLiner nestLine99" stroke="#C8C9CA" stroke-width="1.524" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="192.356" y1="219.602" x2="205.479" y2="239.809"></line>
+                </g>
+            </svg>
+            <div class="dragCurrent" id="dragCurrent">
+                <div id="CurrentDragThing"></div>
+            </div>
+            <div id="dragMin">
+                <div id="MinDragThing2"></div>
+                <div id="MinDragThing"></div>
+            </div>
+            <div class="dragMax" id="dragMax">
+                <div id="MaxDragThing2"></div>
+                <div id="MaxDragThing"></div>
+            </div>
+
+        </div>
+</template>
+
+<template id="_switchProcessBar">
+    <div class="switchBarWrapper">
+        <div class="curtainBtn" @click="curtainBtnClicked">
+            <svg class="curtainButton" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="图层_1" x="0px" y="0px" width="106px" height="80px" viewBox="0 0 106 80" enable-background="new 0 0 106 80" xml:space="preserve">
+                <path fill="#8C8C8B" class="controllBar" d="M14.68,42.532c0-11.528,9.347-20.873,20.874-20.873h37.572C84.653,21.659,94,31.004,94,42.532  c0,11.529-9.347,20.877-20.875,20.877H35.553C24.026,63.409,14.68,54.061,14.68,42.532"/>
+                <circle cx="37" cy="42.5" r="18" fill="#ffffff" class="controllPointer"></circle>
+            </svg>
+            <div class="curtainSigns">
+                <svg v-if="curtainOn" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="图层_1" x="0px" y="0px" width="38px" height="41.75px" viewBox="0 0 38 41.75" enable-background="new 0 0 38 41.75" xml:space="preserve">
+                    <path fill="none" stroke="#E66C25" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="  M9.007,23.349l-4.086,0.019V4.952h13.413L18.32,8.389C18.382,16.271,13.242,23.304,9.007,23.349z"/>
+                    <path fill="none" stroke="#E66C25" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="  M4.921,37.096V23.367L9.28,23.34c0.084,0.096,1.247,1.729,1.944,4.315c0.434,1.607,0.714,6.378,0.445,6.489  c-0.583,0.24-1.449,0.133-1.568,0.188c-0.09,0.042,0.031,1.302-0.15,2.074c-0.108,0.457-1.288,0.898-2.507,0.94  S4.921,37.096,4.921,37.096z"/>
+                    <path fill="none" stroke="#E66C25" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="  M9.013,29.848c0,0,0.617,2.021,1.088,4.486"/>
+                    <path fill="none" stroke="#E66C25" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="  M29.595,23.349l4.086,0.019V4.952H20.268l0.014,3.437C20.22,16.271,25.358,23.304,29.595,23.349z"/>
+                    <path fill="none" stroke="#E66C25" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="  M33.681,37.096V23.367l-4.359-0.027c-0.084,0.096-1.247,1.729-1.944,4.315c-0.434,1.607-0.713,6.378-0.445,6.489  c0.583,0.24,1.449,0.133,1.568,0.188c0.091,0.042-0.03,1.302,0.15,2.074c0.108,0.457,1.288,0.898,2.507,0.94  C32.377,37.39,33.681,37.096,33.681,37.096z"/>
+                    <path fill="none" stroke="#E66C25" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="  M29.589,29.848c0,0-0.617,2.021-1.088,4.486"/>
+                    <line fill="none" stroke="#E66C25" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="4.921" y1="4.952" x2="33.68" y2="4.952"/>
+                </svg>
+                <svg v-if="!curtainOn" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="图层_1" x="0px" y="0px" width="38px" height="41.75px" viewBox="0 0 38 41.75" enable-background="new 0 0 38 41.75" xml:space="preserve">
+                    <path fill="none" stroke="#B1B0B0" stroke-width="3" stroke-miterlimit="10" d="M4.896,13.333c3.595,0,3.595,3.048,7.189,3.048  s3.594-3.048,7.187-3.048c3.596,0,3.596,3.048,7.192,3.048c3.597,0,3.597-3.048,7.191-3.048"/>
+                    <polyline fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="  4.896,35.929 4.896,5.45 33.655,5.45 33.655,35.929 "/>
+                    <line fill="none" stroke="#B1B0B0" stroke-width="3" stroke-miterlimit="10" x1="11.585" y1="16.381" x2="11.585" y2="37.852"/>
+                    <line fill="none" stroke="#B1B0B0" stroke-width="3" stroke-miterlimit="10" x1="26.733" y1="16.38" x2="26.733" y2="37.835"/>
+                    <line fill="none" stroke="#B1B0B0" stroke-width="3" stroke-miterlimit="10" x1="19.276" y1="13.333" x2="19.276" y2="35.632"/>
+                    <path fill="none" stroke="#B1B0B0" stroke-width="3" stroke-miterlimit="10" d="M4.896,35.929l5.22,1.66  c1.266,0.402,2.646,0.34,3.864-0.178l3.163-1.34c1.358-0.576,2.912-0.586,4.278-0.027l3.381,1.381  c1.24,0.508,2.641,0.548,3.912,0.112l4.941-1.608"/>
+                </svg>
+            </div>
+        </div>
+        <div class="switchBarOff">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="图层_1" x="0px" y="0px" width="38px" height="41.75px" viewBox="0 0 38 41.75" enable-background="new 0 0 38 41.75" xml:space="preserve">
+                <path fill="none" stroke="#B1B0B0" stroke-width="3" stroke-miterlimit="10" d="M4.896,13.333c3.595,0,3.595,3.048,7.189,3.048  s3.594-3.048,7.187-3.048c3.596,0,3.596,3.048,7.192,3.048c3.597,0,3.597-3.048,7.191-3.048"/>
+                <polyline fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="  4.896,35.929 4.896,5.45 33.655,5.45 33.655,35.929 "/>
+                <line fill="none" stroke="#B1B0B0" stroke-width="3" stroke-miterlimit="10" x1="11.585" y1="16.381" x2="11.585" y2="37.852"/>
+                <line fill="none" stroke="#B1B0B0" stroke-width="3" stroke-miterlimit="10" x1="26.733" y1="16.38" x2="26.733" y2="37.835"/>
+                <line fill="none" stroke="#B1B0B0" stroke-width="3" stroke-miterlimit="10" x1="19.276" y1="13.333" x2="19.276" y2="35.632"/>
+                <path fill="none" stroke="#B1B0B0" stroke-width="3" stroke-miterlimit="10" d="M4.896,35.929l5.22,1.66  c1.266,0.402,2.646,0.34,3.864-0.178l3.163-1.34c1.358-0.576,2.912-0.586,4.278-0.027l3.381,1.381  c1.24,0.508,2.641,0.548,3.912,0.112l4.941-1.608"/>
+            </svg>
+        </div>
+        <div class="switchBarContent">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="图层_1" x="0px" y="0px" width="625px" height="75px" viewBox="0 0 625 75" enable-background="new 0 0 625 75" xml:space="preserve">
+                <rect x="10" y="30" width="586" height="15" id="bar" fill="#fff" stroke="#C9CACA" rx="10"></rect>
+                <rect x="10" y="30" width="0" height="15" id="orangeBar" class="load"  fill="#F16E20" rx="10"></rect>
+                <circle cx="21" cy="37.5" r="20" style="stroke:#9E9E9F;stroke-width:0.5;fill:#ffffff;" id="innerSwitchPointer"></circle>
+                <circle cx="21" cy="37.5" r="30" style="fill:transparent;" id="outerSwitchPointer"></circle>
+                <text x="12" y="95" fill="#878888" id="switchText">{{switchText}}%</text>
+            </svg>
+        </div>
+        <div class="switchBarOn">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="图层_1" x="0px" y="0px" width="38px" height="41.75px" viewBox="0 0 38 41.75" enable-background="new 0 0 38 41.75" xml:space="preserve">
+                <path fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="  M9.007,23.349l-4.086,0.019V4.952h13.413L18.32,8.389C18.382,16.271,13.242,23.304,9.007,23.349z"/>
+                <path fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="  M4.921,37.096V23.367L9.28,23.34c0.084,0.096,1.247,1.729,1.944,4.315c0.434,1.607,0.714,6.378,0.445,6.489  c-0.583,0.24-1.449,0.133-1.568,0.188c-0.09,0.042,0.031,1.302-0.15,2.074c-0.108,0.457-1.288,0.898-2.507,0.94  S4.921,37.096,4.921,37.096z"/>
+                <path fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="  M9.013,29.848c0,0,0.617,2.021,1.088,4.486"/>
+                <path fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="  M29.595,23.349l4.086,0.019V4.952H20.268l0.014,3.437C20.22,16.271,25.358,23.304,29.595,23.349z"/>
+                <path fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="  M33.681,37.096V23.367l-4.359-0.027c-0.084,0.096-1.247,1.729-1.944,4.315c-0.434,1.607-0.713,6.378-0.445,6.489  c0.583,0.24,1.449,0.133,1.568,0.188c0.091,0.042-0.03,1.302,0.15,2.074c0.108,0.457,1.288,0.898,2.507,0.94  C32.377,37.39,33.681,37.096,33.681,37.096z"/>
+                <path fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="  M29.589,29.848c0,0-0.617,2.021-1.088,4.486"/>
+                <line fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="4.921" y1="4.952" x2="33.68" y2="4.952"/>
+            </svg>
+        </div>
+    </div>
+</template>
+
+<template id="_AC">
+    <div class="ac" >
+        <svg version="1.1" id="svgH" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="729.422px" height="75.391px" viewBox="0 0 729.422 75.391" enable-background="new 0 0 729.422 75.391" xml:space="preserve">
+            <g id="power" class="setOpacity" v-on:click="power">
+                <g>
+                    <defs>
+                        <rect id="SVGID_9_" x="0.063" y="0.073" width="105.22" height="75.03"></rect>
+                    </defs>
+                    <clipPath id="SVGID_10_">
+                        <use xlink:href="#SVGID_9_"  overflow="visible"></use>
+                    </clipPath>
+                    <path opacity="0.2" clip-path="url(#SVGID_10_)" fill-rule="evenodd" clip-rule="evenodd" fill="#C6C7C7" d="M105.28,66.156 c0,4.939-4.005,8.944-8.945,8.944H9.011c-4.94,0-8.945-4.005-8.945-8.944V9.02c0-4.939,4.005-8.944,8.945-8.944h87.324 c4.94,0,8.945,4.005,8.945,8.944V66.156z"></path>
+                </g>
+                <path class="highLighter powerHighLighter" fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M57.984,25.148c5.568,2.133,9.517,7.521,9.517,13.832c0,8.179-6.638,14.808-14.83,14.808c-8.187,0-14.826-6.629-14.826-14.808 c0-6.347,3.999-11.766,9.618-13.869"></path>
+                <line class="highLighter powerHighLighter" fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="52.67" y1="21.388" x2="52.67" y2="34.531"></line>
+            </g>
+            <g id="energySave" class="setOpacity" v-on:click="energySave">
+                <g>
+                    <defs>
+                        <rect id="SVGID_1_" x="158.643" y="0.073" width="105.22" height="75.03"></rect>
+                    </defs>
+                    <clipPath id="SVGID_2_">
+                        <use xlink:href="#SVGID_1_"  overflow="visible"></use>
+                    </clipPath>
+                    <path opacity="0.2" clip-path="url(#SVGID_2_)" fill-rule="evenodd" clip-rule="evenodd" fill="#C6C7C7" d="M263.861,66.156 c0,4.939-4.005,8.944-8.945,8.944h-87.324c-4.94,0-8.945-4.005-8.945-8.944V9.02c0-4.939,4.005-8.944,8.945-8.944h87.324 c4.94,0,8.945,4.005,8.945,8.944V66.156z"></path>
+                </g>
+                <path class="highLighter energySaveHighLighter" fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M200.518,45.006c0,0,7.158,5.33,16.041-0.254c9.356-5.881,11.473-23.198,11.473-23.198s-19.95-1.218-27.057,2.944 c-4.448,2.605-8.832,9.239-3.655,18.071"></path>
+                <path class="highLighter energySaveHighLighter" fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M214.935,30.691c0,0-8.187-0.314-17.31,12.283c-3.198,4.418-3.147,10.813-3.147,10.813"></path>
+            </g>
+            <g id="strongCool" class="setOpacity" v-on:click="strongCool">
+                <g>
+                    <defs>
+                        <rect id="SVGID_3_" x="317.223" y="0.073" width="105.22" height="75.03"></rect>
+                    </defs>
+                    <clipPath id="SVGID_4_">
+                        <use xlink:href="#SVGID_3_"  overflow="visible"></use>
+                    </clipPath>
+                    <path opacity="0.2" clip-path="url(#SVGID_4_)" fill-rule="evenodd" clip-rule="evenodd" fill="#C6C7C7" d="M422.441,66.156 c0,4.939-4.004,8.944-8.945,8.944h-87.324c-4.939,0-8.944-4.005-8.944-8.944V9.02c0-4.939,4.005-8.944,8.944-8.944h87.324 c4.941,0,8.945,4.005,8.945,8.944V66.156z"></path>
+                </g>
+                <line class="highLighter strongCoolHighLighter" fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="364.256" y1="53.787" x2="375.647" y2="21.388"></line>
+                <line class="highLighter strongCoolHighLighter" fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="366.72" y1="46.781" x2="360.12" y2="50.62"></line>
+                <line class="highLighter strongCoolHighLighter" fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="366.72" y1="46.781" x2="369.952" y2="53.787"></line>
+                <line class="highLighter strongCoolHighLighter" fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="372.857" y1="28.537" x2="379.628" y2="25.007"></line>
+                <line class="highLighter strongCoolHighLighter" fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="372.857" y1="28.537" x2="369.953" y2="21.388"></line>
+                <line class="highLighter strongCoolHighLighter" fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="386.712" y1="34.354" x2="352.957" y2="40.688"></line>
+                <line class="highLighter strongCoolHighLighter" fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="379.412" y1="35.725" x2="386.038" y2="39.52"></line>
+                <line class="highLighter strongCoolHighLighter" fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="379.412" y1="35.725" x2="383.864" y2="29.42"></line>
+                <line class="highLighter strongCoolHighLighter" fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="360.544" y1="39.53" x2="354.102" y2="35.432"></line>
+                <line class="highLighter strongCoolHighLighter" fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="360.544" y1="39.53" x2="355.804" y2="45.62"></line>
+                <line class="highLighter strongCoolHighLighter" fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="358.653" y1="24.623" x2="381.016" y2="50.688"></line>
+                <line class="highLighter strongCoolHighLighter" fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="363.489" y1="30.26" x2="363.464" y2="22.624"></line>
+                <line class="highLighter strongCoolHighLighter" fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="363.489" y1="30.26" x2="355.805" y2="29.556"></line>
+                <line class="highLighter strongCoolHighLighter" fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="376.22" y1="44.696" x2="375.892" y2="52.325"></line>
+                <line class="highLighter strongCoolHighLighter" fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="376.22" y1="44.696" x2="383.864" y2="45.756"></line>
+            </g>
+            <g id="cool" class="setOpacity" v-on:click="coolx">
+                <g>
+                    <defs>
+                        <rect id="SVGID_5_" x="470.683" y="0.073" width="105.21" height="75.03"></rect>
+                    </defs>
+                    <clipPath id="SVGID_6_">
+                        <use xlink:href="#SVGID_5_"  overflow="visible"></use>
+                    </clipPath>
+                    <path opacity="0.2" clip-path="url(#SVGID_6_)" fill-rule="evenodd" clip-rule="evenodd" fill="#C6C7C7" d="M575.895,66.156 c0,4.939-4.005,8.944-8.945,8.944h-87.324c-4.94,0-8.944-4.005-8.944-8.944V9.02c0-4.939,4.004-8.944,8.944-8.944h87.324 c4.939,0,8.945,4.005,8.945,8.944V66.156z"></path>
+                </g>
+                <line class="highLighter coolHighLighter"  fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="521.279" y1="46.83" x2="515.407" y2="51.294"></line>
+                <line class="highLighter coolHighLighter"  fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="521.279" y1="46.83" x2="525.206" y2="53.166"></line>
+                <line class="highLighter coolHighLighter"  fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="521.398" y1="46.779" x2="515.526" y2="51.242"></line>
+                <line class="highLighter coolHighLighter"  fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="521.398" y1="46.779" x2="525.325" y2="53.115"></line>
+                <line class="highLighter coolHighLighter"  fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="519.866" y1="53.787" x2="526.951" y2="21.388"></line>
+                <line class="highLighter coolHighLighter"  fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="539.089" y1="32.505" x2="507.487" y2="42.569"></line>
+                <line class="highLighter coolHighLighter"  fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="532.255" y1="34.682" x2="539.054" y2="37.536"></line>
+                <line class="highLighter coolHighLighter"  fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="532.255" y1="34.682" x2="535.776" y2="28.114"></line>
+                <line class="highLighter coolHighLighter"  fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="511.046" y1="26.498" x2="535.562" y2="48.834"></line>
+                <line class="highLighter coolHighLighter"  fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="516.349" y1="31.328" x2="515.42" y2="24.014"></line>
+                <line class="highLighter coolHighLighter"  fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="516.349" y1="31.328" x2="508.9" y2="31.563"></line>
+            </g>
+            <g id="warm" class="setOpacity" v-on:click="warmx">
+                <g>
+                    <defs>
+                        <rect id="SVGID_7_" x="624.133" y="0.073" width="105.22" height="75.03"></rect>
+                    </defs>
+                    <clipPath id="SVGID_8_">
+                        <use xlink:href="#SVGID_7_"  overflow="visible"></use>
+                    </clipPath>
+                    <path opacity="0.2" clip-path="url(#SVGID_8_)" fill-rule="evenodd" clip-rule="evenodd" fill="#C6C7C7" d="M729.349,66.156 c0,4.939-4.005,8.944-8.945,8.944H633.08c-4.94,0-8.945-4.005-8.945-8.944V9.02c0-4.939,4.005-8.944,8.945-8.944h87.324 c4.94,0,8.945,4.005,8.945,8.944V66.156z"></path>
+                </g>
+                <path class="highLighter warmHighLighter" fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M676.732,46.811c-2.462,0-4.778-0.959-6.519-2.699c-1.741-1.732-2.699-4.044-2.699-6.51c0-2.484,0.958-4.806,2.698-6.537 c1.743-1.741,4.058-2.7,6.52-2.7c2.478,0,4.796,0.959,6.527,2.699c1.748,1.747,2.711,4.069,2.711,6.538 c0,2.451-0.963,4.763-2.71,6.51C681.528,45.854,679.21,46.811,676.732,46.811z"></path>
+                <line class="highLighter warmHighLighter" fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="676.742" y1="25.565" x2="676.742" y2="21.588"></line>
+                <line class="highLighter warmHighLighter" fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="676.742" y1="53.588" x2="676.742" y2="49.61"></line>
+                <line class="highLighter warmHighLighter" fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="668.241" y1="29.087" x2="665.428" y2="26.273"></line>
+                <line class="highLighter warmHighLighter" fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="688.055" y1="48.901" x2="685.242" y2="46.088"></line>
+                <line class="highLighter warmHighLighter" fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="664.72" y1="37.588" x2="660.742" y2="37.588"></line>
+                <line class="highLighter warmHighLighter" fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="692.742" y1="37.588" x2="688.764" y2="37.588"></line>
+                <line class="highLighter warmHighLighter" fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="668.241" y1="46.088" x2="665.428" y2="48.901"></line>
+                <line class="highLighter warmHighLighter" fill="none" stroke="#B1B0B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="688.055" y1="26.273" x2="685.242" y2="29.087"></line>
+            </g>
+        </svg>
+        <div id="ACtextHolder">
+            <div class="texts powertexts"     >{{onOff}}</div>
+            <div class="texts energySavetexts">{{enSave}}</div>
+            <div class="texts strongCooltexts">{{sCool}}</div>
+            <div class="texts cooltexts"      >{{cool}}</div>
+            <div class="texts warmtexts"      >{{warm}}</div>
+        </div>
+    </div>
+</template>
+
+<template id="_wallSwitch">
+    <div class="wallSwitchContent wallSwitchDiv">
+        <div v-for="(info, key, index) in wallSwitchInfo" v-bind:style="info.style" class="wallSwitchList wallSwitchDiv">
+            <div class="wallSwitchIcon wallSwitchDiv">
+                <img class="iconImg" v-bind:src="info.src">
+            </div>
+            <div class="wallSwitchName wallSwitchDiv">
+                {{info.name}}
+            </div>
+
+            <div class="wallSwitchLocation wallSwitchDiv">
+                <div class="locationIcon wallSwitchDiv">
+                    <img class="locationImg" src="../../libs/img/location.svg"/>
+                </div>
+                {{info.location}}
+            </div>
+
+            <div class="wallSwitchStatus wallSwitchDiv" v-on:click="onOffClick(info.command)">
+                {{info.onOff}}
+            </div>
+
+            <div class="wallSwitchOnOff wallSwitchDiv">
+                <svg version="1.1" class="wallSwitchDiv" id="onOffButtonSVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="32.797px" height="35.531px" viewBox="0 0 32.797 35.531" enable-background="new 0 0 32.797 35.531" xml:space="preserve">
+                    <g v-on:click="onOffClick(info.command)" v-bind:command="info.command">
+                        <circle cx="16" cy="18" r="35" fill="transparent"></circle>
+                        <path v-bind:class="[info.isOn?'powerOn':'powerOff']" fill="transparent" stroke="#D0672B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+                            M21.704,5.321c5.568,2.132,9.517,7.52,9.517,13.831c0,8.179-6.638,14.808-14.831,14.808c-8.187,0-14.826-6.629-14.826-14.808
+                            c0-6.346,4-11.765,9.619-13.869"></path>
+                        <line v-bind:class="[info.isOn?'powerOn':'powerOff']" fill="transparent" stroke="#D0672B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="16.391" y1="1.56" x2="16.391" y2="14.704"></line>
+                    </g>
+                </svg>
+            </div>
+            <div v-on:click="tickClick(info.command)" class="tick wallSwitchDiv">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="wallSwitchDiv" x="0px" y="0px" viewBox="0 0 511.999 511.999" style="enable-background:new 0 0 511.999 511.999;" xml:space="preserve" width="512px" height="512px">
+                    <path v-bind:fill="[info.isTick?'#EC591A':'#9B9B9B']" class="this " d="M505.983,60.701c-7.897-7.722-20.559-7.582-28.282,0.316L138,408.394L34.3,302.35c-7.722-7.898-20.387-8.038-28.283-0.316    c-7.897,7.722-8.039,20.385-0.316,28.282l117.998,120.665c3.699,3.788,8.821,6.019,14.294,6.019    c5.223,0,10.415-2.038,14.305-6.017l354-362C514.022,81.086,513.88,68.424,505.983,60.701z"></path>
+                </svg>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template id="_shutterButton">
+    <div class="shutterButtonContent">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="图层_1" x="0px" y="0px" width="848.321px" height="585.699px" viewBox="0 0 848.321 585.699" enable-background="new 0 0 848.321 585.699" xml:space="preserve">
+            <g @click="start" id="start">
+                <path fill="#B3B2B3" d="M272.354,320.368l-23.691-21.443c-0.877-0.794-0.877-2.172,0-2.966l23.691-21.44  c1.286-1.164,3.342-0.251,3.342,1.483v42.883C275.696,320.619,273.64,321.531,272.354,320.368">
+                    <set attributeName="fill" to="#E66C25" begin="start.click" dur="0.5s"></set>
+                </path>
+                <rect fill="transparent" x="180" y="180" width="150px" height="250px"></rect>
+            </g>
+            <g @click="end" id="end">
+                <path fill="#B3B2B3" d="M590.114,274.519l23.691,21.441c0.878,0.794,0.878,2.172,0,2.966l-23.691,21.441  c-1.286,1.163-3.342,0.251-3.342-1.484V276C586.771,274.268,588.828,273.355,590.114,274.519">
+                    <set attributeName="fill" to="#E66C25" begin="end.click" dur="0.5s"></set>
+                </path>
+                <rect fill="transparent" x="550" y="180" width="150px" height="250px"></rect>
+            </g>
+            <g @click="stop" id="stop">
+                <rect xmlns="http://www.w3.org/2000/svg" x="403.269" y="276.478" fill="#B3B2B3" width="42" height="42">
+                    <set attributeName="fill" to="#E66C25" begin="stop.click" dur="0.5s"></set>
+                </rect>
+                <!--<line fill="none" stroke="#B3B2B3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="417.389" y1="272.943" x2="417.389" y2="321.943">-->
+                    <!--<set attributeName="stroke" to="#E66C25" begin="stop.click" dur="0.5s"></set>-->
+                <!--</line>-->
+                <!--<line fill="none" stroke="#B3B2B3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="430.516" y1="272.943" x2="430.516" y2="321.943">-->
+                    <!--<set attributeName="stroke" to="#E66C25" begin="stop.click" dur="0.5s"></set>-->
+                <!--</line>-->
+                <rect fill="transparent" x="350" y="180" width="150px" height="250px"></rect>
+            </g>
+        </svg>
+    </div>
+</template>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>monitor</title>
+    <link rel="stylesheet" href="../libs/chartist.min.css">
+    <link rel="stylesheet" href="css/environment.css">
+</head>
+<body>
+
+<div id="myChart" class="ct-chart ct-perfect-fourth"></div>
+<div id="legends">
+    <div class="humidityHolder">
+        <div id="humValue"></div>
+        <div class="humICo">
+            <svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16.656px" height="23.469px" viewBox="0 0 16.656 23.469" enable-background="new 0 0 16.656 23.469" xml:space="preserve">
+                    <path fill="none" stroke="#59A7C8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M15.843,15.396c0,4.002-3.357,7.249-7.501,7.249c-4.142,0-7.499-3.247-7.499-7.249s7.499-14.57,7.499-14.57S15.843,11.395,15.843,15.396z"></path>
+                    <path fill="none" stroke="#59A7C8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.293,14.49c1.128,0,1.658,0.379,2.275,0.816c0.628,0.443,1.338,0.949,2.698,0.949c1.066,0,1.725-0.463,2.253-0.836c0-0.002,0-0.002,0-0.002c0.019,0.16,0.027,0.318,0.027,0.476c0,3.724-3.23,6.752-7.203,6.752c-3.974,0-7.205-3.028-7.205-6.752c0-0.145,0.008-0.282,0.023-0.424c0.514,0.354,1.15,0.786,2.157,0.786c1.358,0,2.069-0.506,2.696-0.949C6.633,14.869,7.164,14.49,8.293,14.49z"></path>
+            </svg>
+        </div>
+        <div id="HumidityTopic" class="textHolder"></div>
+    </div>
+    <div class="TemperatureHolder">
+        <div id="tempValue"></div>
+        <div class="tempICo">
+            <svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="13.875px" height="26.641px" viewBox="0 0 13.875 26.641" enable-background="new 0 0 13.875 26.641" xml:space="preserve">
+                <path fill="#DE551A" d="M6.935,26.568c-3.785,0-6.863-3.08-6.863-6.865c0-2.322,1.117-4.416,3.009-5.686V3.834c0-2.077,1.729-3.767,3.854-3.767c2.126,0,3.854,1.689,3.854,3.767v10.183c1.893,1.27,3.009,3.363,3.009,5.686C13.798,23.488,10.719,26.568,6.935,26.568z M6.935,1.568c-1.298,0-2.354,1.017-2.354,2.267v10.598c0,0.267-0.142,0.513-0.372,0.648c-1.651,0.963-2.637,2.691-2.637,4.623c0,2.958,2.406,5.365,5.363,5.365c2.957,0,5.363-2.407,5.363-5.365c0-1.932-0.985-3.66-2.637-4.623c-0.23-0.135-0.372-0.381-0.372-0.648V3.834C9.289,2.584,8.232,1.568,6.935,1.568z M3.83,14.432h0.01H3.83z"></path>
+                <path fill="#DE551A" d="M6.935,23.75c-2.16,0-3.917-1.758-3.917-3.918c0-2.159,1.757-3.916,3.917-3.916c2.159,0,3.916,1.757,3.916,3.916C10.851,21.992,9.094,23.75,6.935,23.75z M6.935,17.416c-1.333,0-2.417,1.084-2.417,2.416c0,1.333,1.084,2.418,2.417,2.418c1.332,0,2.416-1.085,2.416-2.418C9.351,18.5,8.267,17.416,6.935,17.416z"></path>
+                <path fill="#DE551A" d="M6.935,17.416c-0.414,0-0.75-0.336-0.75-0.75V6.5c0-0.414,0.336-0.75,0.75-0.75 s0.75,0.336,0.75,0.75v10.167C7.685,17.08,7.349,17.416,6.935,17.416z"></path>
+            </svg>
+        </div>
+        <div id="TemperatureTopic" class="textHolder"></div>
+    </div>
+</div>
+<div id="enRefresh">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 344 344" style="enable-background:new 0 0 344 344;" xml:space="preserve">
+        <g id="re">
+            <rect x="0" y="0" height="100%" width="100%" fill="transparent" stroke="transparent"></rect>
+            <path d="M334.485,37.463c-6.753-1.449-13.396,2.853-14.842,9.603l-9.084,42.391C281.637,40.117,228.551,9.155,170.368,9.155    c-89.603,0-162.5,72.896-162.5,162.5c0,6.903,5.596,12.5,12.5,12.5c6.903,0,12.5-5.597,12.5-12.5    c0-75.818,61.682-137.5,137.5-137.5c49.429,0,94.515,26.403,118.925,68.443l-41.674-8.931c-6.752-1.447-13.396,2.854-14.841,9.604    c-1.446,6.75,2.854,13.396,9.604,14.842l71.536,15.33c1.215,0.261,2.449,0.336,3.666,0.234c2.027-0.171,4.003-0.836,5.743-1.962    c2.784-1.801,4.738-4.634,5.433-7.875l15.331-71.536C345.535,45.555,341.235,38.911,334.485,37.463z" fill="#F26F21">
+                <animateTransform attributeName="transform" begin="re.click" dur="1s" type="rotate" from="0 172 172" to="720 172 172"></animateTransform>
+            </path>
+            <path d="M321.907,155.271c-6.899,0.228-12.309,6.006-12.081,12.905c1.212,36.708-11.942,71.689-37.042,98.504    c-25.099,26.812-59.137,42.248-95.844,43.46c-1.53,0.05-3.052,0.075-4.576,0.075c-47.896-0.002-92.018-24.877-116.936-65.18    l43.447,11.65c6.668,1.787,13.523-2.168,15.311-8.837c1.788-6.668-2.168-13.522-8.836-15.312l-70.664-18.946    c-3.202-0.857-6.615-0.409-9.485,1.247c-2.872,1.656-4.967,4.387-5.826,7.589L0.43,293.092    c-1.788,6.668,2.168,13.522,8.836,15.311c1.085,0.291,2.173,0.431,3.245,0.431c5.518,0,10.569-3.684,12.066-9.267l10.649-39.717    c29.624,46.647,81.189,75.367,137.132,75.365c1.797,0,3.604-0.029,5.408-0.089c43.381-1.434,83.608-19.674,113.271-51.362    s45.209-73.031,43.776-116.413C334.586,160.453,328.805,155.026,321.907,155.271z" fill="#F26F21">
+                <animateTransform attributeName="transform" begin="re.click" dur="1s" type="rotate" from="0 172 172" to="720 172 172"></animateTransform>
+            </path>
+        </g>
+    </svg>
+</div>
+<script src="../libs/jquery-1.11.3.js"></script>
+<script src="../cordova.js"></script>
+<script src="../cordova_plugins.js"></script>
+<script type="text/javascript" src="../libs/Oomi-command.js"></script>
+<script type="text/javascript" src="../libs/Oomi-common.js"></script>
+<script src="../libs/chartist.min.js"></script>
+<script src="../internationalization/LanguageSelector.js"></script>
+<script src="js/environment.js"></script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" href="../libs/swiper.min.css" type="text/css">
+    <link rel="stylesheet" href="js/layout2.css" type="text/css">
+
+</head>
+<body >
+<template id="picker">
+    <div class="pickerHolder diver">
+        <div class="topic diver"></div>
+        <div class="scrollWindow diver swiper-container" v-bind:id="myid">
+            <div class="scrollCellHolder diver swiper-wrapper" >
+                <div class="scrollCell diver1 swiper-slide"
+                     v-for="(cellInfo, key, index) in info"
+                     v-bind:style="cellInfo.style"
+                     v-bind:command="cellInfo.command">
+                    {{cellInfo.text}}
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+<template id="outHolder">
+    <div class="container diver">
+        <div v-bind:style="style" class="diver topicHolder">{{topics}}</div>
+        <div class="pickers diver"
+             v-for="(pickerInfo, key, index) in pickers"
+             v-bind:style="pickerInfo.style">
+            <picker v-bind:info="pickerInfo.cellInfo" v-bind:myid="pickerInfo.myid"></picker>
+        </div>
+    </div>
+</template>
+<template id="humHolder">
+    <div class="container diver">
+        <div class="pickers diver"
+             v-for="(pickerInfo, key, index) in pickers"
+             v-bind:style="pickerInfo.style">
+            <picker v-bind:info="pickerInfo.cellInfo" v-bind:scrollStyle="pickerInfo.style" v-bind:myid="pickerInfo.myid"></picker>
+        </div>
+    </div>
+</template>
+<template id="tempHolder">
+    <div class="container diver">
+        <div class="pickers diver"
+             v-for="(pickerInfo, key, index) in pickers"
+             v-bind:style="pickerInfo.style">
+            <picker v-bind:info="pickerInfo.cellInfo" v-bind:scrollStyle="pickerInfo.style" v-bind:myid="pickerInfo.myid"></picker>
+        </div>
+    </div>
+</template>
+<template id="moHolder">
+    <div class="container diver">
+        <div class="pickers diver"
+             v-for="(pickerInfo, key, index) in pickers"
+             v-bind:style="pickerInfo.style">
+            <picker v-bind:info="pickerInfo.cellInfo" v-bind:scrollStyle="pickerInfo.style" v-bind:myid="pickerInfo.myid"></picker>
+        </div>
+    </div>
+</template>
+<template id="uvHolder">
+    <div class="container diver">
+        <div class="pickers diver"
+             v-for="(pickerInfo, key, index) in pickers"
+             v-bind:style="pickerInfo.style">
+            <picker v-bind:info="pickerInfo.cellInfo" v-bind:scrollStyle="pickerInfo.style" v-bind:myid="pickerInfo.myid"></picker>
+        </div>
+    </div>
+</template>
+<template id="lightHolder">
+    <div class="container diver">
+        <div class="pickers diver"
+             v-for="(pickerInfo, key, index) in pickers"
+             v-bind:style="pickerInfo.style">
+            <picker v-bind:info="pickerInfo.cellInfo" v-bind:scrollStyle="pickerInfo.style" v-bind:myid="pickerInfo.myid"></picker>
+        </div>
+    </div>
+</template>
+<template id="CubeRout">
+    <div id="routHolder" class="diver">
+        <div class="tempRout">
+            <router-link :to="{ name: 'temp' }" class='link'></router-link>
+        </div>
+        <!--<div class="humRout" >-->
+        <!--<router-link :to="{ name: 'hum' }" class='link'></router-link>-->
+        <!--</div>-->
+        <div class="motionRout"  >
+            <router-link :to="{ name: 'motion' }" class='link'></router-link>
+        </div>
+        <!--<div class="uvRout"  >-->
+        <!--<router-link :to="{ name: 'uv' }" class='link'></router-link>-->
+        <!--</div>-->
+        <div class="lightRout"  >
+            <router-link :to="{ name: 'light' }" class='link'></router-link>
+        </div>
+        <picker v-if="nav" class="CubeRoutPicker" v-bind:scrollStyle="style" v-bind:info="cellInfo" v-bind:myid="myid"></picker>
+        <div class="routView diver">
+            <router-view ></router-view>
+        </div>
+    </div>
+</template>
+<template id="tempRout">
+    <div id="tempRoutHolder" class="diver">
+        <div class="tempRout">
+            <router-link :to="{ name: 'tempRout' }" class='linkT'></router-link>
+        </div>
+        <div class="tempRoutBetween">
+            <router-link :to="{ name: 'tempRoutBetween' }" class='linkT'></router-link>
+        </div>
+        <div class="routView diver">
+            <router-view ></router-view>
+        </div>
+    </div>
+</template>
+<div id="showWindow" class="diver">
+    <div class="showHolder diver">
+        <out-holder></out-holder>
+    </div>
+</div>
+
+<script src="../libs/jquery-1.11.3.js"></script>
+<script src="../libs/vue.js"></script>
+<script src="../libs/vue-router.js"></script>
+<script src="../libs/TimelineMax.min.js"></script>
+<script src="../libs/CSSPlugin.min.js"></script>
+<script src="../libs/fastclick2.js"></script>
+<script src="../cordova.js"></script>
+<script src="../cordova_plugins.js"></script>
+<script src="../libs/swiper.min.js"></script>
+<script src="../libs/Oomi-command.js"></script>
+<script src="../internationalization/LanguageSelector.js"></script>
+<script src="js/main2.js" ></script>
+
+</body>
+</html>

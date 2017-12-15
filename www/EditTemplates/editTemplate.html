@@ -1,0 +1,152 @@
+    <template id="widgetContainerTemplate">
+        <table id="textHolder">
+            <tr id="topic">
+                <td id="greetings">
+
+                </td>
+            </tr>
+            <tr id="process">
+                <td id="processing">
+
+                </td>
+            </tr>
+            <tr id="nameInput">
+                <td align="middle">
+                    <form id="editTextForm">
+                        <!--Name:<input id="nameTextField" onkeyup="value=value.replace(/[^\w]/ig,''); value.length > 21?value=value.slice(0,20):value;" maxlength="20" type="text" value="">-->
+                        <!--Name:<input id="nameTextField" onkeyup="value=value.replace(/[^\w\s]/ig,''); if(value[0] == ' '){value=value.trim()}" maxLength="20" type="text" value="">-->
+                        <!--Name:<input id="nameTextField" onkeypress=" return ((/[^\w\s]/ig).test(String.fromCharCode(event.keyCode))==false)" onkeyup=" if(value.length == 1){if(value[0]==' '){value=''}}" maxLength="20" type="text" value="">-->
+                        <input id="nameTextField" maxLength="20" class="input form-input" placeholder="" type="text" value="">
+                        <input type="text" class="clearer" id="clearBtn" value="  ×">
+                    </form>
+                </td>
+            </tr>
+            <tr id="done">
+                <td align="middle">
+                    <div id="doneButt" class="butts">
+
+                    </div>
+                    <div id="resetPin" class="butts">
+                        reset pin
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <div id="backButt">
+            <svg version="1.1" class="svg_pic" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+                <g id="BButt">
+                    <circle r="48" cx="50" cy="50" fill="transparent" stroke-width="4" stroke="transparent" >
+                        <!--<set attributeName="stroke" to="#E76C26" begin="BButt.click" dur="0.3s"></set>-->
+                    </circle>
+                    <line x1="45" y1="30" x2="20" y2="50" stroke-width="4" stroke="#595757">
+                        <!--<set attributeName="stroke" to="#E76C26" begin="BButt.click" dur="0.3s"></set>-->
+                    </line>
+                    <line x1="45" y1="70" x2="20" y2="50" stroke-width="4" stroke="#595757">
+                        <!--<set attributeName="stroke" to="#E76C26" begin="BButt.click" dur="0.3s"></set>-->
+                    </line>
+                    <line x1="20" y1="50" x2="80" y2="50" stroke-width="4" stroke="#595757">
+                        <!--<set attributeName="stroke" to="#E76C26" begin="BButt.click" dur="0.3s"></set>-->
+                    </line>
+                </g>
+            </svg>
+        </div>
+        <div id="widgetHolder">
+
+        </div>
+        <div id="widgetCover">
+
+        </div>
+    </template>
+    <template id="TeachOomiCubeIR">
+        <div id="teachBackground" class="blackBackground">
+            <div id="teach" >
+                <div id="headings">
+                    <div id="headingsHolder" class="fontWhite"></div>
+                    <div id="headingsLogo"></div>
+                </div>
+                <div id="TeachPic">
+                    <svg version="1.1" class="svg_pic_teach" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="190px" height="254px" viewBox="0 0 190 254" enable-background="new 0 0 190 254" xml:space="preserve">
+                        <g>
+                            <path fill="none" stroke="#FFFFFF" stroke-width="3" stroke-miterlimit="10" d="M4.78,211.965c0,3.85,3.12,6.969,6.968,6.969h88.96 c3.848,0,6.967-3.119,6.967-6.969v-84.137c0-3.848-3.119-6.967-6.967-6.967h-88.96c-3.848,0-6.968,3.119-6.968,6.967V211.965z"></path>
+                            <g>
+                                <path fill="#FFFFFF" d="M71.967,107.996l-0.271,0.234c-0.604,0.528-1.665,0.305-2.369-0.498l-0.144-0.163 c-0.705-0.806-0.786-1.886-0.181-2.416l0.269-0.235"></path>
+                                <path fill="none" stroke="#FFFFFF" stroke-width="3" stroke-miterlimit="10" d="M73.984,109.969 c1.274,1.454,3.37,1.701,4.681,0.552L185.75,16.715c1.312-1.149,1.344-3.259,0.068-4.713l-5.986-6.836 c-1.273-1.453-3.37-1.701-4.682-0.551L68.067,98.42c-1.312,1.148-1.343,3.26-0.069,4.713L73.984,109.969z"></path>
+                                <path fill="#FFFFFF" d="M73.325,90.333l-2.982,2.612c-0.875,0.768-0.965,2.097-0.199,2.974l6.155-5.393 C75.53,89.655,74.201,89.568,73.325,90.333z"></path>
+                            </g>
+                            <path fill="none" stroke="#FFFFFF" stroke-width="3" stroke-miterlimit="10" d="M107.674,211.963c0,3.848-3.119,6.967-6.967,6.967 H11.749c-3.848,0-6.968-3.119-6.968-6.967v-84.135c0-3.848,3.12-6.967,6.968-6.967h88.958c3.848,0,6.967,3.119,6.967,6.967V211.963 z"></path>
+                            <circle fill="none" stroke="#FFFFFF" stroke-width="3" stroke-miterlimit="10" cx="54.399" cy="171.839" r="26.276"></circle>
+                            <circle fill="none" stroke="#FFFFFF" stroke-width="3" stroke-miterlimit="10" cx="54.399" cy="171.839" r="9.399"></circle>
+                            <circle fill="none" stroke="#FFFFFF" stroke-width="3" stroke-miterlimit="10" cx="54.4" cy="190.08" r="3.703"></circle>
+                            <circle fill="#FFFFFF" cx="43.098" cy="133.51" r="1.136"></circle>
+                            <rect x="47.296" y="132.836" fill="#FFFFFF" width="13.934" height="1.348"></rect>
+                            <line fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="4.781" y1="250.367" x2="107.674" y2="250.367"></line>
+                            <line fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="39.615" y1="250.367" x2="39.615" y2="218.93"></line>
+                            <line fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="76.055" y1="250.367" x2="76.055" y2="218.93"></line>
+                        </g>
+                    </svg>
+                </div>
+                <div id="tutorial">
+                    <div id="tutorialHolder" class="fontWhite"></div>
+                </div>
+                <div id="Scanning">
+                    <img id="loadImg"src="../libs/img/loading.gif">
+                    <div id="ScanningButton" class="fontWhite"></div>
+                    <!--<svg version="1.1" id="loadLogo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="33.53px" height="33.531px" viewBox="0 0 33.53 33.531" enable-background="new 0 0 33.53 33.531" xml:space="preserve">-->
+                        <!--<line fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="16.765" y1="24.986" x2="16.765" y2="32.531"></line>-->
+                        <!--<line fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="16.765" y1="1" x2="16.765" y2="8.546"></line>-->
+                        <!--<line fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="20.875" y1="23.885" x2="24.647" y2="30.419"></line>-->
+                        <!--<line fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="8.882" y1="3.112" x2="12.655" y2="9.646"></line>-->
+                        <!--<line fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="23.883" y1="20.877" x2="30.418" y2="24.648"></line>-->
+                        <!--<line fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="3.11" y1="8.883" x2="9.646" y2="12.656"></line>-->
+                        <!--<line fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="24.985" y1="16.766" x2="32.53" y2="16.766"></line>-->
+                        <!--<line fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="1" y1="16.766" x2="8.545" y2="16.766"></line>-->
+                        <!--<line fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="23.883" y1="12.656" x2="30.418" y2="8.883"></line>-->
+                        <!--<line fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="3.11" y1="24.648" x2="9.646" y2="20.877"></line>-->
+                        <!--<line fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="20.875" y1="9.646" x2="24.647" y2="3.111"></line>-->
+                        <!--<line fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="8.882" y1="30.419" x2="12.655" y2="23.885"></line>-->
+                    <!--</svg>-->
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="assignOomiCubeIR">
+        <div id="assignBackground" class="blackBackground">
+            <div id="assign">
+                <div id="assignHeadings">
+                    <div id="assignHeadingsHolder" class="fontWhite"></div>
+                </div>
+                <div id="test">
+                    <div id="testButton" class="fontWhite butts"></div>
+                </div>
+                <div id="Reassign">
+                    <div id="ReassignButton" class="fontWhite butts"></div>
+                </div>
+                <div id="cancel">
+                    <div id="cancelButton" class="fontWhite butts"></div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="ResultOomiCubeIR">
+        <div id="ResultBackground" class="blackBackground">
+            <div id="Result">
+                <div id="ResultLogo">
+                    <svg version="1.1"  class="ResultLogoSVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="110.666px" height="110px" viewBox="0 0 110.666 110" enable-background="new 0 0 110.666 110" xml:space="preserve">
+                        <g id="successLogo" visibility='hidden'>
+                            <path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-miterlimit="10" d=" M55.173,5.262c-27.78,0-50.312,22.533-50.312,50.312s22.531,50.311,50.312,50.311c27.787,0,50.312-22.531,50.312-50.311 S82.96,5.262,55.173,5.262L55.173,5.262z"></path>
+                            <path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M47.107,72.934c-0.369,0-0.717-0.144-0.981-0.404L30.57,56.975 c-0.534-0.538-0.534-1.413,0-1.949c0.261-0.26,0.606-0.401,0.974-0.401c0.369,0,0.717,0.144,0.979,0.405l14.544,14.553 l30.769-30.971c0.257-0.255,0.598-0.396,0.961-0.396c0.368,0,0.716,0.145,0.984,0.409c0.255,0.253,0.394,0.595,0.394,0.963 s-0.141,0.712-0.398,0.968L48.335,72.19l-0.1,0.155c-0.031,0.048-0.064,0.103-0.1,0.139C47.831,72.785,47.488,72.934,47.107,72.934 z"></path>
+                        </g>
+                    </svg>
+                </div>
+                <div id="ResultFeedback" class="fontWhite">
+
+                </div>
+                <div id="ResultButtons">
+                    <div id="ResultTest" class="ResultButts fontWhite butts"></div>
+                    <div id="ResultDone" class="ResultButts fontWhite butts"></div>
+                </div>
+            </div>
+        </div>
+    </template>

@@ -1,0 +1,93 @@
+/*.main_content{*/
+    /*position: absolute;*/
+    /*height: 100%;*/
+    /*width: 100%;*/
+    /*left: 0;*/
+    /*top:0;*/
+    /*border-radius:0 0 0;*/
+    /*border: none;*/
+    /*overflow: hidden;*/
+/*}*/
+/*.body_content{*/
+    /*top:0;*/
+    /*position: absolute;*/
+    /*height: 100%;*/
+    /*width: 100%;*/
+/*}*/
+/*.onOffButton{*/
+    /*left: 30px;*/
+/*}*/
+#signImg {
+    left: 50%;
+}
+.wallSwitchDiv{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.wallSwitchList{
+    position: absolute;
+    width: 100%;
+    height: 25%;
+}
+.wallSwitchIcon{
+    left: 23%;
+    height: 34px;
+    width: 34px;
+    text-align: center;
+}
+.wallSwitchName{
+    left: 35%;
+    height: 30%;
+    top:20%;
+    font-size: 22px;
+    width: 27%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #595757;
+}
+.wallSwitchLocation{
+    left: 35%;
+    height: 30%;
+    top:55%;
+    text-indent: 12px;
+    font-size: 14px;
+    color: #9E9E9F;
+    width: 27%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.wallSwitchStatus{
+    left: 62%;
+    color: #9B9B9B;
+    font-size: 22px;
+}
+.wallSwitchOnOff{
+    left: 72%;
+    width: 32px;
+    height: 32px;
+}
+.iconImg{
+    max-width: 100%;
+    max-height: 100%;
+}
+.locationIcon{
+    width: 13px;
+    height: 13px;
+    text-indent: 0;
+}
+.locationImg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.tick{
+    position: absolute;
+    /*width: 100%;*/
+    height: 30px;
+    width: 30px;
+    right: 5px;
+    visibility: hidden;
+}

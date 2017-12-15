@@ -1,0 +1,79 @@
+html, body {
+    -ms-touch-action : manipulation;
+    touch-action: manipulation;
+    font-family      : Akkurat, Arial, sans-serif;
+    width            : 100%;
+    height           : 100%;
+    margin: 0;
+    padding: 0;
+    overflow:hidden;
+    /*overflow:hidden;*/
+    /*scroll:no;*/
+    background-color: white;
+}
+* {
+    -webkit-box-sizing : border-box;
+    -moz-box-sizing    : border-box;
+    box-sizing         : border-box;
+    -webkit-tap-highlight-color : rgba(0, 0, 0, 0);
+    -webkit-user-select   : none;
+    margin:0;
+    padding:0;
+}
+#main_content {
+    width:100%;
+    height:100%;
+    position: absolute;
+}
+#alertTypeSelector {
+    width:50%;
+    height:40%;
+    position: absolute;
+    right:0;
+    top:0%;
+}
+#alertTips {
+    width:80%;
+    height:20%;
+    position: absolute;
+    top: 45%;
+    left:10%;
+    font-size:18px;
+    color:#6D6C6C;
+}
+.alertTitle {
+    text-align: center;
+    width:70%;
+    height:10%;
+    position: absolute;
+    right:10%;
+    font-size: 18px;
+    color:#6D6C6C;
+}
+#alertWrapper {
+    width: 100%;
+    height: 90%;
+    position: absolute;
+    top:10%;
+    overflow: hidden;
+}
+#alertType {
+    width: 70%;
+    height: 30px;
+    line-height: 30px;
+    border-top: 1px solid #F26F21;
+    border-bottom: 1px solid #F26F21;
+    margin-top: 30px;
+    text-align: center;
+    position: absolute;
+    right:10%;
+    top:16%;
+}
+.alertOptions1 {
+    color: #F26F21;
+    font-size: 20px;
+}
+.alertOptions2 {
+    color: #9E9E9F;
+    font-size: 18px;
+}

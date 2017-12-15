@@ -1,0 +1,243 @@
+html, body {
+    -ms-touch-action : manipulation;
+    touch-action     : manipulation;
+    font-family      : Akkurat, Arial, sans-serif;
+    width            : 100%;
+    height           : 100%;
+    margin: 0;
+    padding: 0;
+    overflow:hidden;
+    /*overflow:hidden;*/
+    /*scroll:no;*/
+}
+* {
+    -webkit-box-sizing : border-box;
+    -moz-box-sizing    : border-box;
+    box-sizing         : border-box;
+    -webkit-tap-highlight-color : rgba(0, 0, 0, 0);
+    -webkit-user-select   : none;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+}
+.mainHolder {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.routs{
+    visibility: hidden;
+}
+.diver{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.viewContent {
+    background-color: black;
+}
+.buttons{
+    position: absolute;
+    color: #FFFFFF;
+    border: solid 1px white;
+    border-radius: 15px;
+    width: 20%;
+    text-align: center;
+    height: 35px;
+    line-height: 35px;
+    font-size: 18px;
+}
+.exit{
+    position: absolute;
+    width: 35px;
+    text-align: center;
+    height: 35px;
+    line-height: 35px;
+    font-size: 18px;
+    color: #FFFFFF;
+    right: 10px;
+    top: 10px;
+}
+.title{
+    color: #FFFFFF;
+    position: absolute;
+    text-align: center;
+    font-size: large;
+    width: 100%;
+    top:65%;
+}
+.next{
+    color:#E66C25;
+    position: absolute;
+}
+.divImg{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+}
+.load{
+    position: absolute;
+    height:5%;
+    width:5%;
+    left:47.5%;
+    top:75%;
+}
+img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+}
+.back{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+}
+.reOffTitle{
+    top:35%;
+}
+.reOffTest{
+    top:55%;
+    left: 25%;
+}
+.reOffReprogram{
+    top:55%;
+    left: 55%;
+}
+.reSetTitle{
+    top:35%;
+}
+.reSetTest{
+    top:55%;
+    left: 25%;
+}
+.reSetReprogram{
+    top:55%;
+    left: 55%;
+}
+.turnAcOnImg{
+    height: 45%;
+    top: 15%;
+    left: 2%;
+}
+.turnAcOnTitle{
+    top:65%
+}
+.turnAcOnNext{
+    right: 15px;
+    bottom: 15px;
+}
+.teachPlugOffImg{
+    height: 35%;
+    top: 15%;
+    left: 2%;
+}
+.teachPlugOffTitle{
+    top:65%
+}
+.teachPlugOffLoad{
+
+}
+.teachPlugOffBack{
+    top: 15px;
+    left: 15px;
+}
+.setAcConfigImg{
+    height: 25%;
+    top: 20%;
+    left: 2%;
+}
+.setAcConfigTitle{
+    top:65%;
+    padding:10px;
+}
+.setAcConfigNext{
+    right: 15px;
+    bottom: 15px;
+}
+.teachPlugSettingImg{
+    height: 30%;
+    top: 15%;
+    left: 2%;
+}
+.teachPlugSettingTitle{
+    top:65%;
+}
+.teachPlugSettingLoad{
+
+}
+.teachPlugSettingBack{
+    top: 15px;
+    left: 15px;
+}
+.teachOffSuccessImg{
+    height: 35%;
+    top: 15%;
+    left: 2%;
+}
+.teachOffSuccessTitle{
+    top:60%;
+}
+.teachOffSuccessTitle2{
+    top:70%;
+}
+.teachOffSuccessTest{
+    top:80%;
+    left:15%;
+}
+.teachOffSuccessDone{
+    top:80%;
+    right:15%;
+}
+.teachSettingSuccessImg{
+    height: 35%;
+    top: 15%;
+    left: 2%;
+}
+.teachSettingSuccessTitle{
+    top:60%;
+}
+.teachSettingSuccessTitle2{
+    top:70%;
+}
+.teachSettingturnOff{
+    top:80%;
+    left:15%;
+}
+.teachSettingturnTest{
+    top:80%;
+    left:38%;
+}
+.teachSettingturnDone{
+    top:80%;
+    right:15%;
+}
+.failTitle{
+    top:65%;
+}
+.failTryAgain{
+    top:80%;
+    left:15%;
+}
+.failImg {
+    height: 30%;
+    top: 15%;
+}
+.failDone{
+    top:80%;
+    right:15%;
+}
+.slide-fade-enter-active {
+    transition: all .6s ease;
+}
+.slide-fade-leave-active {
+    transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to
+    /* .slide-fade-leave-active below version 2.1.8 */ {
+    transform: translateX(10px);
+    opacity: 0;
+}

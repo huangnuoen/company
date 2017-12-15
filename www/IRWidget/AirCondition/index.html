@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" href="css/layout.css" type="text/css">
+</head>
+<body>
+    <div id="mainHolder">
+
+    </div>
+    <template id="_RGBRouting">
+        <div id="RGBRouting_content" class="RGB_routing_content">
+            <div class='navigationHolder'>
+                <router-link class="routs" :to="{ name: 'reOff'}"></router-link>
+                <router-link class="routs" :to="{ name: 'reSet'}"></router-link>
+                <router-link class="routs" :to="{ name: 'turnAcOn'}" ></router-link>
+                <router-link class="routs" :to="{ name: 'teachPlugOff'}"></router-link>
+                <router-link class="routs" :to="{ name: 'setAcConfig'}"></router-link>
+                <router-link class="routs" :to="{ name: 'teachPlugSetting'}"></router-link>
+                <router-link class="routs" :to="{ name: 'teachOffSuccess'}" ></router-link>
+                <router-link class="routs" :to="{ name: 'teachSettingSuccess'}"></router-link>
+                <router-link class="routs" :to="{ name: 'fail'}"></router-link>
+            </div>
+            <div class="viewHolder diver">
+                <transition name="slide-fade">
+                    <router-view ></router-view>
+                </transition>
+            </div>
+        </div>
+    </template>
+    <template id="_reOff">
+        <div class="reOff_content viewContent diver">
+            <div class="title reOffTitle" >{{reOff}}</div>
+            <div v-on:click="testClick" class="buttons reOffTest">{{test}}</div>
+            <div v-on:click="reprogramClick" class="buttons reOffReprogram">{{reprogram}}</div>
+            <div v-on:click="exitClick" class="exit">X</div>
+        </div>
+    </template>
+    <template id="_reSet">
+        <div class="reSet_content viewContent diver">
+            <div class="title reSetTitle">{{reSet}}</div>
+            <div v-on:click="testClick" class="buttons reSetTest">{{test}}</div>
+            <div v-on:click="reprogramClick" class="buttons reSetReprogram">{{reprogram}}</div>
+            <div v-on:click="exitClick" class="exit">X</div>
+        </div>
+    </template>
+    <template id="_turnAcOn">
+        <div class="reSet_content viewContent diver">
+            <div class="turnAcOnImg divImg">
+                <img src="assets/acc.svg">
+            </div>
+            <div class="title turnAcOnTitle">{{turnAcOn}}</div>
+            <div v-on:click="nextClick" class="next turnAcOnNext">{{next}}＞</div>
+            <div v-on:click="exitClick" class="exit">X</div>
+        </div>
+    </template>
+    <template id="_teachPlugOff">
+        <div class="teachPlugOff_content viewContent diver">
+            <div class="teachPlugOffImg divImg">
+                <img src="assets/teachPlug.svg">
+            </div>
+            <div class="title teachPlugOffTitle">{{teachPlugOff}}</div>
+            <div class="load teachPlugOffLoad">
+                <img class="loadImg" src="../../libs/img/loading.gif">
+            </div>
+            <div v-on:click="backClick" class="back teachPlugOffBack">
+                <img src="assets/back.svg">
+            </div>
+        </div>
+    </template>
+    <template id="_setAcConfig">
+        <div class="setAcConfig_content viewContent diver">
+            <div class="setAcConfigImg divImg">
+                <img src="assets/airCondition.svg">
+            </div>
+            <div class="title setAcConfigTitle">{{setAcConfig}}</div>
+            <div v-on:click="nextClick" class="next setAcConfigNext">{{next}}＞</div>
+        </div>
+    </template>
+    <template id="_teachPlugSetting">
+        <div class="_teachPlugSetting_content viewContent diver">
+            <div class="teachPlugSettingImg divImg">
+                <img src="assets/teachPlug.svg">
+            </div>
+            <div class="title teachPlugSettingTitle">{{teachPlugSetting}}</div>
+            <div class="load teachPlugSettingLoad">
+                <img class="loadImg" src="../../libs/img/loading.gif">
+            </div>
+            <div v-on:click="backClick" class="back teachPlugSettingBack">
+                <img src="assets/back.svg">
+            </div>
+        </div>
+    </template>
+    <template id="_teachOffSuccess">
+        <div class="teachOffSuccess_content viewContent diver">
+            <div class="teachOffSuccessImg divImg">
+                <img src="assets/success.svg">
+            </div>
+            <div class="title teachOffSuccessTitle">{{success}}</div>
+            <div class="title teachOffSuccessTitle2">{{success2}}</div>
+            <div class="title "></div>
+            <div v-on:click="testClick" class="buttons teachOffSuccessTest">{{test}}</div>
+            <div v-on:click="doneClick" class="buttons teachOffSuccessDone">{{done}}</div>
+        </div>
+    </template>
+    <template id="_teachSettingSuccess">
+        <div class="teachSettingSuccess_content viewContent diver">
+            <div class="teachSettingSuccessImg divImg">
+                <img src="assets/success.svg">
+            </div>
+            <div class="title teachSettingSuccessTitle">{{success}}</div>
+            <div class="title teachSettingSuccessTitle2">{{success2}}</div>
+            <div class="title"></div>
+            <div v-on:click="turnOffClick" class="buttons teachSettingturnOff">{{turnOff}}</div>
+            <div v-on:click="testClick" class="buttons teachSettingturnTest">{{test}}</div>
+            <div v-on:click="doneClick" class="buttons teachSettingturnDone">{{done}}</div>
+        </div>
+    </template>
+    <template id="_fail">
+        <div class="fail_content viewContent diver">
+            <div class="divImg failImg">
+                <img src="assets/fail.svg">
+            </div>
+            <div class="title failTitle">{{fail}}</div>
+            <div v-on:click="tryAgainClick" class="buttons failTryAgain">{{tryAgain}}</div>
+            <div v-on:click="doneClick" class="buttons failDone">{{done}}</div>
+        </div>
+    </template>
+    <script src="../../libs/jquery-1.11.3.js"></script>
+    <script src="../../libs/vue.js"></script>
+    <script src="../../libs/vue-router.js"></script>
+    <script src="../../libs/TweenLite.min.js"></script>
+    <script src="../../libs/CSSPlugin.min.js"></script>
+    <script src="../../cordova.js"></script>
+    <script src="../../cordova_plugins.js"></script>
+    <script src="../../internationalization/LanguageSelector.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

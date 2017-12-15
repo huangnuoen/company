@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>monitor</title>
+    <link rel="stylesheet" href="css/security.css">
+</head>
+<body>
+
+<div id="MotionChartHolder">
+    <svg version="1.1" class="HolderSVG" id="HolderSVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="800px" height="200px" viewBox="0 0 0 0" enable-background="new 0 0 0 0" xml:space="preserve">
+
+    </svg>
+</div>
+<div id="MotionValueHolder">
+    <div id="motionValueSVG">
+        <svg version="1.1" class="HolderSVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="48.406px" height="58.625px" viewBox="0 0 48.406 58.625" enable-background="new 0 0 48.406 58.625" xml:space="preserve">
+            <g id="motionYes" opacity="1">
+                <path fill="none" stroke="#E76D26" stroke-width="3" stroke-miterlimit="10" d="M15.42,17.067c-2.9,0-5.25-2.35-5.25-5.25c0-2.892,2.349-5.243,5.25-5.243c2.898,0,5.248,2.352,5.248,5.243C20.668,14.718,18.319,17.067,15.42,17.067L15.42,17.067L15.42,17.067z"></path>
+                <path fill="none" stroke="#E76D26" stroke-width="3" stroke-miterlimit="10" d="M6.788,15.555c3.011,4.223,7.045,4.712,11.39,2.135c0.294-0.178,1.604-0.899,1.893-1.069c6.988-4.149,13.965-2.524,18.641,4.029c1.99,2.788-2.607,5.432-4.574,2.675c-2.42-3.383-5.49-4.364-8.852-3.295c1.717,2.991,3.223,5.961,5.35,10.181c2.121,4.218,6.814,7.588,11.318,4.953c3.252-1.901,6.18,2.768,2.942,4.663c-6.153,3.596-13.366,1.386-17.047-3.286c-0.128,0.067-0.263,0.129-0.409,0.182c-3.012,1.05-6.951,3.838-8.153,4.829c-1.202,0.983-3.268,6.025-4.495,8.554c-1.486,3.075-6.284,0.837-4.792-2.25c1.386-2.869,3.72-8.6,5.535-10.052c1.459-1.163,4.293-3.326,6.695-4.557c-1.625-3.145-3.316-6.26-5.099-9.322c-5.677,1.741-11.075-0.308-14.919-5.692C0.223,15.444,4.819,12.805,6.788,15.555L6.788,15.555L6.788,15.555z"></path>
+            </g>
+            <g id="motionNo" opacity="0">
+                <g>
+                    <path fill="none" stroke="#B3B2B3" stroke-width="3" stroke-miterlimit="10" d="M24.012,2.057c3.085,0,5.589,2.501,5.589,5.585s-2.504,5.586-5.589,5.586c-3.083,0-5.585-2.502-5.585-5.586S20.929,2.057,24.012,2.057z"></path>
+                    <path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#B3B2B3" stroke-width="3" stroke-miterlimit="10" d="M36.818,32.682c-0.198-1.245-1.943-12.209-2.352-14.046c-1.016-4.563-5.064-4.563-7.242-4.563h-6.425c-2.175,0-6.224,0-7.238,4.563c-0.412,1.837-2.158,12.801-2.354,14.046c-0.211,1.323,0.693,2.57,2.017,2.777c1.328,0.214,2.569-0.689,2.778-2.016c0.459-2.885,1.602-9.969,2.109-12.774v33.963c0,1.339,1.088,2.425,2.428,2.425c1.342,0,2.428-1.086,2.428-2.425V37.626h2.088v17.003c0,1.342,1.087,2.428,2.43,2.428c1.339,0,2.427-1.087,2.427-2.428v-33.96c0.509,2.806,1.652,9.89,2.108,12.774c0.192,1.194,1.222,2.047,2.396,2.047c0.125,0,0.258-0.009,0.385-0.031C36.127,35.252,37.028,34.005,36.818,32.682z"></path>
+                </g>
+            </g>
+        </svg>
+    </div>
+    <div id="motionStatus"></div>
+</div>
+<div id="enRefresh">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 344 344" style="enable-background:new 0 0 344 344;" xml:space="preserve">
+        <g id="re">
+            <rect x="0" y="0" height="100%" width="100%" fill="transparent" stroke="transparent"></rect>
+            <path d="M334.485,37.463c-6.753-1.449-13.396,2.853-14.842,9.603l-9.084,42.391C281.637,40.117,228.551,9.155,170.368,9.155    c-89.603,0-162.5,72.896-162.5,162.5c0,6.903,5.596,12.5,12.5,12.5c6.903,0,12.5-5.597,12.5-12.5    c0-75.818,61.682-137.5,137.5-137.5c49.429,0,94.515,26.403,118.925,68.443l-41.674-8.931c-6.752-1.447-13.396,2.854-14.841,9.604    c-1.446,6.75,2.854,13.396,9.604,14.842l71.536,15.33c1.215,0.261,2.449,0.336,3.666,0.234c2.027-0.171,4.003-0.836,5.743-1.962    c2.784-1.801,4.738-4.634,5.433-7.875l15.331-71.536C345.535,45.555,341.235,38.911,334.485,37.463z" fill="#F26F21">
+                <animateTransform attributeName="transform" begin="re.click" dur="1s" type="rotate" from="0 172 172" to="720 172 172"></animateTransform>
+            </path>
+            <path d="M321.907,155.271c-6.899,0.228-12.309,6.006-12.081,12.905c1.212,36.708-11.942,71.689-37.042,98.504    c-25.099,26.812-59.137,42.248-95.844,43.46c-1.53,0.05-3.052,0.075-4.576,0.075c-47.896-0.002-92.018-24.877-116.936-65.18    l43.447,11.65c6.668,1.787,13.523-2.168,15.311-8.837c1.788-6.668-2.168-13.522-8.836-15.312l-70.664-18.946    c-3.202-0.857-6.615-0.409-9.485,1.247c-2.872,1.656-4.967,4.387-5.826,7.589L0.43,293.092    c-1.788,6.668,2.168,13.522,8.836,15.311c1.085,0.291,2.173,0.431,3.245,0.431c5.518,0,10.569-3.684,12.066-9.267l10.649-39.717    c29.624,46.647,81.189,75.367,137.132,75.365c1.797,0,3.604-0.029,5.408-0.089c43.381-1.434,83.608-19.674,113.271-51.362    s45.209-73.031,43.776-116.413C334.586,160.453,328.805,155.026,321.907,155.271z" fill="#F26F21">
+                <animateTransform attributeName="transform" begin="re.click" dur="1s" type="rotate" from="0 172 172" to="720 172 172"></animateTransform>
+            </path>
+        </g>
+    </svg>
+</div>
+<script src="../libs/jquery-1.11.3.js"></script>
+<script src="../cordova.js"></script>
+<script src="../cordova_plugins.js"></script>
+<script type="text/javascript" src="../libs/Oomi-command.js"></script>
+<script type="text/javascript" src="../libs/Oomi-common.js"></script>
+<script src="../internationalization/LanguageSelector.js"></script>
+<script src="js/security.js"></script>
+</body>
+</html>

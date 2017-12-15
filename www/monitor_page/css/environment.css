@@ -1,0 +1,122 @@
+html, body {
+    -ms-touch-action : manipulation;
+    touch-action     : manipulation;
+    font-family      : Akkurat, Arial, sans-serif;
+    width            : 100%;
+    height           : 100%;
+    margin: 0;
+    overflow:hidden;
+    position: absolute;
+}
+* {
+    -webkit-box-sizing : border-box;
+    -moz-box-sizing    : border-box;
+    box-sizing         : border-box;
+    -webkit-tap-highlight-color : rgba(0, 0, 0, 0);
+    -webkit-user-select   : none;
+    margin: 0;
+    padding: 0;
+}
+.ct-chart{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
+}
+
+.ct-series-a .ct-line {
+stroke: #E83828;
+stroke-width: 5px;
+}
+.ct-series-a .ct-point{
+    stroke: none;
+}
+.ct-series-b .ct-line {
+    stroke: #59AFD2;
+    stroke-width: 5px;
+}
+.ct-series-b .ct-point{
+    stroke: none;
+}
+.ct-grid{
+    stroke-dasharray:  0 0;
+    stroke: #C8C9C9;
+}
+.ct-label{
+    color: #C8C9C9;
+}
+.ct-horizontal{
+    stroke: none;
+}
+.ct-vertical{
+    stroke: none;
+}
+#myChart{
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    width: 80%;
+    left: 20%;
+    height: 100%;
+}
+#legends{
+    position: absolute;
+    width: 18%;
+    height: 100%;
+    /*left: 84%;*/
+}
+.humidityHolder{
+    position: absolute;
+    top:50%;
+    width: 100%;
+    height: 40%;
+}
+.TemperatureHolder{
+    width: 100%;
+    height: 40%;
+    top:5%;
+    position: absolute;
+}
+.textHolder{
+    color: #9E9E9F;
+    font-size: large;
+    position: absolute;
+    height: 50%;
+    top:50%;
+}
+#humValue{
+    color: #595757;
+    font-size: x-large;
+    position: absolute;
+    width: 70%;
+}
+#tempValue{
+    color: #595757;
+    font-size: x-large;
+    position: absolute;
+    width: 70%;
+}
+.tempICo{
+    position: absolute;
+    width: 20%;
+    left: 80%;
+}
+.humICo{
+    position: absolute;
+    width: 20%;
+    left: 80%;
+}
+#enRefresh{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: 2px;
+    top: 2px;
+}
+#Capa_1{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}

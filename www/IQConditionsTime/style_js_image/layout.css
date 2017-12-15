@@ -1,0 +1,131 @@
+html, body {
+    -ms-touch-action : manipulation;
+    touch-action: manipulation;
+    font-family      : Akkurat, Arial, sans-serif;
+    width            : 100%;
+    height           : 100%;
+    margin: 0;
+    padding: 0;
+    overflow:hidden;
+    /*overflow:hidden;*/
+    /*scroll:no;*/
+}
+* {
+    -webkit-box-sizing : border-box;
+    -moz-box-sizing    : border-box;
+    box-sizing         : border-box;
+    -webkit-tap-highlight-color : rgba(0, 0, 0, 0);
+    -webkit-user-select   : none;
+}
+#main_content {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+#svgHolder{
+    position: absolute;
+    height: 100%;
+    width: 40%;
+    /*overflow:hidden;*/
+}
+#timeContainer{
+    position: absolute;
+    height: 100%;
+    width: 44%;
+    left: 56%;
+    overflow:hidden;
+}
+.ElementHolder{
+    position: absolute;
+    height: 90%;
+    top:10%;
+    width: 25%;
+    overflow:hidden;
+}
+.blocker{
+    position: absolute;
+    top:10%;
+    height: 90%;
+    overflow:hidden;
+    width: 25%;
+    visibility: hidden;
+    z-index: 9999;
+}
+.topic{
+    background-color: #ffffff;
+    position: absolute;
+    height: 10%;
+    width: 25%;
+    text-align: center;
+    color: #737373;
+    font-size: x-small;
+    overflow:hidden;
+}
+
+#divider{
+    position: absolute;
+    width: 100%;
+    height: 30%;
+    top:40%;
+    border-top: solid #e8a482 1px;
+    border-bottom: solid #e8a482 2px;
+    overflow:hidden;
+}
+.showtime{
+    position: absolute;
+    width: 100%;
+    height: 33.333%;
+    top:33.333%;
+    /*overflow:hidden;*/
+}
+.scroll{
+    color:#c7c8c8;
+    width: 100%;
+    text-align: center;
+    transition: all 0.4s linear 0s;
+    font-size: larger;
+    overflow:hidden;
+}
+.scrollEffect{
+    color: #f16e20;
+    font-size: x-large;
+}
+.scrollEffect2{
+    color: #f16e20;
+    font-size: 14px;
+}
+.scrollContent{
+    /*position: absolute;*/
+    width: 100%;
+    height: 100%;
+    overflow:hidden;
+}
+#done{
+    border: solid #c7c8c8 2px;
+    border-radius: 15px;
+    position: absolute;
+    left: 85%;
+    width: 14%;
+    height: 32%;
+    top:34%;
+    color: #c7c8c8;
+    text-align: center;
+    transition: all 0.2s linear 0s;
+}
+#dash{
+    position: absolute;
+    width: 10%;
+    left: 45%;
+    color: #f16e20;
+    font-size: x-large;
+    text-align: center;
+    height: 30%;
+    top:35%;
+    overflow:hidden;
+}
+.AmPmEndScroll{
+    font-size: 12px;
+}
+.AmPmStartScroll{
+    font-size: 12px;
+}
