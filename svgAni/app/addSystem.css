@@ -1,0 +1,29 @@
+
+#addSystem {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+svg {
+    transform: scale(.9);
+}
+h3 {
+    font-size: 4.2em;
+    font-weight: normal;
+    margin: 22% auto 5%;
+}
+.text {
+    margin: 0 auto 3%;
+    font-size: 2.4em;
+}
+.orange {
+    color: #F26F21;
+    font-size: 3em;
+    margin: 12% auto 0;
+}
+.bottom {
+    color: #b0afaf;
+    margin: 8% auto 0;
+}

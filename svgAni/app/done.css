@@ -1,0 +1,72 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    overflow: hidden;
+    text-align: center;
+}
+div.done {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+svg {
+    transform: scale(0.7);
+    margin: 0 auto;
+    text-align: center;
+    overflow: auto;
+}
+.text {
+    font-size: 3.3em;
+    margin: 15% auto 26%;
+}
+.btn {
+    font-size: 3.3em;
+    margin: 2% auto 20%;
+    color: #f26f21;
+}
+line {
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    animation: dash 0.5s cubic-bezier(0.4, 0, 1, 1);
+    animation-fill-mode: forwards;
+}
+line.right1 {
+    animation-delay: 0.3s ;
+}
+line.right2 {
+    animation: dash 0.2s cubic-bezier(0.55, 0.06, 0.68, 0.19);
+    animation-fill-mode: forwards;
+    animation-delay: 0.5s ;
+}
+@keyframes dash {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+.bling {
+    transform-origin: center;
+    animation: bling 1.3s cubic-bezier(0.5, 0.18, 0.54, 2.13) alternate;
+    animation-delay: 1s;
+}
+.bling1 {
+    animation-duration: 0.8s;
+    animation-delay: 1.5s;
+}
+.bling2 {
+    animation-duration: 1s;
+    animation-delay: 1.8s;
+}
+.bling3 {
+    animation-duration: 1s;
+    animation-delay: 1.4s;
+}
+@keyframes bling {
+    from {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(0.5);
+    }
+}

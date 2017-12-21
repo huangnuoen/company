@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>启动页</title>
+    <link rel="stylesheet" href="../app/main.css">
+    <script src="../lib/jquery-3.2.1.min.js"></script>
+    <script src="../lib/fastclick.js"></script>
+    <script src="../lib/TweenMax.min.js"></script>
+    <style>
+        svg.logo {
+            -webkit-filter: drop-shadow( 0px 0px 25px rgba(242, 111, 33, 0.32));
+            filter: drop-shadow( 0px 0px 25px rgba(242, 111, 33, 0.32));
+        }
+    </style>
+    <script>
+        $(function() {
+            FastClick.attach(document.body);
+        });
+    </script>
+</head>
+<body>
+<div id="guide" class="guide">
+    <!--page1-->
+    <div class="page1 page">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 500" class="logo">
+            <defs>
+                <style>
+                    .cls-1{isolation:isolate;}
+                    .cls-2{opacity:0.2;mix-blend-mode:multiply;}
+                    .cls-3{fill:#fff;}
+                    .cls-4{fill:url(#linear);}
+                </style>
+                <linearGradient id="linear" x1="149.17" y1="98.71" x2="149.17" y2="199.36" gradientUnits="userSpaceOnUse">
+                    <stop offset="0" stop-color="#f49f00"/>
+                    <stop offset="1" stop-color="#d34f23"/>
+                </linearGradient>
+            </defs>
+            <g class="cls-1">
+                <g data-name="图层 1">
+                    <rect class="cls-3" x="45.67" y="45.54" width="207" height="207" rx="47.97" ry="47.97"/></g>
+                <g id="图层_2" data-name="图层 2">
+                    <path class="cls-4" d="M73.22,153.29c-2.34-22.3,13.47-42.38,35.25-44.78a39.42,39.42,0,0,1,36.89,17.28,41.15,41.15,0,0,1,6.6,17c.1.61.17,1.24.24,1.85a41.47,41.47,0,0,1-.23,10.49c.83,7.55,3.83,13.89,5.39,14.64a50.87,50.87,0,0,0,4.27-24.16c0-.66-.08-1.31-.15-2a50.93,50.93,0,0,0-5.23-17.76c-.42-.84-.87-1.66-1.34-2.47a39.28,39.28,0,0,1,26.46-14.68c21.77-2.4,41.39,13.79,43.72,36.1s-13.47,42.39-35.25,44.78A39.38,39.38,0,0,1,153,172.29a40.22,40.22,0,0,1-5.41-11.57,39.14,39.14,0,0,1-1.15-5c-.11-.74-.21-1.5-.3-2.24a41.51,41.51,0,0,1,.28-10.77c-.87-7.51-4.35-14.11-5.48-14.28a50.94,50.94,0,0,0-4.29,23.38c.06.9.12,1.78.21,2.68a50.54,50.54,0,0,0,5.23,17.75q.64,1.26,1.34,2.47A39.33,39.33,0,0,1,117,189.4a38.9,38.9,0,0,1-4.25.23c-20,0-37.3-15.51-39.49-36.35M107.48,99c-26.94,3-46.42,27.72-43.53,55.3S91,201.85,118,198.89a48.49,48.49,0,0,0,31.13-16.25,48.4,48.4,0,0,0,41.76,16.43c26.94-3,46.44-27.74,43.53-55.31s-27.08-47.55-54-44.57a48.46,48.46,0,0,0-31.13,16.27A48.08,48.08,0,0,0,107.48,99"/>
+                </g>
+            </g>
+        </svg>
+        <div class="text">By FanTem</div>
+        <div class="wave">
+            <img src="../src/img/XD1.gif">
+        </div>
+    </div>
+</div>
+<script src="../app/startAni.js"></script>
+</body>
+</html>
