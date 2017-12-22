@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>tutorial</title>
+    <link rel="stylesheet" href="css/commonStyle.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<template id="Rout">
+    <div id="Rout_content" class="MyDiv">
+        <div class='navigationHolder MyDiv'>
+            <router-link class="routs" :to="{ name: 'page0'}"></router-link>
+            <router-link class="routs" :to="{ name: 'page1'}"></router-link>
+            <router-link class="routs" :to="{ name: 'page2'}"></router-link>
+            <router-link class="routs" :to="{ name: 'page3'}"></router-link>
+            <router-link class="routs" :to="{ name: 'page4'}"></router-link>
+            <router-link class="routs" :to="{ name: 'page5'}"></router-link>
+            <router-link class="routs" :to="{ name: 'page6'}"></router-link>
+            <router-link class="routs" :to="{ name: 'page7'}"></router-link>
+            <router-link class="routs" :to="{ name: 'page8'}"></router-link>
+            <router-link class="routs" :to="{ name: 'page9'}"></router-link>
+            <router-link class="routs" :to="{ name: 'page10'}"></router-link>
+            <router-link class="routs" :to="{ name: 'page11'}"></router-link>
+        </div>
+        <div class="viewHolder MyDiv">
+            <transition name="slide-fade">
+                <router-view></router-view>
+            </transition>
+        </div>
+    </div>
+</template>
+<div id="start" class="MyDiv">
+	
+</div>
+<template id="page0">
+	<div class="mainHolder MyDiv">
+		<home v-bind:home="pageData.home"></home>
+	</div>
+</template>
+<template id="page1">
+    <div class="mainHolder MyDiv">
+        <tutorial-body v-bind:body="pageData.body"></tutorial-body>
+        <pagination v-bind:pagination="pageData.pagination"></pagination>
+        <prompt-box-up class="messageDialog" v-bind:prompt="pageData.prompt"></prompt-box-up>
+        <div class="textField">
+            <svg version="1.1" id="textFieldSVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1280px" height="800.73px" viewBox="0 0 1280 800.73" enable-background="new 0 0 1280 800.73" xml:space="preserve">
+                <circle class="mycircle" stroke-width="10" fill="transparent" opacity="1" stroke="#FF9012" r="25" cx="637" cy="243"></circle>
+                <text class="mainText" x="360" y="265.8765" fill="#585858" font-family="'DroidSansFallback'" font-size="28">
+                    {{textContent}}
+                </text>
+                <line class="textLine" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#FF9012" stroke-width="3" stroke-miterlimit="10" x1="348.4072" y1="273.264" x2="348.4072" y2="237.264">
+                		<animate animateType="css" attributeName="stroke" from="#FF9012" to="#fff" begin="0s" dur="1s" repeatCount="indefinite"/>
+                </line>
+                <rect v-on:click="go" id="keyboardText" x="320" y="200" width="580" height="100" fill="transparent"></rect>
+            </svg>
+        </div>
+    </div>
+</template>
+<template id="page2">
+    <div class="mainHolder MyDiv">
+        <tutorial-body v-bind:body="pageData.body"></tutorial-body>
+        <pagination v-bind:pagination="pageData.pagination"></pagination>
+        <prompt-box-up class="messageDialog" v-bind:prompt="pageData.prompt"></prompt-box-up>
+        <div class="iconDialog">
+            <svg  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="图层_1" x="0px" y="0px" width="1280px" height="800.465px" viewBox="0 0 1280 800.465" enable-background="new 0 0 1280 800.465" xml:space="preserve">
+                <path fill="none" v-bind:style="iconColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M777.911,457.012v27.355  c0,0.503-0.409,0.912-0.912,0.912h-21.884c-1.508,0-2.735-1.229-2.735-2.736"/>
+                <path fill="none" v-bind:style="iconColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="  M752.38,482.113c0-1.508,1.228-2.734,2.735-2.734h18.237c1.508,0,2.736-1.228,2.736-2.736V454.76c0-1.51-1.228-2.736-2.736-2.736  h-18.237c-1.507,0-2.735,1.227-2.735,2.736V482.113"/>
+                <line fill="none" v-bind:style="iconColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="754.977" y1="482.313" x2="776.087" y2="482.313"/>
+                <circle class="mycircle" stroke-width="10" fill="transparent" opacity="1" stroke="#FF9012" r="25" cx="765" cy="467"></circle>
+                <rect x="700" y="409" v-on:click="go" height="130" width="130"  fill="transparent"></rect>
+            </svg>
+        </div>
+    </div>
+</template>
+<template id="page3">
+    <div class="mainHolder MyDiv">
+        <tutorial-body v-bind:body="pageData.body"></tutorial-body>
+        <pagination v-bind:pagination="pageData.pagination"></pagination>
+        <img src="img/scenesPage/following.png"  id="scenesRightTop"/>
+        <img src="img/scenesPage/lampLeftMerged.png" id="scenesLamp" />
+        <prompt-box-up class="messageDialog" v-bind:prompt="pageData.prompt"></prompt-box-up>
+        <div class="lampDialog resetPos MyDiv" >
+	        <svg  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="图层_1" x="0px" y="0px" width="1279.31px" height="800.337px" viewBox="0 0 1279.31 800.337" enable-background="new 0 0 1279.31 800.337" xml:space="preserve">
+	            <circle class="mycircle" stroke-width="10" fill="transparent" opacity="1" stroke="#FF9012" r="25" cx="204" cy="275"></circle>
+	            <rect x="0" y="230" v-on:click="go" height="90" width="380" fill="transparent"></rect>
+	        </svg>
+        </div>
+    </div>
+</template>
+<template id="page4">
+	<div class="mainHolder MyDiv">
+        <tutorial-body v-bind:body="pageData.body"></tutorial-body>
+        <pagination v-bind:pagination="pageData.pagination"></pagination>
+        <img src="img/scenesPage/following.png"  id="scenesRightTop"/>
+        <img src="img/scenesPage/scenesLamp2.png" id="scenesLamp1" />
+        <prompt-box-up class="messageDialog" v-bind:prompt="pageData.prompt"></prompt-box-up>
+        <div class="brightnessDialog MyDiv">
+        		<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1296.582" height="800" viewBox="0 0 1296.582 800"><defs><path id="a" d="M478.028 309.632a7.757 7.757 0 1 0 0 15.51h589.617a7.757 7.757 0 0 0 7.754-7.755 7.756 7.756 0 0 0-7.754-7.754H478.028z"/></defs><clipPath id="b"><use xlink:href="#a" overflow="visible"/></clipPath><linearGradient id="c" gradientUnits="userSpaceOnUse" x1="-5074.021" y1="4170.901" x2="-5072.988" y2="4170.901" gradientTransform="matrix(585.291 0 0 -585.291 2970249.5 2441508.75)"><stop offset="0" stop-color="#595758"/><stop offset="1" stop-color="#fff"/></linearGradient><path clip-path="url(#b)" fill="url(#c)" d="M470.274 309.632h605.123v15.509H470.274v-15.509z"/><path fill="none" stroke="#C9CACA" stroke-miterlimit="10" d="M1067.644 325.141H478.028a7.756 7.756 0 0 1 0-15.509h589.616a7.754 7.754 0 0 1 7.747 7.758v.004a7.755 7.755 0 0 1-7.747 7.747z"/>
+        			<circle class="mycircle" stroke-width="10" fill="transparent" opacity="1" stroke="#FF9012" r="25" cx="773" cy="315"></circle>
+				<circle cx="482" cy="317" r="18" stroke="#9E9E9F" stroke-width="0.5" fill="#ffffff" class="brightnessPointer"></circle>
+				<rect v-on:click="go" x="420" y="250" height="120" width="720" fill="transparent"></rect>
+        		</svg>
+        </div>
+</template>
+<template id="page5">
+	<div class="mainHolder MyDiv">
+        <tutorial-body v-bind:body="pageData.body"></tutorial-body>
+        <pagination v-bind:pagination="pageData.pagination"></pagination>
+		<img src="img/scenesPage/lampMiddleMerged.png" id="scenesMerged" />
+		<img src="img/scenesPage/following.png"  id="scenesRightTop"/>
+		<prompt-box-down class="messageDialog" v-bind:prompt="pageData.prompt"></prompt-box-down>
+        <div class="ceilingLightDialog resetPos MyDiv">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1280.919" height="800.726" viewBox="0 0 1280.919 800.726">
+                <circle class="mycircle" stroke-width="10" fill="transparent" opacity="1" stroke="#FF9012" r="25" cx="203" cy="500"></circle>
+                <rect v-on:click="go" x="0" y="450" height="100" width="380" fill="transparent"></rect>
+            </svg>
+        </div>
+   </div>
+</template>
+<template id="page6">
+	<div class="mainHolder MyDiv">
+        <tutorial-body v-bind:body="pageData.body"></tutorial-body>
+        <pagination v-bind:pagination="pageData.pagination"></pagination>
+        <img src="img/scenesPage/lampMiddleMerged.png" id="scenesMerged1" />
+        <img src="img/scenesPage/following.png" id="scenesRightTop" />
+        <prompt-box-down class="messageDialog" v-bind:prompt="pageData.prompt"></prompt-box-down>
+        <div class="televisionDialog resetPos MyDiv">
+     		<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1280.917" height="806.274" viewBox="0 0 1280.917 806.274">
+     			<circle class="mycircle" stroke-width="10" fill="transparent" opacity="1" stroke="#FF9012" r="25" cx="202" cy="590"></circle>
+     			<rect v-on:click="go" x="0" y="550" height="100" width="380" fill="transparent"></rect>
+     		</svg>
+        </div>
+   </div>
+</template>
+<template id="page7">
+	<div class="mainHolder MyDiv">
+        <tutorial-body v-bind:body="pageData.body"></tutorial-body>
+        <pagination v-bind:pagination="pageData.pagination"></pagination>
+        <img src="img/scenesPage/lampMiddleMerged.png" id="scenesMerged2" />
+        <img src="img/scenesPage/following.png" id="scenesRightTop" />
+        <prompt-box-up class="messageDialog" v-bind:prompt="pageData.prompt"></prompt-box-up>
+        <div class="ceilingLightDialog resetPos MyDiv">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1280" height="800" viewBox="0 0 1280 800">
+                <circle class="mycircle" stroke-width="10" fill="transparent" opacity="1" stroke="#FF9012" r="25" cx="75" cy="50"></circle>
+                <rect v-on:click="go" x="0" y="0" height="100" width="150" fill="transparent"></rect>
+            </svg>
+        </div>
+   </div>
+</template>
+<template id="page8">
+	<div class="mainHolder MyDiv">
+        <tutorial-body v-bind:body="pageData.body"></tutorial-body>
+        <pagination v-bind:pagination="pageData.pagination"></pagination>
+        <prompt-box-got class="messageDialog" v-bind:prompt="pageData.prompt"></prompt-box-got>
+        <div class="messageDialog resetPos1 MyDiv">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="图层_1" x="0px" y="0px" width="1280.003px" height="802.39px" viewBox="0 0 1280.003 802.39" enable-background="new 0 0 1280.003 802.39" xml:space="preserve">
+                <image x="402" y="212" width="480px" height="360px" xlink:href="img/Scenes.gif" />
+                <rect v-on:click="go" x="300" y="510" height="100" width="680" fill="transparent"></rect>
+            </svg>
+        </div>
+   </div>
+</template>
+<template id="page9">
+	<div class="mainHolder MyDiv">
+        <tutorial-body v-bind:body="pageData.body"></tutorial-body>
+        <pagination v-bind:pagination="pageData.pagination"></pagination>
+        <prompt-box-up class="messageDialog" v-bind:prompt="pageData.prompt"></prompt-box-up>
+        <div class="controlDialog resetPos1 MyDiv">
+     		<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1280.484" height="800.214" viewBox="0 0 1280.484 800.214">
+	           	<text transform="translate(958.473 161.861)" fill="#DB6929" font-family="'DroidSansFallback'" font-size="25">
+	           		{{desktopTitle}}
+	           	</text>
+	           	<path fill="#B1B0B0" class="controlBar" d="M1150.371 154.442c0 11.627-9.426 21.052-21.053 21.052h-37.893c-11.627 0-21.054-9.425-21.054-21.052 0-11.628 9.427-21.056 21.054-21.056h37.893c11.627 0 21.053 9.428 21.053 21.056"/>
+	           	<g opacity=".2"><defs>
+           		<path id="c" d="M1108.5 134.574h41.52v41.52h-41.52z"/></defs><clipPath id="d">
+   				<use xlink:href="#c" overflow="visible"/></clipPath><g clip-path="url(#d)"><defs>
+   				<path id="e" d="M1108.501 134.569h41.52v41.52h-41.52z"/></defs><clipPath id="f"><use xlink:href="#e" overflow="visible"/></clipPath><g clip-path="url(#f)"></g></g></g>
+   				<circle class="controlPointer" cx="1092" cy="155" r="18" fill="#ffffff"></circle>
+   				<circle class="mycircle" stroke-width="10" fill="transparent" opacity="1" stroke="#FF9012" r="25" cx="1115" cy="155"></circle>
+           		<rect v-on:click="go" x="930" y="100" height="100" width="260" fill="transparent"></rect>
+     		</svg>
+        </div>
+   </div>
+</template>
+<template id="page10">
+	<div class="mainHolder MyDiv">
+        <tutorial-body v-bind:body="pageData.body"></tutorial-body>
+        <pagination v-bind:pagination="pageData.pagination"></pagination>
+        <prompt-box-got class="messageDialog" v-bind:prompt="pageData.prompt"></prompt-box-got>
+        <div class="settingDialog resetPos1 MyDiv">
+     		<svg xmlns="http://www.w3.org/2000/svg" width="1280.485" height="800.213" viewBox="0 0 1280.485 800.213">
+				<!--<circle class="mycircle" stroke-width="10" fill="transparent" opacity="1" stroke="#FF9012" r="25" cx="1210" cy="50"></circle>-->
+     			<rect v-on:click="go" x="780" y="165" height="80" width="490" fill="transparent"></rect>
+     			<rect v-on:click="go" x="1150" y="0" height="100" width="150" fill="transparent"></rect>
+     		</svg>
+        </div>
+   </div>
+</template>
+<template id="page11">
+	<div class="mainHolder MyDiv">
+		<tutorial-body v-bind:body="pageData.body"></tutorial-body>
+		<end></end>
+	</div>
+</template>
+<script src="../libs/jquery-1.11.3.js"></script>
+<script src="../libs/vue.js"></script>
+<script src="../libs/vue-router.js"></script>
+<script src="../libs/TweenMax.min.js"></script>
+<script src="../libs/TweenLite.min.js"></script>
+<script src="../libs/TimelineMax.min.js"></script>
+<script src="../libs/CSSPlugin.min.js"></script>
+<script src="../libs/AttrPlugin.min.js"></script>
+<script src="../cordova.js"></script>
+<script src="../cordova_plugins.js"></script>
+<script src="../libs/iscroll.js"></script>
+<script src="../libs/Oomi-command.js"></script>
+<script src="../internationalization/LanguageSelector.js"></script>
+<script src="js/common.js" ></script>
+<script src="js/commonComponents.js" ></script>
+<script src="pages/sencePage.js" ></script>
+</body>
+</html>
