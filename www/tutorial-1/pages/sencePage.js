@@ -1,6 +1,4 @@
-/**
- * Created by qkchung on 2017/8/30.
- */
+
 window.onload = function () {
     var router = {};
     var runText = null;

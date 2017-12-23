@@ -136,7 +136,7 @@ svg {
 .endDiv svg{
 	position: absolute;
 	width: auto;
-	height: auto;
+	height: 100%;
 }
 .btnContent {
 	width: 90%;

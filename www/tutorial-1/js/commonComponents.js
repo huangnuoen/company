@@ -1,6 +1,3 @@
-/**
- * Created by qkchung on 2017/8/31.
- */
 function loadComponent(router,lang) {
 	var om2 = Oomi_command_function.create_new();
 	var textsObj = {};

@@ -4,13 +4,13 @@
     <list default="true" readonly="true" id="2fa9ee9e-1fa4-4e23-ab20-0a9430e84f81" name="Default" comment="">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/desktop_widget/src/component/RGBPattern.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/desktop_widget/src/templates/all.css" afterPath="$PROJECT_DIR$/desktop_widget/src/templates/all.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/desktop_widget/src/templates/componentsTemplate.html" afterPath="$PROJECT_DIR$/desktop_widget/src/templates/componentsTemplate.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/desktop_widget/src/component/ChooseRGB.js" afterPath="$PROJECT_DIR$/desktop_widget/src/component/ChooseRGB.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/desktop_widget/src/component/RGBRouting.js" afterPath="$PROJECT_DIR$/desktop_widget/src/component/RGBRouting.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cordova.js" afterPath="$PROJECT_DIR$/cordova.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/desktop_widget/src/component/closeButton.js" afterPath="$PROJECT_DIR$/desktop_widget/src/component/closeButton.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/desktop_widget/bulb/js/popup.js" afterPath="$PROJECT_DIR$/desktop_widget/bulb/js/popup.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/desktop_widget/src/component/closeButton.js" afterPath="$PROJECT_DIR$/desktop_widget/src/component/closeButton.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/desktop_widget/src/templates/all.css" afterPath="$PROJECT_DIR$/desktop_widget/src/templates/all.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/desktop_widget/src/component/ChooseRGB.js" afterPath="$PROJECT_DIR$/desktop_widget/src/component/ChooseRGB.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cordova.js" afterPath="$PROJECT_DIR$/cordova.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/desktop_widget/src/component/RGBRouting.js" afterPath="$PROJECT_DIR$/desktop_widget/src/component/RGBRouting.js" />
     </list>
     <ignored path="www.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,16 +40,6 @@
         </entry>
       </file>
       <file leaf-file-name="scenseTutorial.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tutorial00/scenseTutorial.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="scenseTutorial.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tutorial-1/scenseTutorial.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
@@ -59,11 +49,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="monitorPage.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="monitorPage.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tutorial-1/monitorPage.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IQTutorial.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tutorial-1/IQTutorial.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tutorial-1/css/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="commonStyle.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tutorial-1/css/commonStyle.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="29">
+              <caret line="138" column="17" lean-forward="false" selection-start-line="138" selection-start-column="17" selection-end-line="138" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -128,8 +148,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Oomi/colorButtons/edit.html" />
-        <option value="$PROJECT_DIR$/EditTemplates/editTemplating.js" />
         <option value="$PROJECT_DIR$/libs/Oomi-common.js" />
         <option value="$PROJECT_DIR$/deviceRoomWidget/JS/ListenerSender.js" />
         <option value="$PROJECT_DIR$/Oomi/bulb/index/main.js" />
@@ -179,6 +197,8 @@
         <option value="$PROJECT_DIR$/tutorial/js/common.js" />
         <option value="$PROJECT_DIR$/tutorial/scenseTutorial.html" />
         <option value="$PROJECT_DIR$/tutorial/pages/sencePage.js" />
+        <option value="$PROJECT_DIR$/tutorial-1/css/style.css" />
+        <option value="$PROJECT_DIR$/tutorial-1/css/commonStyle.css" />
       </list>
     </option>
   </component>
@@ -188,10 +208,11 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="953" />
-    <option name="width" value="974" />
-    <option name="height" value="1047" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="197" />
+    <option name="y" value="73" />
+    <option name="width" value="1537" />
+    <option name="height" value="1044" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -208,6 +229,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -268,19 +290,19 @@
             <path>
               <item name="www" type="b2602c69:ProjectViewProjectNode" />
               <item name="www" type="462c0819:PsiDirectoryNode" />
-              <item name="tutorial00" type="462c0819:PsiDirectoryNode" />
+              <item name="tutorial-1" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="www" type="b2602c69:ProjectViewProjectNode" />
               <item name="www" type="462c0819:PsiDirectoryNode" />
               <item name="tutorial-1" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -434,7 +456,9 @@
       <workItem from="1513085203719" duration="1916000" />
       <workItem from="1513929880608" duration="109000" />
       <workItem from="1513930664321" duration="875000" />
-      <workItem from="1513931595956" duration="186000" />
+      <workItem from="1513931595956" duration="1217000" />
+      <workItem from="1513950645029" duration="599000" />
+      <workItem from="1513955741007" duration="599000" />
     </task>
     <task id="LOCAL-00001">
       <created>1471503836100</created>
@@ -783,13 +807,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="209888000" />
+    <option name="totallyTimeSpent" value="212117000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-11" y="-11" width="1942" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="197" y="73" width="1537" height="1044" extended-state="0" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2640625" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33465347" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32990867" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -856,27 +879,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/desktop_widget/src/component/BrightnessController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="63" column="15" lean-forward="true" selection-start-line="17" selection-start-column="12" selection-end-line="63" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/desktop_widget/src/templates/all.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-16">
-          <caret line="228" column="0" lean-forward="false" selection-start-line="228" selection-start-column="0" selection-end-line="258" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/desktop_widget/src/component/popupWidgetHeader4Group.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/libs/require.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
@@ -1129,14 +1131,7 @@
     <entry file="file://$PROJECT_DIR$/tutorial/js/common.js" />
     <entry file="file://$PROJECT_DIR$/tutorial/pages/sencePage.js" />
     <entry file="file://$PROJECT_DIR$/tutorial/scenseTutorial.html" />
-    <entry file="file://$PROJECT_DIR$/tutorial00/scenseTutorial.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/tutorial00/scenseTutorial.html" />
     <entry file="file://$PROJECT_DIR$/tutorial-1/scenseTutorial.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1149,6 +1144,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tutorial-1/IQTutorial.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tutorial-1/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tutorial-1/css/commonStyle.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="29">
+          <caret line="138" column="17" lean-forward="false" selection-start-line="138" selection-start-column="17" selection-end-line="138" selection-end-column="17" />
           <folding />
         </state>
       </provider>
