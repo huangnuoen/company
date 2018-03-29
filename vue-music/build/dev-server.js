@@ -46,7 +46,7 @@ apiRoutes.get('/getDiscList', function (req, res) {
   })
 })
 
-apiRoutes.get('/songlist', function(req, res) {
+apiRoutes.get('/songlist', function (req, res) {
   var url = 'https://c.y.qq.com/qzone/fcg-bin/fcg_ucc_getcdinfo_byids_cp.fcg'
   axios.get(url, {
     // 配置header
@@ -73,10 +73,33 @@ apiRoutes.get('/songlist', function(req, res) {
   }).catch((e) => {
     console.log(e)
   })
-  
+
+})
+// 获取歌手所有歌曲信息
+apiRoutes.post('/getPurlUrl', function (req, res) {
+  // http://dl.stream.qqmusic.qq.com/C400002qU5aY3Qu24y.m4a?guid=6763139031&vkey=1993E9DA0CEE7302DA379A5E01BDECE386F902BB8537229232D0A507BE9B2536F798343962E0C0430A88950BA4E2B36F75420ECA48FE0DD3&uin=0&fromtag=999
+  // http://dl.stream.qqmusic.qq.com/C400002qU5aY3Qu24y.m4a?guid=6079595955&vkey=060E4F22A523E441B942DAA5C57F5A4BA4E8E15A20B2C682DD2FA3176C6D407131F36B5B61C14D3ECCFAE7EE652E5012AFD2FE118404A970&uin=0&fromtag=999
+  // http://dl.stream.qqmusic.qq.com/C4000039MnYb0qxYhV.m4a?guid=6079595955&vkey=12EF9BD06630B73CD3F56F079CDDFAC0858ACF2FB1DEDC78CF333711F6DAFAF5C59AA99135EA3F1D8464651A5700E04D2B4C23B000A21D4E&uin=0&fromtag=999
+  var url = 'https://u.y.qq.com/cgi-bin/musicu.fcg'
+  // var url = 'https://c.y.qq.com/qzone/fcg-bin/fcg_ucc_getcdinfo_byids_cp.fcg'
+ // 用axios请求数据
+  axios.post(url, {
+    // 配置header
+    headers: {
+      referer: 'https://y.qq.com/',
+      host: 'u.y.qq.com'
+    },
+    // 与请求一起发送的url参数（前端的请求参数）
+    params: req.query
+  }).then((response) => {
+    // 将请求到的回复做一个json格式的响应，返回给前端
+    res.json(response.data)
+  }).catch((e) => {
+    console.log(e)
+  })
 })
 
-apiRoutes.get('/lyric', function(req, res) {
+apiRoutes.get('/lyric', function (req, res) {
   var url = 'https://c.y.qq.com/lyric/fcgi-bin/fcg_query_lyric.fcg'
   axios.get(url, {
     // 配置header
@@ -103,7 +126,7 @@ apiRoutes.get('/lyric', function(req, res) {
   }).catch((e) => {
     console.log(e)
   })
-  
+
 })
 
 app.use('/api', apiRoutes)
@@ -122,7 +145,9 @@ var hotMiddleware = require('webpack-hot-middleware')(compiler, {
 // force page reload when html-webpack-plugin template changes
 compiler.plugin('compilation', function (compilation) {
   compilation.plugin('html-webpack-plugin-after-emit', function (data, cb) {
-    hotMiddleware.publish({ action: 'reload' })
+    hotMiddleware.publish({
+      action: 'reload'
+    })
     cb()
   })
 })
@@ -131,7 +156,9 @@ compiler.plugin('compilation', function (compilation) {
 Object.keys(proxyTable).forEach(function (context) {
   var options = proxyTable[context]
   if (typeof options === 'string') {
-    options = { target: options }
+    options = {
+      target: options
+    }
   }
   app.use(proxyMiddleware(options.filter || context, options))
 })

@@ -55,7 +55,12 @@ export function createSong(musicData) {
 		album: musicData.albumname,
 		duration: musicData.interval,
 		image: `https://y.gtimg.cn/music/photo_new/T002R150x150M000${musicData.albummid}.jpg?max_age=2592000`,
-		url: `http://ws.stream.qqmusic.qq.com/${musicData.songid}.m4a?fromtag=38`
+		// url: `http://ws.stream.qqmusic.qq.com/${musicData.songid}.m4a?fromtag=38`
+		url: `http://dl.stream.qqmusic.qq.com/C400${musicData.songid}.m4a?fromtag=66`
+		// http://dl.stream.qqmusic.qq.com/C400001OyHbk2MSIi4.m4a?vkey=D683BF789E3A2CFBB6A6D45A5600DC295F732CCB924F3E6532C6C798C011561785C5E32C15D9A6D2530C2FE9CCD485771A2219A451AA726D&guid=6763139031&uin=1261290560&fromtag=66
+		// http://dl.stream.qqmusic.qq.com/C40000481cWs2JgWe0.m4a?vkey=618CF98BC7AF3CA56FFCD855349C5A8A2E794B83A2212917977EC3B863EEB18CEBCCC42B4B6A6C30A7D9CB57AB2389394309481DD7110506&guid=6763139031&uin=1261290560&fromtag=66
+		// http://dl.stream.qqmusic.qq.com/C400004M3yRr3kOfnS.m4a?vkey=689995C4720DD90DEDCD8A7F58E7ED2C77A57C2A4E6FA58CCBDCFE20919E6B2FCF7E75AB46DC70A1477286F2626F17EF531B458F35E0AB4F&guid=6763139031&uin=1261290560&fromtag=66
+		// http://dl.stream.qqmusic.qq.com/C400003OUlho2HcRHC.m4a?vkey=874037D2B5535690D851690FCB4A0A8DE2710E6BCBEFCA8D9233D49F3412043FC67DBBC8D4A598567FB5DD5FF3E38A0993878603637C5F4F&guid=6763139031&uin=1261290560&fromtag=66
 	})
 }
 
