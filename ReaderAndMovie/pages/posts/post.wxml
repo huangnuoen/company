@@ -1,0 +1,43 @@
+<view>
+  <swiper indicator-dots="true" autoplay="true" duration="5000">
+    <swiper-item>
+      <image src="/images/1.jpg"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src="/images/2.jpg"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src="/images/3.jpg"></image>
+    </swiper-item>
+  </swiper>
+  <view class="post-container">
+    <view class="post-author-date">
+      <image class="post-author" src="/images/1.jpg"></image>
+      <text class="post-date">Nov 25 2016</text>
+    </view>
+    <text class="post-title">正是</text>
+    <image class="post-image" src="/images/3.jpg"></image>
+    <text class="post-content">简介</text>
+    <view class="post-like">
+      <image class="post-like-image" src="/images/2.jpg"></image>
+      <text class="post-like-font">92</text>
+      <image class="post-like-image" src="/images/1.jpg"></image>
+      <text class="post-like-font">45</text>
+    </view>
+  </view>
+  <view class="post-container">
+    <view class="post-author-date">
+      <image class="post-author" src="/images/1.jpg"></image>
+      <text class="post-date">Nov 25 2016</text>
+    </view>
+    <text class="post-title">正是</text>
+    <image class="post-image" src="/images/3.jpg"></image>
+    <text class="post-content">简介</text>
+    <view class="post-like">
+      <image class="post-like-image" src="/images/2.jpg"></image>
+      <text class="post-like-font">92</text>
+      <image class="post-like-image" src="/images/1.jpg"></image>
+      <text class="post-like-font">45</text>
+    </view>
+  </view>
+</view>
