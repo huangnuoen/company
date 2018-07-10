@@ -19,8 +19,7 @@ module.exports = {
     path: config.build.assetsRoot,
     filename: '[name].js',
     publicPath: process.env.NODE_ENV === 'production' ?
-      config.build.assetsPublicPath :
-      config.dev.assetsPublicPath
+      config.build.assetsPublicPath : config.dev.assetsPublicPath
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
@@ -32,6 +31,13 @@ module.exports = {
   module: {
     rules: [{
         test: /\.less$/,
+        // use: [{
+        //   loader: 'style-loader' // creates style nodes from JS strings
+        // }, {
+        //   loader: 'css-loader' // translates CSS into CommonJS
+        // }, {
+        //   loader: 'less-loader' // compiles Less to CSS
+        // }],
         loader: 'style-loader!css-loader!less-loader'
       }, {
         test: /\.vue$/,
