@@ -55,8 +55,11 @@ export default {
   display: flex;
   border-bottom: 4px solid red;
   .box {
-    width: .8%;
-    height: 80%;
+    width: 2%;
+    box-sizing: border-box;
+    border-left: solid 2px #fff;
+    border-right: solid 2px #fff;
+    height: 60%;
       transition: all .4s;
     background-color: pink;
     &.active {
